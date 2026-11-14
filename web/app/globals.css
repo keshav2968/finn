@@ -1,73 +1,81 @@
-/* FINN design tokens.
-   Palette: ink, warm ivory, electric teal. Dark is the default.
-   Teal = interactive only (links, active tab underline, focus). Never on numbers.
-   Green/red = price movement only, always with an arrow and a sign.
-   Contrast checked (WCAG AA): every text token is >= 4.5:1 on its background. */
+/* FINN design tokens: obsidian and electric teal. Dark is the default.
+   Teal #14B8A6 is reserved for the progress fill, the active time-range tab and primary
+   actions. Positive/negative deltas use soft tinted badges, always with an arrow and sign.
+   Every text token is >= 4.5:1 on the surface it sits on (checked for both modes). */
 
 :root,
 :root[data-theme="dark"] {
-  --bg: #0e1013;
-  --bg-raised: #16191d;     /* bottom sheet */
-  --fg: #f2ede3;            /* 16.4:1 */
-  --muted: #9a958b;         /* 6.6:1 */
-  --hair: rgba(242, 237, 227, 0.1);
-  --hair-strong: rgba(242, 237, 227, 0.2);
-  --accent: #2ed3c6;        /* 10:1, links and the active tab */
-  --up: #5fb884;
-  --down: #e8786e;
-  --solid-bg: var(--fg);    /* toast, swipe action, primary button, exit tag */
-  --solid-fg: var(--bg);
-  --scrim: rgba(0, 0, 0, 0.6);
-  --frame: #08090b;         /* outside the column on wide screens only */
+  --canvas: #0b0e14;
+  --card: #131722;
+  --raised: #181d2a;         /* accordion row, sheet */
+  --border: rgba(255, 255, 255, 0.08);
+  --track: #1e293b;          /* progress track, dividers inside cards */
+  --fg: #f4f2ed;             /* 17:1 on canvas */
+  --fg-2: #c9cdd6;           /* secondary text, 11:1 on card */
+  --muted: #8b95a7;          /* 6.1:1 on card */
+  --teal: #14b8a6;           /* 7.6:1 on card */
+  --on-teal: #0b0e14;        /* 8.3:1 on teal */
+  --teal-text: #2dd4bf;      /* links on dark */
+  --pos: #10b981;
+  --pos-bg: rgba(16, 185, 129, 0.14);
+  --neg: #fb7185;            /* rose, lifted for 5:1 on the tinted badge */
+  --neg-bg: rgba(244, 63, 94, 0.14);
+  --solid: #f4f2ed;          /* toast, exit tag */
+  --on-solid: #0b0e14;
+  --scrim: rgba(3, 5, 9, 0.66);
+  --frame: #07090d;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --bg: #f6f1e6;
-  --bg-raised: #fbf8f2;
-  --fg: #121417;            /* 16.3:1 */
-  --muted: #5c574e;         /* 6.4:1 */
-  --hair: rgba(18, 20, 23, 0.12);
-  --hair-strong: rgba(18, 20, 23, 0.22);
-  --accent: #006b63;        /* 5.7:1 */
-  --up: #2e7148;
-  --down: #ae3b34;
-  --solid-bg: var(--fg);
-  --solid-fg: var(--bg);
-  --scrim: rgba(18, 20, 23, 0.35);
-  --frame: #ebe4d5;
+  --canvas: #f5f3ee;
+  --card: #ffffff;
+  --raised: #eef0f3;
+  --border: rgba(15, 23, 42, 0.09);
+  --track: #e2e8f0;
+  --fg: #0b0e14;
+  --fg-2: #334155;
+  --muted: #5b6475;          /* 5.9:1 on white */
+  --teal: #14b8a6;
+  --on-teal: #0b0e14;
+  --teal-text: #0f766e;      /* 5.4:1 on white */
+  --pos: #047857;
+  --pos-bg: rgba(16, 185, 129, 0.12);
+  --neg: #be123c;
+  --neg-bg: rgba(244, 63, 94, 0.1);
+  --solid: #0b0e14;
+  --on-solid: #f5f3ee;
+  --scrim: rgba(15, 23, 42, 0.32);
+  --frame: #e9e6df;
   color-scheme: light;
 }
 
 :root {
-  --font-text: var(--font-instrument), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-num: var(--font-geist-mono), var(--font-geist-mono-ext), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-text: var(--font-jakarta), var(--font-jakarta-ext), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-num: var(--font-jbm), var(--font-jakarta-ext), ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* 8px scale, with one half step for hairline-adjacent gaps */
+  /* 8px scale */
   --s-half: 4px;
   --s1: 8px;
+  --s1h: 12px;
   --s2: 16px;
   --s3: 24px;
   --s4: 32px;
   --s5: 48px;
-  --gutter: 20px;
+  --pad: 16px;               /* side padding, both edges */
 
-  --t-meta: 13px;
-  --t-small: 14px;
+  --t-xs: 12px;
+  --t-sm: 13px;
+  --t-md: 14px;
   --t-body: 16px;
   --t-title: 20px;
-  --t-display: 34px;
+  --t-hero: 44px;
 
   --tap: 44px;
-  --radius: 10px;
+  --r-card: 14px;
+  --r-pill: 999px;
   --column: 430px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@media (max-width: 360px) {
-  :root {
-    --gutter: 16px;
-  }
 }
 
 *,
@@ -77,7 +85,7 @@
 }
 
 html {
-  background: var(--bg);
+  background: var(--canvas);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -85,7 +93,7 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--bg);
+  background: var(--canvas);
   color: var(--fg);
   font-family: var(--font-text);
   font-size: var(--t-body);
@@ -96,7 +104,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Wide screens: a phone-width column on a frame. Phones: edge to edge, no gutters. */
 @media (min-width: 600px) {
   html,
   body {
@@ -105,7 +112,7 @@ body {
 }
 
 a {
-  color: var(--accent);
+  color: var(--teal-text);
   text-decoration: none;
 }
 
@@ -120,31 +127,55 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--teal);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
+/* Mono is only for tickers, ₹ prices and percentages. */
 .num {
   font-family: var(--font-num);
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
-/* Middle-dot separator with real breathing room (a plain " · " collapses next to mono). */
+.ticker {
+  font-family: var(--font-num);
+  font-size: 0.92em;
+  letter-spacing: 0.01em;
+}
+
 .sep {
   display: inline-block;
-  margin: 0 7px;
-  opacity: 0.7;
+  margin: 0 6px;
+  opacity: 0.6;
 }
 
-/* Price movement only. Always paired with an arrow and a sign (see Move in Details.tsx). */
-[data-move="up"] {
-  color: var(--up);
+/* Delta badge: soft tint + arrow + sign. Used for price moves and reported changes. */
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-num);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  line-height: 1.5;
+  background: var(--track);
+  color: var(--fg-2);
 }
 
-[data-move="down"] {
-  color: var(--down);
+.delta[data-dir="up"] {
+  background: var(--pos-bg);
+  color: var(--pos);
+}
+
+.delta[data-dir="down"] {
+  background: var(--neg-bg);
+  color: var(--neg);
 }
 
 @media (prefers-reduced-motion: reduce) {

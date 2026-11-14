@@ -124,6 +124,12 @@ export interface InboxData {
   items: Item[];
   prices: Record<string, PriceSeries>;
   results: Record<string, ResultsCard>;
+  ask: AskConfig;
+}
+
+export interface AskConfig {
+  max_questions: number;
+  [category: string]: string[] | number;
 }
 
 export interface Card {

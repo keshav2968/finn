@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Check } from "lucide-react";
-import s from "./inbox.module.css";
+import s from "./cards.module.css";
 
 // A row you tap to open and swipe left to clear. Vertical scrolling stays native
 // (touch-action: pan-y); a gesture only becomes a swipe once it is clearly horizontal.

@@ -64,3 +64,25 @@ test("every figure is formatted, nulls show a dash", () => {
   assert.equal(crore(258898), "₹2,58,898 cr");
   assert.equal(price(1234.5), "1,234.50");
 });
+
+test("a results card leads with the metric that moved most, with its label", async () => {
+  const { resultsHeadlines } = await import("./present.ts");
+  const data = loadInbox();
+  const card = buildInbox(data, 168).needs.find((c) => c.lead.symbol === "TATACHEM" && c.results_symbol);
+  assert.ok(card, "Tata Chemicals results card in the 7d window");
+  const heads = resultsHeadlines(card, data);
+  assert.equal(heads[0].label, "PAT");
+  assert.ok(heads[0].yoy < -100);
+  assert.equal(heads[1].label, "Revenue");
+});
+
+test("ask questions fill placeholders and drop ones without a value", async () => {
+  const { askQuestions } = await import("./present.ts");
+  const ask = { max_questions: 2, results: ["Why did {metric} change {change}?", "Call notes for {name}?", "Third {name}?"], default: ["About {name}?"] };
+  assert.deepEqual(askQuestions(ask, "results", { metric: "PAT", change: "−132.5%", name: "Tata Chemicals" }), [
+    "Why did PAT change −132.5%?",
+    "Call notes for Tata Chemicals?",
+  ]);
+  assert.deepEqual(askQuestions(ask, "results", { name: "X" }), ["Call notes for X?", "Third X?"]);
+  assert.deepEqual(askQuestions(ask, "dividend", { name: "X" }), ["About X?"]);
+});

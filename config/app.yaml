@@ -17,3 +17,28 @@ inbox:
     standard: [revenue, pat]
     lender: [nii, pat]
   results_checks: [verified, screener]
+
+# "Ask" buttons in a card's detail sheet. Placeholders: {name}, {symbol}, {metric},
+# {change}, {date}, {person}. A category not listed uses `default`. Research (the pull
+# side) answers these in a later phase; for now the app shows the question pre-filled.
+ask:
+  max_questions: 3
+  price_alert:
+    - "Why did {name} move {change} on {date}?"
+    - "Was there a filing or news behind it?"
+    - "Is this unusual for {name}?"
+  results:
+    - "Why did {metric} change {change} year on year?"
+    - "What did management say on the earnings call?"
+    - "What guidance did {name} give for the rest of the year?"
+  management_change:
+    - "Who is {person} and what is their track record?"
+    - "Has {name} had other senior changes recently?"
+    - "What does this mean for {name}'s strategy?"
+  fund_raise:
+    - "What will {name} use the money for?"
+    - "How much dilution does this mean for shareholders?"
+    - "How does this change {name}'s balance sheet?"
+  default:
+    - "What does this mean for {name}?"
+    - "Has {name} said anything about this in its annual report?"

@@ -20,6 +20,7 @@ function readYaml<T>(rel: string): T {
 }
 
 interface AppConfig {
+  ask: InboxData["ask"];
   timezone: string;
   schedule_note: string;
   inbox: {
@@ -189,5 +190,6 @@ export function loadInbox(): InboxData {
     items,
     prices,
     results: results.bySymbol,
+    ask: cfg.ask,
   };
 }

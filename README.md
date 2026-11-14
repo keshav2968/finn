@@ -165,16 +165,20 @@ npm test           # node --test: browser-side inbox reproduces alerts.json
 npm run build
 ```
 
-- **Inbox:** price alerts (with a 7-session sparkline), then "Needs attention" and
-  "Worth knowing" cards (repeats collapsed), routine filings folded into one line. Each
-  row shows a title, one meta line and one key figure; tap for the detail sheet (results
-  table with per-figure checks, people and flags, why it ranks here). Swipe left to
-  clear, with undo; cleared state is stored per device (localStorage). The bell filters
-  to alerts. Window tabs re-run the same grouping and alert rules as `push/priority.py`
-  and `push/alerts.py`, in the browser.
-- **Design tokens** in `web/app/globals.css`: dark by default, ink / ivory / teal (teal
-  for interactive things only), muted green/red for price moves only, each with an arrow
-  and sign. Instrument Sans for text, Geist Mono for figures, both self-hosted via
-  `next/font/local`. Icons: lucide-react.
+- **Inbox:** "Needs attention" first, then "Worth knowing"; price alerts and routine
+  filings sit in collapsible rows below. Each card leads with the company and ticker,
+  then the one thing that changed (for results, the metric that moved most, with its
+  label), then a quiet meta line. Tap for the detail sheet: results table with
+  per-figure checks, people and flags, stock reaction, why it ranks here, and "Ask Finn"
+  questions (from `config/app.yaml`; research answers them in the next phase). Swipe left
+  to clear, with undo; cleared state and the dismissed tip are stored per device. The
+  bell and the "N alerts" pill are the same count and both filter to alerts. Window tabs
+  re-run the grouping and alert rules of `push/priority.py` and `push/alerts.py` in the
+  browser.
+- **Design tokens** in `web/app/globals.css`: obsidian surfaces (canvas, card, raised,
+  track), teal #14B8A6 only for the progress fill, the active window tab and primary
+  actions; tinted green/red delta badges with an arrow and sign. Plus Jakarta Sans for
+  text, JetBrains Mono for tickers, ₹ prices and percentages, both self-hosted via
+  `next/font/local`. Icons: lucide-react. Dark by default; light mode uses the same tokens.
 - **Deploy:** Vercel project with Root Directory `web`; files outside it (seed, config)
   are read during the build.

@@ -77,3 +77,15 @@ export function longDate(value: string): string {
     new Date(`${value}T12:00:00+05:30`),
   );
 }
+
+/** ₹ crore for headlines: "₹4,177 Cr", "−₹50 Cr", "₹8.4 Cr". */
+export function croreShort(value: number | null | undefined): string {
+  if (value === null || value === undefined) return "–";
+  const digits = Math.abs(value) >= 10 ? 0 : 1;
+  return `${value < 0 ? MINUS : ""}₹${grouped(value, digits)} Cr`;
+}
+
+/** ₹ share price: "₹1,042.50". */
+export function rupees(value: number | null | undefined): string {
+  return value === null || value === undefined ? "–" : `${value < 0 ? MINUS : ""}₹${grouped(value, 2)}`;
+}
