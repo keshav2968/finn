@@ -356,7 +356,7 @@ def test_segment_target_is_never_judged_on_company_figures():
     assert kept[0]["scope"] == "a business segment"
     g = P.group(kept)[0]
     ev = L.build_evidence(g, infy_record(), [t], research_cfg())
-    assert ev["allowed"] == ["Pending", "Unverified"]  # an ongoing range has no moment of delivery
+    assert ev["allowed"] == ["Pending"]  # an ongoing range has no moment of delivery
     entry = L.finalise(g, ev, {"verdict": "Delivered", "evidence_ids": [], "rationale": "13.3% beats it."}, "m", research_cfg())
     assert entry["verdict"] == "Pending" and entry["verdict_by"] == "rules"
 
@@ -509,3 +509,80 @@ def test_track_record_counts_only_ended_periods_as_checkable():
                        e("Pending", "in progress (2 of 4 quarters reported)"), e("Goalposts moved", "in progress", True)], 3)
     assert tr["checkable"] == 1 and tr["open_ended"] == 2
     assert tr["text"] == "1 checkable promise: 1 delivered · 2 still running, 1 with goalposts moved · 2 open-ended · 1 target revised along the way"
+
+
+# ---------------------------------------------------------------- fourth review (POLYCAB and KPIT quotes from the third run)
+
+def test_contractions_targets_and_objectives_are_forward_looking():
+    for q in ("we'll perhaps do somewhere between ₹ 1,200 crores to ₹ 1,600 crores for the year",
+              "improving EBITDA margins to 8% to 10% range by FY30",
+              "Our objective continues to be growing at 1.5x to 2x of the industry",
+              "progressing towards the 8%-10% EBITDA target by FY 2030"):
+        assert P.forward_looking(q), q
+    assert not P.forward_looking("We were at full year basis, we were at 70-75% kind of utilization")
+
+
+def test_a_quote_with_a_figure_is_not_vague_even_without_a_model_target():
+    assert P.HAS_FIGURE.search("progressing towards the 8%-10% EBITDA target by FY 2030")
+    assert not P.HAS_FIGURE.search("We expect that to continue going forward")
+
+
+def test_year_end_capex_in_line_with_guidance_is_a_stated_actual():
+    st = {"target_low": 1200.0, "target_high": 1600.0, "unit": "crore", "low_crore": 1200.0, "high_crore": 1600.0, "basis": "unspecified"}
+    g = {"metric": "capex", "period": "FY26", "scope": "company", "latest": st}
+    tr = T.Transcript("May 2026", "2026-05", "Mar 2026", "u", ["Niyant Maru"], [
+        T.Passage("t1-p1", "Niyant Maru", True, "Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for "
+                  "full financial year to approximately INR14.8 billion, and this is in line with our annual guidance.")], "")
+    found = L.find_stated(g, [tr], research_cfg())
+    assert found and found["value"] == 1480.0
+    assert L.stated_check(g, found)["position"] == "within"
+
+
+def test_segment_name_stops_before_as_our_guidance():
+    assert P.scope_from_quote("11% to 13% of EBITDA margins in the cables and wires business as our guidance") == "cables and wires business"
+    assert P._scope_key("cables and wires business") == P._scope_key("Wires and Cables segment") == P._scope_key("Wires & Cables")
+
+
+def test_five_year_guidance_is_medium_term():
+    oct25 = _t("Oct 2025", "2025-10", "Sep 2025")
+    assert P.resolve_period("unspecified", "the guidance of 11% to 13% of margins is a 5-year guidance", oct25)[0] == "medium_term"
+    assert P.resolve_period("unspecified", "longer-term, our view on 20% remains as of now", oct25)[0] == "medium_term"
+
+
+def test_unnamed_capex_plan_joins_the_capex_group_with_the_same_target():
+    named = _promise(metric="capex", metric_label="Capex", period="medium_term", target_low=60.0, target_high=80.0, unit="bn",
+                     low_crore=6000.0, high_crore=8000.0, call="May 2026", call_month="2026-05",
+                     quote="We remain on track to execute our planned capex program of INR 60 billion to INR 80 billion over the next 5 years")
+    unnamed = _promise(metric="other", period="medium_term", target_low=6000.0, target_high=8000.0, unit="crore",
+                       low_crore=6000.0, high_crore=8000.0, call="Jul 2025", call_month="2025-07",
+                       quote="guidance of spending roughly ₹ 6,000 crores to ₹ 8,000 crores over the next 5 years")
+    groups = P.group([named, unnamed])
+    assert len(groups) == 1 and groups[0]["metric"] == "capex" and not groups[0]["revised"]
+
+
+def test_rationale_must_cite_the_stated_figure_that_settled_it():
+    st = {"call": "Nov 2025", "call_month": "2025-11", "fiscal": "Q2 FY26", "speaker": "Kishor Patil", "scope": "company",
+          "quote": "we will be in a position to maintain 21% EBITDA for the full year", "target_text": "21%", "target_low": 21.0,
+          "target_high": 21.0, "unit": "%", "basis": "unspecified", "quote_score": 100, "source_url": "u",
+          "metric_label": "EBITDA margin", "metric_text": "EBITDA"}
+    g = {"id": "g1", "metric": "ebitda_margin", "metric_label": "EBITDA margin", "metric_text": "EBITDA", "scope": "company",
+         "period": "FY26", "revised": False, "path": None, "direction": None, "statements": [st], "latest": st}
+    tr = T.Transcript("May 2026", "2026-05", "Mar 2026", "u2", ["Kishor Patil"], [
+        T.Passage("t1-p1", T.OPENING, True, "So these are the areas we saw. And, EBITDA growth margin is for the year 20.8%.")], "")
+    ev = L.build_evidence(g, infy_record(), [tr], research_cfg())
+    assert ev["stated"]["actual"] == 20.8 and L.decisive(g, ev) == ("below", "stated")
+    entry = L.finalise(g, ev, {"verdict": "Missed", "evidence_ids": [], "rationale": "FY26 EBITDA margin was 20.92%, below the goal."}, "m", research_cfg())
+    assert entry["verdict"] == "Missed" and "20.8%" in entry["rationale"]
+
+
+def test_open_ended_promise_is_always_pending():
+    st = {"call": "Jul 2025", "call_month": "2025-07", "fiscal": "Q1 FY26", "speaker": "Kishor Patil", "scope": "company",
+          "quote": "over the medium term we will continue to aim for 21% EBITDA", "target_text": "21%", "target_low": 21.0,
+          "target_high": 21.0, "unit": "%", "basis": "unspecified", "quote_score": 100, "source_url": "u",
+          "metric_label": "EBITDA margin", "metric_text": "EBITDA"}
+    g = {"id": "g1", "metric": "ebitda_margin", "metric_label": "EBITDA margin", "metric_text": "EBITDA", "scope": "company",
+         "period": "medium_term", "revised": False, "path": None, "direction": None, "statements": [st], "latest": st}
+    ev = L.build_evidence(g, infy_record(), [], research_cfg())
+    assert ev["allowed"] == ["Pending"]
+    entry = L.finalise(g, ev, {"verdict": "Unverified", "evidence_ids": [], "rationale": "No figure yet."}, "m", research_cfg())
+    assert entry["verdict"] == "Pending" and entry["period_status"] == "no end date"

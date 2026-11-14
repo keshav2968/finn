@@ -248,9 +248,10 @@ def remap_metric(metric: str, quote: str, metrics: dict[str, Any]) -> str:
 # Words that make a sentence a commitment about the future. Period words ("full year") are
 # not enough on their own: "we were at 70-75% for the full year" is a result.
 PROMISE_RX = re.compile(
-    r"\b(guidance|guide[ds]?|guiding|expect\w*|target\w*|aim\w*|aspir\w*|plan\w*|will|would|should|shall|going forward|"
-    r"outlook|on track|commit\w*|confident|intend\w*|look(?:ing)? to|hope|envisage\w*|anticipat\w*|forecast\w*|"
-    r"remains?|maintain(?:s|ing)?|by fy|by (?:the end of )?march|over the next|in the coming|from next year|next year)\b", re.I)
+    r"(?:\b(?:guidance|guide[ds]?|guiding|expect\w*|target\w*|aim\w*|aspir\w*|plan\w*|will|would|should|shall|going forward|"
+    r"going to|outlook|on track|commit\w*|confident|intend\w*|look(?:ing)? to|hope|envisage\w*|anticipat\w*|forecast\w*|"
+    r"objective\w*|ambition\w*|towards|remains?|maintain(?:s|ing)?|by (?:the end of )?march|over the next|in the coming|"
+    r"from next year|next year)\b|\b(?:we|i|they|it)'ll\b|\bby fy\s?'?\d{2,4}\b)", re.I)
 
 
 def forward_looking(quote: str, words: list[str] | None = None) -> bool:
@@ -271,7 +272,8 @@ def metric_named(metric: str, quote: str, metrics: dict[str, Any], passage: str 
 
 # "30% revenue growth in solution and products", "EBITDA margins on FMEG": the target is for
 # a business line, not the company.
-SCOPE_AFTER = re.compile(r"\b(?:growth|revenue|revenues|margins?|ebitda|ebit)\s+(?:in|on|for|from|of)\s+(?:the\s+|our\s+)?([a-z][\w&/\- ]{2,40}?)(?=[.,;]|\s+(?:to|by|in|at|of|for|and we|which|that|from)\b|$)", re.I)
+SCOPE_AFTER = re.compile(r"\b(?:growth|revenue|revenues|margins?|ebitda|ebit)\s+(?:in|on|for|from|of)\s+(?:the\s+|our\s+)?([a-z][\w&/\- ]{2,40}?)"
+                         r"(?=[.,;]|\s+(?:to|by|in|at|of|for|and we|which|that|from|as|is|are|was|were|will|would|should|with)\b|$)", re.I)
 NOT_SCOPE = re.compile(r"^(range|year|quarter|full|financial|fiscal|fy|this|next|coming|constant|cc|dollar|rupee|usd|inr|terms|h[12]|q[1-4]|"
                        r"line|guidance|guided|absolute|percentage|basis|medium|long|short|near|first|second|third|fourth|last|overall|"
                        r"company|business as a whole|top line|topline|revenue|sales|growth|around|about|approximately|at least|over|"
@@ -286,6 +288,7 @@ def scope_from_quote(quote: str) -> str | None:
     return None
 
 
+HAS_FIGURE = re.compile(r"\d+(?:\.\d+)?\s?(?:%|x\b|crores?|cr\b|bn|billion|mn|million|days|lakh)", re.I)
 AMOUNT_UNITS = {"crore": 1.0, "bn": 100.0, "mn": 0.1}  # in ₹ crore
 
 
@@ -294,7 +297,8 @@ def to_crore(value: float | None, unit: str | None) -> float | None:
 
 
 ANNUAL = re.compile(r"\b(per annum|annually|every year|each year|a year|per year|annual run[- ]rate)\b", re.I)
-MEDIUM_TERM = re.compile(r"\b(medium[- ]to[- ]long[- ]term|medium[- ]term|long[- ]term|over the next \d+ years|over (?:a period of )?(?:three|four|five|3|4|5) years|in steady state)\b", re.I)
+MEDIUM_TERM = re.compile(r"\b(medium[- ]to[- ]long[- ]term|medium[- ]term|long[- ]term|longer[- ]term|over the next \d+ years|"
+                         r"over (?:a period of )?(?:three|four|five|3|4|5) years|(?:three|four|five|\d)[- ]year (?:guidance|plan|target|horizon)|in steady state)\b", re.I)
 BY_MARCH = re.compile(r"\b(?:by|for) (?:the end of )?march\b(?!\s+\d{2,4})", re.I)
 
 
@@ -346,7 +350,7 @@ def check_promises(
             high = low
         if low is not None and high is not None and low > high:
             low, high = high, low
-        if low is None and len(re.findall(r"[A-Za-z]+", quote)) < 10:
+        if low is None and not HAS_FIGURE.search(quote) and len(re.findall(r"[A-Za-z]+", quote)) < 10:
             dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "too vague to check: no number and under ten words"})
             continue
         metric = item.get("metric") if item.get("metric") in metrics else "other"
@@ -488,6 +492,16 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if p["metric"] == "other" and any(_same_other(p, q) for q in b):
                 home = b
                 break
+        if home is None and p["metric"] == "other" and p.get("low_crore") is not None:
+            # "spending roughly Rs 6,000-8,000 crore over the next 5 years" without the word capex
+            # is the capex plan already on file with the same target and period.
+            for b in buckets:
+                h = b[0]
+                if (h["metric"] != "other" and h["period"] == p["period"] and h.get("annual") == p.get("annual")
+                        and (h.get("low_crore"), h.get("high_crore")) == (p["low_crore"], p["high_crore"])):
+                    p["metric"], p["metric_label"] = h["metric"], h["metric_label"]
+                    home = b
+                    break
         if home is None:
             buckets.append([p])
         else:

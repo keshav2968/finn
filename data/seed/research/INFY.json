@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "INFY",
   "name": "Infosys Ltd",
-  "generated_at": "2026-11-15T02:31:25+05:30",
+  "generated_at": "2026-11-15T02:48:02+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -489,7 +489,7 @@
       },
       "verdict": "Delivered",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Actual 20.92% within 20–22% target.",
+      "rationale": "Management stated 21% (Apr 2026) against a 20–22% target.",
       "cited": [
         "s1",
         "s2",
@@ -534,7 +534,8 @@
         }
       },
       "notes": [
-        "the model's quoted actual (Oct 2026) is about a different period than FY26; dropped"
+        "the model's quoted actual (Oct 2026) is about a different period than FY26; dropped",
+        "rationale replaced: it used an older figure than the latest call"
       ]
     },
     {

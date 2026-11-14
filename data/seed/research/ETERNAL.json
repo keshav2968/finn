@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "ETERNAL",
   "name": "Eternal Ltd",
-  "generated_at": "2026-11-15T02:35:16+05:30",
+  "generated_at": "2026-11-15T02:50:54+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -308,7 +308,7 @@
       "passages": 142,
       "sent": 2,
       "sent_chars": 1179,
-      "promises": 1
+      "promises": 2
     },
     {
       "call": "Jan 2026",
@@ -398,9 +398,10 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No end date, target not yet measurable.",
+      "rationale": "Target period unspecified, no end date, so delivery cannot be assessed.",
       "cited": [
-        "s1"
+        "s1",
+        "g1-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -481,7 +482,7 @@
       "check": null,
       "verdict": "Unverified",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No actual growth figure provided for FY26.",
+      "rationale": "No actual FY26 growth figure provided; cannot confirm delivery.",
       "cited": [
         "s1",
         "g2-q2"
@@ -538,7 +539,7 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 target still in progress, no end date.",
+      "rationale": "Goal of 3,000 stores by March FY27 is future; period not ended.",
       "cited": [
         "s1"
       ],
@@ -583,7 +584,7 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Medium‑term guidance lacks actual performance data.",
+      "rationale": "Guidance on INR 11 lakh per day per store has no end date; cannot assess.",
       "cited": [
         "s1"
       ],
@@ -689,7 +690,7 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "20% target lacks timeframe; period not ended, so pending.",
+      "rationale": "20% longer‑term growth view lacks a target date, thus remains pending.",
       "cited": [
         "s1",
         "g6-q1"
@@ -746,7 +747,7 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "ROCE north of 40% target unspecified period; cannot verify, pending.",
+      "rationale": "ROCE target north of 40% is unspecified in time, so status is pending.",
       "cited": [
         "s1"
       ],
@@ -765,6 +766,62 @@
         "actual": null
       },
       "notes": []
+    },
+    {
+      "id": "g8",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "confidence on margins going to 5% to 6% of NOV",
+      "scope": "company",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "5–6%",
+        "low": 5,
+        "high": 6,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Akshant Goyal",
+          "quote": "confidence on margins going to 5% to 6% of NOV",
+          "target_text": "5–6%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Margin goal of 5%‑6% of NOV has no deadline, therefore pending.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 5,
+            "high": 6
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
     }
   ],
   "dropped": [
@@ -772,11 +829,6 @@
       "call": "Jul 2026",
       "quote": "We expect that to continue going forward",
       "reason": "too vague to check: no number and under ten words"
-    },
-    {
-      "call": "Jan 2026",
-      "quote": "confidence on margins going to 5% to 6% of NOV",
-      "reason": "no forward-looking words: reads as a reported result, not a promise"
     }
   ],
   "models": [
@@ -819,23 +871,23 @@
   "summary": {
     "Delivered": 0,
     "Missed": 0,
-    "Pending": 6,
+    "Pending": 7,
     "Goalposts moved": 0,
     "Unverified": 1
   },
   "track_record": {
-    "promises": 7,
+    "promises": 8,
     "calls": 4,
     "checkable": 1,
-    "open_ended": 5,
+    "open_ended": 6,
     "revised": 0,
     "counts": {
       "Delivered": 0,
       "Missed": 0,
-      "Pending": 6,
+      "Pending": 7,
       "Goalposts moved": 0,
       "Unverified": 1
     },
-    "text": "1 checkable promise: 1 unverified · 1 still running · 5 open-ended"
+    "text": "1 checkable promise: 1 unverified · 1 still running · 6 open-ended"
   }
 }

@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "KPITTECH",
   "name": "KPIT Technologies Ltd",
-  "generated_at": "2026-11-15T02:34:54+05:30",
+  "generated_at": "2026-11-15T02:50:37+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -456,7 +456,7 @@
       },
       "verdict": "Missed",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target 21% but FY26 EBITDA margin was 18.92%, below the goal.",
+      "rationale": "Management stated 20.8% (May 2026) against a 21% target.",
       "cited": [
         "s1",
         "g1-n1",
@@ -494,7 +494,8 @@
         }
       },
       "notes": [
-        "screener's operating profit is used as EBITDA; the company's own definition can differ"
+        "screener's operating profit is used as EBITDA; the company's own definition can differ",
+        "rationale replaced: it used an older figure than the latest call"
       ]
     },
     {
@@ -573,10 +574,9 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Medium‑term 21% target is still open; latest margin 17.8% does not represent a completed period.",
+      "rationale": "Medium‑term target has no defined end, so outcome is pending.",
       "cited": [
-        "s1",
-        "g2-q1"
+        "s1"
       ],
       "actual_quote": null,
       "stated": null,

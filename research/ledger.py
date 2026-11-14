@@ -117,8 +117,9 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
     # Which verdicts are possible, decided in Python.
     auto = find_stated(group, transcripts, cfg) if periods.is_valid(period) and nums.period_ended(period, record) else None
     if period in ("unspecified", "medium_term"):
-        # An ongoing commitment has no moment of delivery: it is running or unverifiable.
-        allowed, status = ["Pending", "Unverified"], "no end date"
+        # An ongoing commitment has no moment of delivery, so it stays Pending; Python decides
+        # this rather than leaving the model to choose between Pending and Unverified.
+        allowed, status = ["Pending"], "no end date"
     elif nums.period_ended(period, record):
         # Once a period is over, the outcome is what counts; a revision shows in the path.
         allowed, status = ["Delivered", "Missed", "Unverified"], "period ended"
@@ -140,6 +141,7 @@ def plausible(metric: str, value: float, low: float, high: float) -> bool:
     return low - 8 <= value <= high + 8
 
 
+RESULT_VS_GUIDE = re.compile(r"\b(?:in line with|within|ahead of|above|below|against|versus|vs\.?|met|beat|exceed\w*)\s+(?:the\s+|our\s+)?(?:\w+\s+){0,2}guidance\b")
 STATED_CUE = re.compile(r"\b(full year|for the year|whole year|entire year|financial year|fiscal year|fy\s?'?\d{2})\b", re.I)
 
 
@@ -163,8 +165,10 @@ def find_stated(group: dict[str, Any], transcripts: list[Transcript], cfg: dict[
                 low = s.lower()
                 if not STATED_CUE.search(s) or (cc and "constant currency" not in low):
                     continue
-                if any(w in low for w in ("guidance", "expect", "outlook", "will be", "next year")):
+                if re.search(r"\b(expect\w*|outlook|will be|would be|next year|going forward)\b", low):
                     continue  # a forecast, not a result
+                if "guidance" in low and not RESULT_VS_GUIDE.search(low):
+                    continue  # "our guidance for 2027 is 1.5% to 3.5%" is a target; "in line with our guidance" is a result
                 for a in aliases:
                     at = low.find(a)
                     if at < 0:
@@ -500,6 +504,9 @@ def finalise(g: dict[str, Any], ev: dict[str, Any], raw: dict[str, Any] | None, 
         if by != "rules":
             stray = [n for n in numbers_in(rationale) if n not in _allowed_numbers(g, ev, actual_quote["text"] if actual_quote else None)]
             stale = stale_numbers(g, ev, rationale)
+            _pos, src = decisive(g, ev)
+            if src == "stated" and ev.get("stated") and float(ev["stated"]["actual"]) not in numbers_in(rationale) and verdict in ("Delivered", "Missed"):
+                stale = stale or [float(ev["stated"]["actual"])]  # the rationale must cite the figure that settled it
             if stray or stale or not rationale:
                 notes.append("rationale replaced: it used numbers that are not in the evidence" if stray
                              else "rationale replaced: it used an older figure than the latest call" if stale

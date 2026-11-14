@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "POLYCAB",
   "name": "Polycab India Ltd",
-  "generated_at": "2026-11-15T02:31:48+05:30",
+  "generated_at": "2026-11-15T02:48:20+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -254,7 +254,7 @@
       "passages": 115,
       "sent": 11,
       "sent_chars": 8593,
-      "promises": 1
+      "promises": 2
     },
     {
       "call": "Jul 2026",
@@ -324,7 +324,7 @@
       "passages": 112,
       "sent": 12,
       "sent_chars": 8795,
-      "promises": 4
+      "promises": 6
     },
     {
       "call": "Jul 2025",
@@ -341,12 +341,112 @@
       "passages": 138,
       "sent": 13,
       "sent_chars": 8981,
-      "promises": 6
+      "promises": 7
     }
   ],
   "ledger": [
     {
       "id": "g1",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "Capex for FY26 year",
+      "scope": "company",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "1,200–1,600 crore",
+        "low": 1200,
+        "high": 1600,
+        "unit": "crore",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "we'll perhaps do somewhere between ₹ 1,200 crores to ₹ 1,600 crores for the year",
+          "target_text": "1,200–1,600 crore",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g1-q1",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t3-p12",
+          "text": "Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        },
+        {
+          "id": "g1-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Aditya Nathany",
+          "passage_id": "t1-p15",
+          "text": "During the first half of the year, we incurred capital expenditures of INR 6.1 billion, reflecting our ongoing investments in capacity expansion, supply chain capabilities and future growth platforms.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+        },
+        {
+          "id": "g1-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t2-p9",
+          "text": "Capital expenditure during the quarter amounted to INR 3.2 billion, reflecting our continued commitment to building capacity and strengthening future growth drivers.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Management stated ₹1,480 crore (May 2026) against a 1,200–1,600 crore target.",
+      "cited": [
+        "s1",
+        "g1-q1"
+      ],
+      "actual_quote": {
+        "text": "Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
+        "speaker": "Shashank Yagnick",
+        "call": "May 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf",
+        "found_by": "python"
+      },
+      "stated": {
+        "actual": 1480.0,
+        "unit": "₹ crore",
+        "position": "within",
+        "call": "May 2026",
+        "speaker": "Shashank Yagnick"
+      },
+      "chart": null,
+      "notes": [
+        "rationale replaced: it used numbers that are not in the evidence"
+      ]
+    },
+    {
+      "id": "g2",
       "metric": "capex",
       "metric_label": "Capex",
       "metric_text": "Annual capex guidance 2026-27",
@@ -372,94 +472,6 @@
           "speaker": "Shashank Yagnick",
           "quote": "in line with our annual guidance of INR 12 billion to INR 16 billion per annum",
           "target_text": "12–16 bn",
-          "basis": "reported",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g1-q1",
-          "kind": "transcript",
-          "call": "Oct 2026",
-          "call_month": "2026-10",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Aditya Nathany",
-          "passage_id": "t1-p15",
-          "text": "During the first half of the year, we incurred capital expenditures of INR 6.1 billion, reflecting our ongoing investments in capacity expansion, supply chain capabilities and future growth platforms.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
-        },
-        {
-          "id": "g1-q2",
-          "kind": "transcript",
-          "call": "Jul 2026",
-          "call_month": "2026-07",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t2-p9",
-          "text": "Capital expenditure during the quarter amounted to INR 3.2 billion, reflecting our continued commitment to building capacity and strengthening future growth drivers.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        },
-        {
-          "id": "g1-q3",
-          "kind": "transcript",
-          "call": "May 2026",
-          "call_month": "2026-05",
-          "call_quarter": "Mar 2026",
-          "fiscal": "Q4 FY26",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t3-p12",
-          "text": "Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
-        }
-      ],
-      "check": null,
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Period still running (in progress).",
-      "cited": [
-        "s1",
-        "g1-q3"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": null,
-      "notes": [
-        "rationale replaced: it used numbers that are not in the evidence"
-      ]
-    },
-    {
-      "id": "g2",
-      "metric": "capex",
-      "metric_label": "Capex",
-      "metric_text": "Capex for FY2030 under Project Spring",
-      "scope": "company",
-      "period": "FY30",
-      "period_status": "in progress",
-      "target": {
-        "text": "6,000–8,000 crore",
-        "low": 6000,
-        "high": 8000,
-        "unit": "crore",
-        "basis": "reported"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "May 2026",
-          "call_label": "May 2026 (Q4 FY26)",
-          "fiscal": "Q4 FY26",
-          "speaker": "Shashank Yagnick",
-          "quote": "in line with our Project Spring guidance of INR 6,000 crores to INR 8,000 crores capex by financial year 2030",
-          "target_text": "6,000–8,000 crore",
           "basis": "reported",
           "quote_score": 100.0,
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
@@ -509,32 +521,32 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Period still running (in progress).",
+      "rationale": "FY27 capex target 12–16 bn; period not yet ended.",
       "cited": [
         "s1",
+        "g2-q1",
+        "g2-q2",
         "g2-q3"
       ],
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": [
-        "rationale replaced: it used numbers that are not in the evidence"
-      ]
+      "notes": []
     },
     {
       "id": "g3",
       "metric": "capex",
       "metric_label": "Capex",
-      "metric_text": "Project Spring annual capex guidance",
+      "metric_text": "Capex for FY2030 under Project Spring",
       "scope": "company",
       "period": "FY30",
       "period_status": "in progress",
       "target": {
-        "text": "12–16 bn",
-        "low": 12,
-        "high": 16,
-        "unit": "bn",
-        "basis": "unspecified"
+        "text": "6,000–8,000 crore",
+        "low": 6000,
+        "high": 8000,
+        "unit": "crore",
+        "basis": "reported"
       },
       "revised": false,
       "revision_direction": null,
@@ -542,27 +554,15 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Jul 2025",
-          "call_label": "Jul 2025 (Q1 FY26)",
-          "fiscal": "Q1 FY26",
-          "speaker": "Chirayu Upadhyaya",
-          "quote": "Project Spring guidance of investing ₹ 12 billion to ₹ 16 billion annually through FY30",
-          "target_text": "12–16 bn",
-          "basis": "unspecified",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Shashank Yagnick",
+          "quote": "in line with our Project Spring guidance of INR 6,000 crores to INR 8,000 crores capex by financial year 2030",
+          "target_text": "6,000–8,000 crore",
+          "basis": "reported",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
-        },
-        {
-          "id": "s2",
-          "call": "Oct 2025",
-          "call_label": "Oct 2025 (Q2 FY26)",
-          "fiscal": "Q2 FY26",
-          "speaker": "Chirayu Upadhyaya",
-          "quote": "Project Spring guidance of investing ₹ 12 billion - ₹ 16 billion annually through to FY 2030",
-          "target_text": "12–16 bn",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         }
       ],
       "evidence": [
@@ -609,32 +609,32 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Period still running (in progress).",
+      "rationale": "FY30 capex target 6,000–8,000 crore; period not yet ended.",
       "cited": [
         "s1",
+        "g3-q1",
+        "g3-q2",
         "g3-q3"
       ],
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": [
-        "rationale replaced: it used numbers that are not in the evidence"
-      ]
+      "notes": []
     },
     {
       "id": "g4",
       "metric": "capex",
       "metric_label": "Capex",
-      "metric_text": "Capex program over next 5 years",
+      "metric_text": "Project Spring annual capex guidance",
       "scope": "company",
-      "period": "medium_term",
-      "period_status": "no end date",
+      "period": "FY30",
+      "period_status": "in progress",
       "target": {
-        "text": "60–80 bn",
-        "low": 60,
-        "high": 80,
+        "text": "12–16 bn",
+        "low": 12,
+        "high": 16,
         "unit": "bn",
-        "basis": "reported"
+        "basis": "unspecified"
       },
       "revised": false,
       "revision_direction": null,
@@ -642,15 +642,27 @@
       "statements": [
         {
           "id": "s1",
-          "call": "May 2026",
-          "call_label": "May 2026 (Q4 FY26)",
-          "fiscal": "Q4 FY26",
-          "speaker": "Shashank Yagnick",
-          "quote": "We remain on track to execute our planned capex program of INR 60 billion to INR 80 billion over the next 5 years",
-          "target_text": "60–80 bn",
-          "basis": "reported",
+          "call": "Jul 2025",
+          "call_label": "Jul 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "Project Spring guidance of investing ₹ 12 billion to ₹ 16 billion annually through FY30",
+          "target_text": "12–16 bn",
+          "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "Project Spring guidance of investing ₹ 12 billion - ₹ 16 billion annually through to FY 2030",
+          "target_text": "12–16 bn",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
         }
       ],
       "evidence": [
@@ -695,11 +707,14 @@
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Capex program 60–80 bn over next 5 years has no defined end date; delivery cannot be verified yet.",
+      "rationale": "FY30 capex target 12–16 bn annually; period not yet ended.",
       "cited": [
         "s1",
+        "s2",
+        "g4-q1",
+        "g4-q2",
         "g4-q3"
       ],
       "actual_quote": null,
@@ -709,6 +724,107 @@
     },
     {
       "id": "g5",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "Capex program over next 5 years",
+      "scope": "company",
+      "period": "medium_term",
+      "period_status": "no end date",
+      "target": {
+        "text": "60–80 bn",
+        "low": 60,
+        "high": 80,
+        "unit": "bn",
+        "basis": "reported"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2025",
+          "call_label": "Jul 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "guidance of spending roughly ₹ 6,000 crores to ₹ 8,000 crores over the next 5 years",
+          "target_text": "6,000–8,000 crore",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Shashank Yagnick",
+          "quote": "We remain on track to execute our planned capex program of INR 60 billion to INR 80 billion over the next 5 years",
+          "target_text": "60–80 bn",
+          "basis": "reported",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g5-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Aditya Nathany",
+          "passage_id": "t1-p15",
+          "text": "During the first half of the year, we incurred capital expenditures of INR 6.1 billion, reflecting our ongoing investments in capacity expansion, supply chain capabilities and future growth platforms.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+        },
+        {
+          "id": "g5-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t2-p9",
+          "text": "Capital expenditure during the quarter amounted to INR 3.2 billion, reflecting our continued commitment to building capacity and strengthening future growth drivers.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g5-q3",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t3-p12",
+          "text": "Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Target spans next 5 years; period not completed.",
+      "cited": [
+        "s1",
+        "s2",
+        "g5-q1",
+        "g5-q2",
+        "g5-q3"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g6",
       "metric": "ebitda_margin",
       "metric_label": "EBITDA margin",
       "metric_text": "on a full year basis, we should be able to reach 8% to 10% of EBITDA margins on FMEG",
@@ -741,7 +857,7 @@
       ],
       "evidence": [
         {
-          "id": "g5-n1",
+          "id": "g6-n1",
           "kind": "screener",
           "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
           "value": 14.13,
@@ -760,101 +876,6 @@
           "source": "screener.in consolidated quarterly results",
           "url": "https://www.screener.in/company/POLYCAB/consolidated/"
         },
-        {
-          "id": "g5-q1",
-          "kind": "transcript",
-          "call": "Oct 2026",
-          "call_month": "2026-10",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Aditya Nathany",
-          "passage_id": "t1-p13",
-          "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
-        },
-        {
-          "id": "g5-q2",
-          "kind": "transcript",
-          "call": "Jul 2026",
-          "call_month": "2026-07",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t2-p8",
-          "text": "EBITDA increased by 32% year- on-year and the margins stood at 13.8%, reflecting an improvement of approximately 70 basis points sequentially over the previous quarter.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        }
-      ],
-      "check": {
-        "comparable": false,
-        "position": null,
-        "actual": 14.13,
-        "target_low": 8,
-        "target_high": 10,
-        "complete": false,
-        "evidence_id": "g5-n1"
-      },
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 is only half complete (2 of 4 quarters), so final margin cannot be assessed.",
-      "cited": [
-        "s1",
-        "g5-n1",
-        "g5-q1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Jul 2026",
-            "fiscal": "Q1 FY27",
-            "low": 8,
-            "high": 10
-          }
-        ],
-        "actual": null
-      },
-      "notes": [
-        "the target is for FMEG; screener figures are company-wide, so they are not used"
-      ]
-    },
-    {
-      "id": "g6",
-      "metric": "ebitda_margin",
-      "metric_label": "EBITDA margin",
-      "metric_text": "target EBITDA margins of 8% to 10% by FY 2030",
-      "scope": "FMEG",
-      "period": "FY30",
-      "period_status": "in progress",
-      "target": {
-        "text": "8–10%",
-        "low": 8,
-        "high": 10,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "Jul 2026",
-          "call_label": "Jul 2026 (Q1 FY27)",
-          "fiscal": "Q1 FY27",
-          "speaker": "Shashank Yagnick",
-          "quote": "where we target EBITDA margins of 8% to 10% by FY 2030.",
-          "target_text": "8–10%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        }
-      ],
-      "evidence": [
         {
           "id": "g6-q1",
           "kind": "transcript",
@@ -882,13 +903,23 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
         }
       ],
-      "check": null,
+      "check": {
+        "comparable": false,
+        "position": null,
+        "actual": 14.13,
+        "target_low": 8,
+        "target_high": 10,
+        "complete": false,
+        "evidence_id": "g6-n1"
+      },
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY30 target period is ongoing; interim margins do not determine final outcome.",
+      "rationale": "FY27 still in progress; only 2 of 4 quarters reported.",
       "cited": [
         "s1",
-        "g6-q1"
+        "g6-q1",
+        "g6-q2",
+        "g6-n1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -904,20 +935,22 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [
+        "the target is for FMEG; screener figures are company-wide, so they are not used"
+      ]
     },
     {
       "id": "g7",
       "metric": "ebitda_margin",
       "metric_label": "EBITDA margin",
-      "metric_text": "In line with our Project Spring roadmap, we remain confident of sustaining medium- to long-term EBITDA margins within our guided range of 11% to 13%.",
-      "scope": "Wires and Cables segment",
-      "period": "medium_term",
-      "period_status": "no end date",
+      "metric_text": "target EBITDA margins of 8% to 10% by FY 2030",
+      "scope": "FMEG",
+      "period": "FY30",
+      "period_status": "in progress",
       "target": {
-        "text": "11–13%",
-        "low": 11,
-        "high": 13,
+        "text": "8–10%",
+        "low": 8,
+        "high": 10,
         "unit": "%",
         "basis": "unspecified"
       },
@@ -927,15 +960,39 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Oct 2026",
-          "call_label": "Oct 2026 (Q2 FY27)",
-          "fiscal": "Q2 FY27",
-          "speaker": "Aditya Nathany",
-          "quote": "In line with our Project Spring roadmap, we remain confident of sustaining medium- to long-term EBITDA margins within our guided range of 11% to 13%.",
-          "target_text": "11–13%",
+          "call": "Jul 2025",
+          "call_label": "Jul 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "improving EBITDA margins to 8% to 10% range by FY30",
+          "target_text": "8–10%",
           "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Chirayu Upadhyaya",
+          "quote": "progressing towards the 8%-10% EBITDA target by FY 2030",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
+        },
+        {
+          "id": "s3",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Shashank Yagnick",
+          "quote": "where we target EBITDA margins of 8% to 10% by FY 2030.",
+          "target_text": "8–10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
         }
       ],
       "evidence": [
@@ -951,32 +1008,59 @@
           "passage_id": "t1-p13",
           "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+        },
+        {
+          "id": "g7-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t2-p8",
+          "text": "EBITDA increased by 32% year- on-year and the margins stood at 13.8%, reflecting an improvement of approximately 70 basis points sequentially over the previous quarter.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g7-q3",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t3-p22",
+          "text": "EBIT margins for the quarter stood at 4.1%, in line with our Project Spring trajectory of achieving 8% to 10% EBITDA margins by financial year 2030.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target 11–13% lacks a defined end date; current 14.4% cannot confirm final achievement.",
+      "rationale": "FY30 target is future; fiscal year not yet underway.",
       "cited": [
         "s1",
-        "g7-q1"
+        "s3",
+        "g7-q3"
       ],
-      "actual_quote": {
-        "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
-        "speaker": "Aditya Nathany",
-        "call": "Oct 2026",
-        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf",
-        "found_by": "model"
-      },
+      "actual_quote": null,
       "stated": null,
       "chart": {
         "unit": "%",
         "guides": [
           {
-            "call": "Oct 2026",
-            "fiscal": "Q2 FY27",
-            "low": 11,
-            "high": 13
+            "call": "Jul 2025",
+            "fiscal": "Q1 FY26",
+            "low": 8,
+            "high": 10
+          },
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 8,
+            "high": 10
           }
         ],
         "actual": null
@@ -987,8 +1071,8 @@
       "id": "g8",
       "metric": "ebitda_margin",
       "metric_label": "EBITDA margin",
-      "metric_text": "11% to 13% of EBITDA margins in the cables and wires business as our guidance",
-      "scope": "cables and wires business as our guidance",
+      "metric_text": "In line with our Project Spring roadmap, we remain confident of sustaining medium- to long-term EBITDA margins within our guided range of 11% to 13%.",
+      "scope": "cables and wires business",
       "period": "medium_term",
       "period_status": "no end date",
       "target": {
@@ -1013,6 +1097,18 @@
           "basis": "unspecified",
           "quote_score": 100.0,
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Aditya Nathany",
+          "quote": "In line with our Project Spring roadmap, we remain confident of sustaining medium- to long-term EBITDA margins within our guided range of 11% to 13%.",
+          "target_text": "11–13%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         }
       ],
       "evidence": [
@@ -1057,22 +1153,15 @@
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Medium‑term target 11–13% has no horizon; present 14.4% margin leaves outcome unverified.",
+      "rationale": "Medium‑term margin guidance has no defined end; period remains open.",
       "cited": [
         "s1",
-        "g8-q1",
-        "g8-q2",
-        "g8-q3"
+        "s2",
+        "g8-q2"
       ],
-      "actual_quote": {
-        "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
-        "speaker": "Aditya Nathany",
-        "call": "Oct 2026",
-        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf",
-        "found_by": "model"
-      },
+      "actual_quote": null,
       "stated": null,
       "chart": {
         "unit": "%",
@@ -1080,6 +1169,12 @@
           {
             "call": "Jul 2025",
             "fiscal": "Q1 FY26",
+            "low": 11,
+            "high": 13
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
             "low": 11,
             "high": 13
           }
@@ -1151,25 +1246,14 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target 11–13% and actual 14.4% shown, but period not ended.",
+      "rationale": "Medium‑term margin target has no defined end date, so outcome cannot be judged yet.",
       "cited": [
         "s1",
-        "g9-q1"
+        "g9-q1",
+        "g9-q2"
       ],
-      "actual_quote": {
-        "text": "EBITDA margins expanded by more than 50 basis points sequentially to 14.4%.",
-        "speaker": "Aditya Nathany",
-        "call": "Oct 2026",
-        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf",
-        "found_by": "model"
-      },
-      "stated": {
-        "actual": 14.4,
-        "unit": "%",
-        "position": "above",
-        "call": "Oct 2026",
-        "speaker": "Aditya Nathany"
-      },
+      "actual_quote": null,
+      "stated": null,
       "chart": {
         "unit": "%",
         "guides": [
@@ -1180,12 +1264,7 @@
             "high": 13
           }
         ],
-        "actual": {
-          "value": 14.4,
-          "kind": "stated",
-          "label": "Stated by Aditya Nathany, Oct 2026",
-          "complete": true
-        }
+        "actual": null
       },
       "notes": []
     },
@@ -1280,10 +1359,12 @@
       },
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 still in progress; final revenue growth not yet known.",
+      "rationale": "FY27 revenue growth target is for a fiscal year still in progress; final result is not available.",
       "cited": [
         "s1",
-        "g10-n1"
+        "g10-n1",
+        "g10-q1",
+        "g10-q2"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1380,7 +1461,7 @@
       "check": null,
       "verdict": "Unverified",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No export contribution percentage provided to compare with >10% goal.",
+      "rationale": "No statement provides the actual export‑contribution percentage, only growth figures.",
       "cited": [
         "s1",
         "g11-q2"
@@ -1399,9 +1480,7 @@
         ],
         "actual": null
       },
-      "notes": [
-        "the model's quoted actual (Oct 2026) is about a different period than FY26; dropped"
-      ]
+      "notes": []
     },
     {
       "id": "g12",
@@ -1479,7 +1558,7 @@
       "check": null,
       "verdict": "Unverified",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No comparable actual in screener or in later calls.",
+      "rationale": "Final working‑capital‑cycle days for FY26 are not disclosed; only interim values are given.",
       "cited": [
         "s1",
         "g12-q1"
@@ -1487,10 +1566,7 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": [
-        "the model's quoted actual did not match the transcript; dropped",
-        "model said Missed without a figure on the guidance's basis; marked Unverified"
-      ]
+      "notes": []
     },
     {
       "id": "g13",
@@ -1568,14 +1644,19 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target of 2x industry growth for FY27 remains in progress, period not ended.",
+      "rationale": "Period still running (in progress).",
       "cited": [
-        "s1"
+        "s1",
+        "g13-q1",
+        "g13-q2",
+        "g13-q3"
       ],
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [
+        "rationale replaced: it used numbers that are not in the evidence"
+      ]
     },
     {
       "id": "g14",
@@ -1653,9 +1734,10 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Goal of exceeding 30% dividend payout by FY2030 is still in progress, period not ended.",
+      "rationale": "Period still running (in progress).",
       "cited": [
-        "s1"
+        "s1",
+        "g14-q3"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1671,7 +1753,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [
+        "rationale replaced: it used an older figure than the latest call"
+      ]
     },
     {
       "id": "g15",
@@ -1749,9 +1833,10 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target of greater than 10% export contribution by FY2030 remains in progress, period not ended.",
+      "rationale": "Period still running (in progress).",
       "cited": [
-        "s1"
+        "s1",
+        "g15-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1767,7 +1852,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [
+        "rationale replaced: it used numbers that are not in the evidence"
+      ]
     },
     {
       "id": "g16",
@@ -1843,11 +1930,12 @@
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No comparable actual in screener or in later calls.",
+      "rationale": "Period still running (no end date).",
       "cited": [
-        "s1"
+        "s1",
+        "g16-q2"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1860,15 +1948,15 @@
       "id": "g17",
       "metric": "other",
       "metric_label": "Other",
-      "metric_text": "guidance of spending roughly ₹ 6,000 crores to ₹ 8,000 crores over the next 5 years",
+      "metric_text": "EBIT margin guidance 5-year",
       "scope": "company",
       "period": "medium_term",
       "period_status": "no end date",
       "target": {
-        "text": "6,000–8,000 crore",
-        "low": 6000,
-        "high": 8000,
-        "unit": "crore",
+        "text": "11–13%",
+        "low": 11,
+        "high": 13,
+        "unit": "%",
         "basis": "unspecified"
       },
       "revised": false,
@@ -1877,15 +1965,15 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Jul 2025",
-          "call_label": "Jul 2025 (Q1 FY26)",
-          "fiscal": "Q1 FY26",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
           "speaker": "Chirayu Upadhyaya",
-          "quote": "guidance of spending roughly ₹ 6,000 crores to ₹ 8,000 crores over the next 5 years",
-          "target_text": "6,000–8,000 crore",
+          "quote": "the guidance of 11% to 13% of margins is a 5-year guidance",
+          "target_text": "11–13%",
           "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
         }
       ],
       "evidence": [
@@ -1897,9 +1985,9 @@
           "call_quarter": "Sep 2026",
           "fiscal": "Q2 FY27",
           "latest": true,
-          "speaker": "Niyant Maru",
-          "passage_id": "t1-p7",
-          "text": "The focus on infrastructure development continues, which is reflected in the government capex spend of INR 5.10 lakh crores during April to August 2026, implying an 18% year-on-year growth. The government has also approved another INR1.9 lakh crores of capital outlay for Green Corridor Phase 3, which includes evacuation of 135 gigawatts of renewable energy and deployment of battery energy storage systems.",
+          "speaker": "Aditya Nathany",
+          "passage_id": "t1-p13",
+          "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         },
         {
@@ -1911,8 +1999,8 @@
           "fiscal": "Q1 FY27",
           "latest": false,
           "speaker": "Shashank Yagnick",
-          "passage_id": "t2-p13",
-          "text": "The business has steadily enhanced earnings while simultaneously investing in people, innovation, product development and brand building. EBIT margins for the quarter were 8%, very much in line with the milestones laid out under Project Spring, where we target EBITDA margins of 8% to 10% by FY 2030. Looking ahead, we remain optimistic about the long-term prospects of the FMEG segment. Our strategic priorities remain unchanged to grow at 1.5x to 2x of the industry growth while progressively enhancing profitability. Ongoing investments in distribution reach, product innovation and brand strength will continue to drive support sustainable value creation over the coming years.",
+          "passage_id": "t2-p8",
+          "text": "EBITDA increased by 32% year- on-year and the margins stood at 13.8%, reflecting an improvement of approximately 70 basis points sequentially over the previous quarter. PAT margins for the quarter came in at 9.7%.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
         },
         {
@@ -1923,22 +2011,33 @@
           "call_quarter": "Mar 2026",
           "fiscal": "Q4 FY26",
           "latest": false,
-          "speaker": "Niyant Maru",
-          "passage_id": "t3-p5",
-          "text": "India's full year FY26 GDP growth is projected at approximately 7.6%, the fastest pace in the recent years and the fourth consecutive year India holds the position of the world's fastest- growing major economy.",
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t3-p11",
+          "text": "EBITDA for the quarter increased by 13% year-on-year with margins at 13.1% despite multiple industry headwinds and softer trade sentiment amid the ongoing Middle East escalation. PAT margins for the quarter stood at 8.9%.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No evidence shows actual spending of ₹6,000‑8,000 crore.",
+      "rationale": "Guidance of 11–13% has no defined end date, so the target remains pending.",
       "cited": [
         "s1"
       ],
       "actual_quote": null,
       "stated": null,
-      "chart": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2025",
+            "fiscal": "Q2 FY26",
+            "low": 11,
+            "high": 13
+          }
+        ],
+        "actual": null
+      },
       "notes": []
     },
     {
@@ -2015,9 +2114,9 @@
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No evidence provides advertising spend as % of B2C top‑line.",
+      "rationale": "Target 3–5% of B2C top-line lacks an end date, therefore it is pending.",
       "cited": [
         "s1"
       ],
@@ -2041,15 +2140,15 @@
       "id": "g19",
       "metric": "other",
       "metric_label": "Other",
-      "metric_text": "EBIT margin guidance 5-year",
+      "metric_text": "Our objective continues to be growing at 1.5x to 2x of the industry growth rate while steadily enhancing profitability.",
       "scope": "company",
       "period": "unspecified",
       "period_status": "no end date",
       "target": {
-        "text": "11–13%",
-        "low": 11,
-        "high": 13,
-        "unit": "%",
+        "text": "1.5–2x",
+        "low": 1.5,
+        "high": 2,
+        "unit": "x",
         "basis": "unspecified"
       },
       "revised": false,
@@ -2058,15 +2157,15 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Oct 2025",
-          "call_label": "Oct 2025 (Q2 FY26)",
-          "fiscal": "Q2 FY26",
-          "speaker": "Chirayu Upadhyaya",
-          "quote": "the guidance of 11% to 13% of margins is a 5-year guidance",
-          "target_text": "11–13%",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Aditya Nathany",
+          "quote": "Our objective continues to be growing at 1.5x to 2x of the industry growth rate while steadily enhancing profitability.",
+          "target_text": "1.5–2x",
           "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         }
       ],
       "evidence": [
@@ -2080,66 +2179,24 @@
           "latest": true,
           "speaker": "Aditya Nathany",
           "passage_id": "t1-p13",
-          "text": "EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies.",
+          "text": "Consolidated revenue grew by 53% year-on-year, with all business segments contributing meaningfully to this growth momentum. EBITDA increased by 39% year-on-year, while EBITDA margins expanded by more than 50 basis points sequentially to 14.4%, supported by a favourable business mix and continued focus on operational efficiencies. Profitability remained robust, with profit after tax reaching a record high of INR 9,900 million, representing a 43% year-over-year increase.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
-        },
-        {
-          "id": "g19-q2",
-          "kind": "transcript",
-          "call": "Jul 2026",
-          "call_month": "2026-07",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t2-p8",
-          "text": "EBITDA increased by 32% year- on-year and the margins stood at 13.8%, reflecting an improvement of approximately 70 basis points sequentially over the previous quarter. PAT margins for the quarter came in at 9.7%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        },
-        {
-          "id": "g19-q3",
-          "kind": "transcript",
-          "call": "May 2026",
-          "call_month": "2026-05",
-          "call_quarter": "Mar 2026",
-          "fiscal": "Q4 FY26",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t3-p11",
-          "text": "EBITDA for the quarter increased by 13% year-on-year with margins at 13.1% despite multiple industry headwinds and softer trade sentiment amid the ongoing Middle East escalation. PAT margins for the quarter stood at 8.9%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         }
       ],
       "check": null,
-      "verdict": "Unverified",
+      "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Guidance is for EBIT margin; evidence reports only EBITDA margins.",
+      "rationale": "Objective 1.5x–2x industry growth has no end date, so it remains pending.",
       "cited": [
         "s1"
       ],
       "actual_quote": null,
       "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Oct 2025",
-            "fiscal": "Q2 FY26",
-            "low": 11,
-            "high": 13
-          }
-        ],
-        "actual": null
-      },
+      "chart": null,
       "notes": []
     }
   ],
   "dropped": [
-    {
-      "call": "Oct 2026",
-      "quote": "Our objective continues to be growing at 1.5x to 2x of the industry growth rate while steadily enhancing profitability.",
-      "reason": "no forward-looking words: reads as a reported result, not a promise"
-    },
     {
       "call": "May 2026",
       "quote": "in line with our Project Spring objectives of delivering 1.5x to 2x of industry growth while steadily improving our margins…to achieve our target of greater than 10% contribution from exports by finan",
@@ -2148,21 +2205,6 @@
     {
       "call": "May 2026",
       "quote": "We were at full year basis, we were at 70-75% kind of utilization",
-      "reason": "no forward-looking words: reads as a reported result, not a promise"
-    },
-    {
-      "call": "Oct 2025",
-      "quote": "progressing towards the 8%-10% EBITDA target by FY 2030",
-      "reason": "too vague to check: no number and under ten words"
-    },
-    {
-      "call": "Oct 2025",
-      "quote": "we'll perhaps do somewhere between ₹ 1,200 crores to ₹ 1,600 crores for the year",
-      "reason": "no forward-looking words: reads as a reported result, not a promise"
-    },
-    {
-      "call": "Jul 2025",
-      "quote": "improving EBITDA margins to 8% to 10% range by FY30",
       "reason": "no forward-looking words: reads as a reported result, not a promise"
     },
     {
@@ -2224,25 +2266,25 @@
     ]
   },
   "summary": {
-    "Delivered": 0,
+    "Delivered": 1,
     "Missed": 0,
-    "Pending": 10,
+    "Pending": 16,
     "Goalposts moved": 0,
-    "Unverified": 9
+    "Unverified": 2
   },
   "track_record": {
     "promises": 19,
     "calls": 5,
-    "checkable": 2,
-    "open_ended": 8,
+    "checkable": 3,
+    "open_ended": 7,
     "revised": 0,
     "counts": {
-      "Delivered": 0,
+      "Delivered": 1,
       "Missed": 0,
-      "Pending": 10,
+      "Pending": 16,
       "Goalposts moved": 0,
-      "Unverified": 9
+      "Unverified": 2
     },
-    "text": "2 checkable promises: 2 unverified · 9 still running · 8 open-ended"
+    "text": "3 checkable promises: 1 delivered, 2 unverified · 9 still running · 7 open-ended"
   }
 }
