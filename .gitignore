@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Raw HTTP cache (screener pages). The seed snapshot in data/seed IS committed.
+data/cache/
+
+# Secrets (Phase 2 adds GROQ_API_KEY / GEMINI_API_KEY)
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Web (Phase 3)
+node_modules/
+.next/
+.vercel/

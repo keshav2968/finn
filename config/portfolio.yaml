@@ -1,0 +1,157 @@
+# FINN universe: the only place tickers live. All code reads companies from here.
+#
+# companies   every company FINN knows about, stored once
+#   symbol        NSE symbol (Yahoo Finance uses SYMBOL.NS, falling back to SYMBOL.BO)
+#   name          display name
+#   sector        free text, used for grouping in the UI
+#   size          large | mid | small. The seed build compares this with screener.in's
+#                 market cap and warns on a mismatch (thresholds in settings.yaml)
+#   is_lender     true for banks and NBFCs. Their results card shows NII, operating
+#                 profit, provisions and PAT instead of EBITDA. The build warns if
+#                 screener.in's table layout disagrees.
+#   bse_code      optional. BSE scrip code used for filings. The build reads the code
+#                 from the company's screener.in page and warns if it differs from this.
+#   primary_view  optional, consolidated (default) | standalone. Which screener.in view
+#                 the app treats as primary. Both views are always fetched.
+#
+# portfolio   symbols held in the mock portfolio (push side)
+# research    symbols demoed on the pull side, with what each one is meant to show.
+#             The research pipeline is generic; "focus" is only demo notes.
+
+companies:
+  - symbol: HDFCBANK
+    name: HDFC Bank
+    sector: Banks
+    size: large
+    is_lender: true
+    bse_code: "500180"
+    # Consolidated includes HDFC Life and HDFC ERGO; insurance premiums and claims
+    # distort the bank's P&L (screener shows negative "Financing Profit").
+    primary_view: standalone
+
+  - symbol: BAJFINANCE
+    name: Bajaj Finance
+    sector: NBFC
+    size: large
+    is_lender: true
+    bse_code: "500034"
+
+  - symbol: FEDERALBNK
+    name: Federal Bank
+    sector: Banks
+    size: mid
+    is_lender: true
+    bse_code: "500469"
+    # Banks are analysed on standalone numbers; NPA ratios are standalone only.
+    primary_view: standalone
+
+  - symbol: LT
+    name: Larsen & Toubro
+    sector: Capital Goods - Engineering & Construction
+    size: large
+    is_lender: false
+    bse_code: "500510"
+
+  - symbol: POLYCAB
+    name: Polycab India
+    sector: Electricals - Cables & Wires
+    size: large
+    is_lender: false
+    bse_code: "542652"
+
+  - symbol: ELECON
+    name: Elecon Engineering
+    sector: Capital Goods - Industrial Gears
+    size: small
+    is_lender: false
+    bse_code: "505700"
+
+  - symbol: HINDUNILVR
+    name: Hindustan Unilever
+    sector: FMCG
+    size: large
+    is_lender: false
+    bse_code: "500696"
+
+  - symbol: TITAN
+    name: Titan Company
+    sector: Consumer - Jewellery & Watches
+    size: large
+    is_lender: false
+    bse_code: "500114"
+
+  - symbol: ETERNAL
+    name: Eternal (Zomato + Blinkit)
+    sector: Consumer Internet - Food Delivery & Quick Commerce
+    size: large
+    is_lender: false
+    bse_code: "543320"
+
+  - symbol: INFY
+    name: Infosys
+    sector: IT Services
+    size: large
+    is_lender: false
+    bse_code: "500209"
+
+  - symbol: KPITTECH
+    name: KPIT Technologies
+    sector: IT Services - Automotive Software
+    size: mid
+    is_lender: false
+    bse_code: "542651"
+
+  - symbol: SUNPHARMA
+    name: Sun Pharmaceutical
+    sector: Pharma
+    size: large
+    is_lender: false
+    bse_code: "524715"
+
+  - symbol: MARKSANS
+    name: Marksans Pharma
+    sector: Pharma
+    size: small
+    is_lender: false
+    bse_code: "524404"
+
+  - symbol: RELIANCE
+    name: Reliance Industries
+    sector: Conglomerate - Energy, Retail, Telecom
+    size: large
+    is_lender: false
+    bse_code: "500325"
+
+  - symbol: TATACHEM
+    name: Tata Chemicals
+    sector: Chemicals
+    size: mid
+    is_lender: false
+    bse_code: "500770"
+
+portfolio:
+  - HDFCBANK
+  - BAJFINANCE
+  - FEDERALBNK
+  - LT
+  - POLYCAB
+  - ELECON
+  - HINDUNILVR
+  - TITAN
+  - ETERNAL
+  - INFY
+  - KPITTECH
+  - SUNPHARMA
+  - MARKSANS
+  - RELIANCE
+  - TATACHEM
+
+research:
+  - symbol: INFY
+    focus: Guided revenue growth and operating margin ranges vs what was delivered.
+  - symbol: POLYCAB
+    focus: Long-term revenue and margin targets vs delivery; working capital and cash conversion.
+  - symbol: KPITTECH
+    focus: Revenue and EBITDA margin guidance vs delivery; client concentration from the annual report.
+  - symbol: ETERNAL
+    focus: Mix shift between food delivery and Blinkit; profitability story on calls vs the numbers.

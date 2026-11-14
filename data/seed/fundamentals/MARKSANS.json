@@ -1,0 +1,2653 @@
+{
+  "symbol": "MARKSANS",
+  "source": "screener.in",
+  "fetched_at": "2026-11-14T15:06:39+05:30",
+  "name": "Marksans Pharma Ltd",
+  "screener_company_id": "2017",
+  "bse_code": "524404",
+  "nse_symbol": "MARKSANS",
+  "about": "Marksans Pharma is engaged in the Business of Formulation of pharmaceutical products [1]",
+  "primary_view": "consolidated",
+  "primary_view_reason": "default",
+  "layout": "standard",
+  "key_metrics": {
+    "market_cap_cr": 14435.0,
+    "price": 318.0,
+    "high_52w": 351.0,
+    "low_52w": 155.0,
+    "pe": 25.8,
+    "book_value": 73.5,
+    "dividend_yield_pct": 0.28,
+    "roce_pct": 18.8,
+    "roe_pct": 15.2,
+    "face_value": 1.0
+  },
+  "documents": {
+    "annual_reports": [
+      {
+        "title": "Annual Report 2026",
+        "year": 2026,
+        "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/08765805-8bf0-4135-9363-de1d0660992a.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2025",
+        "year": 2025,
+        "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/1943f867-06b1-4f09-82b4-cd49f7aa2d97.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2024",
+        "year": 2024,
+        "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/a7a3122d-b239-4c5c-bcc3-291bab56d370.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2023",
+        "year": 2023,
+        "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/f8a7b27d-8c98-4788-8bcf-091f94986d4f.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2022",
+        "year": 2022,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/74127524404.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2021",
+        "year": 2021,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/70224524404.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2020",
+        "year": 2020,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/65570524404.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2019",
+        "year": 2019,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040319.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2018",
+        "year": 2018,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040318.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2017",
+        "year": 2017,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040317.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2016",
+        "year": 2016,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040316.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2015",
+        "year": 2015,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040315.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2014",
+        "year": 2014,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040314.pdf",
+        "source": "bse"
+      },
+      {
+        "title": "Annual Report 2013",
+        "year": 2013,
+        "url": "https://archives.nseindia.com/annual_reports/AR_1499_MARKSANS_2012_2013_05092013123155.zip",
+        "source": "nse"
+      },
+      {
+        "title": "Annual Report 2013",
+        "year": 2013,
+        "url": "https://www.bseindia.com/bseplus/AnnualReport/524404/5244040313.pdf",
+        "source": "bse"
+      }
+    ],
+    "concalls": [
+      {
+        "period": "Nov 2026",
+        "month": "2026-11",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7c2c8e4c-9848-4521-9a6a-a6c69294a6ac.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3098327f-b310-4f96-a28f-025ec8dcb044.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/marksans-pharma-q2fy-27-conference-call.mp3"
+      },
+      {
+        "period": "Aug 2026",
+        "month": "2026-08",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fba06bfd-8b19-4931-9fa2-5b7d65fde69c.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4d58726-b6a1-42c7-b3e2-906318cb06eb.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/marksans-pharma-q1fy-27-conference-call.mp3"
+      },
+      {
+        "period": "Jun 2026",
+        "month": "2026-06",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70dd9fb2-015b-4a0f-9236-e7d3590c653b.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be80033c-c39d-438c-a689-810e7f18d1d4.pdf"
+      },
+      {
+        "period": "Feb 2026",
+        "month": "2026-02",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ebecc4ff-caba-46d7-bfc8-af5f501d091f.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=06ee0731-fe61-4466-9013-15e76d05ed7b.pdf",
+        "recording_url": "https://youtu.be/vWSRENlnS1Y"
+      },
+      {
+        "period": "Nov 2025",
+        "month": "2025-11",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9eeec949-4a87-4c3e-9c42-2eacdadff9d1.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=561963c2-f7bd-403c-8ef9-fe5811634512.pdf",
+        "recording_url": "https://youtu.be/RSt1W-6-Cf8"
+      },
+      {
+        "period": "Aug 2025",
+        "month": "2025-08",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ce04a0c-323d-435b-9e1c-36e0c80b2242.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7449f75b-f499-4f5c-a133-db74f1549d81.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/marksans-pharma-q1fy26-conference-call.mp3"
+      },
+      {
+        "period": "May 2025",
+        "month": "2025-05",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab69125c-8c67-406d-9ac1-8238d693da3f.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3ccd2d1-b84e-4cba-82bd-0082038c7d29.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/marksans-pharma-q4fy-26-conference-call.mp3"
+      },
+      {
+        "period": "May 2025",
+        "month": "2025-05",
+        "transcript_url": "https://www.marksanspharma.com/earnings-call-transcripts.html"
+      },
+      {
+        "period": "Feb 2025",
+        "month": "2025-02",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3a9c046-2eec-42a4-af77-ed6caa22efd3.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c3e40b8-5740-4fae-be66-d0d040b09b93.pdf"
+      },
+      {
+        "period": "Nov 2024",
+        "month": "2024-11",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=25a27757-30ac-4034-ac29-1c4f9596f2c6.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=421eca1a-2738-45e2-b849-1fa434718354.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/Q2FY25-Conference-Call.mp3"
+      },
+      {
+        "period": "Aug 2024",
+        "month": "2024-08",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb086858-4995-41a6-adf5-d076c0535e71.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52a65efa-c5b2-4cea-b4c8-af52a2d2dcb7.pdf",
+        "recording_url": "https://www.marksanspharma.com/audio/Q1FY25-Conference-Call.mp3"
+      },
+      {
+        "period": "Jun 2024",
+        "month": "2024-06",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e63d207-a628-43f3-b3ad-49088a4242ca.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f11415cc-06c3-4ce6-a99f-d7cd31980047.pdf"
+      },
+      {
+        "period": "Feb 2024",
+        "month": "2024-02",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=759b003c-c3fe-4e50-a2df-cb8d111c7e8b.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=84758428-9feb-4bea-84ca-a2a18c5eb159.pdf"
+      },
+      {
+        "period": "Nov 2023",
+        "month": "2023-11",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c84979e4-afdd-4054-9077-8f9413709883.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=97eaffe1-a051-4e09-8eea-e06cb132b40e.pdf",
+        "recording_url": "http://www.marksanspharma.com/investors-meet.html"
+      },
+      {
+        "period": "Aug 2023",
+        "month": "2023-08",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3172879-2d5d-49c3-afd1-20d98a85a37b.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c4db23e9-d535-4e51-be8f-6a2af3f7e549.pdf"
+      },
+      {
+        "period": "Jun 2023",
+        "month": "2023-06",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=542f528d-dee0-4718-9ab9-10f1183f4f9e.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=acb3439c-78f7-43a7-99aa-f0468efb43b3.pdf",
+        "recording_url": "http://marksanspharma.com/audio/Q4FY23-Conference-Call.mp3"
+      },
+      {
+        "period": "Feb 2023",
+        "month": "2023-02",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b694ba05-6daa-42eb-b291-b861dde45b28.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c2eb5133-5eed-4357-9f94-caef44bf7a3b.pdf"
+      },
+      {
+        "period": "Nov 2022",
+        "month": "2022-11",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=96366b09-0e35-4d56-910f-5f957c45d023.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a5e2545e-8ce9-4408-9376-a20de7d72d48.pdf"
+      },
+      {
+        "period": "Aug 2022",
+        "month": "2022-08",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=22cfbd11-3572-4d9c-b28d-1fb15c52cc7c.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ed77e14b-16ce-4041-98da-f93cb2275822.pdf"
+      },
+      {
+        "period": "Jun 2022",
+        "month": "2022-06",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=36014887-210a-4f0d-b069-48aa626b5f58.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fcdcfc07-efb0-4c30-afb4-f28f5492de2d.pdf"
+      },
+      {
+        "period": "Feb 2022",
+        "month": "2022-02",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1e9b58e-4350-43dd-814c-7619399583f1.pdf"
+      },
+      {
+        "period": "Nov 2021",
+        "month": "2021-11",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b438d166-1877-44a3-920c-4ff0316d2195.pdf"
+      },
+      {
+        "period": "Aug 2021",
+        "month": "2021-08",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=035cffb9-ca8c-4dee-864a-dd2b94f8a675.pdf"
+      },
+      {
+        "period": "May 2021",
+        "month": "2021-05",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4bdc92a-4808-4723-baba-52800867f762.pdf"
+      },
+      {
+        "period": "Feb 2021",
+        "month": "2021-02",
+        "transcript_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f5e28147-069d-4a3c-97bc-2d1954200489.pdf",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5fd0158-81c4-4995-941c-386771793b46.pdf"
+      },
+      {
+        "period": "Nov 2020",
+        "month": "2020-11",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=75af85bd-fd7b-402d-aad2-b96367eb9bd7.pdf"
+      },
+      {
+        "period": "Aug 2020",
+        "month": "2020-08",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df472bbb-3dff-46ef-a6a6-779b48a1e7d5.pdf"
+      },
+      {
+        "period": "Jun 2020",
+        "month": "2020-06",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e1ffc94a-72a0-4318-8ca3-f62927289cd1.pdf"
+      },
+      {
+        "period": "Feb 2020",
+        "month": "2020-02",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4d67ec7a-7800-463a-9b68-78a9e1c19ea7.pdf"
+      },
+      {
+        "period": "Aug 2019",
+        "month": "2019-08",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a4a9213e-b03f-4af7-9b81-865fc00987bc.pdf"
+      },
+      {
+        "period": "Aug 2019",
+        "month": "2019-08",
+        "ppt_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f5afc36-a396-4f7c-b65b-1a9748495708.pdf"
+      }
+    ]
+  },
+  "views": {
+    "consolidated": {
+      "layout": "standard",
+      "has_data": true,
+      "tables": {
+        "quarters": {
+          "periods": [
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Sales": [
+              531.0,
+              586.0,
+              560.0,
+              591.0,
+              642.0,
+              682.0,
+              708.0,
+              620.0,
+              720.0,
+              754.0,
+              856.0,
+              841.0,
+              940.0
+            ],
+            "YoY Sales growth": [
+              17.0,
+              22.0,
+              15.0,
+              18.0,
+              21.0,
+              16.0,
+              27.0,
+              5.0,
+              12.0,
+              11.0,
+              21.0,
+              36.0,
+              30.0
+            ],
+            "Expenses": [
+              417.0,
+              453.0,
+              450.0,
+              462.0,
+              495.0,
+              543.0,
+              582.0,
+              520.0,
+              576.0,
+              594.0,
+              661.0,
+              628.0,
+              726.0
+            ],
+            "Operating Profit": [
+              114.0,
+              133.0,
+              110.0,
+              128.0,
+              147.0,
+              139.0,
+              127.0,
+              100.0,
+              144.0,
+              161.0,
+              195.0,
+              213.0,
+              214.0
+            ],
+            "OPM %": [
+              21.0,
+              23.0,
+              20.0,
+              22.0,
+              23.0,
+              20.0,
+              18.0,
+              16.0,
+              20.0,
+              21.0,
+              23.0,
+              25.0,
+              23.0
+            ],
+            "Other Income": [
+              19.0,
+              5.0,
+              17.0,
+              15.0,
+              -0.0,
+              28.0,
+              15.0,
+              6.0,
+              22.0,
+              20.0,
+              35.0,
+              25.0,
+              18.0
+            ],
+            "Interest": [
+              2.0,
+              3.0,
+              5.0,
+              3.0,
+              3.0,
+              3.0,
+              3.0,
+              6.0,
+              6.0,
+              6.0,
+              6.0,
+              7.0,
+              7.0
+            ],
+            "Depreciation": [
+              18.0,
+              22.0,
+              21.0,
+              20.0,
+              20.0,
+              21.0,
+              23.0,
+              23.0,
+              27.0,
+              24.0,
+              24.0,
+              25.0,
+              32.0
+            ],
+            "Profit before tax": [
+              114.0,
+              113.0,
+              100.0,
+              120.0,
+              125.0,
+              143.0,
+              116.0,
+              77.0,
+              133.0,
+              151.0,
+              200.0,
+              207.0,
+              194.0
+            ],
+            "Tax %": [
+              26.0,
+              26.0,
+              23.0,
+              26.0,
+              22.0,
+              27.0,
+              22.0,
+              24.0,
+              26.0,
+              25.0,
+              25.0,
+              23.0,
+              26.0
+            ],
+            "Net Profit": [
+              84.0,
+              83.0,
+              78.0,
+              89.0,
+              98.0,
+              105.0,
+              91.0,
+              58.0,
+              99.0,
+              114.0,
+              149.0,
+              159.0,
+              144.0
+            ],
+            "EPS in Rs": [
+              1.84,
+              1.84,
+              1.73,
+              1.96,
+              2.13,
+              2.31,
+              2.0,
+              1.29,
+              2.17,
+              2.5,
+              3.27,
+              3.47,
+              3.12
+            ]
+          },
+          "pct_rows": [
+            "YoY Sales growth",
+            "OPM %",
+            "Tax %"
+          ],
+          "links": {
+            "Raw PDF": {
+              "Sep 2023": "https://www.screener.in/company/source/quarter/2017/9/2023/",
+              "Dec 2023": "https://www.screener.in/company/source/quarter/2017/12/2023/",
+              "Mar 2024": "https://www.screener.in/company/source/quarter/2017/3/2024/",
+              "Jun 2024": "https://www.screener.in/company/source/quarter/2017/6/2024/",
+              "Sep 2024": "https://www.screener.in/company/source/quarter/2017/9/2024/",
+              "Dec 2024": "https://www.screener.in/company/source/quarter/2017/12/2024/",
+              "Mar 2025": "https://www.screener.in/company/source/quarter/2017/3/2025/",
+              "Jun 2025": "https://www.screener.in/company/source/quarter/2017/6/2025/",
+              "Sep 2025": "https://www.screener.in/company/source/quarter/2017/9/2025/",
+              "Dec 2025": "https://www.screener.in/company/source/quarter/2017/12/2025/",
+              "Mar 2026": "https://www.screener.in/company/source/quarter/2017/3/2026/",
+              "Jun 2026": "https://www.screener.in/company/source/quarter/2017/6/2026/",
+              "Sep 2026": "https://www.screener.in/company/source/quarter/2017/9/2026/"
+            }
+          }
+        },
+        "profit_loss": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": {
+            "Sales": [
+              797.0,
+              893.0,
+              767.0,
+              913.0,
+              1000.0,
+              1134.0,
+              1376.0,
+              1491.0,
+              1852.0,
+              2177.0,
+              2623.0,
+              2951.0,
+              3392.0
+            ],
+            "Sales growth": [
+              26.0,
+              12.0,
+              -14.0,
+              19.0,
+              10.0,
+              13.0,
+              21.0,
+              8.0,
+              24.0,
+              18.0,
+              20.0,
+              13.0,
+              24.0
+            ],
+            "Expenses": [
+              612.0,
+              757.0,
+              722.0,
+              834.0,
+              868.0,
+              942.0,
+              1037.0,
+              1232.0,
+              1513.0,
+              1719.0,
+              2090.0,
+              2350.0,
+              2608.0
+            ],
+            "Operating Profit": [
+              185.0,
+              136.0,
+              45.0,
+              78.0,
+              132.0,
+              192.0,
+              340.0,
+              259.0,
+              340.0,
+              459.0,
+              533.0,
+              601.0,
+              784.0
+            ],
+            "OPM %": [
+              23.0,
+              15.0,
+              6.0,
+              9.0,
+              13.0,
+              17.0,
+              25.0,
+              17.0,
+              18.0,
+              21.0,
+              20.0,
+              20.0,
+              23.0
+            ],
+            "Other Income": [
+              3.0,
+              9.0,
+              7.0,
+              8.0,
+              5.0,
+              0.0,
+              7.0,
+              42.0,
+              59.0,
+              50.0,
+              66.0,
+              82.0,
+              99.0
+            ],
+            "Interest": [
+              16.0,
+              10.0,
+              7.0,
+              10.0,
+              10.0,
+              9.0,
+              8.0,
+              8.0,
+              9.0,
+              11.0,
+              12.0,
+              24.0,
+              26.0
+            ],
+            "Depreciation": [
+              16.0,
+              28.0,
+              30.0,
+              27.0,
+              23.0,
+              27.0,
+              36.0,
+              45.0,
+              52.0,
+              74.0,
+              83.0,
+              99.0,
+              106.0
+            ],
+            "Profit before tax": [
+              156.0,
+              107.0,
+              15.0,
+              50.0,
+              104.0,
+              157.0,
+              302.0,
+              248.0,
+              338.0,
+              424.0,
+              504.0,
+              561.0,
+              751.0
+            ],
+            "Tax %": [
+              28.0,
+              23.0,
+              24.0,
+              28.0,
+              23.0,
+              23.0,
+              21.0,
+              25.0,
+              21.0,
+              26.0,
+              24.0,
+              25.0,
+              null
+            ],
+            "Net Profit": [
+              112.0,
+              83.0,
+              11.0,
+              36.0,
+              80.0,
+              121.0,
+              239.0,
+              187.0,
+              265.0,
+              315.0,
+              383.0,
+              420.0,
+              566.0
+            ],
+            "EPS in Rs": [
+              2.67,
+              1.92,
+              0.22,
+              0.8,
+              1.87,
+              2.95,
+              5.76,
+              4.51,
+              5.88,
+              6.92,
+              8.4,
+              9.22,
+              12.36
+            ],
+            "Dividend Payout %": [
+              4.0,
+              21.0,
+              23.0,
+              6.0,
+              3.0,
+              3.0,
+              4.0,
+              6.0,
+              9.0,
+              9.0,
+              10.0,
+              10.0,
+              null
+            ]
+          },
+          "pct_rows": [
+            "Sales growth",
+            "OPM %",
+            "Tax %",
+            "Dividend Payout %"
+          ],
+          "links": {}
+        },
+        "balance_sheet": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Equity Capital": [
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              45.0,
+              45.0,
+              45.0,
+              45.0,
+              45.0
+            ],
+            "Reserves": [
+              326.0,
+              401.0,
+              392.0,
+              430.0,
+              502.0,
+              595.0,
+              846.0,
+              1161.0,
+              1700.0,
+              2020.0,
+              2422.0,
+              2978.0,
+              3287.0
+            ],
+            "Borrowings": [
+              101.0,
+              100.0,
+              110.0,
+              118.0,
+              100.0,
+              30.0,
+              34.0,
+              111.0,
+              123.0,
+              244.0,
+              322.0,
+              343.0,
+              465.0
+            ],
+            "Other Liabilities": [
+              207.0,
+              180.0,
+              209.0,
+              142.0,
+              160.0,
+              236.0,
+              307.0,
+              323.0,
+              322.0,
+              372.0,
+              451.0,
+              489.0,
+              563.0
+            ],
+            "Total Liabilities": [
+              676.0,
+              722.0,
+              752.0,
+              731.0,
+              802.0,
+              902.0,
+              1228.0,
+              1636.0,
+              2190.0,
+              2681.0,
+              3240.0,
+              3856.0,
+              4360.0
+            ],
+            "Fixed Assets": [
+              166.0,
+              270.0,
+              267.0,
+              279.0,
+              270.0,
+              303.0,
+              309.0,
+              428.0,
+              486.0,
+              776.0,
+              982.0,
+              1044.0,
+              1313.0
+            ],
+            "CWIP": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              12.0,
+              3.0,
+              10.0,
+              9.0,
+              27.0,
+              59.0,
+              5.0
+            ],
+            "Investments": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              27.0,
+              1.0,
+              0.0,
+              62.0
+            ],
+            "Other Assets": [
+              510.0,
+              452.0,
+              484.0,
+              451.0,
+              533.0,
+              599.0,
+              907.0,
+              1205.0,
+              1694.0,
+              1869.0,
+              2230.0,
+              2753.0,
+              2979.0
+            ],
+            "Total Assets": [
+              676.0,
+              722.0,
+              752.0,
+              731.0,
+              802.0,
+              902.0,
+              1228.0,
+              1636.0,
+              2190.0,
+              2681.0,
+              3240.0,
+              3856.0,
+              4360.0
+            ]
+          },
+          "pct_rows": [],
+          "links": {}
+        },
+        "cash_flow": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": {
+            "Cash from Operating Activity": [
+              155.0,
+              31.0,
+              14.0,
+              50.0,
+              27.0,
+              233.0,
+              179.0,
+              99.0,
+              237.0,
+              230.0,
+              207.0,
+              458.0
+            ],
+            "Cash from Investing Activity": [
+              -33.0,
+              -123.0,
+              -21.0,
+              -39.0,
+              -13.0,
+              -60.0,
+              -45.0,
+              -84.0,
+              -259.0,
+              -141.0,
+              -49.0,
+              -249.0
+            ],
+            "Cash from Financing Activity": [
+              17.0,
+              -58.0,
+              -3.0,
+              3.0,
+              -21.0,
+              -114.0,
+              -15.0,
+              80.0,
+              198.0,
+              -69.0,
+              -65.0,
+              -71.0
+            ],
+            "Net Cash Flow": [
+              138.0,
+              -150.0,
+              -10.0,
+              15.0,
+              -7.0,
+              60.0,
+              118.0,
+              94.0,
+              176.0,
+              21.0,
+              93.0,
+              138.0
+            ],
+            "Free Cash Flow": [
+              118.0,
+              -101.0,
+              -14.0,
+              11.0,
+              14.0,
+              174.0,
+              133.0,
+              53.0,
+              184.0,
+              22.0,
+              35.0,
+              329.0
+            ],
+            "CFO/EBITDA": [
+              108.0,
+              43.0,
+              31.0,
+              73.0,
+              41.0,
+              134.0,
+              67.0,
+              66.0,
+              88.0,
+              77.0,
+              62.0,
+              99.0
+            ]
+          },
+          "pct_rows": [
+            "CFO/EBITDA"
+          ],
+          "links": {}
+        },
+        "ratios": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": {
+            "Debtor Days": [
+              84.0,
+              89.0,
+              118.0,
+              71.0,
+              64.0,
+              78.0,
+              72.0,
+              97.0,
+              82.0,
+              76.0,
+              75.0,
+              80.0
+            ],
+            "Inventory Days": [
+              107.0,
+              120.0,
+              151.0,
+              152.0,
+              215.0,
+              155.0,
+              248.0,
+              216.0,
+              192.0,
+              217.0,
+              270.0,
+              278.0
+            ],
+            "Days Payable": [
+              88.0,
+              85.0,
+              129.0,
+              54.0,
+              78.0,
+              71.0,
+              103.0,
+              102.0,
+              91.0,
+              94.0,
+              98.0,
+              96.0
+            ],
+            "Cash Conversion Cycle": [
+              103.0,
+              124.0,
+              140.0,
+              169.0,
+              202.0,
+              163.0,
+              217.0,
+              211.0,
+              183.0,
+              199.0,
+              247.0,
+              261.0
+            ],
+            "Working Capital Days": [
+              17.0,
+              59.0,
+              77.0,
+              70.0,
+              97.0,
+              87.0,
+              104.0,
+              121.0,
+              122.0,
+              129.0,
+              142.0,
+              149.0
+            ],
+            "ROCE %": [
+              44.0,
+              23.0,
+              4.0,
+              10.0,
+              18.0,
+              25.0,
+              38.0,
+              23.0,
+              22.0,
+              21.0,
+              20.0,
+              19.0
+            ]
+          },
+          "pct_rows": [
+            "ROCE %"
+          ],
+          "links": {}
+        },
+        "shareholding_quarterly": {
+          "periods": [
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Promoters": [
+              43.85,
+              43.85,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87
+            ],
+            "FIIs": [
+              15.55,
+              15.57,
+              18.59,
+              21.31,
+              21.95,
+              22.19,
+              19.89,
+              16.92,
+              8.13,
+              16.76,
+              17.47,
+              19.06
+            ],
+            "DIIs": [
+              4.76,
+              5.17,
+              3.75,
+              4.1,
+              4.3,
+              4.55,
+              5.5,
+              5.28,
+              5.91,
+              6.57,
+              6.19,
+              5.54
+            ],
+            "Public": [
+              35.81,
+              35.4,
+              33.77,
+              30.7,
+              29.88,
+              29.37,
+              30.74,
+              33.93,
+              42.08,
+              32.78,
+              32.46,
+              31.53
+            ],
+            "No. of Shareholders": [
+              237377.0,
+              254699.0,
+              235500.0,
+              248845.0,
+              259813.0,
+              257273.0,
+              256221.0,
+              265788.0,
+              255153.0,
+              246279.0,
+              246635.0,
+              247508.0
+            ]
+          },
+          "pct_rows": [
+            "Promoters",
+            "FIIs",
+            "DIIs",
+            "Public"
+          ],
+          "links": {}
+        },
+        "shareholding_yearly": {
+          "periods": [
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Promoters": [
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              43.85,
+              43.85,
+              43.87,
+              43.87,
+              43.87
+            ],
+            "FIIs": [
+              8.35,
+              3.16,
+              3.45,
+              2.54,
+              4.34,
+              3.46,
+              15.11,
+              15.57,
+              22.19,
+              16.76,
+              19.06
+            ],
+            "DIIs": [
+              0.28,
+              1.74,
+              0.62,
+              0.89,
+              0.34,
+              0.47,
+              1.46,
+              5.17,
+              4.55,
+              6.57,
+              5.54
+            ],
+            "Public": [
+              43.12,
+              46.85,
+              47.68,
+              48.32,
+              47.07,
+              47.82,
+              39.57,
+              35.4,
+              29.37,
+              32.78,
+              31.53
+            ],
+            "No. of Shareholders": [
+              112114.0,
+              124596.0,
+              127158.0,
+              123215.0,
+              135271.0,
+              220090.0,
+              198382.0,
+              254699.0,
+              257273.0,
+              246279.0,
+              247508.0
+            ]
+          },
+          "pct_rows": [
+            "Promoters",
+            "FIIs",
+            "DIIs",
+            "Public"
+          ],
+          "links": {}
+        }
+      },
+      "fields": {
+        "quarters": {
+          "revenue": "Sales",
+          "revenue_growth_pct": "YoY Sales growth",
+          "expenses": "Expenses",
+          "operating_profit": "Operating Profit",
+          "opm_pct": "OPM %",
+          "other_income": "Other Income",
+          "interest": "Interest",
+          "depreciation": "Depreciation",
+          "pbt": "Profit before tax",
+          "tax_pct": "Tax %",
+          "net_profit": "Net Profit",
+          "eps": "EPS in Rs"
+        },
+        "profit_loss": {
+          "revenue": "Sales",
+          "revenue_growth_pct": "Sales growth",
+          "expenses": "Expenses",
+          "operating_profit": "Operating Profit",
+          "opm_pct": "OPM %",
+          "other_income": "Other Income",
+          "interest": "Interest",
+          "depreciation": "Depreciation",
+          "pbt": "Profit before tax",
+          "tax_pct": "Tax %",
+          "net_profit": "Net Profit",
+          "eps": "EPS in Rs",
+          "dividend_payout_pct": "Dividend Payout %"
+        },
+        "balance_sheet": {
+          "equity_capital": "Equity Capital",
+          "reserves": "Reserves",
+          "borrowings": "Borrowings",
+          "other_liabilities": "Other Liabilities",
+          "total_liabilities": "Total Liabilities",
+          "fixed_assets": "Fixed Assets",
+          "cwip": "CWIP",
+          "investments": "Investments",
+          "other_assets": "Other Assets",
+          "total_assets": "Total Assets"
+        },
+        "cash_flow": {
+          "cfo": "Cash from Operating Activity",
+          "cfi": "Cash from Investing Activity",
+          "cff": "Cash from Financing Activity",
+          "net_cash_flow": "Net Cash Flow",
+          "fcf": "Free Cash Flow",
+          "cfo_to_ebitda_pct": "CFO/EBITDA"
+        },
+        "ratios": {
+          "debtor_days": "Debtor Days",
+          "inventory_days": "Inventory Days",
+          "days_payable": "Days Payable",
+          "cash_conversion_cycle": "Cash Conversion Cycle",
+          "working_capital_days": "Working Capital Days",
+          "roce_pct": "ROCE %"
+        }
+      },
+      "growth_ranges": {
+        "Compounded Sales Growth": {
+          "10 Years": 13.0,
+          "5 Years": 16.0,
+          "3 Years": 17.0,
+          "TTM": 24.0
+        },
+        "Compounded Profit Growth": {
+          "10 Years": 18.0,
+          "5 Years": 12.0,
+          "3 Years": 16.0,
+          "TTM": 59.0
+        },
+        "Stock Price CAGR": {
+          "10 Years": 22.0,
+          "5 Years": 40.0,
+          "3 Years": 34.0,
+          "1 Year": 66.0
+        },
+        "Return on Equity": {
+          "10 Years": 17.0,
+          "5 Years": 17.0,
+          "3 Years": 16.0,
+          "Last Year": 15.0
+        }
+      },
+      "top_ratios": {
+        "Market Cap": {
+          "text": "₹ 14,435 Cr.",
+          "values": [
+            14435.0
+          ]
+        },
+        "Current Price": {
+          "text": "₹ 318",
+          "values": [
+            318.0
+          ]
+        },
+        "High / Low": {
+          "text": "₹ 351 / 155",
+          "values": [
+            351.0,
+            155.0
+          ]
+        },
+        "Stock P/E": {
+          "text": "25.8",
+          "values": [
+            25.8
+          ]
+        },
+        "Book Value": {
+          "text": "₹ 73.5",
+          "values": [
+            73.5
+          ]
+        },
+        "Dividend Yield": {
+          "text": "0.28 %",
+          "values": [
+            0.28
+          ]
+        },
+        "ROCE": {
+          "text": "18.8 %",
+          "values": [
+            18.8
+          ]
+        },
+        "ROE": {
+          "text": "15.2 %",
+          "values": [
+            15.2
+          ]
+        },
+        "Face Value": {
+          "text": "₹ 1.00",
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "key_metrics": {
+        "market_cap_cr": 14435.0,
+        "price": 318.0,
+        "high_52w": 351.0,
+        "low_52w": 155.0,
+        "pe": 25.8,
+        "book_value": 73.5,
+        "dividend_yield_pct": 0.28,
+        "roce_pct": 18.8,
+        "roe_pct": 15.2,
+        "face_value": 1.0
+      },
+      "url": "https://www.screener.in/company/MARKSANS/consolidated/",
+      "fetched_at": "2026-11-14T14:56:06+05:30",
+      "from_cache": true
+    },
+    "standalone": {
+      "layout": "standard",
+      "has_data": true,
+      "tables": {
+        "quarters": {
+          "periods": [
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Sales": [
+              205.0,
+              241.0,
+              225.0,
+              255.0,
+              309.0,
+              312.0,
+              299.0,
+              320.0,
+              320.0,
+              340.0,
+              362.0,
+              321.0,
+              314.0
+            ],
+            "YoY Sales growth": [
+              20.0,
+              40.0,
+              47.0,
+              40.0,
+              51.0,
+              29.0,
+              33.0,
+              26.0,
+              4.0,
+              9.0,
+              21.0,
+              0.0,
+              -2.0
+            ],
+            "Expenses": [
+              167.0,
+              199.0,
+              191.0,
+              213.0,
+              245.0,
+              252.0,
+              248.0,
+              250.0,
+              248.0,
+              264.0,
+              256.0,
+              239.0,
+              261.0
+            ],
+            "Operating Profit": [
+              37.0,
+              42.0,
+              34.0,
+              41.0,
+              63.0,
+              60.0,
+              52.0,
+              70.0,
+              72.0,
+              75.0,
+              106.0,
+              82.0,
+              52.0
+            ],
+            "OPM %": [
+              18.0,
+              17.0,
+              15.0,
+              16.0,
+              21.0,
+              19.0,
+              17.0,
+              22.0,
+              22.0,
+              22.0,
+              29.0,
+              26.0,
+              17.0
+            ],
+            "Other Income": [
+              16.0,
+              1.0,
+              12.0,
+              8.0,
+              20.0,
+              23.0,
+              7.0,
+              2.0,
+              58.0,
+              16.0,
+              27.0,
+              17.0,
+              57.0
+            ],
+            "Interest": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "Depreciation": [
+              8.0,
+              8.0,
+              7.0,
+              7.0,
+              7.0,
+              7.0,
+              8.0,
+              8.0,
+              8.0,
+              9.0,
+              9.0,
+              9.0,
+              9.0
+            ],
+            "Profit before tax": [
+              44.0,
+              35.0,
+              38.0,
+              42.0,
+              76.0,
+              75.0,
+              50.0,
+              64.0,
+              121.0,
+              82.0,
+              124.0,
+              90.0,
+              100.0
+            ],
+            "Tax %": [
+              30.0,
+              27.0,
+              14.0,
+              24.0,
+              17.0,
+              26.0,
+              25.0,
+              24.0,
+              18.0,
+              26.0,
+              26.0,
+              24.0,
+              15.0
+            ],
+            "Net Profit": [
+              31.0,
+              25.0,
+              33.0,
+              32.0,
+              63.0,
+              55.0,
+              38.0,
+              48.0,
+              100.0,
+              61.0,
+              92.0,
+              69.0,
+              86.0
+            ],
+            "EPS in Rs": [
+              0.69,
+              0.56,
+              0.73,
+              0.71,
+              1.39,
+              1.22,
+              0.83,
+              1.06,
+              2.2,
+              1.34,
+              2.03,
+              1.52,
+              1.89
+            ]
+          },
+          "pct_rows": [
+            "YoY Sales growth",
+            "OPM %",
+            "Tax %"
+          ],
+          "links": {
+            "Raw PDF": {
+              "Sep 2023": "https://www.screener.in/company/source/quarter/2017/9/2023/",
+              "Dec 2023": "https://www.screener.in/company/source/quarter/2017/12/2023/",
+              "Mar 2024": "https://www.screener.in/company/source/quarter/2017/3/2024/",
+              "Jun 2024": "https://www.screener.in/company/source/quarter/2017/6/2024/",
+              "Sep 2024": "https://www.screener.in/company/source/quarter/2017/9/2024/",
+              "Dec 2024": "https://www.screener.in/company/source/quarter/2017/12/2024/",
+              "Mar 2025": "https://www.screener.in/company/source/quarter/2017/3/2025/",
+              "Jun 2025": "https://www.screener.in/company/source/quarter/2017/6/2025/",
+              "Sep 2025": "https://www.screener.in/company/source/quarter/2017/9/2025/",
+              "Dec 2025": "https://www.screener.in/company/source/quarter/2017/12/2025/",
+              "Mar 2026": "https://www.screener.in/company/source/quarter/2017/3/2026/",
+              "Jun 2026": "https://www.screener.in/company/source/quarter/2017/6/2026/",
+              "Sep 2026": "https://www.screener.in/company/source/quarter/2017/9/2026/"
+            }
+          }
+        },
+        "profit_loss": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": {
+            "Sales": [
+              406.0,
+              358.0,
+              216.0,
+              295.0,
+              424.0,
+              433.0,
+              600.0,
+              658.0,
+              655.0,
+              853.0,
+              1174.0,
+              1341.0,
+              1336.0
+            ],
+            "Sales growth": [
+              29.0,
+              -12.0,
+              -40.0,
+              37.0,
+              44.0,
+              2.0,
+              38.0,
+              10.0,
+              -0.0,
+              30.0,
+              38.0,
+              14.0,
+              7.0
+            ],
+            "Expenses": [
+              290.0,
+              254.0,
+              191.0,
+              266.0,
+              361.0,
+              362.0,
+              486.0,
+              545.0,
+              563.0,
+              713.0,
+              966.0,
+              1018.0,
+              1020.0
+            ],
+            "Operating Profit": [
+              116.0,
+              104.0,
+              24.0,
+              29.0,
+              63.0,
+              71.0,
+              114.0,
+              114.0,
+              92.0,
+              140.0,
+              208.0,
+              324.0,
+              316.0
+            ],
+            "OPM %": [
+              29.0,
+              29.0,
+              11.0,
+              10.0,
+              15.0,
+              16.0,
+              19.0,
+              17.0,
+              14.0,
+              16.0,
+              18.0,
+              24.0,
+              24.0
+            ],
+            "Other Income": [
+              3.0,
+              9.0,
+              7.0,
+              7.0,
+              8.0,
+              0.0,
+              31.0,
+              42.0,
+              60.0,
+              62.0,
+              66.0,
+              103.0,
+              118.0
+            ],
+            "Interest": [
+              13.0,
+              6.0,
+              4.0,
+              8.0,
+              7.0,
+              7.0,
+              5.0,
+              4.0,
+              4.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ],
+            "Depreciation": [
+              9.0,
+              15.0,
+              15.0,
+              12.0,
+              9.0,
+              12.0,
+              15.0,
+              18.0,
+              17.0,
+              29.0,
+              29.0,
+              34.0,
+              35.0
+            ],
+            "Profit before tax": [
+              97.0,
+              92.0,
+              12.0,
+              17.0,
+              56.0,
+              53.0,
+              124.0,
+              135.0,
+              132.0,
+              172.0,
+              243.0,
+              392.0,
+              397.0
+            ],
+            "Tax %": [
+              31.0,
+              22.0,
+              3.0,
+              25.0,
+              22.0,
+              28.0,
+              21.0,
+              23.0,
+              22.0,
+              22.0,
+              23.0,
+              23.0,
+              null
+            ],
+            "Net Profit": [
+              67.0,
+              71.0,
+              12.0,
+              12.0,
+              44.0,
+              38.0,
+              98.0,
+              104.0,
+              103.0,
+              134.0,
+              188.0,
+              301.0,
+              307.0
+            ],
+            "EPS in Rs": [
+              1.64,
+              1.75,
+              0.28,
+              0.3,
+              1.07,
+              0.93,
+              2.4,
+              2.54,
+              2.27,
+              2.95,
+              4.15,
+              6.64,
+              6.78
+            ],
+            "Dividend Payout %": [
+              7.0,
+              7.0,
+              18.0,
+              16.0,
+              5.0,
+              11.0,
+              10.0,
+              10.0,
+              22.0,
+              20.0,
+              19.0,
+              14.0,
+              null
+            ]
+          },
+          "pct_rows": [
+            "Sales growth",
+            "OPM %",
+            "Tax %",
+            "Dividend Payout %"
+          ],
+          "links": {}
+        },
+        "balance_sheet": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Equity Capital": [
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              41.0,
+              45.0,
+              45.0,
+              45.0,
+              45.0,
+              45.0
+            ],
+            "Reserves": [
+              305.0,
+              369.0,
+              378.0,
+              388.0,
+              430.0,
+              465.0,
+              559.0,
+              744.0,
+              1066.0,
+              1177.0,
+              1338.0,
+              1607.0,
+              1727.0
+            ],
+            "Borrowings": [
+              62.0,
+              53.0,
+              73.0,
+              67.0,
+              78.0,
+              11.0,
+              14.0,
+              14.0,
+              8.0,
+              8.0,
+              11.0,
+              12.0,
+              11.0
+            ],
+            "Other Liabilities": [
+              119.0,
+              71.0,
+              54.0,
+              61.0,
+              64.0,
+              83.0,
+              127.0,
+              167.0,
+              226.0,
+              285.0,
+              361.0,
+              330.0,
+              310.0
+            ],
+            "Total Liabilities": [
+              527.0,
+              534.0,
+              546.0,
+              557.0,
+              612.0,
+              600.0,
+              741.0,
+              966.0,
+              1345.0,
+              1516.0,
+              1755.0,
+              1994.0,
+              2093.0
+            ],
+            "Fixed Assets": [
+              90.0,
+              97.0,
+              94.0,
+              88.0,
+              103.0,
+              115.0,
+              129.0,
+              136.0,
+              144.0,
+              272.0,
+              383.0,
+              398.0,
+              392.0
+            ],
+            "CWIP": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              4.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "Investments": [
+              68.0,
+              231.0,
+              234.0,
+              236.0,
+              236.0,
+              236.0,
+              236.0,
+              237.0,
+              266.0,
+              293.0,
+              266.0,
+              267.0,
+              435.0
+            ],
+            "Other Assets": [
+              369.0,
+              205.0,
+              217.0,
+              233.0,
+              273.0,
+              249.0,
+              375.0,
+              594.0,
+              931.0,
+              952.0,
+              1105.0,
+              1329.0,
+              1265.0
+            ],
+            "Total Assets": [
+              527.0,
+              534.0,
+              546.0,
+              557.0,
+              612.0,
+              600.0,
+              741.0,
+              966.0,
+              1345.0,
+              1516.0,
+              1755.0,
+              1994.0,
+              2093.0
+            ]
+          },
+          "pct_rows": [],
+          "links": {}
+        },
+        "cash_flow": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": {
+            "Cash from Operating Activity": [
+              112.0,
+              65.0,
+              -14.0,
+              16.0,
+              20.0,
+              108.0,
+              107.0,
+              56.0,
+              52.0,
+              34.0,
+              31.0,
+              211.0
+            ],
+            "Cash from Investing Activity": [
+              -29.0,
+              -177.0,
+              -8.0,
+              -8.0,
+              -20.0,
+              -24.0,
+              9.0,
+              -128.0,
+              -195.0,
+              -114.0,
+              17.0,
+              -141.0
+            ],
+            "Cash from Financing Activity": [
+              51.0,
+              -52.0,
+              21.0,
+              -10.0,
+              1.0,
+              -82.0,
+              -14.0,
+              71.0,
+              210.0,
+              -26.0,
+              -30.0,
+              -39.0
+            ],
+            "Net Cash Flow": [
+              134.0,
+              -164.0,
+              -1.0,
+              -2.0,
+              1.0,
+              2.0,
+              102.0,
+              -1.0,
+              67.0,
+              -106.0,
+              18.0,
+              31.0
+            ],
+            "Free Cash Flow": [
+              80.0,
+              43.0,
+              -25.0,
+              10.0,
+              -4.0,
+              83.0,
+              86.0,
+              33.0,
+              16.0,
+              -121.0,
+              -89.0,
+              163.0
+            ],
+            "CFO/EBITDA": [
+              124.0,
+              82.0,
+              -56.0,
+              70.0,
+              52.0,
+              165.0,
+              112.0,
+              77.0,
+              91.0,
+              52.0,
+              37.0,
+              88.0
+            ]
+          },
+          "pct_rows": [
+            "CFO/EBITDA"
+          ],
+          "links": {}
+        },
+        "ratios": {
+          "periods": [
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": {
+            "Debtor Days": [
+              112.0,
+              136.0,
+              262.0,
+              209.0,
+              153.0,
+              136.0,
+              103.0,
+              137.0,
+              170.0,
+              158.0,
+              171.0,
+              170.0
+            ],
+            "Inventory Days": [
+              85.0,
+              90.0,
+              95.0,
+              91.0,
+              109.0,
+              111.0,
+              101.0,
+              100.0,
+              121.0,
+              145.0,
+              117.0,
+              102.0
+            ],
+            "Days Payable": [
+              75.0,
+              64.0,
+              67.0,
+              73.0,
+              58.0,
+              84.0,
+              69.0,
+              72.0,
+              103.0,
+              122.0,
+              116.0,
+              97.0
+            ],
+            "Cash Conversion Cycle": [
+              123.0,
+              161.0,
+              290.0,
+              228.0,
+              204.0,
+              163.0,
+              135.0,
+              165.0,
+              188.0,
+              182.0,
+              172.0,
+              174.0
+            ],
+            "Working Capital Days": [
+              29.0,
+              91.0,
+              177.0,
+              149.0,
+              127.0,
+              144.0,
+              90.0,
+              110.0,
+              143.0,
+              144.0,
+              145.0,
+              150.0
+            ],
+            "ROCE %": [
+              33.0,
+              22.0,
+              3.0,
+              5.0,
+              12.0,
+              11.0,
+              23.0,
+              20.0,
+              14.0,
+              15.0,
+              19.0,
+              26.0
+            ]
+          },
+          "pct_rows": [
+            "ROCE %"
+          ],
+          "links": {}
+        },
+        "shareholding_quarterly": {
+          "periods": [
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Promoters": [
+              43.85,
+              43.85,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87,
+              43.87
+            ],
+            "FIIs": [
+              15.55,
+              15.57,
+              18.59,
+              21.31,
+              21.95,
+              22.19,
+              19.89,
+              16.92,
+              8.13,
+              16.76,
+              17.47,
+              19.06
+            ],
+            "DIIs": [
+              4.76,
+              5.17,
+              3.75,
+              4.1,
+              4.3,
+              4.55,
+              5.5,
+              5.28,
+              5.91,
+              6.57,
+              6.19,
+              5.54
+            ],
+            "Public": [
+              35.81,
+              35.4,
+              33.77,
+              30.7,
+              29.88,
+              29.37,
+              30.74,
+              33.93,
+              42.08,
+              32.78,
+              32.46,
+              31.53
+            ],
+            "No. of Shareholders": [
+              237377.0,
+              254699.0,
+              235500.0,
+              248845.0,
+              259813.0,
+              257273.0,
+              256221.0,
+              265788.0,
+              255153.0,
+              246279.0,
+              246635.0,
+              247508.0
+            ]
+          },
+          "pct_rows": [
+            "Promoters",
+            "FIIs",
+            "DIIs",
+            "Public"
+          ],
+          "links": {}
+        },
+        "shareholding_yearly": {
+          "periods": [
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "Sep 2026"
+          ],
+          "rows": {
+            "Promoters": [
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              48.25,
+              43.85,
+              43.85,
+              43.87,
+              43.87,
+              43.87
+            ],
+            "FIIs": [
+              8.35,
+              3.16,
+              3.45,
+              2.54,
+              4.34,
+              3.46,
+              15.11,
+              15.57,
+              22.19,
+              16.76,
+              19.06
+            ],
+            "DIIs": [
+              0.28,
+              1.74,
+              0.62,
+              0.89,
+              0.34,
+              0.47,
+              1.46,
+              5.17,
+              4.55,
+              6.57,
+              5.54
+            ],
+            "Public": [
+              43.12,
+              46.85,
+              47.68,
+              48.32,
+              47.07,
+              47.82,
+              39.57,
+              35.4,
+              29.37,
+              32.78,
+              31.53
+            ],
+            "No. of Shareholders": [
+              112114.0,
+              124596.0,
+              127158.0,
+              123215.0,
+              135271.0,
+              220090.0,
+              198382.0,
+              254699.0,
+              257273.0,
+              246279.0,
+              247508.0
+            ]
+          },
+          "pct_rows": [
+            "Promoters",
+            "FIIs",
+            "DIIs",
+            "Public"
+          ],
+          "links": {}
+        }
+      },
+      "fields": {
+        "quarters": {
+          "revenue": "Sales",
+          "revenue_growth_pct": "YoY Sales growth",
+          "expenses": "Expenses",
+          "operating_profit": "Operating Profit",
+          "opm_pct": "OPM %",
+          "other_income": "Other Income",
+          "interest": "Interest",
+          "depreciation": "Depreciation",
+          "pbt": "Profit before tax",
+          "tax_pct": "Tax %",
+          "net_profit": "Net Profit",
+          "eps": "EPS in Rs"
+        },
+        "profit_loss": {
+          "revenue": "Sales",
+          "revenue_growth_pct": "Sales growth",
+          "expenses": "Expenses",
+          "operating_profit": "Operating Profit",
+          "opm_pct": "OPM %",
+          "other_income": "Other Income",
+          "interest": "Interest",
+          "depreciation": "Depreciation",
+          "pbt": "Profit before tax",
+          "tax_pct": "Tax %",
+          "net_profit": "Net Profit",
+          "eps": "EPS in Rs",
+          "dividend_payout_pct": "Dividend Payout %"
+        },
+        "balance_sheet": {
+          "equity_capital": "Equity Capital",
+          "reserves": "Reserves",
+          "borrowings": "Borrowings",
+          "other_liabilities": "Other Liabilities",
+          "total_liabilities": "Total Liabilities",
+          "fixed_assets": "Fixed Assets",
+          "cwip": "CWIP",
+          "investments": "Investments",
+          "other_assets": "Other Assets",
+          "total_assets": "Total Assets"
+        },
+        "cash_flow": {
+          "cfo": "Cash from Operating Activity",
+          "cfi": "Cash from Investing Activity",
+          "cff": "Cash from Financing Activity",
+          "net_cash_flow": "Net Cash Flow",
+          "fcf": "Free Cash Flow",
+          "cfo_to_ebitda_pct": "CFO/EBITDA"
+        },
+        "ratios": {
+          "debtor_days": "Debtor Days",
+          "inventory_days": "Inventory Days",
+          "days_payable": "Days Payable",
+          "cash_conversion_cycle": "Cash Conversion Cycle",
+          "working_capital_days": "Working Capital Days",
+          "roce_pct": "ROCE %"
+        }
+      },
+      "growth_ranges": {
+        "Compounded Sales Growth": {
+          "10 Years": 14.0,
+          "5 Years": 17.0,
+          "3 Years": 27.0,
+          "TTM": 7.0
+        },
+        "Compounded Profit Growth": {
+          "10 Years": 15.0,
+          "5 Years": 25.0,
+          "3 Years": 43.0,
+          "TTM": 28.0
+        },
+        "Stock Price CAGR": {
+          "10 Years": 22.0,
+          "5 Years": 40.0,
+          "3 Years": 34.0,
+          "1 Year": 66.0
+        },
+        "Return on Equity": {
+          "10 Years": 13.0,
+          "5 Years": 15.0,
+          "3 Years": 16.0,
+          "Last Year": 20.0
+        }
+      },
+      "top_ratios": {
+        "Market Cap": {
+          "text": "₹ 14,435 Cr.",
+          "values": [
+            14435.0
+          ]
+        },
+        "Current Price": {
+          "text": "₹ 318",
+          "values": [
+            318.0
+          ]
+        },
+        "High / Low": {
+          "text": "₹ 351 / 155",
+          "values": [
+            351.0,
+            155.0
+          ]
+        },
+        "Stock P/E": {
+          "text": "47.0",
+          "values": [
+            47.0
+          ]
+        },
+        "Book Value": {
+          "text": "₹ 39.1",
+          "values": [
+            39.1
+          ]
+        },
+        "Dividend Yield": {
+          "text": "0.28 %",
+          "values": [
+            0.28
+          ]
+        },
+        "ROCE": {
+          "text": "25.6 %",
+          "values": [
+            25.6
+          ]
+        },
+        "ROE": {
+          "text": "19.8 %",
+          "values": [
+            19.8
+          ]
+        },
+        "Face Value": {
+          "text": "₹ 1.00",
+          "values": [
+            1.0
+          ]
+        }
+      },
+      "key_metrics": {
+        "market_cap_cr": 14435.0,
+        "price": 318.0,
+        "high_52w": 351.0,
+        "low_52w": 155.0,
+        "pe": 47.0,
+        "book_value": 39.1,
+        "dividend_yield_pct": 0.28,
+        "roce_pct": 25.6,
+        "roe_pct": 19.8,
+        "face_value": 1.0
+      },
+      "url": "https://www.screener.in/company/MARKSANS/",
+      "fetched_at": "2026-11-14T14:56:08+05:30",
+      "from_cache": true
+    }
+  },
+  "view_errors": {}
+}

@@ -1,0 +1,405 @@
+{
+  "generated_at": "2026-11-14T15:06:37+05:30",
+  "as_of": "2026-11-13",
+  "sources": {
+    "fundamentals": "screener.in (consolidated + standalone pages)",
+    "prices": "Yahoo Finance end-of-day via yfinance",
+    "filings": "BSE corporate announcements API"
+  },
+  "companies": [
+    {
+      "symbol": "HDFCBANK",
+      "name": "HDFC Bank",
+      "sector": "Banks",
+      "size": "large",
+      "is_lender": true,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500180",
+      "primary_view": "standalone",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "name": "Bajaj Finance",
+      "sector": "NBFC",
+      "size": "large",
+      "is_lender": true,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500034",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "FEDERALBNK",
+      "name": "Federal Bank",
+      "sector": "Banks",
+      "size": "mid",
+      "is_lender": true,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500469",
+      "primary_view": "standalone",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "LT",
+      "name": "Larsen & Toubro",
+      "sector": "Capital Goods - Engineering & Construction",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500510",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "POLYCAB",
+      "name": "Polycab India",
+      "sector": "Electricals - Cables & Wires",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": "Long-term revenue and margin targets vs delivery; working capital and cash conversion.",
+      "ad_hoc": false,
+      "bse_code": "542652",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "ELECON",
+      "name": "Elecon Engineering",
+      "sector": "Capital Goods - Industrial Gears",
+      "size": "small",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "505700",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "HINDUNILVR",
+      "name": "Hindustan Unilever",
+      "sector": "FMCG",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500696",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:38+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "TITAN",
+      "name": "Titan Company",
+      "sector": "Consumer - Jewellery & Watches",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500114",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "ETERNAL",
+      "name": "Eternal (Zomato + Blinkit)",
+      "sector": "Consumer Internet - Food Delivery & Quick Commerce",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": "Mix shift between food delivery and Blinkit; profitability story on calls vs the numbers.",
+      "ad_hoc": false,
+      "bse_code": "543320",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "INFY",
+      "name": "Infosys",
+      "sector": "IT Services",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": "Guided revenue growth and operating margin ranges vs what was delivered.",
+      "ad_hoc": false,
+      "bse_code": "500209",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "KPITTECH",
+      "name": "KPIT Technologies",
+      "sector": "IT Services - Automotive Software",
+      "size": "mid",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": "Revenue and EBITDA margin guidance vs delivery; client concentration from the annual report.",
+      "ad_hoc": false,
+      "bse_code": "542651",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "SUNPHARMA",
+      "name": "Sun Pharmaceutical",
+      "sector": "Pharma",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "524715",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "MARKSANS",
+      "name": "Marksans Pharma",
+      "sector": "Pharma",
+      "size": "small",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "524404",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "RELIANCE",
+      "name": "Reliance Industries",
+      "sector": "Conglomerate - Energy, Retail, Telecom",
+      "size": "large",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500325",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:39+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    },
+    {
+      "symbol": "TATACHEM",
+      "name": "Tata Chemicals",
+      "sector": "Chemicals",
+      "size": "mid",
+      "is_lender": false,
+      "in_portfolio": true,
+      "research_focus": null,
+      "ad_hoc": false,
+      "bse_code": "500770",
+      "primary_view": "consolidated",
+      "status": {
+        "fundamentals": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:40+05:30"
+        },
+        "prices": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        },
+        "filings": {
+          "state": "ok",
+          "updated_at": "2026-11-14T15:06:37+05:30"
+        }
+      }
+    }
+  ],
+  "warnings": [
+    "KPITTECH: size is 'mid' in portfolio.yaml but market cap Rs 15,133 cr suggests 'small'",
+    "TATACHEM: size is 'mid' in portfolio.yaml but market cap Rs 15,436 cr suggests 'small'"
+  ]
+}

@@ -1,0 +1,53 @@
+name: ingest
+
+on:
+  schedule:
+    # 11:35 UTC = 17:05 IST on weekdays: after the NSE close and the evening results rush.
+    - cron: "35 11 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  build-seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # Keeps screener.in pages between runs so a re-run within the TTL doesn't refetch.
+      - uses: actions/cache@v4
+        with:
+          path: data/cache
+          key: http-cache-${{ github.run_id }}
+          restore-keys: http-cache-
+
+      # Exchanges sometimes block cloud IPs. The script keeps the previous seed file
+      # for anything that fails and marks it stale in manifest.json, so a partial
+      # run still commits; a run where nothing at all succeeded fails the job.
+      - name: Build seed snapshot
+        run: python scripts/build_seed.py
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "finn-bot"
+          git config user.email "finn-bot@users.noreply.github.com"
+          git add data/seed
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "data: seed snapshot $(TZ=Asia/Kolkata date +'%Y-%m-%d %H:%M IST')"
+            git push
+          fi

@@ -1,0 +1,36 @@
+# Pipeline settings. Tickers do not belong here; see portfolio.yaml.
+
+paths:
+  seed_dir: data/seed      # committed snapshot the app reads
+  cache_dir: data/cache    # raw HTTP cache, git-ignored
+
+http:
+  # Browser-like UA: BSE and screener.in reject obvious bot UAs.
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+  timeout_seconds: 20
+  retries: 3
+  backoff_seconds: 2.0
+
+prices:
+  history_days: 400        # calendar days fetched; enough for a 52-week high plus averaging windows
+  chart_days: 260          # trading days kept in the stored daily series (~1 year)
+  volume_avg_window: 20    # sessions in the average that "volume ratio" compares against (today excluded)
+  volatility_window: 60    # sessions used for the daily-move z-score (today excluded)
+  # A bar dated today is dropped as partial if the run starts before this IST time.
+  eod_ready_ist: "16:00"
+  min_interval_seconds: 0.5
+
+filings:
+  lookback_days: 60
+  max_pages: 10
+  min_interval_seconds: 0.6
+
+screener:
+  min_interval_seconds: 2.0
+  cache_ttl_hours: 20
+
+# Size-bucket check against screener.in market cap (Rs crore). Approximates AMFI's
+# rank-based cut-offs (top 100 large, 101-250 mid); only used to print a warning.
+size_buckets_cr:
+  large: 100000
+  mid: 30000
