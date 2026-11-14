@@ -1,0 +1,139 @@
+/* Design tokens. Palette: ink black, warm ivory, electric teal.
+   Teal is for interactive things only, never numbers. Green and red only for price moves.
+   Contrast (WCAG): ink/ivory 16.5:1; link teal #006B63 on ivory 5.7:1; ink text on teal fill 8.3:1.
+   Bright teal on ivory is ~2:1, so teal fills always carry a 1px ink border. */
+
+:root,
+:root[data-theme="light"] {
+  --ink: #111316;
+  --ivory: #f6f1e6;
+  --teal: #00c2b5;
+  --teal-deep: #006b63;
+
+  --frame: #ece5d6;           /* outside the phone column on wide screens */
+  --bg: var(--ivory);
+  --raised: #fbf8f1;
+  --fg: var(--ink);
+  --muted: #5f5a51;           /* 6.1:1 on ivory */
+  --line: #ddd5c5;
+  --line-strong: #c4baa6;
+
+  --link: var(--teal-deep);
+  --fill: var(--teal);
+  --on-fill: var(--ink);
+  --fill-border: var(--ink);
+  --focus: var(--teal-deep);
+
+  --up: #2e7148;              /* 5.2:1 */
+  --down: #ae3b34;            /* 5.4:1 */
+
+  --solid-bg: var(--ink);     /* badges, toasts, strong tags */
+  --solid-fg: var(--ivory);
+  --solid-link: var(--teal);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --frame: #0a0b0d;
+  --bg: var(--ink);
+  --raised: #181b1f;
+  --fg: var(--ivory);
+  --muted: #a39d92;           /* 6.9:1 on ink */
+  --line: #272b30;
+  --line-strong: #3a3f46;
+
+  --link: #2ed3c6;            /* 10:1 on ink */
+  --fill: #2ed3c6;
+  --on-fill: var(--ink);
+  --fill-border: #2ed3c6;
+  --focus: #2ed3c6;
+
+  --up: #5fb884;
+  --down: #e57d74;
+
+  --solid-bg: var(--ivory);
+  --solid-fg: var(--ink);
+  --solid-link: var(--teal-deep);
+
+  color-scheme: dark;
+}
+
+:root {
+  --font-sans: var(--font-plex), var(--font-plex-ext), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 28px;
+
+  --leading: 1.45;
+  --radius: 4px;
+  --column: 430px;
+  --tap: 44px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--frame);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--frame);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading);
+  font-variant-numeric: tabular-nums lining-nums;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

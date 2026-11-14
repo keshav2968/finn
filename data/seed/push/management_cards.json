@@ -1,0 +1,764 @@
+{
+  "generated_at": "2026-11-14T20:26:22+05:30",
+  "cards": {
+    "44ba0161-d9e4-4bd1-aae7-eb3bc46319dd": {
+      "filing_id": "44ba0161-d9e4-4bd1-aae7-eb3bc46319dd",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-11-13T16:30:11+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b9eb8a8-fa88-453b-810f-b55034589aac.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:20:13+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Whole-time Director (designated as Executive Director)",
+          "role_level": "executive_director",
+          "change": "reappointment",
+          "entity": null,
+          "tenure": "1 year",
+          "name": "V. Srinivasa Rangan",
+          "stated_reason": "re-appointed as a Whole-time Director (designated as Executive Director) of the Bank for a period of 1 (one) year effective from November 23, 2026",
+          "prior_roles": [
+            "Executive Director & Chief Financial Officer of HDFC Limited prior to its amalgamation"
+          ],
+          "effective_date": "2026-11-23",
+          "direction": "continuing",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Re-appointment of V. Srinivasa Rangan as Whole-time Director (Executive Director) of HDFC Bank Limited effective 2026-11-23 for one year.",
+      "notes": []
+    },
+    "16286674-572c-48bc-a47c-b8a9d5c07363": {
+      "filing_id": "16286674-572c-48bc-a47c-b8a9d5c07363",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-11-12T17:27:27+05:30",
+      "title": "Disclosure Under Regulation 30 Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6df1f05c-9926-47ce-9896-94c41bdb71ab.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:20:15+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Whole-time Director (designated as Executive Director)",
+          "role_level": "executive_director",
+          "change": "reappointment",
+          "entity": null,
+          "tenure": "1 year",
+          "name": "V. Srinivasa Rangan",
+          "stated_reason": "approval for the re-appointment of Mr. V. Srinivasa Rangan as a Whole-time Director (designated as Executive Director) of the Bank for a period of 1 (one) year effective from November 23, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-11-23",
+          "direction": "continuing",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Mr. V. Srinivasa Rangan re-appointed as Whole-time Director (Executive Director) of HDFC Bank Limited effective 2026-11-23 for 1 year.",
+      "notes": []
+    },
+    "9fe24176-bed0-4206-9717-23b4afe63ad4": {
+      "filing_id": "9fe24176-bed0-4206-9717-23b4afe63ad4",
+      "symbol": "TITAN",
+      "datetime": "2026-11-05T18:49:12+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Retirement",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2144a96-1845-46b3-b1d6-2df374df6da1.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:20:16+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Non- Executive, Non-Independent Director and Vice-Chairman",
+          "role_level": "non_executive_director",
+          "change": "retirement",
+          "entity": null,
+          "tenure": null,
+          "name": "Noel N. Tata",
+          "stated_reason": "In accordance with the Tata Group Governance Guidelines",
+          "prior_roles": [],
+          "effective_date": "2026-11-12",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Noel N. Tata retires as Non-Executive, Non-Independent Director and Vice-Chairman effective 12 November 2026.",
+      "notes": []
+    },
+    "be305212-ae95-4757-93fe-23429494a3c8": {
+      "filing_id": "be305212-ae95-4757-93fe-23429494a3c8",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-10-31T22:14:41+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b36ff756-1cf7-44a3-9b2c-4583e7e0e792.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:21:14+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Group Head – Business Banking, Emerging & Micro Enterprises Group and a Senior Management Personnel",
+          "role_level": "senior_management",
+          "change": "resignation",
+          "entity": null,
+          "tenure": null,
+          "name": "Sanjay D’Souza",
+          "stated_reason": "superannuated from the services of the Bank with effect from the close of business hours on October 31, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-10-31",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": [
+            {
+              "code": "mid_quarter",
+              "label": "Leaving mid-quarter"
+            }
+          ]
+        }
+      ],
+      "flags": [
+        {
+          "code": "mid_quarter",
+          "label": "Leaving mid-quarter",
+          "name": "Sanjay D’Souza"
+        }
+      ],
+      "severity": "normal",
+      "summary": "Sanjay D’Souza resigned as Group Head – Business Banking, Emerging & Micro Enterprises Group and Senior Management Personnel effective 2026-10-31.",
+      "notes": []
+    },
+    "e9124441-0b8a-4501-a88e-d3adbbcbb1f2": {
+      "filing_id": "e9124441-0b8a-4501-a88e-d3adbbcbb1f2",
+      "symbol": "KPITTECH",
+      "datetime": "2026-10-31T18:19:18+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Cessation",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef51f1d4-0f28-478d-ba24-ea772334daa8.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:21:15+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Independent Director",
+          "role_level": "independent_director",
+          "change": "cessation",
+          "entity": null,
+          "tenure": null,
+          "name": "Prof. Rajiv Lal",
+          "stated_reason": "Completion of 2nd term",
+          "prior_roles": [],
+          "effective_date": "2026-10-31",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Prof. Rajiv Lal ceased to be an Independent Director of KPIT Technologies Inc. and the Company on 31 October 2026.",
+      "notes": []
+    },
+    "34e2f505-2bcb-4a11-8bcc-857b9226db94": {
+      "filing_id": "34e2f505-2bcb-4a11-8bcc-857b9226db94",
+      "symbol": "KPITTECH",
+      "datetime": "2026-10-28T13:39:10+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86d68230-8e70-43c7-abb0-ebaf541aeaa8.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:21:18+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Independent Director",
+          "role_level": "independent_director",
+          "change": "appointment",
+          "entity": "KPIT Technologies Inc.",
+          "tenure": null,
+          "name": "Anant Talaulicar",
+          "stated_reason": "Appointment of Independent Director, Mr. Anant Talaulicar, Chairman of the Board, on the Board of KPIT Technologies Inc., material subsidiary of the Company w.e.f. October 28, 2026.",
+          "prior_roles": [
+            "Chairman and Managing Director of the Cummins Group in India",
+            "Member of the Cummins Inc. global leadership team",
+            "President of the Cummins Inc. Components Group",
+            "Managing Director of Tata Cummins Private Limited"
+          ],
+          "effective_date": "2026-10-28",
+          "direction": "joining",
+          "at_subsidiary": true,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Anant Talaulicar was appointed as Independent Director on the board of KPIT Technologies Inc. (KPIT US) effective 28 October 2026.",
+      "notes": []
+    },
+    "eee0209e-2a9c-4d1c-91a1-8b1dbc6868a2": {
+      "filing_id": "eee0209e-2a9c-4d1c-91a1-8b1dbc6868a2",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-10-27T08:06:22+05:30",
+      "title": "Disclosure Under Regulation 30 And Other Applicable Regulations Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015 - Change In Managing Director And Chief Executive Officer Of The Bank",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e5b2d06f-fea8-4dea-aa03-84674215a0fd.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:22:17+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "MD & CEO",
+          "role_level": "ceo_md",
+          "change": "resignation",
+          "entity": null,
+          "tenure": null,
+          "name": "Sashidhar Jagdishan",
+          "stated_reason": "on account of completion of his tenure",
+          "prior_roles": [
+            "MD & CEO"
+          ],
+          "effective_date": "2026-10-26",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": [
+            {
+              "code": "ceo_exit",
+              "label": "CEO/MD is leaving"
+            },
+            {
+              "code": "mid_quarter",
+              "label": "Leaving mid-quarter"
+            }
+          ]
+        },
+        {
+          "role": "MD & CEO",
+          "role_level": "ceo_md",
+          "change": "appointment",
+          "entity": null,
+          "tenure": null,
+          "name": "Anup Bagchi",
+          "stated_reason": null,
+          "prior_roles": [],
+          "effective_date": "2026-10-27",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [
+        {
+          "code": "ceo_exit",
+          "label": "CEO/MD is leaving",
+          "name": "Sashidhar Jagdishan"
+        },
+        {
+          "code": "mid_quarter",
+          "label": "Leaving mid-quarter",
+          "name": "Sashidhar Jagdishan"
+        }
+      ],
+      "severity": "high",
+      "summary": "Sashidhar Jagdishan resigned as MD & CEO effective 2026-10-26; Anup Bagchi appointed MD & CEO effective 2026-10-27.",
+      "notes": []
+    },
+    "9817a9b7-6de3-4bfa-8e80-ac4cf87d1d6a": {
+      "filing_id": "9817a9b7-6de3-4bfa-8e80-ac4cf87d1d6a",
+      "symbol": "BAJFINANCE",
+      "datetime": "2026-10-19T18:18:41+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb4bfa8c-5285-4b6f-86c3-852bf82c8015.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:22:19+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Chief Information Security Officer",
+          "role_level": "senior_management",
+          "change": "reappointment",
+          "entity": null,
+          "tenure": "3 years",
+          "name": "Prashant Verma",
+          "stated_reason": "Re-appointment of Prashant Verma as Chief Information Security Officer (CISO) as per RBI Guidelines",
+          "prior_roles": [
+            "Chief Information Security Officer since February 1, 2024",
+            "Head of Cyber Risk Unit"
+          ],
+          "effective_date": "2027-02-01",
+          "direction": "continuing",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Prashant Verma was reappointed as Chief Information Security Officer of Bajaj Finance Limited effective 1 February 2027 for a period of three years.",
+      "notes": []
+    },
+    "37fec54b-607f-4015-aade-97ef1748ae28": {
+      "filing_id": "37fec54b-607f-4015-aade-97ef1748ae28",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-10-17T16:16:22+05:30",
+      "title": "Disclosure Under Regulation 30 And Other Applicable Regulations Of The SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d9d420a-a6d1-4394-8638-8a978b7e2cc1.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:22:20+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Independent Director",
+          "role_level": "independent_director",
+          "change": "reappointment",
+          "entity": null,
+          "tenure": "3 years",
+          "name": "Lily Vadera",
+          "stated_reason": "re-appointment of Mrs. Lily Vadera as an Independent Director of the Bank for a period of 3 (three) years",
+          "prior_roles": [
+            "Executive Director at RBI"
+          ],
+          "effective_date": "2026-11-26",
+          "direction": "continuing",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "Deputy Managing Director",
+          "role_level": "senior_management",
+          "change": "cessation",
+          "entity": null,
+          "tenure": null,
+          "name": "Kaizad Bharucha",
+          "stated_reason": "requested cessation from the service of the Bank",
+          "prior_roles": [
+            "Deputy Managing Director, HDFC Bank"
+          ],
+          "effective_date": "2026-12-31",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "normal",
+      "summary": "Lily Vadera re-appointed as Independent Director effective 2026-11-26 for 3 years; Kaizad Bharucha ceased as Deputy Managing Director effective 2026-12-31.",
+      "notes": []
+    },
+    "956fcfd2-028f-4271-9f33-7ccaf2b7a675": {
+      "filing_id": "956fcfd2-028f-4271-9f33-7ccaf2b7a675",
+      "symbol": "FEDERALBNK",
+      "datetime": "2026-10-16T11:04:44+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=807b1ad1-35db-4554-b1f7-52c58bd8a39e.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:23:18+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Additional Director (Non – Executive Independent Director)",
+          "role_level": "independent_director",
+          "change": "appointment",
+          "entity": null,
+          "tenure": "3 consecutive years",
+          "name": "Rajesh Varrier",
+          "stated_reason": "appointment",
+          "prior_roles": [],
+          "effective_date": "2026-10-16",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Rajesh Varrier appointed as Additional Director (Non‑Executive Independent Director) on the Board of The Federal Bank Limited effective 16 October 2026.",
+      "notes": []
+    },
+    "e3e14132-9769-42f3-8c08-0ee46f64140a": {
+      "filing_id": "e3e14132-9769-42f3-8c08-0ee46f64140a",
+      "symbol": "SUNPHARMA",
+      "datetime": "2026-10-12T20:04:52+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Resignation of Director",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bc2b1f08-317b-4303-9d5c-597e62c03e75.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:23:20+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Non-Executive Independent Director",
+          "role_level": "independent_director",
+          "change": "resignation",
+          "entity": null,
+          "tenure": null,
+          "name": "Gautam Doshi",
+          "stated_reason": "citing personal reasons",
+          "prior_roles": [],
+          "effective_date": "2026-10-12",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": [
+            {
+              "code": "vague_reason",
+              "label": "Reason for leaving is vague or not given"
+            }
+          ]
+        }
+      ],
+      "flags": [
+        {
+          "code": "vague_reason",
+          "label": "Reason for leaving is vague or not given",
+          "name": "Gautam Doshi"
+        }
+      ],
+      "severity": "normal",
+      "summary": "Resignation of Gautam Doshi as Non-Executive Independent Director effective 12 October 2026.",
+      "notes": []
+    },
+    "738f2bee-0fcb-4e4b-8115-2b3afbc7e0e2": {
+      "filing_id": "738f2bee-0fcb-4e4b-8115-2b3afbc7e0e2",
+      "symbol": "LT",
+      "datetime": "2026-10-07T21:26:14+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ddedabb-dcb8-4f59-864f-bcbdcd86f98e.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:24:20+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Senior Vice President & Head - Corporate Human Resources",
+          "role_level": "senior_management",
+          "change": "promotion",
+          "entity": null,
+          "tenure": null,
+          "name": "Dr. C Jayakumar",
+          "stated_reason": "Promoted as Senior Vice President effective July 1, 2026, in terms viz. resignation of promotion circulars issued on October 6, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-07-01",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "Senior Vice President & IC Head - CarbonLite Solutions IC & Chief Executive – LMB",
+          "role_level": "senior_management",
+          "change": "promotion",
+          "entity": null,
+          "tenure": null,
+          "name": "Mr. Suresh Kumar Narang",
+          "stated_reason": "Promoted as Senior Vice President effective July 1, 2026, in terms viz. resignation of promotion circulars issued on October 6, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-07-01",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "Senior Vice President & IC Head - Transportation Infrastructure IC",
+          "role_level": "senior_management",
+          "change": "promotion",
+          "entity": null,
+          "tenure": null,
+          "name": "Mr. S Ramkumar",
+          "stated_reason": "Promoted as Senior Vice President effective July 1, 2026, in terms viz. resignation of promotion circulars issued on October 6, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-07-01",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "Senior Vice President & IC Head - Residential, Commercial Buildings & Factories IC",
+          "role_level": "senior_management",
+          "change": "promotion",
+          "entity": null,
+          "tenure": null,
+          "name": "Mr. Sriraman T",
+          "stated_reason": "Promoted as Senior Vice President effective July 1, 2026, in terms viz. resignation of promotion circulars issued on October 6, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-07-01",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Four senior managers promoted to Senior Vice President positions effective July 1, 2026.",
+      "notes": []
+    },
+    "55fb605b-9f23-4ca9-b278-e5c042ca95b9": {
+      "filing_id": "55fb605b-9f23-4ca9-b278-e5c042ca95b9",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-10-01T18:19:13+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=709c1ca1-bbc6-4432-949f-6a84683a6ebe.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:24:22+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "MD & CEO",
+          "role_level": "ceo_md",
+          "change": "appointment",
+          "entity": null,
+          "tenure": "3 years",
+          "name": "Anup Bagchi",
+          "stated_reason": "appointment of Mr. Anup Bagchi as the Managing Director & Chief Executive Officer of the Bank",
+          "prior_roles": [
+            "CEO & MD of ICICI Securities",
+            "Executive Director of ICICI Bank",
+            "MD & CEO of ICICI Prudential Life Insurance"
+          ],
+          "effective_date": "2026-10-27",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "MD & CEO",
+          "role_level": "ceo_md",
+          "change": "cessation",
+          "entity": null,
+          "tenure": null,
+          "name": "Sashidhar Jagdishan",
+          "stated_reason": "retirement of Mr. Sashidhar Jagdishan as the MD & CEO of the Bank at the close of business hours of October 26, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-10-26",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": [
+            {
+              "code": "ceo_exit",
+              "label": "CEO/MD is leaving"
+            },
+            {
+              "code": "mid_quarter",
+              "label": "Leaving mid-quarter"
+            }
+          ]
+        }
+      ],
+      "flags": [
+        {
+          "code": "ceo_exit",
+          "label": "CEO/MD is leaving",
+          "name": "Sashidhar Jagdishan"
+        },
+        {
+          "code": "mid_quarter",
+          "label": "Leaving mid-quarter",
+          "name": "Sashidhar Jagdishan"
+        }
+      ],
+      "severity": "high",
+      "summary": "Anup Bagchi appointed as Additional Director and MD & CEO; Sashidhar Jagdishan’s tenure as MD & CEO ends on 26‑10‑2026.",
+      "notes": []
+    },
+    "6700ab32-e31a-4343-9fc1-0d2a592f97b9": {
+      "filing_id": "6700ab32-e31a-4343-9fc1-0d2a592f97b9",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-09-30T20:33:52+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ec55a28-df43-4118-abda-2228c1d772e3.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:25:21+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Group Head - Legal & Group General Counsel",
+          "role_level": "senior_management",
+          "change": "cessation",
+          "entity": null,
+          "tenure": "22 years",
+          "name": "Sudhir Kumar Jha",
+          "stated_reason": "has superannuated from the services of the Bank with effect from the close of business hours on September 30, 2026 and consequently has also ceased to be a Senior Management Personnel of the Bank",
+          "prior_roles": [],
+          "effective_date": "2026-09-30",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "General Counsel – Designate",
+          "role_level": "senior_management",
+          "change": "appointment",
+          "entity": null,
+          "tenure": null,
+          "name": "Jigar Shah",
+          "stated_reason": "will assume the position of General Counsel of the Bank in place of Mr. Jha, effective from October 1, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-10-01",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "normal",
+      "summary": "Sudhir Kumar Jha ceased as Group Head – Legal & Group General Counsel effective 2026-09-30; Jigar Shah appointed as General Counsel effective 2026-10-01.",
+      "notes": []
+    },
+    "e3c0f4c9-0f91-458b-9443-406e2191d749": {
+      "filing_id": "e3c0f4c9-0f91-458b-9443-406e2191d749",
+      "symbol": "FEDERALBNK",
+      "datetime": "2026-09-30T19:08:34+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Retirement",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eaaab6c9-5780-489d-ae2a-aae7ae746baf.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:25:22+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Independent Director",
+          "role_level": "independent_director",
+          "change": "retirement",
+          "entity": null,
+          "tenure": "5 years",
+          "name": "Ramanand Mundkur",
+          "stated_reason": "Completion of tenure as Independent Director",
+          "prior_roles": [],
+          "effective_date": "2026-09-30",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Ramanand Mundkur retires as Independent Director of Federal Bank Limited on 30 September 2026 after completing a 5‑year term.",
+      "notes": []
+    },
+    "51ff9a97-093b-4ba5-a1d2-46ea26704d14": {
+      "filing_id": "51ff9a97-093b-4ba5-a1d2-46ea26704d14",
+      "symbol": "HDFCBANK",
+      "datetime": "2026-09-30T18:29:38+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Management",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0626e502-abbf-42ce-b47a-24988830e0eb.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:25:24+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Chief Compliance Officer",
+          "role_level": "senior_management",
+          "change": "cessation",
+          "entity": null,
+          "tenure": "3 years",
+          "name": "Rakesh Kumar Rajput",
+          "stated_reason": "completed his tenure as the Chief Compliance Officer of the Bank from the close of business hours on September 30, 2026",
+          "prior_roles": [],
+          "effective_date": "2026-09-30",
+          "direction": "leaving",
+          "at_subsidiary": false,
+          "flags": []
+        },
+        {
+          "role": "Chief Compliance Officer",
+          "role_level": "senior_management",
+          "change": "appointment",
+          "entity": null,
+          "tenure": "3 years",
+          "name": "V. N. Srivatsan",
+          "stated_reason": "appointed as the Chief Compliance Officer of the Bank for a period of 3 (three) years with effect from his date of joining",
+          "prior_roles": [],
+          "effective_date": "2027-01-04",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "normal",
+      "summary": "Rakesh Kumar Rajput’s tenure as Chief Compliance Officer ended on 2026-09-30, and V. N. Srivatsan was appointed as the new Chief Compliance Officer effective 2027-01-04.",
+      "notes": []
+    },
+    "f04fa24b-616c-4d06-92e0-a11ff08b7f19": {
+      "filing_id": "f04fa24b-616c-4d06-92e0-a11ff08b7f19",
+      "symbol": "FEDERALBNK",
+      "datetime": "2026-09-28T22:49:58+05:30",
+      "title": "Announcement under Regulation 30 (LODR)-Change in Directorate",
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9b99c57f-4e07-44db-933a-925cf671dd68.pdf",
+      "source": {
+        "text": "filing text + PDF",
+        "model": "groq/openai/gpt-oss-20b"
+      },
+      "built_at": "2026-11-14T20:26:22+05:30",
+      "status": "ok",
+      "people": [
+        {
+          "role": "Executive Director",
+          "role_level": "executive_director",
+          "change": "appointment",
+          "entity": null,
+          "tenure": "three (3) years",
+          "name": "Virat Sunil Diwanji",
+          "stated_reason": "Appointment of Mr. Virat Sunil Diwanji as Additional Executive Director on the Board of the Bank as per RBI approval letter DoR.GOV.No.5133/08.38.001/2026-27 dated September 28, 2026",
+          "prior_roles": [
+            "National Head - Consumer Banking at The Federal Bank Limited",
+            "Group President & Head - Consumer Bank at Kotak Mahindra Group",
+            "Non-Executive Director of Ageas Federal Life Insurance Company Limited"
+          ],
+          "effective_date": "2026-10-12",
+          "direction": "joining",
+          "at_subsidiary": false,
+          "flags": []
+        }
+      ],
+      "flags": [],
+      "severity": "low",
+      "summary": "Virat Sunil Diwanji appointed as Additional Executive Director of Federal Bank effective 2026-10-12 for three years.",
+      "notes": []
+    }
+  }
+}

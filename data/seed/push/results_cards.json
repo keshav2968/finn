@@ -1,0 +1,2882 @@
+{
+  "generated_at": "2026-11-14T20:20:09+05:30",
+  "cards": {
+    "HDFCBANK": {
+      "symbol": "HDFCBANK",
+      "name": "HDFC Bank",
+      "layout": "lender",
+      "basis": "standalone",
+      "screener_view": "standalone",
+      "status": "verified",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "nii",
+          "label": "Net interest income",
+          "main": true,
+          "kind": "amount",
+          "current": 34619.18,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ppop",
+          "label": "Operating profit (PPOP)",
+          "main": true,
+          "kind": "amount",
+          "current": 29483.42,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "provisions",
+          "label": "Provisions",
+          "main": true,
+          "kind": "amount",
+          "current": 3573.62,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 19509.96,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 19510.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 13831.02,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 13831.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = income + other income",
+            "ok": false,
+            "difference": 10.0,
+            "fields": [
+              "total_income",
+              "interest_earned",
+              "other_income"
+            ]
+          },
+          {
+            "check": "PPOP = total income − interest expended − operating expenses",
+            "ok": false,
+            "difference": -10.0,
+            "fields": [
+              "operating_profit_before_provisions",
+              "total_income",
+              "interest_expended",
+              "operating_expenses"
+            ]
+          },
+          {
+            "check": "PBT = PPOP − provisions + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: read net profit as 19,609.96; the statement's own figures give 19,509.96 and screener.in agrees, so that is used (OCR slip)",
+        "Sep 2026: The total income (97,267.62) line as read doesn't match its parts (likely an OCR slip); it isn't used on the card"
+      ],
+      "formula": null,
+      "source": {
+        "filing_id": "ae8b989d-e24d-45bf-8958-f610b3c0e66a",
+        "filing_ids": [
+          "ae8b989d-e24d-45bf-8958-f610b3c0e66a"
+        ],
+        "datetime": "2026-10-17T13:56:35+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f5d5fb37-aa66-401c-85d6-58ccd3982828.pdf",
+        "title": "Board Meeting Outcome for Approval Of Unaudited Standalone And Consolidated Financial Results Of The Bank For The Quarter And Half-Year Ended September 30, 2026",
+        "page": 2,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:14:05+05:30"
+    },
+    "BAJFINANCE": {
+      "symbol": "BAJFINANCE",
+      "name": "Bajaj Finance",
+      "layout": "lender",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "nii",
+          "label": "Net interest income",
+          "main": true,
+          "kind": "amount",
+          "current": -8579.79,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "unchecked",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ppop",
+          "label": "Operating profit (PPOP)",
+          "main": true,
+          "kind": "amount",
+          "current": 8537.2,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "unchecked",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "provisions",
+          "label": "Provisions",
+          "main": true,
+          "kind": "amount",
+          "current": 2166.09,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "unchecked",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 6366.57,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 6367.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 29.45,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 33.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = income + other income",
+            "ok": true
+          },
+          {
+            "check": "PPOP = total income − interest expended − operating expenses",
+            "ok": false,
+            "difference": 8605.46,
+            "fields": [
+              "operating_profit_before_provisions",
+              "total_income",
+              "interest_expended",
+              "operating_expenses"
+            ]
+          },
+          {
+            "check": "PBT = PPOP − provisions + exceptional items",
+            "ok": false,
+            "difference": 2431.31,
+            "fields": [
+              "profit_before_tax",
+              "operating_profit_before_provisions",
+              "provisions",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PPOP = total income − interest expended − operating expenses (off by 8,605.46 in printed units)",
+        "Sep 2026: Statement does not add up: PBT = PPOP − provisions + exceptional items (off by 2,431.31 in printed units)"
+      ],
+      "formula": null,
+      "source": {
+        "filing_id": "35bf242b-58db-4820-9ded-2d759a71d9f8",
+        "filing_ids": [
+          "bef4c126-a01e-4636-9c8b-e50fc1a82879",
+          "c862464b-817a-43bb-b588-6fc0f0f78eb5",
+          "35bf242b-58db-4820-9ded-2d759a71d9f8"
+        ],
+        "datetime": "2026-10-19T17:19:48+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=229c460f-9cda-4732-972f-847519b40426.pdf",
+        "title": "Unaudited Standalone And Consolidated Financial Results For The Quarter And Half Year Ended 30 September 2026",
+        "page": 14,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:15:07+05:30"
+    },
+    "FEDERALBNK": {
+      "symbol": "FEDERALBNK",
+      "name": "Federal Bank",
+      "layout": "lender",
+      "basis": "standalone",
+      "screener_view": "standalone",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "nii",
+          "label": "Net interest income",
+          "main": true,
+          "kind": "amount",
+          "current": 3153.44,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ppop",
+          "label": "Operating profit (PPOP)",
+          "main": true,
+          "kind": "amount",
+          "current": 2225.37,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "provisions",
+          "label": "Provisions",
+          "main": true,
+          "kind": "amount",
+          "current": 342.19,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 1386.05,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 1386.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 1490.44,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 1490.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = income + other income",
+            "ok": true
+          },
+          {
+            "check": "PPOP = total income − interest expended − operating expenses",
+            "ok": false,
+            "difference": -217404.0,
+            "fields": [
+              "operating_profit_before_provisions",
+              "total_income",
+              "interest_expended",
+              "operating_expenses"
+            ]
+          },
+          {
+            "check": "PBT = PPOP − provisions + exceptional items",
+            "ok": false,
+            "difference": -4.0,
+            "fields": [
+              "profit_before_tax",
+              "operating_profit_before_provisions",
+              "provisions",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: read interest earned as 72,098.00; the statement's own figures give 772,098.00 and screener.in agrees, so that is used (OCR slip)",
+        "Sep 2026: read net profit as 134,609.00; the statement's own figures give 138,605.00 and screener.in agrees, so that is used (OCR slip)",
+        "Sep 2026: Statement does not add up: PPOP = total income − interest expended − operating expenses (off by 217,404.00 in printed units)",
+        "Sep 2026: Statement does not add up: PBT = PPOP − provisions + exceptional items (off by 4.00 in printed units)"
+      ],
+      "formula": null,
+      "source": {
+        "filing_id": "1c1b42c9-0890-4ff8-ae73-4f1616827fb9",
+        "filing_ids": [
+          "1c1b42c9-0890-4ff8-ae73-4f1616827fb9",
+          "8b33a336-9c0d-4ee4-8bd9-7d67efc8ad47"
+        ],
+        "datetime": "2026-10-16T13:24:05+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b85f447-8a28-4d54-803a-3a63a796dc26.pdf",
+        "title": "Approval Of Unaudited Financial Results For The Quarter And Half Year Ended September 30, 2026",
+        "page": 4,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:16:09+05:30"
+    },
+    "LT": {
+      "symbol": "LT",
+      "name": "Larsen & Toubro",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 78749.94,
+          "previous": 67941.74,
+          "year_ago": 67983.53,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 78750.0,
+            "previous": 67942.0,
+            "year_ago": 67984.0
+          },
+          "qoq_pct": 15.9,
+          "yoy_pct": 15.8
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 6844.65,
+          "previous": 6116.48,
+          "year_ago": 6806.41,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "mismatch"
+          },
+          "screener": {
+            "current": 8814.0,
+            "previous": 8149.0,
+            "year_ago": 8513.0
+          },
+          "qoq_pct": 11.9,
+          "yoy_pct": 0.6
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 8.69,
+          "previous": 9.0,
+          "year_ago": 10.01,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "mismatch"
+          },
+          "screener": {},
+          "qoq_pp": -0.3,
+          "yoy_pp": -1.3
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 7641.06,
+          "previous": 6922.26,
+          "year_ago": 6336.11,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 7641.0,
+            "previous": 6922.0,
+            "year_ago": 6336.0
+          },
+          "qoq_pct": 10.4,
+          "yoy_pct": 20.6
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 5915.15,
+          "previous": 4982.85,
+          "year_ago": 4687.09,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 5949.0,
+            "previous": 4988.0,
+            "year_ago": 4678.0
+          },
+          "qoq_pct": 18.7,
+          "yoy_pct": 26.2
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 2306.26,
+          "previous": 2376.73,
+          "year_ago": 1384.28,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 2306.0,
+            "previous": 2377.0,
+            "year_ago": 1384.0
+          },
+          "qoq_pct": -3.0,
+          "yoy_pct": 66.6
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": 1722.44,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 1,722.44 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "84f672d2-60a7-4cef-adec-3711a9c76668",
+        "filing_ids": [
+          "84f672d2-60a7-4cef-adec-3711a9c76668",
+          "a73ed781-aabf-4244-bf6c-c44c2668e94f",
+          "ff19303b-925a-4392-9219-6125d7ea71f7"
+        ],
+        "datetime": "2026-10-27T17:23:45+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be28659d-c65e-4500-917e-02ef891caee6.pdf",
+        "title": "Outcome Of Board Meeting Of Larsen & Toubro Limited Held On October 27, 2026",
+        "page": 11,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:17:12+05:30"
+    },
+    "POLYCAB": {
+      "symbol": "POLYCAB",
+      "name": "Polycab India",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "verified",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 9898.9,
+          "previous": 8209.73,
+          "year_ago": 6477.21,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 9899.0,
+            "previous": 8210.0,
+            "year_ago": 6477.0
+          },
+          "qoq_pct": 20.6,
+          "yoy_pct": 52.8
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 1422.5,
+          "previous": 1136.2,
+          "year_ago": 1020.75,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 1422.0,
+            "previous": 1136.0,
+            "year_ago": 1021.0
+          },
+          "qoq_pct": 25.2,
+          "yoy_pct": 39.4
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 14.37,
+          "previous": 13.84,
+          "year_ago": 15.76,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": 0.5,
+          "yoy_pp": -1.4
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 1306.22,
+          "previous": 1058.22,
+          "year_ago": 921.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 1306.0,
+            "previous": 1058.0,
+            "year_ago": 921.0
+          },
+          "qoq_pct": 23.4,
+          "yoy_pct": 41.8
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 990.0,
+          "previous": 796.65,
+          "year_ago": 692.96,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 990.0,
+            "previous": 797.0,
+            "year_ago": 693.0
+          },
+          "qoq_pct": 24.3,
+          "yoy_pct": 42.9
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 88.37,
+          "previous": 104.92,
+          "year_ago": 45.43,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 88.0,
+            "previous": 105.0,
+            "year_ago": 45.0
+          },
+          "qoq_pct": -15.8,
+          "yoy_pct": 94.5
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "880e99bc-b13a-435b-901c-3b2bee137437",
+        "filing_ids": [
+          "98f8755d-b964-4fd1-8ded-163dca00bdcd",
+          "880e99bc-b13a-435b-901c-3b2bee137437",
+          "86eb8d0a-7bb5-424c-9bd3-dd66a20ac450",
+          "71e9eb0f-581f-462a-b7e6-8b3c2f5556e7",
+          "e015caf8-728c-49ad-86d6-5008e2714ee0"
+        ],
+        "datetime": "2026-10-15T12:58:41+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ac93ea0-d4d1-4b85-8849-14a19e0dcceb.pdf",
+        "title": "Unaudited Financial Results For The Quarter And Half Year Ended 30Th September 2026",
+        "page": 4,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:18:15+05:30"
+    },
+    "ELECON": {
+      "symbol": "ELECON",
+      "name": "Elecon Engineering",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 638.94,
+          "previous": 520.56,
+          "year_ago": 578.13,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 639.0,
+            "previous": 521.0,
+            "year_ago": 578.0
+          },
+          "qoq_pct": 22.7,
+          "yoy_pct": 10.5
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 147.9,
+          "previous": 109.12,
+          "year_ago": 125.64,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 148.0,
+            "previous": 109.0,
+            "year_ago": 126.0
+          },
+          "qoq_pct": 35.5,
+          "yoy_pct": 17.7
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 23.15,
+          "previous": 20.96,
+          "year_ago": 21.73,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": 2.2,
+          "yoy_pp": 1.4
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 124.76,
+          "previous": 93.16,
+          "year_ago": 112.99,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 125.0,
+            "previous": 93.0,
+            "year_ago": 113.0
+          },
+          "qoq_pct": 33.9,
+          "yoy_pct": 10.4
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 96.35,
+          "previous": 70.35,
+          "year_ago": 87.72,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 96.0,
+            "previous": 70.0,
+            "year_ago": 88.0
+          },
+          "qoq_pct": 37.0,
+          "yoy_pct": 9.8
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 19.79,
+          "previous": 21.91,
+          "year_ago": 18.32,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 20.0,
+            "previous": 22.0,
+            "year_ago": 18.0
+          },
+          "qoq_pct": -9.7,
+          "yoy_pct": 8.0
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -8108.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": 2069.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 8,108.00 in printed units)",
+        "Jun 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 2,069.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "2cfdbd7a-d31a-46bd-a2a5-a1a760ff294e",
+        "filing_ids": [
+          "2cfdbd7a-d31a-46bd-a2a5-a1a760ff294e",
+          "bd5237b6-b91e-4c21-a149-3a7b4b80a5f0",
+          "4c9db6cd-d89f-4df5-b844-f5662a68d452"
+        ],
+        "datetime": "2026-10-14T13:23:37+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c4c6a50-fb3e-4c64-8b43-d2f0b5e2b963.pdf",
+        "title": "Financial Results As On 30.09.2026",
+        "page": 9,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:19:18+05:30"
+    },
+    "HINDUNILVR": {
+      "symbol": "HINDUNILVR",
+      "name": "Hindustan Unilever",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 8037.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 18226.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 4036.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 4089.0,
+            "previous": 3947.0,
+            "year_ago": 3782.0
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 50.22,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pp": null,
+          "yoy_pp": null
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 3814.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 3814.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 5476.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 2796.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 147.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 162.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": false,
+            "difference": 202.0,
+            "fields": [
+              "total_income",
+              "revenue_from_operations",
+              "other_income"
+            ]
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": false,
+            "difference": 1834.0,
+            "fields": [
+              "profit_before_exceptional_and_tax",
+              "total_income",
+              "total_expenses"
+            ]
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -214.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": 644.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: total income = revenue + other income (off by 202.00 in printed units)",
+        "Sep 2026: Statement does not add up: profit before exceptional items = total income − total expenses (off by 1,834.00 in printed units)",
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 214.00 in printed units)",
+        "Sep 2026: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 644.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "826c6b94-ea78-4f14-a059-1f1c9c9354d5",
+        "filing_ids": [
+          "c128be17-be92-40ed-83f1-5a88301c5bfa",
+          "826c6b94-ea78-4f14-a059-1f1c9c9354d5",
+          "f9216c1f-c59f-43ae-b14a-b567b315870f"
+        ],
+        "datetime": "2026-10-28T09:42:42+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0d1483f-551a-46d8-ade7-7a390baacc1c.pdf",
+        "title": "Results - Financial Results For SEP 30,2026",
+        "page": 7,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:20:21+05:30"
+    },
+    "TITAN": {
+      "symbol": "TITAN",
+      "name": "Titan Company",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 21285.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 20614.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 3654.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 2983.0,
+            "previous": 2890.0,
+            "year_ago": 1875.0
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 17.17,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pp": null,
+          "yoy_pp": null
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 3000.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 3000.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 2393.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 2393.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 145.0,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 816.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -103.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": false,
+            "difference": -6.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "total_tax"
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 103.00 in printed units)",
+        "Sep 2026: Statement does not add up: net profit = PBT − tax (off by 6.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "ee6123a8-c373-465b-9347-34adbc250091",
+        "filing_ids": [
+          "ee6123a8-c373-465b-9347-34adbc250091",
+          "0a5a3742-0860-4183-8398-4af9b686b08f",
+          "f812f3fb-5c87-411c-b6b5-0a8a027d1968"
+        ],
+        "datetime": "2026-11-05T17:02:10+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86009cba-ca03-4d35-bad8-b1988cfcff13.pdf",
+        "title": "Outcome Of The Board Meeting In Accordance With The SEBI (Listing Obligations And Disclosure Requirements) Regulation, 2015",
+        "page": 10,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:21:23+05:30"
+    },
+    "ETERNAL": {
+      "symbol": "ETERNAL",
+      "name": "Eternal (Zomato + Blinkit)",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "verified",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 24138.0,
+          "previous": 20211.0,
+          "year_ago": 13590.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 24138.0,
+            "previous": 20211.0,
+            "year_ago": 13590.0
+          },
+          "qoq_pct": 19.4,
+          "yoy_pct": 77.6
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 752.0,
+          "previous": 594.0,
+          "year_ago": 239.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 752.0,
+            "previous": 594.0,
+            "year_ago": 239.0
+          },
+          "qoq_pct": 26.6,
+          "yoy_pct": 214.6
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 3.12,
+          "previous": 2.94,
+          "year_ago": 1.76,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": 0.2,
+          "yoy_pp": 1.4
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 323.0,
+          "previous": 272.0,
+          "year_ago": 129.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 323.0,
+            "previous": 272.0,
+            "year_ago": 129.0
+          },
+          "qoq_pct": 18.8,
+          "yoy_pct": 150.4
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 125.0,
+          "previous": 92.0,
+          "year_ago": 65.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 125.0,
+            "previous": 92.0,
+            "year_ago": 65.0
+          },
+          "qoq_pct": 35.9,
+          "yoy_pct": 92.3
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 351.0,
+          "previous": 375.0,
+          "year_ago": 352.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 351.0,
+            "previous": 375.0,
+            "year_ago": 352.0
+          },
+          "qoq_pct": -6.4,
+          "yoy_pct": -0.3
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": -39.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": 62.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Jun 2026: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 39.00 in printed units)",
+        "Sep 2025: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 62.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "4f43fab8-8509-4b73-a036-8f1267c8a4b0",
+        "filing_ids": [
+          "4f43fab8-8509-4b73-a036-8f1267c8a4b0",
+          "0901dc87-4137-4fd5-9433-e03acdfdb125",
+          "111bace2-2b0a-4176-a3cb-d133c0a86645"
+        ],
+        "datetime": "2026-10-21T15:31:19+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5e5ee67c-fdd2-46d5-9390-e8e4a018c5b2.pdf",
+        "title": "Results For The Quarter And Half Year Ended September 30, 2026",
+        "page": 11,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:21:30+05:30"
+    },
+    "INFY": {
+      "symbol": "INFY",
+      "name": "Infosys",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 49244.0,
+          "previous": 48211.0,
+          "year_ago": 44490.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 49244.0,
+            "previous": 48211.0,
+            "year_ago": 44490.0
+          },
+          "qoq_pct": 2.1,
+          "yoy_pct": 10.7
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 11689.0,
+          "previous": 11409.0,
+          "year_ago": 10535.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 11689.0,
+            "previous": 11409.0,
+            "year_ago": 10535.0
+          },
+          "qoq_pct": 2.5,
+          "yoy_pct": 11.0
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 23.74,
+          "previous": 23.66,
+          "year_ago": 23.68,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": 0.1,
+          "yoy_pp": 0.1
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 11063.0,
+          "previous": 11028.0,
+          "year_ago": 10229.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 11063.0,
+            "previous": 11028.0,
+            "year_ago": 10229.0
+          },
+          "qoq_pct": 0.3,
+          "yoy_pct": 8.2
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 7838.0,
+          "previous": 7775.0,
+          "year_ago": 7375.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 7838.0,
+            "previous": 7775.0,
+            "year_ago": 7375.0
+          },
+          "qoq_pct": 0.8,
+          "yoy_pct": 6.3
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 848.0,
+          "previous": 984.0,
+          "year_ago": 982.0,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {
+            "current": 848.0,
+            "previous": 984.0,
+            "year_ago": 982.0
+          },
+          "qoq_pct": -13.8,
+          "yoy_pct": -13.6
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -1289.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Unit taken as crore (page said unknown); it matches screener.in",
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 1,289.00 in printed units)",
+        "Unreadable in the PDF, taken from screener.in: other income"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "50d31412-9909-4254-b5da-52df1d25080e",
+        "filing_ids": [
+          "bbfbd1a4-e4d1-47d2-a70b-69956f4e84f9",
+          "50d31412-9909-4254-b5da-52df1d25080e",
+          "3ed442c3-8be6-4770-85e4-3986fc47f16a"
+        ],
+        "datetime": "2026-10-23T16:08:56+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=26c12463-d44e-4050-bd47-b53cc294b4e0.pdf",
+        "title": "Financial Results For The Quarter And Half Year Ended September 30, 2026 And Declaration Of Interim Dividend",
+        "page": 18,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T19:22:33+05:30"
+    },
+    "KPITTECH": {
+      "symbol": "KPITTECH",
+      "name": "KPIT Technologies",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "screener_only",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 1691.0,
+          "previous": 1675.0,
+          "year_ago": 1588.0,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {},
+          "qoq_pct": 1.0,
+          "yoy_pct": 6.5
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 267.0,
+          "previous": 257.0,
+          "year_ago": 298.0,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {},
+          "qoq_pct": 3.9,
+          "yoy_pct": -10.4
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 15.79,
+          "previous": 15.34,
+          "year_ago": 18.77,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {},
+          "qoq_pp": 0.4,
+          "yoy_pp": -3.0
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 168.0,
+          "previous": 160.0,
+          "year_ago": 231.0,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {},
+          "qoq_pct": 5.0,
+          "yoy_pct": -27.3
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 121.0,
+          "previous": 116.0,
+          "year_ago": 169.0,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "screener"
+          },
+          "screener": {},
+          "qoq_pct": 4.3,
+          "yoy_pct": -28.4
+        }
+      ],
+      "statement_checks": {},
+      "notes": [
+        "Could not read the results PDF; figures from screener.in",
+        "extraction failed: groq/openai/gpt-oss-120b: network error: ConnectionError; gemini/gemini-3.8-flash: HTTP 503: This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "dee630d4-e8e3-4121-a8b4-08bfdb2e0f1c",
+        "filing_ids": [
+          "dee630d4-e8e3-4121-a8b4-08bfdb2e0f1c",
+          "0eca8e8e-9c7d-4df7-b059-f62d6ec77512",
+          "3de7c5ad-7775-470e-84f0-0dff9d585701"
+        ],
+        "datetime": "2026-10-28T12:52:56+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d52f59-f997-494d-918e-7e0d4d3eda65.pdf",
+        "title": "Financial Results For September 30, 2026",
+        "page": 9,
+        "scanned": false
+      },
+      "built_at": "2026-11-14T20:17:52+05:30"
+    },
+    "SUNPHARMA": {
+      "symbol": "SUNPHARMA",
+      "name": "Sun Pharmaceutical",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 16198.71,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 16199.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 4743.89,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 4744.0,
+            "previous": 4418.0,
+            "year_ago": 4527.0
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 29.29,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pp": null,
+          "yoy_pp": null
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 3159.37,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 3159.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 1988.53,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 1995.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 517.32,
+          "previous": null,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "missing",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": -752.0,
+            "previous": null,
+            "year_ago": null
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -25311.5,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": -130.5,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 25,311.50 in printed units)",
+        "Sep 2026: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 130.50 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "7bbcaf67-e404-4ffb-b7fd-07ff385fdb0a",
+        "filing_ids": [
+          "7bbcaf67-e404-4ffb-b7fd-07ff385fdb0a"
+        ],
+        "datetime": "2026-10-30T14:14:55+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=658231ad-7203-4355-be99-2a162b722c0c.pdf",
+        "title": "Unaudited Financial Results For The Quarter And Half Year Ended 30 September 2026",
+        "page": 12,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T20:18:00+05:30"
+    },
+    "MARKSANS": {
+      "symbol": "MARKSANS",
+      "name": "Marksans Pharma",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 940.2,
+          "previous": 840.8,
+          "year_ago": null,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 940.0,
+            "previous": 841.0,
+            "year_ago": null
+          },
+          "qoq_pct": 11.8,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": -651.3,
+          "previous": -287.8,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 214.0,
+            "previous": 213.0,
+            "year_ago": 144.0
+          },
+          "qoq_pct": null,
+          "yoy_pct": null
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": -69.27,
+          "previous": -34.23,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "missing"
+          },
+          "screener": {},
+          "qoq_pp": -35.0,
+          "yoy_pp": null
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 194.0,
+          "previous": 207.0,
+          "year_ago": null,
+          "check": {
+            "current": "screener",
+            "previous": "screener",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 194.0,
+            "previous": 207.0,
+            "year_ago": null
+          },
+          "qoq_pct": -6.3,
+          "yoy_pct": null
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 302.9,
+          "previous": 157.3,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 144.0,
+            "previous": 159.0,
+            "year_ago": null
+          },
+          "qoq_pct": 92.6,
+          "yoy_pct": null
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 884.3,
+          "previous": 526.8,
+          "year_ago": null,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "missing"
+          },
+          "screener": {
+            "current": 18.0,
+            "previous": 25.0,
+            "year_ago": null
+          },
+          "qoq_pct": 67.9,
+          "yoy_pct": null
+        }
+      ],
+      "statement_checks": {
+        "current": [],
+        "previous": []
+      },
+      "notes": [
+        "Unreadable in the PDF, taken from screener.in: depreciation, finance costs, profit before tax"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "090b9fc9-b448-44be-82a0-754fc38c6c9a",
+        "filing_ids": [
+          "3b74e82f-f6f0-4897-b801-15ed146e4cee",
+          "090b9fc9-b448-44be-82a0-754fc38c6c9a",
+          "47f93c3a-4270-4c89-bbde-1941323c76df"
+        ],
+        "datetime": "2026-11-04T13:35:35+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=04bf1b3a-3a92-4ee0-bc5d-7584264430ef.pdf",
+        "title": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+        "page": 4,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T20:18:07+05:30"
+    },
+    "RELIANCE": {
+      "symbol": "RELIANCE",
+      "name": "Reliance Industries",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 332861.0,
+          "previous": 311850.0,
+          "year_ago": 258898.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "mismatch"
+          },
+          "screener": {
+            "current": 330601.0,
+            "previous": 309468.0,
+            "year_ago": 254623.0
+          },
+          "qoq_pct": 6.7,
+          "yoy_pct": 28.6
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 56616.0,
+          "previous": 47517.0,
+          "year_ago": 45885.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 56616.0,
+            "previous": 47517.0,
+            "year_ago": 45885.0
+          },
+          "qoq_pct": 19.1,
+          "yoy_pct": 23.4
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 17.01,
+          "previous": 15.24,
+          "year_ago": 17.72,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": 1.8,
+          "yoy_pp": -0.7
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": 38613.0,
+          "previous": 30630.0,
+          "year_ago": 29124.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 38613.0,
+            "previous": 30630.0,
+            "year_ago": 29124.0
+          },
+          "qoq_pct": 26.1,
+          "yoy_pct": 32.6
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": 25548.0,
+          "previous": 20946.0,
+          "year_ago": 18165.0,
+          "check": {
+            "current": "mismatch",
+            "previous": "mismatch",
+            "year_ago": "mismatch"
+          },
+          "screener": {
+            "current": 29550.0,
+            "previous": 23196.0,
+            "year_ago": 22092.0
+          },
+          "qoq_pct": 22.0,
+          "yoy_pct": 40.6
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 5793.0,
+          "previous": 6550.0,
+          "year_ago": 4482.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 5793.0,
+            "previous": 6550.0,
+            "year_ago": 4482.0
+          },
+          "qoq_pct": -11.6,
+          "yoy_pct": 29.3
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": -3702.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ],
+        "previous": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": -2055.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "total income = revenue + other income",
+            "ok": true
+          },
+          {
+            "check": "net profit = PBT − current tax − deferred tax",
+            "ok": false,
+            "difference": -3981.0,
+            "fields": [
+              "net_profit",
+              "profit_before_tax",
+              "current_tax",
+              "deferred_tax"
+            ]
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 3,702.00 in printed units)",
+        "Jun 2026: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 2,055.00 in printed units)",
+        "Sep 2025: Statement does not add up: net profit = PBT − current tax − deferred tax (off by 3,981.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "3d90a81b-52f2-427a-b1f7-27f545cf1ca5",
+        "filing_ids": [
+          "927accc7-0fc2-4b9e-936e-1b94594cf77c",
+          "3d90a81b-52f2-427a-b1f7-27f545cf1ca5",
+          "b8e02617-92c5-4f96-918b-15d92b0d6d51",
+          "009ca8ed-52dc-481d-92f1-291961ea16e0"
+        ],
+        "datetime": "2026-10-30T19:38:05+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=880087f6-7ecc-40a9-8cac-de48d4616b25.pdf",
+        "title": "Unaudited Financial Results (Consolidated And Standalone) For The Quarter And Half Year Ended September 30, 2026.",
+        "page": 10,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T20:19:05+05:30"
+    },
+    "TATACHEM": {
+      "symbol": "TATACHEM",
+      "name": "Tata Chemicals",
+      "layout": "standard",
+      "basis": "consolidated",
+      "screener_view": "consolidated",
+      "status": "mismatch",
+      "periods": {
+        "current": "Sep 2026",
+        "previous": "Jun 2026",
+        "year_ago": "Sep 2025"
+      },
+      "unit": "₹ crore",
+      "metrics": [
+        {
+          "key": "revenue",
+          "label": "Revenue",
+          "main": true,
+          "kind": "amount",
+          "current": 4177.0,
+          "previous": 4255.0,
+          "year_ago": 3877.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 4177.0,
+            "previous": 4255.0,
+            "year_ago": 3877.0
+          },
+          "qoq_pct": -1.8,
+          "yoy_pct": 7.7
+        },
+        {
+          "key": "ebitda",
+          "label": "EBITDA",
+          "main": true,
+          "kind": "amount",
+          "current": 381.0,
+          "previous": 555.0,
+          "year_ago": 537.0,
+          "check": {
+            "current": "verified",
+            "previous": "mismatch",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": 381.0,
+            "previous": 538.0,
+            "year_ago": 537.0
+          },
+          "qoq_pct": -31.4,
+          "yoy_pct": -29.1
+        },
+        {
+          "key": "ebitda_margin",
+          "label": "EBITDA margin %",
+          "main": false,
+          "kind": "margin",
+          "current": 9.12,
+          "previous": 13.04,
+          "year_ago": 13.85,
+          "check": {
+            "current": "verified",
+            "previous": "mismatch",
+            "year_ago": "verified"
+          },
+          "screener": {},
+          "qoq_pp": -3.9,
+          "yoy_pp": -4.7
+        },
+        {
+          "key": "pbt",
+          "label": "PBT",
+          "main": true,
+          "kind": "amount",
+          "current": -6.0,
+          "previous": 110.0,
+          "year_ago": 236.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": -6.0,
+            "previous": 110.0,
+            "year_ago": 236.0
+          },
+          "qoq_pct": -105.5,
+          "yoy_pct": -102.5
+        },
+        {
+          "key": "pat",
+          "label": "PAT",
+          "main": true,
+          "kind": "amount",
+          "current": -50.0,
+          "previous": 60.0,
+          "year_ago": 154.0,
+          "check": {
+            "current": "verified",
+            "previous": "verified",
+            "year_ago": "verified"
+          },
+          "screener": {
+            "current": -50.0,
+            "previous": 60.0,
+            "year_ago": 154.0
+          },
+          "qoq_pct": -183.3,
+          "yoy_pct": -132.5
+        },
+        {
+          "key": "other_income",
+          "label": "Other income",
+          "main": false,
+          "kind": "amount",
+          "current": 95.0,
+          "previous": 56.0,
+          "year_ago": 138.0,
+          "check": {
+            "current": "mismatch",
+            "previous": "verified",
+            "year_ago": "mismatch"
+          },
+          "screener": {
+            "current": 115.0,
+            "previous": 56.0,
+            "year_ago": 128.0
+          },
+          "qoq_pct": 69.6,
+          "yoy_pct": -31.2
+        }
+      ],
+      "statement_checks": {
+        "current": [
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": 20.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "previous": [
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": -17.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ],
+        "year_ago": [
+          {
+            "check": "profit before exceptional items = total income − total expenses",
+            "ok": true
+          },
+          {
+            "check": "PBT = profit before exceptional items + associates + exceptional items",
+            "ok": false,
+            "difference": 55.0,
+            "fields": [
+              "profit_before_tax",
+              "profit_before_exceptional_and_tax",
+              "share_of_associates",
+              "exceptional_items"
+            ]
+          },
+          {
+            "check": "net profit = PBT − tax",
+            "ok": true
+          }
+        ]
+      },
+      "notes": [
+        "Sep 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 20.00 in printed units)",
+        "Jun 2026: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 17.00 in printed units)",
+        "Sep 2025: Statement does not add up: PBT = profit before exceptional items + associates + exceptional items (off by 55.00 in printed units)"
+      ],
+      "formula": "PBT before exceptional items + finance costs + depreciation − other income",
+      "source": {
+        "filing_id": "56e81a32-8316-4ec5-9d44-ed1a3269123c",
+        "filing_ids": [
+          "56e81a32-8316-4ec5-9d44-ed1a3269123c",
+          "aa712c47-e44b-4a89-a655-63760e8f47ee",
+          "0fa4ea01-e6ef-47c0-853b-d5d63a55d9e3",
+          "3f995c34-999a-4e07-bc03-5b25b59f126a"
+        ],
+        "datetime": "2026-11-07T17:18:59+05:30",
+        "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca66259a-3c93-427e-8c77-54f45ac622d8.pdf",
+        "title": "Financial Results For The Second Quarter And Half-Year Ended September 30, 2026",
+        "page": 6,
+        "scanned": false,
+        "model": "groq/openai/gpt-oss-120b"
+      },
+      "built_at": "2026-11-14T20:20:09+05:30"
+    }
+  }
+}

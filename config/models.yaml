@@ -1,0 +1,65 @@
+# LLM routing. Every model call goes through llm/router.py, which reads this file:
+# change providers or models here, not in code. `python scripts/llm_check.py --ping`
+# makes one tiny call per model to confirm each name works for your keys.
+#
+# Gemini 2.5 models are closed to new API users (Nov 2026); 3.5 Flash-Lite and 3.8 Flash
+# are Google's recommended replacements.
+#
+# Each task has a chain: the first entry is tried first, the next ones are fallbacks.
+# The router moves down the chain when a provider has no API key, can't take the
+# input (a PDF, or more tokens than its per-minute budget), errors, is rate-limited
+# for longer than `max_wait_seconds`, has used its daily budget, or returns JSON that
+# still fails the schema after one repair attempt.
+
+providers:
+  groq:
+    kind: openai_compatible
+    base_url: https://api.groq.com/openai/v1
+    api_key_env: GROQ_API_KEY
+    pdf_input: false
+  gemini:
+    kind: gemini
+    base_url: https://generativelanguage.googleapis.com/v1beta
+    api_key_env: GOOGLE_API_KEY
+    pdf_input: true          # can read a scanned PDF directly
+
+# Free-tier budgets per model. The router waits instead of exceeding tokens or
+# requests per minute, and skips the model once its tokens per day are used up
+# (counted from data/seed/llm_usage.jsonl).
+limits:
+  groq/openai/gpt-oss-20b:      {tpm: 8000, rpm: 30, tpd: 200000}
+  groq/openai/gpt-oss-120b:     {tpm: 8000, rpm: 30, tpd: 200000}
+  # Gemini 2.5 is closed to new API keys; these are the 3.x models Google recommends
+  # for new projects. Budgets are deliberately below the published free tier.
+  gemini/gemini-3.5-flash-lite: {tpm: 250000, rpm: 15, tpd: 1000000}
+  gemini/gemini-3.8-flash:      {tpm: 250000, rpm: 10, tpd: 1000000}
+
+max_wait_seconds: 65         # longest the router sleeps for a rate limit before falling back
+timeout_seconds: 90
+
+tasks:
+  # Filings the rules could not place: short input (headline + first PDF pages).
+  classify_filing:
+    temperature: 0
+    max_output_tokens: 1200
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
+      - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
+  # Results PDFs: only the pages holding the P&L table, a few thousand tokens.
+  extract_results:
+    temperature: 0
+    max_output_tokens: 3000
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-120b,    params: {reasoning_effort: low}}
+      - {provider: gemini, model: gemini-3.8-flash,      params: {thinking_level: low}}
+  # Management-change filings: name, role, direction, reason.
+  extract_management:
+    temperature: 0
+    max_output_tokens: 1500
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
+      - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
+
+paths:
+  cache_dir: data/cache/llm          # responses by content hash (git-ignored)
+  usage_log: data/seed/llm_usage.jsonl  # one line per call, committed: the cost log

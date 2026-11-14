@@ -1,0 +1,231 @@
+# Push-side configuration: filing categories, classifier rules, priority scoring,
+# alert defaults. No tickers here (see portfolio.yaml) and no thresholds in code.
+#
+# Regexes are Python syntax, matched case-insensitively. Single-quote them in YAML
+# so backslashes stay literal; write a literal ' as ''.
+
+# ------------------------------------------------------------------ categories
+# The 17 categories from the challenge reference document, with display labels,
+# base priority scores (0-100) and the reference description (used in the LLM prompt). "notice" is the score for advance notices
+# (board-meeting intimations, "to announce results on ...", record dates).
+categories:
+  results:           {label: "Results",             base: 80, notice: 25,
+                     description: "Quarterly/annual results, the board meeting approving them, results decks and shareholder letters, ads confirming results were published."}
+  "M&A":             {label: "M&A",                 base: 75, notice: 35,
+                     description: "Any acquisition, merger, demerger or joint venture, including investing in a subsidiary or selling a stake in one."}
+  management_change: {label: "Management change",   base: 60, notice: 30,
+                     description: "Any change at the top: a CEO, CFO, MD or director joining, resigning or retiring."}
+  litigation:        {label: "Litigation & regulatory", base: 70, notice: 40,
+                     description: "Lawsuits, regulatory orders, fines, warnings, or insolvency/restructuring proceedings."}
+  fund_raise:        {label: "Fund raise",          base: 55, notice: 30,
+                     description: "Raising money: rights issues, QIPs, preferential allotments, buybacks, or debt like commercial paper."}
+  credit_rating:     {label: "Credit rating",       base: 45, notice: 20,
+                     description: "A rating agency assigning, upgrading, downgrading or reaffirming a credit rating."}
+  pledging:          {label: "Pledging",            base: 65, notice: 30,
+                     description: "A promoter pledging, releasing or changing the pledge status of shares."}
+  insider_trading:   {label: "Insider trading",     base: 40, notice: 15,
+                     description: "A promoter or insider buying or selling their own shares."}
+  capex:             {label: "Capex",               base: 50, notice: 25,
+                     description: "Approving spend on a new plant, facility or capacity expansion."}
+  dividend:          {label: "Dividend",            base: 40, notice: 15,
+                     description: "A cash dividend being declared, with its record date."}
+  bonus_split:       {label: "Bonus / split",       base: 50, notice: 25,
+                     description: "A bonus issue or stock split."}
+  press_release:     {label: "Press release",       base: 30, notice: 15,
+                     description: "General news: order wins, new products, partnerships, rumour clarifications, business updates not covered elsewhere."}
+  # Calls, recordings and transcripts are routine in the feed; transcripts are read on
+  # the research side (screener lists them per company). A big next-day move still lifts one.
+  earnings_call:     {label: "Earnings call",       base: 25, notice: 10,
+                     description: "The investor conference call: notice, transcript or recording."}
+  investor_meetings: {label: "Investor meetings",   base: 10, notice: 5,
+                     description: "Meetings with specific investors or funds, or attending an investor conference."}
+  postal_ballot:     {label: "Postal ballot",       base: 10, notice: 5,
+                     description: "Shareholders voting by postal ballot: the notice and the result."}
+  agm_egm:           {label: "AGM / EGM",           base: 15, notice: 5,
+                     description: "Annual or extraordinary general meeting: the notice and the result."}
+  unclassified:      {label: "Routine",             base: 0,  notice: 0,
+                     description: "Routine, low-relevance paperwork: ESOP allotments, compliance certificates, ESG reports, auditor appointments."}
+
+# ------------------------------------------------------------------ classifier
+# Ordered rules; the first rule whose conditions all hold wins.
+#   subcategory  regex on BSE's subcategory      bse_category  regex on BSE's category
+#   title        regex on the filing title        text          regex on title + detail + more
+#   also         second regex that must match the text
+#   unless       regex that must NOT match the text
+classifier:
+  # LLM answers for leftovers, keyed by filing id. Written by step d; read here.
+  llm_cache: data/seed/push/llm_classifications.json
+  # Score for filings no rule could place, until the LLM classifies them. Just at
+  # "Worth knowing": an unknown filing should be visible, not loud.
+  pending_score: 40
+  # LLM answers below this confidence are ignored: the filing stays visible as Unclassified.
+  llm_min_confidence: 0.5
+  pending_label: "Unclassified"
+  # Advance notices (title only), plus every BSE "Board Meeting / Board Meeting" intimation.
+  notice_title: 'intimation for|to announce|schedule of events|record date|call invite|meet - intimation|- intimation$|will be held|is scheduled|scheduled on'
+  # Same-day pass: a generic "Outcome of Board Meeting" (or "Press release of board
+  # meeting") on a day the company also filed results is part of the results release.
+  # Applies to filings no rule placed, and to those placed only in `override`.
+  context:
+    text: 'outcome of (the )?board meeting|board meeting outcome|press release (of|on|for) (the )?(outcome of )?(the )?board meeting'
+    category: results
+    override: [press_release]
+    window_hours: 24
+
+  rules:
+    # A. BSE subcategories that are unambiguous on their own
+    - {id: sub_auditor,      subcategory: 'auditor',                                   category: unclassified}
+    - {id: sub_results,      subcategory: '^financial results$',                       category: results}
+    # Decks are results only when they are about the quarter; conference decks are investor meetings.
+    - {id: sub_results_deck, subcategory: '^investor presentation$', also: 'quarter|results|half[- ]year|\bq[1-4]\b', category: results}
+    - {id: sub_transcript,   subcategory: '^earnings call transcript$',                category: earnings_call}
+    - {id: sub_credit,       subcategory: '^credit rating$',                           category: credit_rating}
+    - {id: sub_postal,       subcategory: 'postal ballot',                             category: postal_ballot}
+    - {id: sub_agm,          subcategory: '^(agm|egm|annual general meeting|extra-?ordinary general meeting)$', category: agm_egm}
+    - {id: sub_insolvency,   subcategory: 'insolvency|cirp|liquidation|bankruptcy',    category: litigation}
+    - {id: sub_mgmt,         subcategory: 'change in (management|directorate)|retirement|cessation|resignation|appointment of (director|chief|managing|ceo|cfo|md|company secretary|key)', category: management_change}
+    - {id: sub_dividend,     subcategory: '^dividend$',                                category: dividend}
+    - {id: sub_bonus,        subcategory: 'bonus|split|sub-?division',                 category: bonus_split}
+    - {id: sub_mna,          subcategory: 'acquisition|amalgamation|merger|demerger|scheme of arrangement|restructuring|joint venture|disinvestment|divestment|sale or disposal', category: "M&A"}
+    - {id: sub_fund_raise,   subcategory: 'qualified institutional|preferential issue|rights issue|buy ?back|monitoring agency|commercial paper|debenture|\bncds?\b|warrants|fund raising', category: fund_raise}
+    - {id: sub_order,        subcategory: 'award of order|receipt of order|bagging',   category: press_release}
+    - {id: sub_clarification, subcategory: '^clarification$',                          category: press_release}
+    - {id: sub_pledge,       subcategory: 'pledge|encumbrance',                        category: pledging}
+    - {id: sub_routine,      subcategory: '^(newspaper publication|allotment of esop / esps|closure of trading window|certificate under reg\.? ?74 ?\(5\).*|half yearly report.*|loss of share certificates?.*|issue of duplicate.*)$', category: unclassified}
+    - {id: sub_insider,      subcategory: 'reg\.? ?(7|29|31)|sast',                    category: insider_trading}
+
+    # B. Routine paperwork, whatever BSE called it
+    - id: routine_text
+      text: 'newspaper|special window|dematerial|physical shares|\besop\b|\besps\b|employee stock|stock options?\b|stock units|options to (the )?eligible employees|\besg\b|registrar and share transfer|change in (the )?(corporate office )?address|loss of share|duplicate share|voluntary strike[- ]off|secretarial compliance|compliance certificate|certificate pursuant to|investor grievance|trading window|reg(ulation)?\.? ?74 ?\(5\)'
+      unless: 'financial results'
+      category: unclassified
+    - {id: routine_auditor, title: '(statutory|secretarial|internal|cost) auditors?', category: unclassified}
+
+    # C. Keywords on title + detail, most specific first
+    - {id: kw_postal,        text: 'postal ballot|e-?voting',                          category: postal_ballot}
+    - {id: kw_agm,           text: 'annual general meeting|\bagm\b|extra-?ordinary general meeting|\begm\b|scrutini[sz]er', category: agm_egm}
+    # When the title itself names a deal, that is the filing's subject, even if the
+    # detail also mentions an upcoming results meeting.
+    - {id: title_mna,        title: 'initial public offer|\bipo\b|listing of (equity )?shares of|business transfer|disposal of stake|acquisition of|amalgamation|merger|demerger|scheme of arrangement', category: "M&A"}
+    - {id: kw_earnings_call, text: 'earnings (conference )?call|conference call|con-?call|audio recording|call transcript|transcript of', category: earnings_call}
+    - {id: kw_results,       text: 'financial results|financial statements|(un)?audited results|quarterly results|results for (the )?quarter|shareholders?''?s? letter|earnings presentation|analyst presentation|quarterly update|half[- ]yearly report|limited review|to announce .{0,40}results', category: results}
+    - {id: kw_litigation,    text: '\bnclt\b|\bnclat\b|insolvency|\bcirp\b|litigation|lawsuit|show[- ]cause|penalt(y|ies)|\bfined?\b|tribunal|\bcourts?\b|regulatory action|warning letter|form 483|import alert|tax demand|gst demand|demand order|search (and|&) seizure|enforcement directorate', category: litigation}
+    - {id: kw_mgmt,          text: '\b(re-?)?appoint|resign|retire|cessation|step(s|ped)? down|chief (executive|financial|operating|information|technology|risk|compliance)|managing director|whole[- ]?time director|\bceo\b|\bcfo\b|key managerial|senior management|company secretary', category: management_change}
+    - {id: kw_fund_raise,    text: '\bqip\b|qualified institutional|preferential|warrants|rights issue|buy-?back|raising of funds|raise funds|fund ?rais|capital raise|non-?convertible|debentures?|\bncds?\b|commercial paper|medium[- ]term note|\bmtn\b|\bbonds?\b|monitoring agency|private placement', category: fund_raise}
+    - {id: kw_mna,           text: 'acqui(re|sition)|merger|amalgamat|demerger|scheme of arrangement|joint venture|business transfer|slump sale|disposal of (stake|shares)|stake sale|divest|initial public offer|\bipo\b|listing of (equity )?shares of|incorporation of (a )?(wholly[- ]owned )?subsidiary', category: "M&A"}
+    - {id: kw_credit,        text: 'credit rating|ratings? (assigned|reaffirmed|upgraded|downgraded|action)|\bcrisil\b|\bicra\b|care ratings|india ratings|\bfitch\b|moody', unless: '\besg\b', category: credit_rating}
+    - {id: kw_bonus,         text: 'bonus (issue|shares)|stock split|sub-?division of', category: bonus_split}
+    - {id: kw_dividend,      text: 'dividend',                                         category: dividend}
+    - {id: kw_capex,         text: 'capex|capital expenditure|capacity expansion|new (plant|facility|unit|factory)|expansion of .{0,60}(plant|facility|cent(er|re)|capacity|campus)|greenfield|brownfield|commission(ed|ing) of', category: capex}
+    - {id: kw_pledge,        text: 'pledge|encumbrance',                               category: pledging}
+    # Not bare "insider": quarterly business updates cite Reg 8 of the insider-trading rules.
+    - {id: kw_insider,       text: 'reg(ulation)?\.? ?(7\(2\)|29|31)\b|\bsast\b|\bform c\b|promoter (group )?(has )?(bought|sold|acquired|purchased)', unless: 'trading window|regulation 8\b', category: insider_trading}
+    - {id: kw_investor_meet, text: 'analyst|investors?(\(s\))? (meet|conference|day)|institutional investors?|investor conference|non-deal roadshow|\bndr\b|conference', category: investor_meetings}
+    - {id: kw_press,         text: 'press release|media (release|statement)|product launch|\blaunch|partnership|collaborat|award|prize|\bwins?\b|\bbags?\b|\border|contract|clarification|rumou?r|news (item|report|article)|statement on|delivers|\bselects|\bchooses|\bdeploys|goes live|\badopts|moderni[sz]ation|transformation|\bsigns?\b|\bmou\b|memorandum of understanding|expansion|foundation', category: press_release}
+
+    # D. Fallbacks on BSE subcategory when no keyword matched
+    - {id: sub_press_fallback,   subcategory: 'press release|media release',          category: press_release}
+    - {id: sub_meet_fallback,    subcategory: '^(analyst / investor meet|investor presentation)$', category: investor_meetings}
+    - {id: sub_allotment_fallback, subcategory: '^allotment of equity shares$',        category: fund_raise}
+
+# ------------------------------------------------------------------ display
+display:
+  # Titles that say nothing on their own. Cards show BSE's detail line instead
+  # when there is one ("Announcement under Regulation 30 (LODR)-Change in
+  # Management" -> "Re-appointment of Mr. X as Whole-time Director").
+  # Boilerplate opening of a detail line; the card shows what follows it
+  # ("Disclosure under Regulation 30 ... Regulations, 2015 - Change in Managing Director").
+  boilerplate_prefix: '^(disclosure|announcement|intimation|information) under regulations? 30\b.{0,220}?regulations?,? 2015\s*[-–:,]\s*'
+  generic_title: '^(announcement under regulations? 30|disclosure under regulation 30|intimation under|information under regulation 30|board meeting outcome for (the )?(board meeting )?outcome|general updates?$|updates?$)'
+
+# ------------------------------------------------------------------ priority
+tiers:
+  needs_attention: 70   # score >= 70
+  worth_knowing: 40     # 40 <= score < 70; below is Routine (collapsed to a count)
+
+# Text modifiers, applied when the filing's category matches. Each adds `delta`
+# and contributes `reason` to the card's "why this ranks here".
+modifiers:
+  - {category: management_change, text: 'chief (executive|financial|operating)|\bceo\b|\bcfo\b|\bcoo\b|managing director|whole[- ]?time director|executive director|\bchair(man|person)\b|vice[- ]chair', delta: 15, reason: "Top-level role"}
+  - {category: management_change, text: 'chief executive officer|\bmd (&|and) ceo\b|managing director (&|and) (ceo|chief executive)', delta: 10, reason: "CEO change"}
+  - {category: management_change, text: 'resign|cessation|retire|step(s|ped)? down|demise|ceases? to be', delta: 10, reason: "Departure"}
+  - {category: management_change, text: 're-?appoint|re-?designat|continuation', delta: -25, reason: "Re-appointment"}
+  - {category: management_change, text: 'independent director|non-?executive', delta: -15, reason: "Non-executive board seat"}
+  - {category: "M&A", text: 'incorporat(ed|ion of) (a |an )?(new )?(wholly[- ]owned )?(step[- ]down )?subsidiary|voluntary liquidation|striking off', delta: -30, reason: "New or closing subsidiary"}
+  - {category: fund_raise, text: 'warrants|preferential|\bqip\b|qualified institutional|rights issue|buy-?back', delta: 20, reason: "Equity issue or buyback"}
+  - {category: fund_raise, text: 'non-?convertible|debentures?|\bncds?\b|commercial paper|monitoring agency|repayment|redemption', unless: 'warrants|preferential|\bqip\b|rights issue|buy-?back', delta: -40, reason: "Routine debt paperwork"}
+  - {category: credit_rating, text: 'downgrad|negative|watch with', delta: 30, reason: "Downgrade or negative outlook"}
+  - {category: credit_rating, text: 'upgrad', delta: 10, reason: "Upgrade"}
+  - {category: credit_rating, text: 'reaffirm', delta: -20, reason: "Reaffirmed"}
+  - {category: results, text: 'newspaper', delta: -60, reason: "Newspaper ad of results"}
+  - {category: results, text: 'half[- ]yearly report', delta: -40, reason: "Periodic shareholder report"}
+  - {category: press_release, text: 'clarification|rumou?r|news (item|report|article)', delta: 20, reason: "Clarification on news or a rumour"}
+  - {category: press_release, text: '\border|contract|\bbags?\b', delta: 15, reason: "Order or contract"}
+  - {category: press_release, text: 'significant|\blarge\b|\bmega\b|\bmajor\b|ultra-mega', delta: 10, reason: "Described as large"}
+  - {category: litigation, text: 'set aside|dismiss|withdrawn|quash|in (our|its|the company''s) favou?r', delta: -10, reason: "Ruling in the company's favour"}
+  - {category: dividend, text: 'special dividend', delta: 15, reason: "Special dividend"}
+  - {category: insider_trading, text: 'promoter', delta: 15, reason: "Promoter transaction"}
+
+# Market reaction: the first session that could react to the filing (same day if
+# filed before the close, else the next trading day).
+# When several filings share a session (results day), the move is credited to the
+# highest-scoring one only; the others get a note without the points. Advance notices
+# never earn reaction points.
+reaction:
+  market_close_ist: "15:30"
+  move_z: 2.0            # |move| at least this many std-devs of the stock's usual daily move
+  vol_ratio: 2.0         # volume at least this multiple of its 20-day average
+  move_bonus: 15
+  volume_bonus: 10
+  skip_categories: [unclassified, investor_meetings, postal_ballot, agm_egm]
+
+# Repeated filings collapse into one card. Titles are compared with digits, dates
+# and month names removed. For these categories, everything a company files on one
+# day is one card (results PDF + board outcome + deck + shareholder letter), led by
+# the earliest rule-matched filing (the results themselves, not the later press
+# release). Other cards are led by their newest filing.
+grouping:
+  same_day_categories: [results]
+
+digest:
+  default_window_hours: 24
+
+# ------------------------------------------------------------------ alerts
+# Defaults only: the app lets the user change every number and category, and
+# re-evaluates against the stored metrics. Alerts use the same time window as the
+# digest: a session counts if its close (15:30 IST) falls inside the window.
+alerts:
+  price_move_pct: 4.0        # |close-to-close move| >= this
+  volume_ratio: 2.0          # volume >= this x its 20-day average
+  move_z: null               # e.g. 2.5 for volatility-aware alerts; null = off
+  filing_categories: [results, "M&A", management_change, litigation, fund_raise, credit_rating, pledging]
+  # A matching category is not enough: the filing must score at least this to ping.
+  filing_min_score: 60
+
+# ------------------------------------------------------------------ results card
+# Numbers come from the results PDF; the LLM only copies them off the page. Every
+# sum, EBITDA, margin and QoQ/YoY change is computed in Python, and each figure is
+# checked against the statement's own totals and against screener.in.
+results:
+  # A page is a results statement if it scores at least this on P&L line items.
+  min_page_score: 4
+  max_page_chars: 7000          # text sent to the model (~2K tokens; fits Groq's 8K/min)
+  max_scanned_pdf_mb: 15        # a scan bigger than this isn't sent to Gemini; screener fallback
+  # Statement totals vs their parts: printed figures are rounded, so allow this many
+  # printed units of error per term (0.6 = half a unit plus a margin).
+  identity_tolerance_per_term: 0.6
+  # PDF vs screener.in (which rounds to whole crore).
+  screener_tolerance_pct: 1.0
+  screener_tolerance_cr: 1.0
+
+# ------------------------------------------------------------------ management card
+# Everything comes from the filing itself (BSE's text + the PDF). The model copies
+# names, roles, dates and reasons; Python checks each is really in the filing and
+# sets the flags. No web lookups.
+management:
+  max_pdf_pages: 6
+  max_text_chars: 9000          # ~2.3K tokens: fits Groq's 8K/min with the prompt
+  # A resignation whose stated reason matches this is flagged as vague.
+  vague_reason: 'personal|other (professional )?(commitments|opportunities|engagements)|outside (the company|opportunities)|pursue|unavoidable|health|pre-?occupation|family|not (stated|disclosed|given|mentioned)|^none$'
+  # "Leaving mid-quarter": an executive leaving more than this many days from a quarter end.
+  mid_quarter_days: 10

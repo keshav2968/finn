@@ -23,3 +23,7 @@ Thumbs.db
 node_modules/
 .next/
 .vercel/
+
+# Web build output
+web/next-env.d.ts
+web/tsconfig.tsbuildinfo

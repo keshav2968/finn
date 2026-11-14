@@ -40,6 +40,33 @@ jobs:
       - name: Build seed snapshot
         run: python scripts/build_seed.py
 
+      # Classify, rank and alert on the fresh snapshot (no network, no LLM).
+      - name: Build push feed and alerts
+        run: python scripts/build_push.py
+
+      # LLM steps. Add GROQ_API_KEY and GOOGLE_API_KEY as repository secrets; without
+      # them these steps still run and the cards fall back to screener.in figures.
+      - name: Classify filings the rules could not place
+        run: python scripts/classify_pending.py && python scripts/build_push.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        continue-on-error: true
+
+      - name: Build results cards
+        run: python scripts/build_results_cards.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        continue-on-error: true
+
+      - name: Build management cards
+        run: python scripts/build_management_cards.py
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        continue-on-error: true
+
       - name: Commit snapshot
         run: |
           git config user.name "finn-bot"

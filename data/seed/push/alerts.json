@@ -1,0 +1,162 @@
+{
+  "generated_at": "2026-11-14T19:13:59+05:30",
+  "snapshot_at": "2026-11-14T15:06:37+05:30",
+  "window": {
+    "from": "2026-11-07T15:06:37+05:30",
+    "to": "2026-11-14T15:06:37+05:30"
+  },
+  "rules": {
+    "price_move_pct": 4.0,
+    "volume_ratio": 2.0,
+    "move_z": null,
+    "filing_categories": [
+      "results",
+      "M&A",
+      "management_change",
+      "litigation",
+      "fund_raise",
+      "credit_rating",
+      "pledging"
+    ],
+    "filing_min_score": 60
+  },
+  "alerts": [
+    {
+      "id": "ELECON:2026-11-12:price",
+      "type": "price",
+      "symbol": "ELECON",
+      "name": "Elecon Engineering",
+      "date": "2026-11-12",
+      "triggers": [
+        "price_move"
+      ],
+      "reasons": [
+        "Up 5.8% on the day"
+      ],
+      "reason": "Up 5.8% on the day",
+      "severity": "normal",
+      "metrics": {
+        "close": 455.35,
+        "pct_change": 5.82,
+        "vol_ratio": 0.81,
+        "move_z": 1.75
+      }
+    },
+    {
+      "id": "MARKSANS:2026-11-12:price",
+      "type": "price",
+      "symbol": "MARKSANS",
+      "name": "Marksans Pharma",
+      "date": "2026-11-12",
+      "triggers": [
+        "price_move"
+      ],
+      "reasons": [
+        "Up 4.4% on the day"
+      ],
+      "reason": "Up 4.4% on the day",
+      "severity": "normal",
+      "metrics": {
+        "close": 320.0,
+        "pct_change": 4.39,
+        "vol_ratio": 1.53,
+        "move_z": 1.59
+      }
+    },
+    {
+      "id": "BAJFINANCE:9865b7f5-5041-41a3-980c-5aa5206c9fb7:filing",
+      "type": "filing",
+      "symbol": "BAJFINANCE",
+      "name": "Bajaj Finance",
+      "date": "2026-11-11T17:06:59+05:30",
+      "triggers": [
+        "category"
+      ],
+      "reasons": [
+        "Fund raise: Outcome of QIP 2026 - Special Committee Meeting",
+        "Equity issue or buyback"
+      ],
+      "reason": "Fund raise: Outcome of QIP 2026 - Special Committee Meeting",
+      "severity": "high",
+      "filing_id": "9865b7f5-5041-41a3-980c-5aa5206c9fb7",
+      "member_ids": [
+        "9865b7f5-5041-41a3-980c-5aa5206c9fb7"
+      ],
+      "category": "fund_raise",
+      "tier": "needs_attention",
+      "score": 75.0,
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4dc63132-8d0c-4836-b74b-f289525d6384.pdf"
+    },
+    {
+      "id": "FEDERALBNK:2026-11-11:price",
+      "type": "price",
+      "symbol": "FEDERALBNK",
+      "name": "Federal Bank",
+      "date": "2026-11-11",
+      "triggers": [
+        "price_move"
+      ],
+      "reasons": [
+        "Up 5.1% on the day"
+      ],
+      "reason": "Up 5.1% on the day",
+      "severity": "normal",
+      "metrics": {
+        "close": 361.6,
+        "pct_change": 5.09,
+        "vol_ratio": 1.71,
+        "move_z": 3.55
+      }
+    },
+    {
+      "id": "BAJFINANCE:f9a4f2e2-4e74-49fd-a6bd-9df8d6045e71:filing",
+      "type": "filing",
+      "symbol": "BAJFINANCE",
+      "name": "Bajaj Finance",
+      "date": "2026-11-10T12:12:31+05:30",
+      "triggers": [
+        "category"
+      ],
+      "reasons": [
+        "Fund raise: PI 2026 - Special Committee of the Board of Directors of the Company (''Committee'') at its meeting held today i.e., 10 November 2026, has approved the issue of 5,74,25,740 Warrants to Bajaj Finserv Limited, Promoter and holding company, at an issue price of Rs. 1,010 per Warrant, for an amount aggregating to Rs. 57,99,99,97,400 in accordance with the Chapter V of the Securities and Exchange Board of India (Issue of Capital and Disclosure Requirements) Regulations, 2018",
+        "Equity issue or buyback"
+      ],
+      "reason": "Fund raise: PI 2026 - Special Committee of the Board of Directors of the Company (''Committee'') at its meeting held today i.e., 10 November 2026, has approved the issue of 5,74,25,740 Warrants to Bajaj Finserv Limited, Promoter and holding company, at an issue price of Rs. 1,010 per Warrant, for an amount aggregating to Rs. 57,99,99,97,400 in accordance with the Chapter V of the Securities and Exchange Board of India (Issue of Capital and Disclosure Requirements) Regulations, 2018",
+      "severity": "high",
+      "filing_id": "f9a4f2e2-4e74-49fd-a6bd-9df8d6045e71",
+      "member_ids": [
+        "f9a4f2e2-4e74-49fd-a6bd-9df8d6045e71"
+      ],
+      "category": "fund_raise",
+      "tier": "needs_attention",
+      "score": 75.0,
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41e7bb57-172f-4858-a5ac-8c15fe653e81.pdf"
+    },
+    {
+      "id": "TATACHEM:56e81a32-8316-4ec5-9d44-ed1a3269123c:filing",
+      "type": "filing",
+      "symbol": "TATACHEM",
+      "name": "Tata Chemicals",
+      "date": "2026-11-07T17:18:59+05:30",
+      "triggers": [
+        "category"
+      ],
+      "reasons": [
+        "Results: Financial Results For The Second Quarter And Half-Year Ended September 30, 2026"
+      ],
+      "reason": "Results: Financial Results For The Second Quarter And Half-Year Ended September 30, 2026",
+      "severity": "high",
+      "filing_id": "56e81a32-8316-4ec5-9d44-ed1a3269123c",
+      "member_ids": [
+        "56e81a32-8316-4ec5-9d44-ed1a3269123c",
+        "aa712c47-e44b-4a89-a655-63760e8f47ee",
+        "0fa4ea01-e6ef-47c0-853b-d5d63a55d9e3",
+        "3f995c34-999a-4e07-bc03-5b25b59f126a"
+      ],
+      "category": "results",
+      "tier": "needs_attention",
+      "score": 80.0,
+      "pdf_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca66259a-3c93-427e-8c77-54f45ac622d8.pdf"
+    }
+  ]
+}

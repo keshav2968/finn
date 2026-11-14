@@ -1,0 +1,122 @@
+{
+  "note": "LLM classifications for filings no rule could place; keyed by BSE filing id.",
+  "items": {
+    "2384732c-2a87-489a-95a4-d0280b22544b": {
+      "category": "press_release",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Federal Bank discloses that the appeal against a GST penalty of ₹14,95,166.98 has been allowed and the penalty set aside.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:51:34+05:30"
+    },
+    "4f823a1d-90f4-4ad4-8bef-feefd56b2c2b": {
+      "category": "press_release",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Board approved issuing a Letter of Comfort in favor of KPIT Technologies (UK) Limited to enhance factoring facility from GBP 6m to GBP 12m.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:51:35+05:30"
+    },
+    "110969ee-8dfe-4749-b36b-abe25010d3a6": {
+      "category": "M&A",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Hindustan Unilever Limited informs that its subsidiary Minimalist Importation and Trade of Cosmetics LTDA has been voluntarily liquidated effective 8th September 2026, with no impact on operations.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:51:37+05:30"
+    },
+    "202dcf55-6413-407b-8a68-c893a5e089c7": {
+      "category": "press_release",
+      "kind": "event",
+      "confidence": 0.92,
+      "summary": "Intimation under Regulation 30 of SEBI for update on notice to Tata Chemicals Magadi Limited, citing High Court of Kenya order dated Oct 23, 2026.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:52:36+05:30"
+    },
+    "37fec54b-607f-4015-aade-97ef1748ae28": {
+      "category": "management_change",
+      "kind": "event",
+      "confidence": 0.98,
+      "summary": "Re-appointment of Mrs. Lily Vadera as Independent Director for 3 years and resignation of Mr. Kaizad Bharucha, Deputy Managing Director, effective Dec 31, 2026.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:52:38+05:30"
+    },
+    "858af46b-6b76-4818-a624-b3e5881b206f": {
+      "category": "litigation",
+      "kind": "event",
+      "confidence": 0.98,
+      "summary": "Final award by MCIA rejects ₹908 crore claim, directs Tata Chemicals to pay ₹1 crore principal plus interest and costs.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:52:40+05:30"
+    },
+    "4b3fd56d-6c37-4b6b-acdf-88fc4652fdae": {
+      "category": "fund_raise",
+      "kind": "event",
+      "confidence": 0.8,
+      "summary": "Board approved issuance of up to INR 10,000 crore NCDs and resignation of Non‑Executive Director Gautam Doshi.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:53:38+05:30"
+    },
+    "164dfef3-3c91-4246-906a-ed5ba40e98a6": {
+      "category": "litigation",
+      "kind": "notice",
+      "confidence": 0.92,
+      "summary": "Company received a customs order levying a fine of Rs. 18,74,978 and intends to file an appeal.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:53:39+05:30"
+    },
+    "bcbc99f7-3a17-41ab-9c47-13ff4dad20da": {
+      "category": "results",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Intimation of HDFC Bank’s September 2026 quarter financial figures, including advances, deposits, and foreign currency deposits, under SEBI regulations.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:54:38+05:30"
+    },
+    "12313689-7d57-4c50-9dba-f54e45049aec": {
+      "category": "press_release",
+      "kind": "event",
+      "confidence": 0.92,
+      "summary": "Bajaj Finance Limited provides provisional quarterly financial metrics for quarter ended 30 September 2026, including customer franchise, new loans, AUM, and deposits.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:54:40+05:30"
+    },
+    "e9e59de8-0b12-4833-af8e-f03e2ea8bf32": {
+      "category": "unclassified",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Sun Pharmaceutical Industries Limited received shareholder approval on 26 September 2026 to reclassify certain persons from ‘Promoter Group’ to ‘Public’ category.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:54:41+05:30"
+    },
+    "350c99e3-abaf-4e86-b4a9-44a00298346c": {
+      "category": "fund_raise",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "Board of Directors approved a medium term note programme up to USD 500 million and issuance of secured/unsecured bonds under the MTN Programme.",
+      "model": "groq/openai/gpt-oss-20b",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T16:55:39+05:30"
+    },
+    "2eb8bbb4-d15d-40b2-9180-fd145ff02a9a": {
+      "category": "litigation",
+      "kind": "event",
+      "confidence": 0.95,
+      "summary": "The Hon'ble Supreme Court restrained the Government of Gujarat from taking coercive action against the Company regarding land wastewater channels at Mithapur.",
+      "model": "gemini/gemini-3.5-flash-lite",
+      "source": "filing text + PDF",
+      "at": "2026-11-14T18:58:38+05:30"
+    }
+  }
+}

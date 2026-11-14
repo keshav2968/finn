@@ -1,7 +1,9 @@
-# Ingestion (Phase 1). Tested with Python 3.12 and 3.13.
+# Ingestion, push logic and the LLM router. Tested with Python 3.10 and 3.13.
 yfinance>=1.8,<2
 pandas>=2.1
 requests>=2.31
 beautifulsoup4>=4.12
 lxml>=5.0
 PyYAML>=6.0
+jsonschema>=4.18
+pdfplumber>=0.11

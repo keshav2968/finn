@@ -1,0 +1,1191 @@
+{
+ "note": "screener.in quarterly tables (last 6 quarters) from the 14 Nov 2026 seed.",
+ "fundamentals": {
+  "ELECON": {
+   "symbol": "ELECON",
+   "primary_view": "consolidated",
+   "layout": "standard",
+   "views": {
+    "consolidated": {
+     "layout": "standard",
+     "fields": {
+      "quarters": {
+       "revenue": "Sales",
+       "revenue_growth_pct": "YoY Sales growth",
+       "expenses": "Expenses",
+       "operating_profit": "Operating Profit",
+       "opm_pct": "OPM %",
+       "other_income": "Other Income",
+       "interest": "Interest",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Sales": [
+         491.0,
+         578.0,
+         552.0,
+         746.0,
+         521.0,
+         639.0
+        ],
+        "YoY Sales growth": [
+         25.0,
+         14.0,
+         4.0,
+         -7.0,
+         6.0,
+         11.0
+        ],
+        "Expenses": [
+         360.0,
+         452.0,
+         443.0,
+         588.0,
+         411.0,
+         491.0
+        ],
+        "Operating Profit": [
+         130.0,
+         126.0,
+         109.0,
+         158.0,
+         109.0,
+         148.0
+        ],
+        "OPM %": [
+         27.0,
+         22.0,
+         20.0,
+         21.0,
+         21.0,
+         23.0
+        ],
+        "Other Income": [
+         108.0,
+         18.0,
+         19.0,
+         -84.0,
+         22.0,
+         20.0
+        ],
+        "Interest": [
+         6.0,
+         6.0,
+         7.0,
+         6.0,
+         8.0,
+         10.0
+        ],
+        "Depreciation": [
+         25.0,
+         25.0,
+         27.0,
+         27.0,
+         30.0,
+         33.0
+        ],
+        "Profit before tax": [
+         207.0,
+         113.0,
+         94.0,
+         40.0,
+         93.0,
+         125.0
+        ],
+        "Tax %": [
+         15.0,
+         22.0,
+         23.0,
+         85.0,
+         24.0,
+         23.0
+        ],
+        "Net Profit": [
+         175.0,
+         88.0,
+         72.0,
+         6.0,
+         70.0,
+         96.0
+        ],
+        "EPS in Rs": [
+         7.82,
+         3.91,
+         3.21,
+         0.27,
+         3.14,
+         4.29
+        ]
+       },
+       "pct_rows": [
+        "YoY Sales growth",
+        "OPM %",
+        "Tax %"
+       ],
+       "links": {}
+      }
+     }
+    },
+    "standalone": {
+     "layout": "standard",
+     "fields": {
+      "quarters": {
+       "revenue": "Sales",
+       "revenue_growth_pct": "YoY Sales growth",
+       "expenses": "Expenses",
+       "operating_profit": "Operating Profit",
+       "opm_pct": "OPM %",
+       "other_income": "Other Income",
+       "interest": "Interest",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Sales": [
+         410.0,
+         496.0,
+         454.0,
+         656.0,
+         398.0,
+         535.0
+        ],
+        "YoY Sales growth": [
+         40.0,
+         19.0,
+         2.0,
+         -8.0,
+         -3.0,
+         8.0
+        ],
+        "Expenses": [
+         288.0,
+         383.0,
+         359.0,
+         511.0,
+         305.0,
+         414.0
+        ],
+        "Operating Profit": [
+         122.0,
+         113.0,
+         95.0,
+         144.0,
+         93.0,
+         121.0
+        ],
+        "OPM %": [
+         30.0,
+         23.0,
+         21.0,
+         22.0,
+         23.0,
+         23.0
+        ],
+        "Other Income": [
+         174.0,
+         18.0,
+         17.0,
+         15.0,
+         20.0,
+         17.0
+        ],
+        "Interest": [
+         6.0,
+         5.0,
+         6.0,
+         6.0,
+         8.0,
+         10.0
+        ],
+        "Depreciation": [
+         22.0,
+         22.0,
+         24.0,
+         24.0,
+         26.0,
+         29.0
+        ],
+        "Profit before tax": [
+         269.0,
+         104.0,
+         82.0,
+         130.0,
+         79.0,
+         99.0
+        ],
+        "Tax %": [
+         11.0,
+         24.0,
+         25.0,
+         25.0,
+         26.0,
+         25.0
+        ],
+        "Net Profit": [
+         239.0,
+         79.0,
+         62.0,
+         97.0,
+         59.0,
+         75.0
+        ],
+        "EPS in Rs": [
+         10.65,
+         3.52,
+         2.76,
+         4.32,
+         2.61,
+         3.33
+        ]
+       },
+       "pct_rows": [
+        "YoY Sales growth",
+        "OPM %",
+        "Tax %"
+       ],
+       "links": {}
+      }
+     }
+    }
+   }
+  },
+  "INFY": {
+   "symbol": "INFY",
+   "primary_view": "consolidated",
+   "layout": "standard",
+   "views": {
+    "consolidated": {
+     "layout": "standard",
+     "fields": {
+      "quarters": {
+       "revenue": "Sales",
+       "revenue_growth_pct": "YoY Sales growth",
+       "expenses": "Expenses",
+       "operating_profit": "Operating Profit",
+       "opm_pct": "OPM %",
+       "other_income": "Other Income",
+       "interest": "Interest",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Sales": [
+         42279.0,
+         44490.0,
+         45479.0,
+         46402.0,
+         48211.0,
+         49244.0
+        ],
+        "YoY Sales growth": [
+         8.0,
+         9.0,
+         9.0,
+         13.0,
+         14.0,
+         11.0
+        ],
+        "Expenses": [
+         32336.0,
+         33955.0,
+         34845.0,
+         35235.0,
+         36802.0,
+         37555.0
+        ],
+        "Operating Profit": [
+         9943.0,
+         10535.0,
+         10634.0,
+         11167.0,
+         11409.0,
+         11689.0
+        ],
+        "OPM %": [
+         24.0,
+         24.0,
+         23.0,
+         24.0,
+         24.0,
+         24.0
+        ],
+        "Other Income": [
+         1042.0,
+         982.0,
+         -150.0,
+         1159.0,
+         984.0,
+         848.0
+        ],
+        "Interest": [
+         105.0,
+         106.0,
+         100.0,
+         105.0,
+         119.0,
+         115.0
+        ],
+        "Depreciation": [
+         1140.0,
+         1182.0,
+         1155.0,
+         1424.0,
+         1246.0,
+         1359.0
+        ],
+        "Profit before tax": [
+         9740.0,
+         10229.0,
+         9229.0,
+         10797.0,
+         11028.0,
+         11063.0
+        ],
+        "Tax %": [
+         29.0,
+         28.0,
+         28.0,
+         21.0,
+         30.0,
+         29.0
+        ],
+        "Net Profit": [
+         6924.0,
+         7375.0,
+         6666.0,
+         8509.0,
+         7775.0,
+         7838.0
+        ],
+        "EPS in Rs": [
+         16.66,
+         17.73,
+         16.41,
+         20.96,
+         19.15,
+         19.28
+        ]
+       },
+       "pct_rows": [
+        "YoY Sales growth",
+        "OPM %",
+        "Tax %"
+       ],
+       "links": {}
+      }
+     }
+    },
+    "standalone": {
+     "layout": "standard",
+     "fields": {
+      "quarters": {
+       "revenue": "Sales",
+       "revenue_growth_pct": "YoY Sales growth",
+       "expenses": "Expenses",
+       "operating_profit": "Operating Profit",
+       "opm_pct": "OPM %",
+       "other_income": "Other Income",
+       "interest": "Interest",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Sales": [
+         35275.0,
+         36907.0,
+         37996.0,
+         38641.0,
+         39957.0,
+         40719.0
+        ],
+        "YoY Sales growth": [
+         6.0,
+         8.0,
+         9.0,
+         13.0,
+         13.0,
+         10.0
+        ],
+        "Expenses": [
+         26829.0,
+         28059.0,
+         28826.0,
+         29093.0,
+         29996.0,
+         30796.0
+        ],
+        "Operating Profit": [
+         8446.0,
+         8848.0,
+         9170.0,
+         9548.0,
+         9961.0,
+         9923.0
+        ],
+        "OPM %": [
+         24.0,
+         24.0,
+         24.0,
+         25.0,
+         25.0,
+         24.0
+        ],
+        "Other Income": [
+         882.0,
+         2268.0,
+         1131.0,
+         1063.0,
+         874.0,
+         1702.0
+        ],
+        "Interest": [
+         55.0,
+         52.0,
+         45.0,
+         54.0,
+         61.0,
+         58.0
+        ],
+        "Depreciation": [
+         613.0,
+         595.0,
+         585.0,
+         601.0,
+         613.0,
+         662.0
+        ],
+        "Profit before tax": [
+         8660.0,
+         10469.0,
+         9671.0,
+         9956.0,
+         10161.0,
+         10905.0
+        ],
+        "Tax %": [
+         29.0,
+         26.0,
+         24.0,
+         20.0,
+         29.0,
+         28.0
+        ],
+        "Net Profit": [
+         6114.0,
+         7759.0,
+         7363.0,
+         7975.0,
+         7249.0,
+         7893.0
+        ],
+        "EPS in Rs": [
+         14.72,
+         18.68,
+         18.16,
+         19.66,
+         17.87,
+         19.45
+        ]
+       },
+       "pct_rows": [
+        "YoY Sales growth",
+        "OPM %",
+        "Tax %"
+       ],
+       "links": {}
+      }
+     }
+    }
+   }
+  },
+  "HDFCBANK": {
+   "symbol": "HDFCBANK",
+   "primary_view": "standalone",
+   "layout": "lender",
+   "views": {
+    "consolidated": {
+     "layout": "lender",
+     "fields": {
+      "quarters": {
+       "revenue": "Revenue",
+       "revenue_growth_pct": "YoY Revenue growth",
+       "interest_expended": "Interest",
+       "expenses": "Expenses",
+       "financing_profit": "Financing Profit",
+       "financing_margin_pct": "Financing Margin %",
+       "other_income": "Other Income",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs",
+       "gross_npa_pct": "Gross NPA %",
+       "net_npa_pct": "Net NPA %"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Revenue": [
+         87372.0,
+         86994.0,
+         87067.0,
+         87182.0,
+         90575.0,
+         95132.0
+        ],
+        "YoY Revenue growth": [
+         7.0,
+         5.0,
+         2.0,
+         0.0,
+         4.0,
+         9.0
+        ],
+        "Interest": [
+         47709.0,
+         46741.0,
+         45821.0,
+         45220.0,
+         47626.0,
+         50667.0
+        ],
+        "Expenses": [
+         64497.0,
+         45161.0,
+         54145.0,
+         44028.0,
+         58292.0,
+         50029.0
+        ],
+        "Financing Profit": [
+         -24833.0,
+         -4908.0,
+         -12899.0,
+         -2066.0,
+         -15342.0,
+         -5565.0
+        ],
+        "Financing Margin %": [
+         -28.0,
+         -6.0,
+         -15.0,
+         -2.0,
+         -17.0,
+         -6.0
+        ],
+        "Other Income": [
+         45683.0,
+         31567.0,
+         39860.0,
+         29737.0,
+         42535.0,
+         34227.0
+        ],
+        "Depreciation": [
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "Profit before tax": [
+         20850.0,
+         26659.0,
+         26961.0,
+         27672.0,
+         27193.0,
+         28663.0
+        ],
+        "Tax %": [
+         18.0,
+         24.0,
+         23.0,
+         24.0,
+         25.0,
+         25.0
+        ],
+        "Net Profit": [
+         17090.0,
+         20364.0,
+         20691.0,
+         21074.0,
+         20383.0,
+         21537.0
+        ],
+        "EPS in Rs": [
+         10.6,
+         12.76,
+         12.87,
+         13.22,
+         12.5,
+         13.43
+        ],
+        "Gross NPA %": [
+         null,
+         null,
+         null,
+         null,
+         null,
+         null
+        ],
+        "Net NPA %": [
+         null,
+         null,
+         null,
+         null,
+         null,
+         null
+        ]
+       },
+       "pct_rows": [
+        "YoY Revenue growth",
+        "Financing Margin %",
+        "Tax %"
+       ],
+       "links": {}
+      }
+     }
+    },
+    "standalone": {
+     "layout": "lender",
+     "fields": {
+      "quarters": {
+       "revenue": "Revenue",
+       "revenue_growth_pct": "YoY Revenue growth",
+       "interest_expended": "Interest",
+       "expenses": "Expenses",
+       "financing_profit": "Financing Profit",
+       "financing_margin_pct": "Financing Margin %",
+       "other_income": "Other Income",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs",
+       "gross_npa_pct": "Gross NPA %",
+       "net_npa_pct": "Net NPA %"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Revenue": [
+         77470.0,
+         76691.0,
+         76751.0,
+         76610.0,
+         79363.0,
+         83427.0
+        ],
+        "YoY Revenue growth": [
+         6.0,
+         4.0,
+         1.0,
+         -1.0,
+         2.0,
+         9.0
+        ],
+        "Interest": [
+         46032.0,
+         45139.0,
+         44136.0,
+         43528.0,
+         45829.0,
+         48807.0
+        ],
+        "Expenses": [
+         31875.0,
+         21478.0,
+         21609.0,
+         21087.0,
+         21247.0,
+         22540.0
+        ],
+        "Financing Profit": [
+         -438.0,
+         10073.0,
+         11006.0,
+         11994.0,
+         12287.0,
+         12079.0
+        ],
+        "Financing Margin %": [
+         -1.0,
+         13.0,
+         14.0,
+         16.0,
+         15.0,
+         14.0
+        ],
+        "Other Income": [
+         21730.0,
+         14350.0,
+         13254.0,
+         13199.0,
+         12822.0,
+         13831.0
+        ],
+        "Depreciation": [
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0,
+         0.0
+        ],
+        "Profit before tax": [
+         21292.0,
+         24423.0,
+         24260.0,
+         25193.0,
+         25108.0,
+         25910.0
+        ],
+        "Tax %": [
+         15.0,
+         24.0,
+         23.0,
+         24.0,
+         24.0,
+         25.0
+        ],
+        "Net Profit": [
+         18155.0,
+         18641.0,
+         18654.0,
+         19221.0,
+         19060.0,
+         19510.0
+        ],
+        "EPS in Rs": [
+         11.84,
+         12.13,
+         12.12,
+         12.49,
+         12.38,
+         12.65
+        ],
+        "Gross NPA %": [
+         1.4,
+         1.24,
+         1.24,
+         1.15,
+         1.17,
+         1.11
+        ],
+        "Net NPA %": [
+         0.47,
+         0.42,
+         0.42,
+         0.38,
+         0.41,
+         0.37
+        ]
+       },
+       "pct_rows": [
+        "YoY Revenue growth",
+        "Financing Margin %",
+        "Tax %",
+        "Gross NPA %",
+        "Net NPA %"
+       ],
+       "links": {}
+      }
+     }
+    }
+   }
+  },
+  "BAJFINANCE": {
+   "symbol": "BAJFINANCE",
+   "primary_view": "consolidated",
+   "layout": "lender",
+   "views": {
+    "consolidated": {
+     "layout": "lender",
+     "fields": {
+      "quarters": {
+       "revenue": "Revenue",
+       "revenue_growth_pct": "YoY Revenue growth",
+       "interest_expended": "Interest",
+       "expenses": "Expenses",
+       "financing_profit": "Financing Profit",
+       "financing_margin_pct": "Financing Margin %",
+       "other_income": "Other Income",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs",
+       "gross_npa_pct": "Gross NPA %",
+       "net_npa_pct": "Net NPA %"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Revenue": [
+         19524.0,
+         19990.0,
+         21013.0,
+         21606.0,
+         23165.0,
+         24546.0
+        ],
+        "YoY Revenue growth": [
+         21.0,
+         17.0,
+         17.0,
+         18.0,
+         19.0,
+         23.0
+        ],
+        "Interest": [
+         6918.0,
+         7011.0,
+         7339.0,
+         7398.0,
+         7942.0,
+         8602.0
+        ],
+        "Expenses": [
+         5992.0,
+         6119.0,
+         7737.0,
+         6553.0,
+         6793.0,
+         7120.0
+        ],
+        "Financing Profit": [
+         6614.0,
+         6861.0,
+         5937.0,
+         7654.0,
+         8430.0,
+         8825.0
+        ],
+        "Financing Margin %": [
+         34.0,
+         34.0,
+         28.0,
+         35.0,
+         36.0,
+         36.0
+        ],
+        "Other Income": [
+         5.0,
+         5.0,
+         -262.0,
+         11.0,
+         6.0,
+         33.0
+        ],
+        "Depreciation": [
+         251.0,
+         258.0,
+         244.0,
+         256.0,
+         288.0,
+         321.0
+        ],
+        "Profit before tax": [
+         6368.0,
+         6608.0,
+         5431.0,
+         7410.0,
+         8149.0,
+         8537.0
+        ],
+        "Tax %": [
+         25.0,
+         25.0,
+         25.0,
+         25.0,
+         25.0,
+         25.0
+        ],
+        "Net Profit": [
+         4765.0,
+         4948.0,
+         4066.0,
+         5553.0,
+         6081.0,
+         6367.0
+        ],
+        "EPS in Rs": [
+         7.56,
+         7.84,
+         6.39,
+         8.78,
+         9.61,
+         10.06
+        ],
+        "Gross NPA %": [
+         1.03,
+         1.24,
+         1.21,
+         1.01,
+         0.96,
+         1.06
+        ],
+        "Net NPA %": [
+         0.5,
+         0.6,
+         0.47,
+         0.41,
+         0.39,
+         0.42
+        ]
+       },
+       "pct_rows": [
+        "YoY Revenue growth",
+        "Financing Margin %",
+        "Tax %",
+        "Gross NPA %",
+        "Net NPA %"
+       ],
+       "links": {}
+      }
+     }
+    },
+    "standalone": {
+     "layout": "lender",
+     "fields": {
+      "quarters": {
+       "revenue": "Revenue",
+       "revenue_growth_pct": "YoY Revenue growth",
+       "interest_expended": "Interest",
+       "expenses": "Expenses",
+       "financing_profit": "Financing Profit",
+       "financing_margin_pct": "Financing Margin %",
+       "other_income": "Other Income",
+       "depreciation": "Depreciation",
+       "pbt": "Profit before tax",
+       "tax_pct": "Tax %",
+       "net_profit": "Net Profit",
+       "eps": "EPS in Rs",
+       "gross_npa_pct": "Gross NPA %",
+       "net_npa_pct": "Net NPA %"
+      }
+     },
+     "tables": {
+      "quarters": {
+       "periods": [
+        "Jun 2025",
+        "Sep 2025",
+        "Dec 2025",
+        "Mar 2026",
+        "Jun 2026",
+        "Sep 2026"
+       ],
+       "rows": {
+        "Revenue": [
+         16697.0,
+         17003.0,
+         17870.0,
+         18430.0,
+         19802.0,
+         20891.0
+        ],
+        "YoY Revenue growth": [
+         22.0,
+         17.0,
+         16.0,
+         18.0,
+         19.0,
+         23.0
+        ],
+        "Interest": [
+         5222.0,
+         5243.0,
+         5464.0,
+         5487.0,
+         5874.0,
+         6399.0
+        ],
+        "Expenses": [
+         5693.0,
+         5817.0,
+         7407.0,
+         6221.0,
+         6496.0,
+         6797.0
+        ],
+        "Financing Profit": [
+         5782.0,
+         5943.0,
+         4998.0,
+         6722.0,
+         7432.0,
+         7695.0
+        ],
+        "Financing Margin %": [
+         35.0,
+         35.0,
+         28.0,
+         36.0,
+         38.0,
+         37.0
+        ],
+        "Other Income": [
+         1.0,
+         2.0,
+         1167.0,
+         1.0,
+         1.0,
+         29.0
+        ],
+        "Depreciation": [
+         236.0,
+         242.0,
+         227.0,
+         238.0,
+         270.0,
+         303.0
+        ],
+        "Profit before tax": [
+         5546.0,
+         5703.0,
+         5938.0,
+         6484.0,
+         7163.0,
+         7421.0
+        ],
+        "Tax %": [
+         25.0,
+         25.0,
+         23.0,
+         25.0,
+         25.0,
+         25.0
+        ],
+        "Net Profit": [
+         4133.0,
+         4251.0,
+         4581.0,
+         4840.0,
+         5346.0,
+         5536.0
+        ],
+        "EPS in Rs": [
+         6.65,
+         6.83,
+         7.36,
+         7.78,
+         8.59,
+         8.89
+        ],
+        "Gross NPA %": [
+         1.28,
+         1.59,
+         1.56,
+         1.27,
+         1.2,
+         1.33
+        ],
+        "Net NPA %": [
+         0.63,
+         0.77,
+         0.61,
+         0.52,
+         0.49,
+         0.53
+        ]
+       },
+       "pct_rows": [
+        "YoY Revenue growth",
+        "Financing Margin %",
+        "Tax %",
+        "Gross NPA %",
+        "Net NPA %"
+       ],
+       "links": {}
+      }
+     }
+    }
+   }
+  }
+ }
+}

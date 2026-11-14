@@ -97,7 +97,7 @@ companies:
   - symbol: KPITTECH
     name: KPIT Technologies
     sector: IT Services - Automotive Software
-    size: mid
+    size: small
     is_lender: false
     bse_code: "542651"
 
@@ -125,7 +125,7 @@ companies:
   - symbol: TATACHEM
     name: Tata Chemicals
     sector: Chemicals
-    size: mid
+    size: small
     is_lender: false
     bse_code: "500770"
 
