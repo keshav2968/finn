@@ -397,3 +397,115 @@ def test_duplicate_transcript_is_skipped():
     dups = [t for t in doc["transcripts"] if (t["error"] or "").startswith("duplicate of")]
     assert [t["call"] for t in dups] == ["Jan 2026"] and dups[0]["error"] == "duplicate of the Jan 2026 transcript"
     assert len(doc["transcripts"]) == 7
+
+
+# ---------------------------------------------------------------- third review (cases from the second four-company run)
+
+def _promise(**kw):
+    base = {"metric": "other", "metric_label": "Other", "metric_text": "", "target_low": None, "target_high": None, "unit": None,
+            "low_crore": None, "high_crore": None, "annual": False, "basis": "unspecified", "scope": "company", "period": "FY27",
+            "quote": "", "quote_score": 100.0, "speaker": "CFO", "passage_id": "p", "call": "Oct 2026", "call_month": "2026-10",
+            "quarter": "Sep 2026", "fiscal": "Q2 FY27", "call_label": "Oct 2026", "source_url": "u", "notes": []}
+    base.update(kw)
+    return base
+
+
+def test_metric_must_be_named_tax_rate_is_not_profit_growth():
+    cfg = research_cfg()
+    t = T.read({"period": "Oct 2026", "month": "2026-10", "transcript_url": "https://example.test/infy-2026-10.pdf"}, "t1", cfg, fixture_text)
+    raw = {"promises": [{"metric": "profit_growth", "metric_text": "Effective tax rate guidance", "target_low": 29, "target_high": 30,
+                         "unit": "%", "basis": "unspecified", "period": "FY27", "passage_id": "x",
+                         "quote": "We expect effective tax rate for the year to be in the range of 29% to 30%."}]}
+    kept, _ = P.check_promises(raw, t, t.passages, cfg)
+    assert kept[0]["metric"] == "other" and any("does not name" in n for n in kept[0]["notes"])
+
+
+def test_past_tense_figure_is_not_a_promise():
+    t = _chorus()
+    p = next(x for x in t.passages if "utilization" in x.text)
+    raw = {"promises": [{"metric": "other", "metric_text": "Capacity utilization target", "target_low": 70, "target_high": 75, "unit": "%",
+                         "basis": "unspecified", "period": "FY27", "passage_id": p.id,
+                         "quote": "We were at full year basis, we were at 70-75% kind of utilization."}]}
+    kept, dropped = P.check_promises(raw, t, t.passages, research_cfg())
+    assert kept == [] and "reported result" in dropped[0]["reason"]
+
+
+def test_vague_promise_without_a_number_is_dropped():
+    t = _chorus()
+    p = next(x for x in t.passages if x.speaker == "Shashank Yagnick")
+    raw = {"promises": [{"metric": "other", "metric_text": "exports", "target_low": None, "target_high": None, "unit": None,
+                         "basis": "unspecified", "period": "FY28", "passage_id": p.id,
+                         "quote": "We expect exports to grow faster than the company average next year."}]}
+    kept, _ = P.check_promises(raw, t, t.passages, research_cfg())
+    assert len(kept) == 1  # eleven words: specific enough to keep
+    raw["promises"][0]["quote"] = "We expect exports to grow faster"
+    kept, dropped = P.check_promises(raw, t, t.passages, research_cfg())
+    assert kept == [] and "too vague" in dropped[0]["reason"]
+
+
+def test_crore_and_billion_targets_are_one_promise_and_annual_rates_are_separate():
+    five_yr_cr = _promise(metric="capex", period="medium_term", target_low=6000.0, target_high=8000.0, unit="crore", low_crore=6000.0,
+                          high_crore=8000.0, call="Jul 2025", call_month="2025-07",
+                          quote="guidance of spending roughly ₹ 6,000 crores to ₹ 8,000 crores over the next 5 years")
+    five_yr_bn = _promise(metric="capex", period="medium_term", target_low=60.0, target_high=80.0, unit="bn", low_crore=6000.0,
+                          high_crore=8000.0, call="May 2026", call_month="2026-05",
+                          quote="our planned capex program of INR 60 billion to INR 80 billion over the next 5 years")
+    annual = _promise(metric="capex", period="medium_term", target_low=12.0, target_high=16.0, unit="bn", low_crore=1200.0,
+                      high_crore=1600.0, annual=True, call="Oct 2025", call_month="2025-10",
+                      quote="investing ₹ 12 billion - ₹ 16 billion annually through to FY 2030")
+    groups = P.group([five_yr_cr, five_yr_bn, annual])
+    assert len(groups) == 2
+    five = next(g for g in groups if len(g["statements"]) == 2)
+    assert not five["revised"]
+    assert [s["target_text"] for s in five["statements"]] == ["6,000–8,000 crore", "60–80 bn"]
+
+
+def test_stated_full_year_amount_is_read_in_crore():
+    assert L.full_year_amounts("Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full "
+                               "financial year to approximately INR14.8 billion") == [1480.0]
+    assert L.full_year_amounts("capex of ₹ 1,480 crores") == [1480.0]
+
+
+def test_business_line_named_after_the_metric_is_a_segment():
+    assert P.scope_from_quote("We expect 30% year-on-year revenue growth in solution and products, and we hope it will increase.") == "solution and products"
+    assert P.scope_from_quote("we should be able to reach 8% to 10% of EBITDA margins on FMEG.") == "FMEG"
+    for q in ("Our revenue growth guidance for the financial year 2027 is 1.5% to 3.5% growth year-on-year in constant currency terms.",
+              "Our operating margin guidance remains at 20% to 22% for the year.",
+              "We expect EBITDA margins to remain in the range of 13% to 15% for the full year."):
+        assert P.scope_from_quote(q) is None
+
+
+def test_periods_by_march_and_medium_term():
+    may26 = _t("May 2026", "2026-05", "Mar 2026")
+    assert P.resolve_period("unspecified", "On store addition, we're on track on our guidance for March of 3,000 stores.", may26)[0] == "FY27"
+    assert P.resolve_period("unspecified", "we continue to maintain our medium- to long-term margin guidance of 11% to 13%", may26)[0] == "medium_term"
+    assert P.resolve_period("FY27", "we should be able to deliver this CAGR of growth over a period of three years", may26)[0] == "medium_term"
+
+
+def test_rationale_cannot_use_a_figure_from_another_period():
+    judge = {**GOOD_JUDGE, "operating_margin:FY26": {"verdict": "Delivered", "evidence_ids": [], "rationale": "Margin was 21.1% for the year."}}
+    e = _entry(_build(ScriptedModel(judge_replies=judge)), "operating_margin", "FY26")
+    assert "21.1" not in e["rationale"] and any("rationale replaced" in n for n in e["notes"])
+
+
+def test_unlabelled_opening_address_is_kept_as_management():
+    text = ("CORPORATE PARTICIPANTS:\n Kishor Patil\n Chief Executive Officer\n ANALYSTS\n Rahul\n Broker\n"
+            + "Good afternoon, and very happy to welcome you. " * 12
+            + "EBITDA growth margin is for the year 20.8%.\nModerator: Thank you. The first question is from the line of Rahul from Broker.\n"
+            + "Rahul: What is the outlook for margins next year?\nKishor Patil: We expect margins to remain at 21% next year.\n" * 5)
+    roster, start = T.management_roster(text, research_cfg()["transcripts"]["roster_start"], research_cfg()["transcripts"]["roster_end"])
+    turns = T.speaker_turns(text, roster, start)
+    assert turns[0][0] == T.OPENING and "20.8%" in turns[0][1]
+    assert T.is_management(T.OPENING, roster, ["Rahul"]) is True
+
+
+def test_track_record_counts_only_ended_periods_as_checkable():
+    from research.build import track_record
+
+    def e(verdict, status, revised=False):
+        return {"verdict": verdict, "period_status": status, "revised": revised}
+
+    tr = track_record([e("Delivered", "period ended"), e("Unverified", "no end date"), e("Unverified", "no end date"),
+                       e("Pending", "in progress (2 of 4 quarters reported)"), e("Goalposts moved", "in progress", True)], 3)
+    assert tr["checkable"] == 1 and tr["open_ended"] == 2
+    assert tr["text"] == "1 checkable promise: 1 delivered · 2 still running, 1 with goalposts moved · 2 open-ended · 1 target revised along the way"

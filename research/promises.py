@@ -172,8 +172,13 @@ def resolve_period(model_period: str, quote: str, transcript: Transcript) -> tup
         yy = m.group(2) or m.group(1)
         named.append(int(yy[-2:]))
     cur = transcript.current_fy()
+    if not named and MEDIUM_TERM.search(quote or "") and not THIS_YEAR.search(quote or ""):
+        resolved = "medium_term"
+        return resolved, (None if resolved == p else f"period set to medium term from the quote (model said {model_period or 'nothing'})")
     if named:
         fy = max(named)
+    elif BY_MARCH.search(quote or "") and cur is not None:
+        fy = cur
     elif NEXT_YEAR.search(quote or "") and cur is not None:
         fy = (cur + 1) % 100
     elif cur is not None and (periods.is_valid(p) or THIS_YEAR.search(quote or "")):
@@ -240,9 +245,57 @@ def remap_metric(metric: str, quote: str, metrics: dict[str, Any]) -> str:
     return hits.pop() if len(hits) == 1 else metric
 
 
-def forward_looking(quote: str, words: list[str]) -> bool:
-    low = (quote or "").lower()
-    return any(w in low for w in words)
+# Words that make a sentence a commitment about the future. Period words ("full year") are
+# not enough on their own: "we were at 70-75% for the full year" is a result.
+PROMISE_RX = re.compile(
+    r"\b(guidance|guide[ds]?|guiding|expect\w*|target\w*|aim\w*|aspir\w*|plan\w*|will|would|should|shall|going forward|"
+    r"outlook|on track|commit\w*|confident|intend\w*|look(?:ing)? to|hope|envisage\w*|anticipat\w*|forecast\w*|"
+    r"remains?|maintain(?:s|ing)?|by fy|by (?:the end of )?march|over the next|in the coming|from next year|next year)\b", re.I)
+
+
+def forward_looking(quote: str, words: list[str] | None = None) -> bool:
+    return bool(PROMISE_RX.search(quote or ""))
+
+
+def metric_named(metric: str, quote: str, metrics: dict[str, Any], passage: str = "") -> bool:
+    """A metric is only taken from the model when the quote, or the words just before it in
+    the passage ("...capex. We'll do Rs 1,200 to 1,600 crore for the year"), name it."""
+    near = (quote or "").lower()
+    if passage:
+        np, head = normalise(passage), normalise(quote)[:40]
+        at = np.find(head) if head else -1
+        if at >= 0:
+            near = np[max(0, at - 250): at + len(normalise(quote))]
+    return any(re.search(rf"\b{re.escape(a)}", near) for a in (metrics.get(metric) or {}).get("aliases") or [])
+
+
+# "30% revenue growth in solution and products", "EBITDA margins on FMEG": the target is for
+# a business line, not the company.
+SCOPE_AFTER = re.compile(r"\b(?:growth|revenue|revenues|margins?|ebitda|ebit)\s+(?:in|on|for|from|of)\s+(?:the\s+|our\s+)?([a-z][\w&/\- ]{2,40}?)(?=[.,;]|\s+(?:to|by|in|at|of|for|and we|which|that|from)\b|$)", re.I)
+NOT_SCOPE = re.compile(r"^(range|year|quarter|full|financial|fiscal|fy|this|next|coming|constant|cc|dollar|rupee|usd|inr|terms|h[12]|q[1-4]|"
+                       r"line|guidance|guided|absolute|percentage|basis|medium|long|short|near|first|second|third|fourth|last|overall|"
+                       r"company|business as a whole|top line|topline|revenue|sales|growth|around|about|approximately|at least|over|"
+                       r"\d)", re.I)
+
+
+def scope_from_quote(quote: str) -> str | None:
+    for m in SCOPE_AFTER.finditer(quote or ""):
+        phrase = m.group(1).strip()
+        if phrase and not NOT_SCOPE.match(phrase):
+            return phrase
+    return None
+
+
+AMOUNT_UNITS = {"crore": 1.0, "bn": 100.0, "mn": 0.1}  # in ₹ crore
+
+
+def to_crore(value: float | None, unit: str | None) -> float | None:
+    return None if value is None or unit not in AMOUNT_UNITS else round(value * AMOUNT_UNITS[unit], 4)
+
+
+ANNUAL = re.compile(r"\b(per annum|annually|every year|each year|a year|per year|annual run[- ]rate)\b", re.I)
+MEDIUM_TERM = re.compile(r"\b(medium[- ]to[- ]long[- ]term|medium[- ]term|long[- ]term|over the next \d+ years|over (?:a period of )?(?:three|four|five|3|4|5) years|in steady state)\b", re.I)
+BY_MARCH = re.compile(r"\b(?:by|for) (?:the end of )?march\b(?!\s+\d{2,4})", re.I)
 
 
 def check_promises(
@@ -276,7 +329,7 @@ def check_promises(
         if REPORTED_SPEECH.search(quote):
             dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "reports what management said (\"you said...\"): an analyst's words"})
             continue
-        if not forward_looking(quote, cfg["filter"]["forward"]):
+        if not forward_looking(quote):
             dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "no forward-looking words: reads as a reported result, not a promise"})
             continue
         in_quote = numbers_in(quote)
@@ -293,12 +346,20 @@ def check_promises(
             high = low
         if low is not None and high is not None and low > high:
             low, high = high, low
+        if low is None and len(re.findall(r"[A-Za-z]+", quote)) < 10:
+            dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "too vague to check: no number and under ten words"})
+            continue
         metric = item.get("metric") if item.get("metric") in metrics else "other"
+        if metric != "other" and not metric_named(metric, quote, metrics, best.text):
+            notes.append(f"the quote does not name {metrics[metric]['label'].lower()}; filed as other (model said {metric})")
+            metric = "other"
         remapped = remap_metric(metric, quote, metrics)
         if remapped != metric:
             notes.append(f"metric set to {metrics[remapped]['label']} from the quote (model said other)")
             metric = remapped
         scope = resolve_scope(item.get("scope"), quote, best.text)
+        if scope == "company":
+            scope = scope_from_quote(quote) or "company"
         period, pnote = resolve_period(item.get("period", ""), quote, transcript)
         if pnote:
             notes.append(pnote)
@@ -317,6 +378,9 @@ def check_promises(
             "target_low": low,
             "target_high": high,
             "unit": unit,
+            "low_crore": to_crore(low, unit),
+            "high_crore": to_crore(high, unit),
+            "annual": bool(ANNUAL.search(quote)),
             "basis": basis,
             "scope": scope,
             "period": period,
@@ -391,6 +455,14 @@ def _same_other(a: dict[str, Any], b: dict[str, Any]) -> bool:
     return len(overlap) >= 2 and (same_target or a["target_low"] is None)
 
 
+def _scope_key(scope: str | None) -> str:
+    """"Wires & Cables", "Wires and Cables segment", "the cables and wires business" -> "cables wires"."""
+    if not scope or scope == "company":
+        return "company"
+    words = [w for w in re.findall(r"[a-z]+", scope.lower()) if w not in {"and", "the", "our", "segment", "business", "division", "vertical", "a"}]
+    return " ".join(sorted(words)) or "segment"
+
+
 def _direction(first: tuple[float, float], last: tuple[float, float]) -> str:
     """"cut" or "raised" by the midpoint of the range (Python arithmetic, never the model's)."""
     a, b = (first[0] + first[1]) / 2, (last[0] + last[1]) / 2
@@ -408,7 +480,7 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             head = b[0]
             if p["metric"] != head["metric"]:
                 continue
-            if p.get("scope", "company") != head.get("scope", "company"):
+            if _scope_key(p.get("scope")) != _scope_key(head.get("scope")) or p.get("annual") != head.get("annual"):
                 continue
             if p["metric"] != "other" and p["period"] == head["period"]:
                 home = b
@@ -431,11 +503,16 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if cur is None or (cur["target_low"] is None and p["target_low"] is not None):
                 per_call[p["call_month"]] = p
         statements = [per_call[k] for k in sorted(per_call)]
-        targets = [(s["target_low"], s["target_high"]) for s in statements if s["target_low"] is not None]
+        # Compare targets in one unit (₹ crore for amounts), so "₹6,000-8,000 crore" and
+        # "INR 60-80 billion" are the same target, not a revision.
+        targets = [((s["low_crore"], s["high_crore"]) if s.get("low_crore") is not None else (s["target_low"], s["target_high"]), s)
+                   for s in statements if s["target_low"] is not None]
         distinct: list[tuple[float, float]] = []
-        for tg in targets:
+        shown: list[str] = []
+        for tg, s in targets:
             if not distinct or distinct[-1] != tg:
                 distinct.append(tg)
+                shown.append(s.get("target_text") or "")
         latest = next((s for s in reversed(statements) if s["target_low"] is not None), statements[-1])
         revised = len(distinct) > 1
         out.append({
@@ -449,6 +526,6 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "latest": latest,
             "revised": revised,
             "direction": _direction(distinct[0], distinct[-1]) if revised else None,
-            "path": " → ".join(_target_text(lo, hi, latest.get("unit")) or "" for lo, hi in distinct) if revised else None,
+            "path": " → ".join(shown) if revised else None,
         })
     return out

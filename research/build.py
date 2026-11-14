@@ -121,19 +121,24 @@ def track_record(entries: list[dict[str, Any]], calls: int) -> dict[str, Any]:
     """Counts of verdicts, in Python. "Checkable" means the period has ended (or has no end
     date) and a verdict on the outcome was possible; nothing is weighted or scored."""
     count = {v: sum(1 for e in entries if e["verdict"] == v) for v in L.VERDICTS}
-    checkable = count["Delivered"] + count["Missed"] + count["Unverified"]
+    ended = [e for e in entries if e["period_status"] == "period ended"]
+    checkable = len(ended)
+    outcome_count = {v: sum(1 for e in ended if e["verdict"] == v) for v in ("Delivered", "Missed", "Unverified")}
+    open_ended = sum(1 for e in entries if e["period_status"] == "no end date")
     revised = sum(1 for e in entries if e["revised"])
     parts = []
     if checkable:
-        outcome = ", ".join(f"{count[v]} {v.lower()}" for v in ("Delivered", "Missed", "Unverified") if count[v])
+        outcome = ", ".join(f"{outcome_count[v]} {v.lower()}" for v in ("Delivered", "Missed", "Unverified") if outcome_count[v])
         parts.append(f"{_n(checkable, 'checkable promise')}: {outcome}")
     else:
         parts.append("No checkable promises yet")
-    if count["Pending"] or count["Goalposts moved"]:
-        running = count["Pending"] + count["Goalposts moved"]
+    running = sum(1 for e in entries if e["period_status"].startswith("in progress"))
+    if running:
         extra = f", {count['Goalposts moved']} with goalposts moved" if count["Goalposts moved"] else ""
         parts.append(f"{running} still running{extra}")
+    if open_ended:
+        parts.append(f"{open_ended} open-ended")
     if revised:
         parts.append(f"{_n(revised, 'target')} revised along the way")
-    return {"promises": len(entries), "calls": calls, "checkable": checkable, "revised": revised,
+    return {"promises": len(entries), "calls": calls, "checkable": checkable, "open_ended": open_ended, "revised": revised,
             "counts": count, "text": " · ".join(parts)}

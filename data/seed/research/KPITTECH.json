@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "KPITTECH",
   "name": "KPIT Technologies Ltd",
-  "generated_at": "2026-11-15T02:19:53+05:30",
+  "generated_at": "2026-11-15T02:34:54+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -292,10 +292,10 @@
         "Gaurav Kakati",
         "Kishor Patil"
       ],
-      "passages": 148,
-      "sent": 5,
-      "sent_chars": 3835,
-      "promises": 2
+      "passages": 180,
+      "sent": 10,
+      "sent_chars": 7863,
+      "promises": 0
     },
     {
       "call": "Feb 2026",
@@ -413,9 +413,9 @@
           "call_quarter": "Mar 2026",
           "fiscal": "Q4 FY26",
           "latest": false,
-          "speaker": "Kishor Patil",
-          "passage_id": "t3-p55",
-          "text": "This is very important because this will drive the profitability also, as Sachin mentioned, it will drive profitability EBITDA 20.5 to 21.2 post increasing investment in AI solutions and products competency development and new markets.",
+          "speaker": "Opening remarks (speaker not named)",
+          "passage_id": "t3-p4",
+          "text": "So these are some of the areas Where we saw that, detailed part about the growth, Sachin will talk, I'm just talking about the highlight of this quarter and overall And, EBITDA growth margin is for the year 20.8%.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
         },
         {
@@ -456,13 +456,26 @@
       },
       "verdict": "Missed",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Actual 17.8% EBITDA below target 21%.",
+      "rationale": "Target 21% but FY26 EBITDA margin was 18.92%, below the goal.",
       "cited": [
         "s1",
-        "g1-q2"
+        "g1-n1",
+        "g1-q1"
       ],
-      "actual_quote": null,
-      "stated": null,
+      "actual_quote": {
+        "text": "So these are some of the areas Where we saw that, detailed part about the growth, Sachin will talk, I'm just talking about the highlight of this quarter and overall And, EBITDA growth margin is for the year 20.8%.",
+        "speaker": "Opening remarks (speaker not named)",
+        "call": "May 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf",
+        "found_by": "python"
+      },
+      "stated": {
+        "actual": 20.8,
+        "unit": "%",
+        "position": "below",
+        "call": "May 2026",
+        "speaker": "Opening remarks (speaker not named)"
+      },
       "chart": {
         "unit": "%",
         "guides": [
@@ -474,35 +487,34 @@
           }
         ],
         "actual": {
-          "value": 18.92,
-          "kind": "screener",
-          "label": "EBITDA margin, FY26",
+          "value": 20.8,
+          "kind": "stated",
+          "label": "Stated by Opening remarks (speaker not named), May 2026",
           "complete": true
         }
       },
       "notes": [
-        "screener's operating profit is used as EBITDA; the company's own definition can differ",
-        "the model's quoted actual (Nov 2026) is about a different period than FY26; dropped"
+        "screener's operating profit is used as EBITDA; the company's own definition can differ"
       ]
     },
     {
       "id": "g2",
       "metric": "ebitda_margin",
       "metric_label": "EBITDA margin",
-      "metric_text": "EBITDA to be between 22% to 24%",
+      "metric_text": "Maintain EBITDA margin at 21% and increase it in the medium term",
       "scope": "company",
       "period": "medium_term",
       "period_status": "no end date",
       "target": {
-        "text": "22–24%",
-        "low": 22,
-        "high": 24,
+        "text": "21%",
+        "low": 21,
+        "high": 21,
         "unit": "%",
         "basis": "unspecified"
       },
-      "revised": true,
-      "revision_direction": "raised",
-      "revision_path": "21% → 22–24%",
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
       "statements": [
         {
           "id": "s1",
@@ -515,18 +527,6 @@
           "basis": "unspecified",
           "quote_score": 100.0,
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d90bb9-9e31-4b03-92ba-0df108f5a9b8.pdf"
-        },
-        {
-          "id": "s2",
-          "call": "May 2026",
-          "call_label": "May 2026 (Q4 FY26)",
-          "fiscal": "Q4 FY26",
-          "speaker": "Kishor Patil",
-          "quote": "We expect the EBITDA to be between 22% to 24% from where we are today.",
-          "target_text": "22–24%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
         }
       ],
       "evidence": [
@@ -564,19 +564,19 @@
           "call_quarter": "Mar 2026",
           "fiscal": "Q4 FY26",
           "latest": false,
-          "speaker": "Kishor Patil",
-          "passage_id": "t3-p55",
-          "text": "This is very important because this will drive the profitability also, as Sachin mentioned, it will drive profitability EBITDA 20.5 to 21.2 post increasing investment in AI solutions and products competency development and new markets.",
+          "speaker": "Opening remarks (speaker not named)",
+          "passage_id": "t3-p4",
+          "text": "So these are some of the areas Where we saw that, detailed part about the growth, Sachin will talk, I'm just talking about the highlight of this quarter and overall And, EBITDA growth margin is for the year 20.8%.",
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
         }
       ],
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target raised from 21% to 22‑24% and period has no end date.",
+      "rationale": "Medium‑term 21% target is still open; latest margin 17.8% does not represent a completed period.",
       "cited": [
         "s1",
-        "s2"
+        "g2-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -588,158 +588,14 @@
             "fiscal": "Q1 FY26",
             "low": 21,
             "high": 21
-          },
-          {
-            "call": "May 2026",
-            "fiscal": "Q4 FY26",
-            "low": 22,
-            "high": 24
           }
         ],
         "actual": null
       },
       "notes": []
-    },
-    {
-      "id": "g3",
-      "metric": "revenue_growth",
-      "metric_label": "Revenue growth",
-      "metric_text": "We expect 30% year-on-year revenue growth in solution and products",
-      "scope": "company",
-      "period": "FY27",
-      "period_status": "in progress (2 of 4 quarters reported)",
-      "target": {
-        "text": "30%",
-        "low": 30,
-        "high": 30,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "May 2026",
-          "call_label": "May 2026 (Q4 FY26)",
-          "fiscal": "Q4 FY26",
-          "speaker": "Kishor Patil",
-          "quote": "We expect 30% year-on-year revenue growth in solution and products, and we hope it will increase over the period.",
-          "target_text": "30%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g3-n1",
-          "kind": "screener",
-          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
-          "value": 7.64,
-          "unit": "%",
-          "period": "FY27",
-          "quarters": [
-            "Jun 2026",
-            "Sep 2026"
-          ],
-          "complete": false,
-          "basis": "reported, ₹",
-          "inputs": {
-            "revenue": 3366.0,
-            "revenue_year_earlier": 3127.0
-          },
-          "source": "screener.in consolidated quarterly results",
-          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
-        },
-        {
-          "id": "g3-q1",
-          "kind": "transcript",
-          "call": "Nov 2026",
-          "call_month": "2026-11",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Kishor Patil",
-          "passage_id": "t1-p6",
-          "text": "I would like to mention here that while passenger car growth looks like this, if we take out our two top accounts, where we had an impact due to a sharp decline we had due to cancellation of their programs or cutting off their expense was 13% of the total revenue.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf"
-        },
-        {
-          "id": "g3-q2",
-          "kind": "transcript",
-          "call": "Aug 2026",
-          "call_month": "2026-08",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Kishor Patil",
-          "passage_id": "t2-p7",
-          "text": "On the back of this, for this quarter, year-on-year revenue we had Constant Currency revenue growth of 0.1%, year-on-year USD revenue decline of 0.6% and quarter-on-quarter Constant Currency revenue decline of 3.6%. On the back of that, what was still good was KPIT could do USD 257 million worth wins during the quarter, which was across the world, but mainly driven through connected cars , then after sales transformation and autonomous.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
-        },
-        {
-          "id": "g3-q3",
-          "kind": "transcript",
-          "call": "May 2026",
-          "call_month": "2026-05",
-          "call_quarter": "Mar 2026",
-          "fiscal": "Q4 FY26",
-          "latest": false,
-          "speaker": "Kishor Patil",
-          "passage_id": "t3-p55",
-          "text": "India, we will be Almost doubling, it's a small base, but doubling the revenue and China, which is also, again, have grown reasonably well Connected vehicles, after sales, and autonomous driving which we are expecting growth, which these are the areas where we will have substantial growth We expect 30% year-on-year revenue growth in solution and products, and we hope it will increase over the period.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
-        }
-      ],
-      "check": {
-        "comparable": true,
-        "position": "below",
-        "actual": 7.64,
-        "target_low": 30,
-        "target_high": 30,
-        "complete": false,
-        "evidence_id": "g3-n1"
-      },
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Actual 7.64% revenue growth so far, target 30%, period not complete.",
-      "cited": [
-        "s1",
-        "g3-n1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "May 2026",
-            "fiscal": "Q4 FY26",
-            "low": 30,
-            "high": 30
-          }
-        ],
-        "actual": {
-          "value": 7.64,
-          "kind": "screener",
-          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
-          "complete": false
-        }
-      },
-      "notes": [
-        "basis not stated; compared with reported ₹ growth"
-      ]
     }
   ],
-  "dropped": [
-    {
-      "call": "May 2026",
-      "quote": "EBITDA 20.5 to 21.2 post increasing investment in AI solutions and products competency development and new markets.",
-      "reason": "no forward-looking words: reads as a reported result, not a promise"
-    }
-  ],
+  "dropped": [],
   "models": [
     "groq/openai/gpt-oss-20b",
     "groq/openai/gpt-oss-120b"
@@ -780,22 +636,23 @@
   "summary": {
     "Delivered": 0,
     "Missed": 1,
-    "Pending": 2,
+    "Pending": 1,
     "Goalposts moved": 0,
     "Unverified": 0
   },
   "track_record": {
-    "promises": 3,
-    "calls": 3,
+    "promises": 2,
+    "calls": 2,
     "checkable": 1,
-    "revised": 1,
+    "open_ended": 1,
+    "revised": 0,
     "counts": {
       "Delivered": 0,
       "Missed": 1,
-      "Pending": 2,
+      "Pending": 1,
       "Goalposts moved": 0,
       "Unverified": 0
     },
-    "text": "1 checkable promise: 1 missed · 2 still running · 1 target revised along the way"
+    "text": "1 checkable promise: 1 missed · 1 open-ended"
   }
 }

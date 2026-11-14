@@ -212,6 +212,7 @@ def management_roster(text: str, start: str, end: str) -> tuple[list[str], int]:
     return out, (stop if out else 0)
 
 
+OPENING = "Opening remarks (speaker not named)"
 HANDOVER = re.compile(r"hand (?:the (?:conference|call|floor) )?over to (?:(?:mr|ms|mrs|dr)\.?\s+)?([A-Z][\w'.-]+(?:\s+[A-Z][\w'.-]+){0,3})")
 
 
@@ -260,6 +261,7 @@ def speaker_turns(text: str, roster: list[str], start: int = 0) -> list[tuple[st
         return clean.lower() in known or (NAME_LINE.match(ln) is not None and len(ln) <= 48 and counts.get(ln, 0) >= 2)
 
     turns: list[tuple[str, list[str]]] = []
+    lead: list[str] = []  # speech before the first speaker label (an unlabelled opening address)
     for ln in lines:
         m = NAME_COLON.match(ln)
         if m and (colon_mode or _clean_name(m.group(1)).lower() in known or m.group(1).lower() == "moderator"
@@ -269,7 +271,13 @@ def speaker_turns(text: str, roster: list[str], start: int = 0) -> list[tuple[st
             turns.append((_clean_name(ln), []))
         elif turns:
             turns[-1][1].append(ln)
-    return [(spk, " ".join(body).strip()) for spk, body in turns if body]
+        else:
+            lead.append(ln)
+    out = [(spk, " ".join(body).strip()) for spk, body in turns if body]
+    opening = " ".join(lead).strip()
+    if roster and len(opening) > 400 and not re.match(r"(ladies and gentlemen|good (morning|afternoon|evening),? (ladies|and welcome))", opening, re.I):
+        out.insert(0, (OPENING, opening))
+    return out
 
 
 def _sentences(text: str) -> list[str]:
@@ -305,7 +313,7 @@ def is_management(speaker: str, roster: list[str], analysts: list[str]) -> bool 
     often list only some of the executives who answer."""
     if speaker.lower() == "moderator" or any(same_person(speaker, a) for a in analysts):
         return False
-    if any(same_person(speaker, r) for r in roster):
+    if speaker == OPENING or any(same_person(speaker, r) for r in roster):
         return True
     if len(analysts) >= 2:
         return True

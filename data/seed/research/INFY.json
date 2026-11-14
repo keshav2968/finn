@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "INFY",
   "name": "Infosys Ltd",
-  "generated_at": "2026-11-15T02:06:08+05:30",
+  "generated_at": "2026-11-15T02:31:25+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -324,7 +324,7 @@
         "Sumit Virmani",
         "Jayesh Sanghrajka"
       ],
-      "passages": 208,
+      "passages": 226,
       "sent": 5,
       "sent_chars": 4162,
       "promises": 0
@@ -489,7 +489,7 @@
       },
       "verdict": "Delivered",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Actual 20.92% falls within the 20‑22% target range.",
+      "rationale": "Actual 20.92% within 20–22% target.",
       "cited": [
         "s1",
         "s2",
@@ -505,6 +505,7 @@
       },
       "stated": {
         "actual": 21.0,
+        "unit": "%",
         "position": "within",
         "call": "Apr 2026",
         "speaker": "Jayesh Sanghrajka"
@@ -665,7 +666,7 @@
       },
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 margin 21.03% reported for half year; period not complete.",
+      "rationale": "FY27 margin 21.03% reported so far; period not complete.",
       "cited": [
         "s1",
         "s2",
@@ -707,112 +708,6 @@
     },
     {
       "id": "g3",
-      "metric": "profit_growth",
-      "metric_label": "Net profit growth",
-      "metric_text": "Effective tax rate guidance",
-      "scope": "company",
-      "period": "FY27",
-      "period_status": "in progress (2 of 4 quarters reported)",
-      "target": {
-        "text": "29–30%",
-        "low": 29,
-        "high": 30,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "Oct 2026",
-          "call_label": "Oct 2026 (Q2 FY27)",
-          "fiscal": "Q2 FY27",
-          "speaker": "Jayesh Sanghrajka",
-          "quote": "We expect effective tax rate for the year to be in the range of 29% to 30%.",
-          "target_text": "29–30%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g3-n1",
-          "kind": "screener",
-          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
-          "value": 9.19,
-          "unit": "%",
-          "period": "FY27",
-          "quarters": [
-            "Jun 2026",
-            "Sep 2026"
-          ],
-          "complete": false,
-          "basis": "reported, ₹",
-          "inputs": {
-            "net_profit": 15613.0,
-            "net_profit_year_earlier": 14299.0
-          },
-          "source": "screener.in consolidated quarterly results",
-          "url": "https://www.screener.in/company/INFY/consolidated/"
-        },
-        {
-          "id": "g3-q1",
-          "kind": "transcript",
-          "call": "Oct 2026",
-          "call_month": "2026-10",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Jayesh Sanghrajka",
-          "passage_id": "t1-p130",
-          "text": "Free cash flow was at $928 mn, representing 113% of net profit, large deal wins were at $5.2 bn with 62% net new.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
-        }
-      ],
-      "check": {
-        "comparable": true,
-        "position": "below",
-        "actual": 9.19,
-        "target_low": 29,
-        "target_high": 30,
-        "complete": false,
-        "evidence_id": "g3-n1"
-      },
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Net profit growth 9.19% reported, target 29‑30% not yet reached; period ongoing.",
-      "cited": [
-        "s1",
-        "g3-n1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Oct 2026",
-            "fiscal": "Q2 FY27",
-            "low": 29,
-            "high": 30
-          }
-        ],
-        "actual": {
-          "value": 9.19,
-          "kind": "screener",
-          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
-          "complete": false
-        }
-      },
-      "notes": [
-        "basis not stated; compared with reported ₹ growth"
-      ]
-    },
-    {
-      "id": "g4",
       "metric": "revenue_growth",
       "metric_label": "Revenue growth",
       "metric_text": "Revenue growth guidance for FY26",
@@ -857,7 +752,7 @@
       ],
       "evidence": [
         {
-          "id": "g4-n1",
+          "id": "g3-n1",
           "kind": "screener",
           "label": "Revenue growth YoY (reported ₹), FY26",
           "value": 9.61,
@@ -879,7 +774,7 @@
           "url": "https://www.screener.in/company/INFY/consolidated/"
         },
         {
-          "id": "g4-q1",
+          "id": "g3-q1",
           "kind": "transcript",
           "call": "Apr 2026",
           "call_month": "2026-04",
@@ -892,7 +787,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
         },
         {
-          "id": "g4-q2",
+          "id": "g3-q2",
           "kind": "transcript",
           "call": "Oct 2026",
           "call_month": "2026-10",
@@ -905,7 +800,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
         },
         {
-          "id": "g4-q3",
+          "id": "g3-q3",
           "kind": "transcript",
           "call": "Jul 2026",
           "call_month": "2026-07",
@@ -925,7 +820,7 @@
         "target_low": 3,
         "target_high": 3.5,
         "complete": true,
-        "evidence_id": "g4-n1"
+        "evidence_id": "g3-n1"
       },
       "verdict": "Delivered",
       "verdict_by": "groq/openai/gpt-oss-120b",
@@ -933,8 +828,7 @@
       "cited": [
         "s1",
         "s2",
-        "g4-n1",
-        "g4-q1"
+        "g3-n1"
       ],
       "actual_quote": {
         "text": "We had growth of 3.1% for the full year in constant currency terms.",
@@ -945,6 +839,7 @@
       },
       "stated": {
         "actual": 3.1,
+        "unit": "%",
         "position": "within",
         "call": "Apr 2026",
         "speaker": "Salil Parekh"
@@ -979,7 +874,7 @@
       ]
     },
     {
-      "id": "g5",
+      "id": "g4",
       "metric": "revenue_growth",
       "metric_label": "Revenue growth",
       "metric_text": "Revenue growth guidance",
@@ -1036,7 +931,7 @@
       ],
       "evidence": [
         {
-          "id": "g5-n1",
+          "id": "g4-n1",
           "kind": "screener",
           "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
           "value": 12.32,
@@ -1056,7 +951,7 @@
           "url": "https://www.screener.in/company/INFY/consolidated/"
         },
         {
-          "id": "g5-q1",
+          "id": "g4-q1",
           "kind": "transcript",
           "call": "Oct 2026",
           "call_month": "2026-10",
@@ -1069,7 +964,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
         },
         {
-          "id": "g5-q2",
+          "id": "g4-q2",
           "kind": "transcript",
           "call": "Jul 2026",
           "call_month": "2026-07",
@@ -1082,7 +977,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
         },
         {
-          "id": "g5-q3",
+          "id": "g4-q3",
           "kind": "transcript",
           "call": "Apr 2026",
           "call_month": "2026-04",
@@ -1102,11 +997,11 @@
         "target_low": 1,
         "target_high": 2,
         "complete": false,
-        "evidence_id": "g5-n1"
+        "evidence_id": "g4-n1"
       },
       "verdict": "Goalposts moved",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Guidance changed from 1.5‑3.5% to 1.5‑3% to 1‑2% constant‑currency.",
+      "rationale": "Guidance cut from 1.5–3.5% to 1–2%.",
       "cited": [
         "s1",
         "s2",
@@ -1141,6 +1036,124 @@
       "notes": [
         "guidance is in constant currency terms; screener reports ₹, so the two are not comparable"
       ]
+    },
+    {
+      "id": "g5",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Effective tax rate guidance",
+      "scope": "company",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": "29–30%",
+        "low": 29,
+        "high": 30,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Apr 2026",
+          "call_label": "Apr 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Jayesh Sanghrajka",
+          "quote": "We expect effective tax rates for the FY27 to be in the range of 29% to 30%.",
+          "target_text": "29–30%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Jayesh Sanghrajka",
+          "quote": "We expect effective tax rate for the year to be in the range of 29% to 30%.",
+          "target_text": "29–30%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g5-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t1-p134",
+          "text": "As mentioned last quarter, we are rolling out compensation hikes to most of our employees effective October '26, with the next phase effective January '27. We expect effective tax rate for the year to be in the range of 29% to 30%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g5-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t2-p140",
+          "text": "We plan to give salary hikes to most of our employees effective October while the rest of the employees will be covered in January '27. We expect effective tax rate for the year to be in the range of 29% to 30%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "g5-q3",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t3-p152",
+          "text": "We expect effective tax rates for the FY27 to be in the range of 29% to 30%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 effective tax rate target of 29%‑30% remains pending as the FY27 period has not ended.",
+      "cited": [
+        "s1",
+        "s2",
+        "g5-q1",
+        "g5-q2",
+        "g5-q3"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Apr 2026",
+            "fiscal": "Q4 FY26",
+            "low": 29,
+            "high": 30
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 29,
+            "high": 30
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
     },
     {
       "id": "g6",
@@ -1217,112 +1230,16 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 hiring target of 20,000 not yet met; period still in progress.",
+      "rationale": "FY27 headcount recruitment target of 20,000 is pending because FY27 is still in progress.",
       "cited": [
         "s1",
         "s2",
-        "g6-q1"
+        "g6-q1",
+        "g6-q2"
       ],
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
-    },
-    {
-      "id": "g7",
-      "metric": "other",
-      "metric_label": "Other",
-      "metric_text": "Effective tax rate guidance for FY27",
-      "scope": "company",
-      "period": "FY27",
-      "period_status": "in progress",
-      "target": {
-        "text": "29–30%",
-        "low": 29,
-        "high": 30,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "Apr 2026",
-          "call_label": "Apr 2026 (Q4 FY26)",
-          "fiscal": "Q4 FY26",
-          "speaker": "Jayesh Sanghrajka",
-          "quote": "We expect effective tax rates for the FY27 to be in the range of 29% to 30%.",
-          "target_text": "29–30%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g7-q1",
-          "kind": "transcript",
-          "call": "Oct 2026",
-          "call_month": "2026-10",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Jayesh Sanghrajka",
-          "passage_id": "t1-p134",
-          "text": "As mentioned last quarter, we are rolling out compensation hikes to most of our employees effective October '26, with the next phase effective January '27. We expect effective tax rate for the year to be in the range of 29% to 30%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
-        },
-        {
-          "id": "g7-q2",
-          "kind": "transcript",
-          "call": "Jul 2026",
-          "call_month": "2026-07",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Jayesh Sanghrajka",
-          "passage_id": "t2-p140",
-          "text": "We plan to give salary hikes to most of our employees effective October while the rest of the employees will be covered in January '27. We expect effective tax rate for the year to be in the range of 29% to 30%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
-        },
-        {
-          "id": "g7-q3",
-          "kind": "transcript",
-          "call": "Apr 2026",
-          "call_month": "2026-04",
-          "call_quarter": "Mar 2026",
-          "fiscal": "Q4 FY26",
-          "latest": false,
-          "speaker": "Jayesh Sanghrajka",
-          "passage_id": "t3-p152",
-          "text": "We expect effective tax rates for the FY27 to be in the range of 29% to 30%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
-        }
-      ],
-      "check": null,
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Effective tax rate guidance 29‑30% unchanged; FY27 not completed.",
-      "cited": [
-        "s1",
-        "g7-q1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Apr 2026",
-            "fiscal": "Q4 FY26",
-            "low": 29,
-            "high": 30
-          }
-        ],
-        "actual": null
-      },
       "notes": []
     }
   ],
@@ -1367,22 +1284,23 @@
   "summary": {
     "Delivered": 2,
     "Missed": 0,
-    "Pending": 4,
+    "Pending": 3,
     "Goalposts moved": 1,
     "Unverified": 0
   },
   "track_record": {
-    "promises": 7,
+    "promises": 6,
     "calls": 5,
     "checkable": 2,
+    "open_ended": 0,
     "revised": 2,
     "counts": {
       "Delivered": 2,
       "Missed": 0,
-      "Pending": 4,
+      "Pending": 3,
       "Goalposts moved": 1,
       "Unverified": 0
     },
-    "text": "2 checkable promises: 2 delivered · 5 still running, 1 with goalposts moved · 2 targets revised along the way"
+    "text": "2 checkable promises: 2 delivered · 4 still running, 1 with goalposts moved · 2 targets revised along the way"
   }
 }

@@ -52,7 +52,8 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
             notes.append(f"the target is for {scope}; screener figures are company-wide, so they are not used")
         if ok and low is not None and not plausible(metric, actual["value"], low, high):
             ok = False
-            notes.append(f"screener's {actual['value']:g}% is far outside the guided {low:g}–{high:g}%: the promise most likely "
+            guided = f"{low:g}%" if low == high else f"{low:g}–{high:g}%"
+            notes.append(f"screener's {actual['value']:g}% is far outside the guided {guided}: the promise most likely "
                          "measures something else (a segment, GOV/NOV, a different definition), so it is not used")
         if ok and metric == "ebitda_margin":
             notes.append("screener's operating profit is used as EBITDA; the company's own definition can differ")
@@ -168,6 +169,11 @@ def find_stated(group: dict[str, Any], transcripts: list[Transcript], cfg: dict[
                     at = low.find(a)
                     if at < 0:
                         continue
+                    if group["latest"].get("low_crore") is not None:
+                        amts = full_year_amounts(s[at:])
+                        if len(amts) == 1:
+                            return {"text": s.strip(), "speaker": p.speaker, "call": t.period, "source_url": t.url, "value": amts[0]}
+                        continue
                     m = re.search(r"(-?\d+(?:\.\d+)?)\s?(?:%|per ?cent)", s[at:at + len(a) + 60])
                     if m:
                         return {"text": s.strip(), "speaker": p.speaker, "call": t.period, "source_url": t.url, "value": float(m.group(1))}
@@ -217,7 +223,8 @@ def rationale_for(verdict: str, group: dict[str, Any], ev: dict[str, Any]) -> st
     if verdict in ("Delivered", "Missed") and src == "screener":
         return f"Actual {check['actual']:g}% against a {target} target."
     if verdict in ("Delivered", "Missed") and stated:
-        return f"Management stated {stated['actual']:g}% ({stated['call']}) against a {target} target."
+        shown = f"₹{stated['actual']:,.0f} crore" if stated.get("unit") == "₹ crore" else f"{stated['actual']:g}%"
+        return f"Management stated {shown} ({stated['call']}) against a {target} target."
     if verdict in ("Delivered", "Missed"):
         return "Judged on management's own stated actual in a later call."
     if check and not check["comparable"]:
@@ -333,8 +340,8 @@ def _allowed_numbers(g: dict[str, Any], ev: dict[str, Any], actual_quote: str | 
             v = float(e["value"])
             pool |= {v, round(v, 1), round(v), float(f"{v:g}")}
             pool |= numbers_in(e["label"])
-        else:
-            pool |= numbers_in(e["text"])
+        elif about_period(g["period"], e, e["text"], ev):
+            pool |= numbers_in(e["text"])  # only figures from calls about this period
     pool |= numbers_in(actual_quote or "")
     pool |= numbers_in(g["period"]) | numbers_in(ev["period_status"])
     for s in g["statements"]:
@@ -348,18 +355,41 @@ PCT = re.compile(r"(-?\d+(?:\.\d+)?)\s?(?:%|per ?cent)", re.I)
 def stated_check(g: dict[str, Any], actual_quote: dict[str, Any]) -> dict[str, Any] | None:
     """Compare a quoted actual with the target, in Python, when the quote holds exactly one percentage."""
     latest = g["latest"]
+    amount_target = latest.get("low_crore") is not None
     if actual_quote.get("value") is not None:
-        v = float(actual_quote["value"])  # found by find_stated next to the metric's name
+        v = float(actual_quote["value"])  # found by find_stated next to the metric's name (₹ crore for amounts)
+    elif amount_target:
+        amts = full_year_amounts(actual_quote["text"])
+        if len(amts) != 1:
+            return None
+        v = amts[0]
     else:
         pcts = {float(x) for x in PCT.findall(actual_quote["text"])}
         if len(pcts) != 1:
             return None
         v = pcts.pop()
-    low, high = latest["target_low"], latest["target_high"]
+    low, high = (latest["low_crore"], latest["high_crore"]) if amount_target else (latest["target_low"], latest["target_high"])
     pos = None
-    if low is not None and latest.get("unit") in ("%", None):
+    if low is not None and (amount_target or latest.get("unit") in ("%", None)):
         pos = "within" if low <= v <= high else ("above" if v > high else "below")
-    return {"actual": v, "position": pos, "call": actual_quote["call"], "speaker": actual_quote["speaker"]}
+    return {"actual": v, "unit": "₹ crore" if amount_target else "%", "position": pos,
+            "call": actual_quote["call"], "speaker": actual_quote["speaker"]}
+
+
+AMOUNT = re.compile(r"(?:₹|rs\.?|inr)?\s?(\d[\d,]*(?:\.\d+)?)\s?(crores?|cr\b|bn|billion|mn|million)", re.I)
+UNIT_OF = {"crore": "crore", "crores": "crore", "cr": "crore", "bn": "bn", "billion": "bn", "mn": "mn", "million": "mn"}
+
+
+def full_year_amounts(text: str) -> list[float]:
+    """₹ amounts (in crore) in a sentence; when it also gives a quarter's figure, only the
+    one after a full-year cue ("for the quarter INR 3.9 bn, ... full financial year INR 14.8 bn")."""
+    found = [(m.start(), float(m.group(1).replace(",", "")) * {"crore": 1.0, "bn": 100.0, "mn": 0.1}[UNIT_OF[m.group(2).lower()]])
+             for m in AMOUNT.finditer(text or "")]
+    if len(found) <= 1:
+        return [round(v, 4) for _, v in found]
+    cue = STATED_CUE.search(text or "")
+    after = [v for at, v in found if cue and at > cue.start()]
+    return [round(after[0], 4)] if after else []
 
 
 def stale_numbers(g: dict[str, Any], ev: dict[str, Any], rationale: str) -> list[float]:
