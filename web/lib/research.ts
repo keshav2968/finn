@@ -25,6 +25,7 @@ export interface LedgerEntry {
   metric: string;
   metric_label: string;
   metric_text: string;
+  scope?: string;
   period: string;
   period_status: string;
   target: { text: string | null; low: number | null; high: number | null; unit: string | null; basis: string };
@@ -38,7 +39,7 @@ export interface LedgerEntry {
   verdict: Verdict;
   verdict_by: string;
   rationale: string;
-  actual_quote: { text: string; speaker: string; call: string; source_url: string } | null;
+  actual_quote: { text: string; speaker: string; call: string; source_url: string; found_by?: "model" | "python" } | null;
   chart: { unit: string; guides: { call: string; fiscal: string | null; low: number; high: number }[];
            actual: { value: number; kind: "screener" | "stated"; label: string; complete: boolean } | null } | null;
   notes: string[];

@@ -46,6 +46,16 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
         if why:
             notes.append(why)
         low, high = latest["target_low"], latest["target_high"]
+        scope = group.get("scope", "company")
+        if ok and scope != "company":
+            ok = False
+            notes.append(f"the target is for {scope}; screener figures are company-wide, so they are not used")
+        if ok and low is not None and not plausible(metric, actual["value"], low, high):
+            ok = False
+            notes.append(f"screener's {actual['value']:g}% is far outside the guided {low:g}–{high:g}%: the promise most likely "
+                         "measures something else (a segment, GOV/NOV, a different definition), so it is not used")
+        if ok and metric == "ebitda_margin":
+            notes.append("screener's operating profit is used as EBITDA; the company's own definition can differ")
         if ok and low is not None and (latest.get("unit") in (None, "%")):
             v = actual["value"]
             pos = "within" if low <= v <= high else ("above" if v > high else "below")
@@ -94,6 +104,7 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
             "kind": "transcript",
             "call": t.period,
             "call_month": t.month,
+            "call_quarter": t.quarter,
             "fiscal": t.fiscal,
             "latest": t.month == newest,
             "speaker": p.speaker,
@@ -103,8 +114,10 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
         })
 
     # Which verdicts are possible, decided in Python.
+    auto = find_stated(group, transcripts, cfg) if periods.is_valid(period) and nums.period_ended(period, record) else None
     if period in ("unspecified", "medium_term"):
-        allowed, status = ["Delivered", "Pending", "Unverified"], "no end date"
+        # An ongoing commitment has no moment of delivery: it is running or unverifiable.
+        allowed, status = ["Pending", "Unverified"], "no end date"
     elif nums.period_ended(period, record):
         # Once a period is over, the outcome is what counts; a revision shows in the path.
         allowed, status = ["Delivered", "Missed", "Unverified"], "period ended"
@@ -114,7 +127,51 @@ def build_evidence(group: dict[str, Any], record: dict[str, Any], transcripts: l
         status = f"in progress ({reported} of 4 quarters reported)" if reported and not period.startswith(("Q", "H")) else "in progress"
         if group["revised"] and group.get("direction") != "raised":
             allowed = ["Goalposts moved"] + allowed
-    return {"evidence": evidence, "check": check, "allowed": allowed, "period_status": status, "notes": notes}
+    ev = {"evidence": evidence, "check": check, "allowed": allowed, "period_status": status, "notes": notes,
+          "auto_stated": auto, "stated": stated_check(group, auto) if auto else None}
+    return ev
+
+
+def plausible(metric: str, value: float, low: float, high: float) -> bool:
+    """Whether a screener figure can be the thing a target measures at all."""
+    if metric in GROWTH:
+        return low - 25 <= value <= max(3 * high, high + 25)
+    return low - 8 <= value <= high + 8
+
+
+STATED_CUE = re.compile(r"\b(full year|for the year|whole year|entire year|financial year|fiscal year|fy\s?'?\d{2})\b", re.I)
+
+
+def find_stated(group: dict[str, Any], transcripts: list[Transcript], cfg: dict[str, Any]) -> dict[str, Any] | None:
+    """A sentence from the call that closed the period where management states the
+    full-year figure for this metric ("We had growth of 3.1% for the full year in constant
+    currency terms."). Found and read in Python: the metric's name, a full-year cue, the
+    guidance's basis when it was constant currency, and a percentage right after the name."""
+    period = group["period"]
+    end_q = periods.quarters_of(period)[-1]
+    mcfg = cfg["metrics"].get(group["metric"]) or {}
+    aliases = sorted((a.lower() for a in mcfg.get("aliases") or []), key=len, reverse=True)
+    if not aliases or group.get("scope", "company") != "company":
+        return None
+    cc = (group["latest"].get("basis") or "") == "constant_currency"
+    for t in sorted((t for t in transcripts if t.kind == "earnings" and t.quarter == end_q and t.passages), key=lambda t: t.month):
+        for p in t.passages:
+            if not p.management:
+                continue
+            for s in _sentences(p.text):
+                low = s.lower()
+                if not STATED_CUE.search(s) or (cc and "constant currency" not in low):
+                    continue
+                if any(w in low for w in ("guidance", "expect", "outlook", "will be", "next year")):
+                    continue  # a forecast, not a result
+                for a in aliases:
+                    at = low.find(a)
+                    if at < 0:
+                        continue
+                    m = re.search(r"(-?\d+(?:\.\d+)?)\s?(?:%|per ?cent)", s[at:at + len(a) + 60])
+                    if m:
+                        return {"text": s.strip(), "speaker": p.speaker, "call": t.period, "source_url": t.url, "value": float(m.group(1))}
+    return None
 
 
 def _words_of(text: str) -> set[str]:
@@ -155,9 +212,10 @@ def rationale_for(verdict: str, group: dict[str, Any], ev: dict[str, Any]) -> st
         if check and check["comparable"]:
             return f"So far {check['actual']:g}% against a {target} target ({ev['period_status']})."
         return f"Period still running ({ev['period_status']})."
-    if verdict in ("Delivered", "Missed") and check and check["comparable"]:
-        return f"Actual {check['actual']:g}% against a {target} target."
     stated = ev.get("stated")
+    _pos, src = decisive(group, ev)
+    if verdict in ("Delivered", "Missed") and src == "screener":
+        return f"Actual {check['actual']:g}% against a {target} target."
     if verdict in ("Delivered", "Missed") and stated:
         return f"Management stated {stated['actual']:g}% ({stated['call']}) against a {target} target."
     if verdict in ("Delivered", "Missed"):
@@ -167,16 +225,28 @@ def rationale_for(verdict: str, group: dict[str, Any], ev: dict[str, Any]) -> st
     return "No comparable actual in screener or in later calls."
 
 
+def decisive(group: dict[str, Any], ev: dict[str, Any]) -> tuple[str | None, str | None]:
+    """(position, source) of the figure that settles an ended period, or (None, None).
+    Margins are judged on the company's own stated figure when there is one (its EBITDA or
+    EBIT definition is what it guided on); growth on screener when comparable."""
+    check, stated = ev["check"], ev.get("stated")
+    screener = check["position"] if check and check["comparable"] and check["complete"] else None
+    said = stated["position"] if stated else None
+    if group["metric"] in GROWTH:
+        return (screener, "screener") if screener else ((said, "stated") if said else (None, None))
+    return (said, "stated") if said else ((screener, "screener") if screener else (None, None))
+
+
 def rules_verdict(group: dict[str, Any], ev: dict[str, Any]) -> tuple[str, str]:
     """The verdict Python can reach on its own (used when no model is available, and to
     overrule a model that contradicts the arithmetic)."""
-    check = ev["check"]
+    pos, _src = decisive(group, ev)
     if "Goalposts moved" in ev["allowed"]:
         verdict = "Goalposts moved"
     elif "Pending" in ev["allowed"]:
         verdict = "Pending"
-    elif check and check["comparable"] and check["complete"]:
-        verdict = "Delivered" if check["position"] in ("within", "above") else "Missed"
+    elif pos:
+        verdict = "Delivered" if pos in ("within", "above") else "Missed"
     else:
         verdict = "Unverified"
     return verdict, rationale_for(verdict, group, ev)
@@ -278,10 +348,13 @@ PCT = re.compile(r"(-?\d+(?:\.\d+)?)\s?(?:%|per ?cent)", re.I)
 def stated_check(g: dict[str, Any], actual_quote: dict[str, Any]) -> dict[str, Any] | None:
     """Compare a quoted actual with the target, in Python, when the quote holds exactly one percentage."""
     latest = g["latest"]
-    pcts = {float(x) for x in PCT.findall(actual_quote["text"])}
-    if len(pcts) != 1:
-        return None
-    v = pcts.pop()
+    if actual_quote.get("value") is not None:
+        v = float(actual_quote["value"])  # found by find_stated next to the metric's name
+    else:
+        pcts = {float(x) for x in PCT.findall(actual_quote["text"])}
+        if len(pcts) != 1:
+            return None
+        v = pcts.pop()
     low, high = latest["target_low"], latest["target_high"]
     pos = None
     if low is not None and latest.get("unit") in ("%", None):
@@ -312,6 +385,19 @@ def stale_numbers(g: dict[str, Any], ev: dict[str, Any], rationale: str) -> list
     return [n for n in numbers_in(rationale) if n in old and n not in fresh]
 
 
+def about_period(period: str, e: dict[str, Any], quote: str, ev: dict[str, Any]) -> bool:
+    """A quoted actual must come from a call that reports on the period: the call that
+    closed it (or one naming it) once it has ended; a call inside it while it runs."""
+    qs = periods.quarters_of(period)
+    if not qs:
+        return True
+    if any(c in quote.lower() for c in _period_cues(period)):
+        return True
+    if ev["period_status"] == "period ended":
+        return e.get("call_quarter") == qs[-1]
+    return e.get("call_quarter") in qs
+
+
 def chart_data(g: dict[str, Any], ev: dict[str, Any]) -> dict[str, Any] | None:
     """What the research screen draws: each call's guided range as a band, the actual as a dot.
     Only percentage targets are charted; every value comes from a quote or from screener."""
@@ -321,7 +407,10 @@ def chart_data(g: dict[str, Any], ev: dict[str, Any]) -> dict[str, Any] | None:
         return None
     actual = None
     check, stated = ev["check"], ev.get("stated")
-    if check and check["comparable"]:
+    _pos, src = decisive(g, ev)
+    if src == "stated" and stated:
+        actual = {"value": stated["actual"], "kind": "stated", "label": f"Stated by {stated['speaker']}, {stated['call']}", "complete": True}
+    elif check and check["comparable"]:
         e = next(x for x in ev["evidence"] if x["id"] == check["evidence_id"])
         actual = {"value": check["actual"], "kind": "screener", "label": e["label"], "complete": check["complete"]}
     elif stated:
@@ -344,35 +433,40 @@ def finalise(g: dict[str, Any], ev: dict[str, Any], raw: dict[str, Any] | None, 
         if verdict not in ev["allowed"]:
             notes.append(f"model chose \"{verdict}\", which the dates don't allow; used the rules instead")
             verdict, rationale, by = rv, rr, "rules"
-        check = ev["check"]
-        if by != "rules" and check and check["comparable"] and check["complete"] and verdict in ("Delivered", "Missed") and verdict != rv:
-            notes.append(f"model said {verdict} but the figures say {rv}; the figures win")
-            verdict, rationale = rv, rr
         q, qid = raw.get("actual_quote"), raw.get("actual_evidence_id")
         if q and qid in ev_by_id and ev_by_id[qid]["kind"] == "transcript":
-            ok, _ = quote_found(q, ev_by_id[qid]["text"], cfg["quotes"]["min_score"], cfg["quotes"]["min_chars"])
-            if ok:
-                e = ev_by_id[qid]
-                actual_quote = {"text": q.strip(), "speaker": e["speaker"], "call": e["call"], "source_url": e["source_url"]}
-            else:
+            e = ev_by_id[qid]
+            ok, _ = quote_found(q, e["text"], cfg["quotes"]["min_score"], cfg["quotes"]["min_chars"])
+            if not ok:
                 notes.append("the model's quoted actual did not match the transcript; dropped")
+            elif not about_period(g["period"], e, q, ev):
+                notes.append(f"the model's quoted actual ({e['call']}) is about a different period than {g['period']}; dropped")
+            else:
+                actual_quote = {"text": q.strip(), "speaker": e["speaker"], "call": e["call"], "source_url": e["source_url"], "found_by": "model"}
         elif q:
             notes.append("the model's quoted actual had no valid source; dropped")
+        if ev.get("auto_stated"):
+            a = ev["auto_stated"]
+            actual_quote = {"text": a["text"], "speaker": a["speaker"], "call": a["call"], "source_url": a["source_url"], "found_by": "python"}
+        elif actual_quote:
+            ev["stated"] = stated_check(g, actual_quote)
 
-        # A stated actual with exactly one percentage is read and compared by Python.
-        ev["stated"] = stated_check(g, actual_quote) if actual_quote else None
-        check = ev["check"]
-        comparable_done = bool(check and check["comparable"] and check["complete"])
-        if by != "rules" and verdict in ("Delivered", "Missed"):
-            if ev["stated"] and ev["stated"]["position"] is not None and not comparable_done:
-                want = "Delivered" if ev["stated"]["position"] in ("within", "above") else "Missed"
+        # Delivered / Missed must agree with the figure that settles the period.
+        pos, src = decisive(g, ev)
+        if verdict in ("Delivered", "Missed"):
+            if pos:
+                want = "Delivered" if pos in ("within", "above") else "Missed"
                 if verdict != want:
-                    notes.append(f"model said {verdict} but the stated actual says {want}; the figures win")
+                    notes.append(f"model said {verdict} but the {'stated' if src == 'stated' else 'screener'} figure says {want}; the figures win")
                     verdict, rationale = want, rationale_for(want, g, ev)
-            elif not comparable_done and not actual_quote and g["latest"]["target_low"] is not None:
+            elif g["latest"]["target_low"] is not None:
                 notes.append(f"model said {verdict} without a figure on the guidance's basis; marked Unverified")
                 verdict = "Unverified" if "Unverified" in ev["allowed"] else rv
                 rationale = rationale_for(verdict, g, ev)
+        elif verdict == "Unverified" and pos:
+            want = "Delivered" if pos in ("within", "above") else "Missed"
+            notes.append(f"model said Unverified but the {src} figure settles it: {want}")
+            verdict, rationale = want, rationale_for(want, g, ev)
         if by != "rules":
             stray = [n for n in numbers_in(rationale) if n not in _allowed_numbers(g, ev, actual_quote["text"] if actual_quote else None)]
             stale = stale_numbers(g, ev, rationale)
@@ -382,12 +476,16 @@ def finalise(g: dict[str, Any], ev: dict[str, Any], raw: dict[str, Any] | None, 
                              else "empty rationale replaced")
                 rationale = rationale_for(verdict, g, ev)
 
+    if raw is None and ev.get("auto_stated"):
+        a = ev["auto_stated"]
+        actual_quote = {"text": a["text"], "speaker": a["speaker"], "call": a["call"], "source_url": a["source_url"], "found_by": "python"}
     latest = g["latest"]
     return {
         "id": g["id"],
         "metric": g["metric"],
         "metric_label": g["metric_label"],
         "metric_text": g["metric_text"],
+        "scope": g.get("scope", "company"),
         "period": g["period"],
         "period_status": ev["period_status"],
         "target": {"text": latest.get("target_text"), "low": latest["target_low"], "high": latest["target_high"],

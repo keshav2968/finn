@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "ETERNAL",
   "name": "Eternal Ltd",
-  "generated_at": "2026-11-15T01:48:02+05:30",
+  "generated_at": "2026-11-15T02:21:16+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -245,14 +245,16 @@
       "quarter": "Sep 2026",
       "fiscal": "Q2 FY27",
       "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64f36e3b-87e9-426e-be3e-515dca4525d2.pdf",
-      "error": "no forward-looking passages found",
+      "error": null,
       "management": [
-        "Albinder Singh Dhindsa"
+        "Albinder Singh Dhindsa",
+        "Akshant Goyal",
+        "Kunal Swarup"
       ],
-      "passages": 109,
-      "sent": 0,
-      "sent_chars": 0,
-      "promises": 0
+      "passages": 117,
+      "sent": 1,
+      "sent_chars": 723,
+      "promises": 1
     },
     {
       "call": "Jul 2026",
@@ -261,14 +263,16 @@
       "quarter": "Jun 2026",
       "fiscal": "Q1 FY27",
       "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=faa4f0f7-06e4-4066-9d68-3da95dfe02d9.pdf",
-      "error": "no forward-looking passages found",
+      "error": null,
       "management": [
-        "Albinder Singh Dhindsa"
+        "Albinder Singh Dhindsa",
+        "Akshant Goyal",
+        "Kunal Swarup"
       ],
-      "passages": 129,
-      "sent": 0,
-      "sent_chars": 0,
-      "promises": 0
+      "passages": 131,
+      "sent": 1,
+      "sent_chars": 458,
+      "promises": 1
     },
     {
       "call": "May 2026",
@@ -277,14 +281,16 @@
       "quarter": "Mar 2026",
       "fiscal": "Q4 FY26",
       "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf",
-      "error": "no forward-looking passages found",
+      "error": null,
       "management": [
-        "Albinder Singh Dhindsa"
+        "Albinder Singh Dhindsa",
+        "Akshant Goyal",
+        "Kunal Swarup"
       ],
-      "passages": 122,
-      "sent": 0,
-      "sent_chars": 0,
-      "promises": 0
+      "passages": 131,
+      "sent": 5,
+      "sent_chars": 2988,
+      "promises": 3
     },
     {
       "call": "Jan 2026",
@@ -295,12 +301,14 @@
       "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf",
       "error": null,
       "management": [
-        "Akshant Goyal"
+        "Akshant Goyal",
+        "Albinder Singh Dhindsa",
+        "Kunal Swarup"
       ],
-      "passages": 140,
+      "passages": 142,
       "sent": 2,
       "sent_chars": 1179,
-      "promises": 2
+      "promises": 0
     },
     {
       "call": "Jan 2026",
@@ -309,13 +317,15 @@
       "quarter": "Dec 2025",
       "fiscal": "Q3 FY26",
       "url": "https://b.zmtcdn.com/investor-relations/Q3FY26-earnings-call-transcript.pdf",
-      "error": null,
+      "error": "duplicate of the Jan 2026 transcript",
       "management": [
-        "Akshant Goyal"
+        "Akshant Goyal",
+        "Albinder Singh Dhindsa",
+        "Kunal Swarup"
       ],
-      "passages": 140,
-      "sent": 2,
-      "sent_chars": 1179,
+      "passages": 0,
+      "sent": 0,
+      "sent_chars": 0,
       "promises": 0
     },
     {
@@ -327,20 +337,68 @@
       "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf",
       "error": null,
       "management": [
-        "Akshant Goyal"
+        "Akshant Goyal",
+        "Albinder Singh Dhindsa",
+        "Kunal Swarup"
       ],
-      "passages": 127,
-      "sent": 2,
-      "sent_chars": 1339,
+      "passages": 128,
+      "sent": 3,
+      "sent_chars": 1753,
       "promises": 1
     }
   ],
   "ledger": [
     {
       "id": "g1",
-      "metric": "ebitda_margin",
-      "metric_label": "EBITDA margin",
-      "metric_text": "Adjusted EBITDA margin 5-6% of NOV",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "Capex per store lower than INR 2.5 crore will continue going forward",
+      "scope": "company",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Akshant Goyal",
+          "quote": "We expect that to continue going forward",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=faa4f0f7-06e4-4066-9d68-3da95dfe02d9.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Unverified",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "No capex target or figure provided, cannot assess delivery.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g2",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "5-6% margin target",
+      "scope": "company",
       "period": "unspecified",
       "period_status": "no end date",
       "target": {
@@ -356,22 +414,36 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Jan 2026",
-          "call_label": "Jan 2026 (Q3 FY26)",
-          "fiscal": "Q3 FY26",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
           "speaker": "Akshant Goyal",
-          "quote": "Just to add, in the long term, in our letter we have mentioned that our confidence on margins going to 5% to 6% of NOV remains high, and we've shared data on a couple of cities in our business where we are already at 5% Adjusted EBITDA margin.",
+          "quote": "As we move to 5-6% margin that we are saying we will get to at some point, contribution margin will go up and on a year-on-year basis, we'll see that trend consistently.",
           "target_text": "5–6%",
           "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf"
         }
       ],
-      "evidence": [],
+      "evidence": [
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": true,
+          "speaker": "Akshant Goyal",
+          "passage_id": "t3-p25",
+          "text": "As we move to 5-6% margin that we are saying we will get to at some point, contribution margin will go up and on a year-on-year basis, we'll see that trend consistently.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf"
+        }
+      ],
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Target period not defined, so outcome cannot be assessed yet.",
+      "rationale": "Target 5-6% margin stated but no actual margin reported and period is open.",
       "cited": [
         "s1"
       ],
@@ -381,8 +453,8 @@
         "unit": "%",
         "guides": [
           {
-            "call": "Jan 2026",
-            "fiscal": "Q3 FY26",
+            "call": "May 2026",
+            "fiscal": "Q4 FY26",
             "low": 5,
             "high": 6
           }
@@ -392,10 +464,11 @@
       "notes": []
     },
     {
-      "id": "g2",
+      "id": "g3",
       "metric": "revenue_growth",
       "metric_label": "Revenue growth",
-      "metric_text": "Year-on-year growth expectation for this financial year",
+      "metric_text": "for this financial year, we're unlikely to be at 20%, and we're expecting a 15% sort of year-on-year growth",
+      "scope": "company",
       "period": "FY26",
       "period_status": "period ended",
       "target": {
@@ -424,7 +497,7 @@
       ],
       "evidence": [
         {
-          "id": "g2-n1",
+          "id": "g3-n1",
           "kind": "screener",
           "label": "Revenue growth YoY (reported ₹), FY26",
           "value": 168.56,
@@ -444,35 +517,23 @@
           },
           "source": "screener.in consolidated quarterly results",
           "url": "https://www.screener.in/company/ETERNAL/consolidated/"
-        },
-        {
-          "id": "g2-q1",
-          "kind": "transcript",
-          "call": "Oct 2025",
-          "call_month": "2025-10",
-          "fiscal": "Q2 FY26",
-          "latest": true,
-          "speaker": "Akshant Goyal",
-          "passage_id": "t6-p100",
-          "text": "So, when we move this business from sellers to directly on our platform, the supply chain cost, which includes first mile cost, went up and hence that entire gain on the top-line margin because of the model change did not flow through to contribution margin, which is also consistent with what we’ve mentioned in the past that the net gain or net flow through eventually should be 1%, part of which we have realized this quarter and the balance will keep flowing through in the next four to five quarters. --- page 15 --- So, just to be clear, this is the position on the impact of business model change on the top-line and the margin.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf"
         }
       ],
       "check": {
-        "comparable": true,
-        "position": "above",
+        "comparable": false,
+        "position": null,
         "actual": 168.56,
         "target_low": 15,
         "target_high": 15,
         "complete": true,
-        "evidence_id": "g2-n1"
+        "evidence_id": "g3-n1"
       },
-      "verdict": "Delivered",
+      "verdict": "Unverified",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Actual 168.56% exceeds target 15% for FY26.",
+      "rationale": "Screener's 168.56% growth not comparable to guided 15% target.",
       "cited": [
         "s1",
-        "g2-n1"
+        "g3-n1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -486,29 +547,26 @@
             "high": 15
           }
         ],
-        "actual": {
-          "value": 168.56,
-          "kind": "screener",
-          "label": "Revenue growth YoY (reported ₹), FY26",
-          "complete": true
-        }
+        "actual": null
       },
       "notes": [
-        "basis not stated; compared with reported ₹ growth"
+        "basis not stated; compared with reported ₹ growth",
+        "screener's 168.56% is far outside the guided 15–15%: the promise most likely measures something else (a segment, GOV/NOV, a different definition), so it is not used"
       ]
     },
     {
-      "id": "g3",
-      "metric": "other",
-      "metric_label": "Other",
-      "metric_text": "ROCE north of 40%",
-      "period": "unspecified",
+      "id": "g4",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "60% CAGR guidance over three years",
+      "scope": "company",
+      "period": "medium_term",
       "period_status": "no end date",
       "target": {
-        "text": "40%",
-        "low": 40,
-        "high": 40,
-        "unit": "%",
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
         "basis": "unspecified"
       },
       "revised": false,
@@ -517,39 +575,118 @@
       "statements": [
         {
           "id": "s1",
-          "call": "Jan 2026",
-          "call_label": "Jan 2026 (Q3 FY26)",
-          "fiscal": "Q3 FY26",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
           "speaker": "Akshant Goyal",
-          "quote": "Even though we might see capex per store going up over the next few quarters, we don't expect net working capital to be beyond those 18 days that we had shared earlier, so that should remain within range and hence, as a consequence of that, the ROCE outcome should still be north of 40%. That's what we're solving for.",
-          "target_text": "40%",
+          "quote": "We are fairly comfortable and confident that over a period of three years, we should be able to deliver this CAGR of growth.",
+          "target_text": null,
           "basis": "unspecified",
           "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Unverified",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "No specific revenue growth target or metric given for medium term.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g5",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Guidance on NOV per day per store",
+      "scope": "company",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "11",
+        "low": 11,
+        "high": 11,
+        "unit": null,
+        "basis": "reported"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Akshant Goyal",
+          "quote": "We gave guidance last time that in steady state it could get to about INR 11 lakh per day per store",
+          "target_text": "11",
+          "basis": "reported",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64f36e3b-87e9-426e-be3e-515dca4525d2.pdf"
         }
       ],
       "evidence": [],
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No end date given, so ROCE outcome cannot be evaluated yet.",
+      "rationale": "Guidance of INR 11 lakh per day per store has no end date, so delivery cannot be confirmed yet.",
       "cited": [
         "s1"
       ],
       "actual_quote": null,
       "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Jan 2026",
-            "fiscal": "Q3 FY26",
-            "low": 40,
-            "high": 40
-          }
-        ],
-        "actual": null
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g6",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "3,000 stores by March",
+      "scope": "company",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "3,000",
+        "low": 3000,
+        "high": 3000,
+        "unit": null,
+        "basis": "unspecified"
       },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Akshant Goyal",
+          "quote": "On store addition, we're on track on our guidance for March of 3,000 stores.",
+          "target_text": "3,000",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Guidance of 3,000 stores by March lacks a defined period, so achievement remains pending.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
       "notes": []
     }
   ],
@@ -561,7 +698,7 @@
     },
     {
       "call": "Jan 2026",
-      "quote": "our confidence on margins going to 5% to 6% of NOV remains high",
+      "quote": "confidence on margins going to 5% to 6% of NOV",
       "reason": "no forward-looking words: reads as a reported result, not a promise"
     },
     {
@@ -608,24 +745,24 @@
     ]
   },
   "summary": {
-    "Delivered": 1,
+    "Delivered": 0,
     "Missed": 0,
-    "Pending": 2,
+    "Pending": 3,
     "Goalposts moved": 0,
-    "Unverified": 0
+    "Unverified": 3
   },
   "track_record": {
-    "promises": 3,
-    "calls": 2,
-    "checkable": 1,
+    "promises": 6,
+    "calls": 4,
+    "checkable": 3,
     "revised": 0,
     "counts": {
-      "Delivered": 1,
+      "Delivered": 0,
       "Missed": 0,
-      "Pending": 2,
+      "Pending": 3,
       "Goalposts moved": 0,
-      "Unverified": 0
+      "Unverified": 3
     },
-    "text": "1 checkable promise: 1 delivered · 2 still running"
+    "text": "3 checkable promises: 3 unverified · 3 still running"
   }
 }

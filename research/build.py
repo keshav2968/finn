@@ -56,9 +56,16 @@ def build_research(
         return out
 
     transcripts: list[T.Transcript] = []
+    seen: dict[str, str] = {}
     for i, call in enumerate(calls, 1):
         log(f"transcript {call.get('period')}: reading")
         t = T.read(call, f"t{i}", cfg, get_text)
+        # screener sometimes lists the same transcript twice under different links.
+        fp = T.fingerprint(t)
+        if fp and fp in seen:
+            t.error, t.passages = f"duplicate of the {seen[fp]} transcript", []
+        elif fp:
+            seen[fp] = t.period
         transcripts.append(t)
 
     promises: list[dict[str, Any]] = []

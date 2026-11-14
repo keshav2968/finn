@@ -11,6 +11,7 @@ from research import promises as P
 from research import transcripts as T
 from research.build import build_research
 from research.numbers import actual_for, build_numbers, period_ended
+from tests.research_helpers import FIX as FIXDIR
 from tests.research_helpers import ScriptedModel, fixture_text, infy_record, research_cfg
 
 GOOD_JUDGE = {
@@ -251,9 +252,14 @@ def test_oct_2025_guidance_lands_in_fy26_and_the_fy27_path_starts_in_fy27():
     assert fy26_rev["revision_path"] == "2–3% → 3–3.5%" and fy26_rev["revision_direction"] == "raised"
 
 
+def _without_stated_cc(url):
+    text = fixture_text(url)
+    return text.replace("We had growth of 3.1% for the full year in constant currency\nterms.", "")
+
+
 def test_constant_currency_guide_is_not_delivered_on_rupee_growth():
     judge = {**GOOD_JUDGE, "revenue_growth:FY26": {"verdict": "Delivered", "evidence_ids": [], "rationale": "Revenue grew 9.61% YoY."}}
-    doc = _build(ScriptedModel(judge_replies=judge))
+    doc = _build(ScriptedModel(judge_replies=judge), get_text=_without_stated_cc)
     e = _entry(doc, "revenue_growth", "FY26")
     assert all(s["basis"] == "constant_currency" for s in e["statements"])  # from the quote, not the model
     assert e["check"]["comparable"] is False and e["verdict"] == "Unverified"
@@ -261,14 +267,13 @@ def test_constant_currency_guide_is_not_delivered_on_rupee_growth():
 
 
 def test_constant_currency_guide_is_delivered_on_the_stated_cc_actual():
-    doc = _build(ScriptedModel(judge_replies=GOOD_JUDGE))
-    gid = _entry(doc, "revenue_growth", "FY26")["id"]
-    quote = "We had growth of 3.1% for the full year in constant currency terms."
-    for said in ("Delivered", "Missed"):  # the stated figure decides, whatever the model says
-        judge = {**GOOD_JUDGE, "revenue_growth:FY26": {"verdict": said, "evidence_ids": [f"{gid}-q1"], "rationale": "As stated.",
-                                                       "actual_quote": quote, "actual_evidence_id": f"{gid}-q1"}}
+    # The judge says Unverified, Missed or Delivered: the year-end call's own sentence decides.
+    for said in ("Unverified", "Missed", "Delivered"):
+        judge = {**GOOD_JUDGE, "revenue_growth:FY26": {"verdict": said, "evidence_ids": [], "rationale": "As stated."}}
         e = _entry(_build(ScriptedModel(judge_replies=judge)), "revenue_growth", "FY26")
-        assert e["verdict"] == "Delivered" and e["stated"]["actual"] == 3.1 and e["actual_quote"]["call"] == "Apr 2026"
+        assert e["verdict"] == "Delivered" and e["stated"]["actual"] == 3.1
+        assert e["actual_quote"]["call"] == "Apr 2026" and e["actual_quote"]["found_by"] == "python"
+        assert "constant currency" in e["actual_quote"]["text"]
         assert e["chart"]["actual"] == {"value": 3.1, "kind": "stated", "label": "Stated by Salil Parekh, Apr 2026", "complete": True}
 
 
@@ -304,3 +309,91 @@ def test_track_record_is_counted_in_python():
     assert tr["checkable"] == tr["counts"]["Delivered"] + tr["counts"]["Missed"] + tr["counts"]["Unverified"]
     assert tr["text"].startswith(f"{tr['checkable']} checkable promise")
     assert "revised along the way" in tr["text"]
+
+
+# ---------------------------------------------------------------- other transcript layouts (POLYCAB, KPIT, ETERNAL runs)
+
+def _chorus(cfg=None):
+    cfg = cfg or research_cfg()
+    text = (FIXDIR / "chorus_style.txt").read_text(encoding="utf-8")
+    return T.read({"period": "Oct 2026", "month": "2026-10", "transcript_url": "u"}, "t1", cfg, lambda _u: text)
+
+
+def test_chorus_layout_roster_header_and_speakers():
+    t = _chorus()
+    assert t.error is None
+    assert t.management == ["NIKHIL JAISINGHANI", "NIYANT MARU", "SHASHANK YAGNICK"]  # not the company, not "MR.SHASHANK"
+    speakers = {p.speaker for p in t.passages}
+    assert "Polycab India Limited" not in speakers  # the running page header is not a speaker
+    mgmt = {p.speaker for p in t.passages if p.management}
+    assert mgmt == {"Niyant Maru", "Nikhil Jaisinghani", "Shashank Yagnick"}
+    # The broker host, "CA Garvit" (introduced with a title) and "Shrenik B" (an initial) are not the company.
+    assert not ({"Rahul Jain", "Garvit", "Shrenik B"} & mgmt)
+
+
+def test_analyst_words_are_never_a_promise():
+    t = _chorus()
+    analyst = next(p for p in t.passages if p.speaker == "Garvit")
+    raw = {"promises": [{"metric": "operating_margin", "metric_text": "aspiration", "target_low": 22, "target_high": 24,
+                         "unit": "%", "basis": "unspecified", "period": "FY29", "passage_id": analyst.id,
+                         "quote": "During the Analyst Day, you spoke about an aspiration of achieving 22% to 24% by FY '29."}]}
+    kept, dropped = P.check_promises(raw, t, t.passages, research_cfg())
+    assert kept == [] and "not management" in dropped[0]["reason"]
+    # Even if the transcript mislabelled the speaker, "you spoke about..." is reported speech.
+    for p in t.passages:
+        p.management = True
+    kept, dropped = P.check_promises(raw, t, t.passages, research_cfg())
+    assert kept == [] and "analyst" in dropped[0]["reason"]
+
+
+def test_segment_target_is_never_judged_on_company_figures():
+    t = _chorus()
+    p = next(x for x in t.passages if "this business" in x.text.replace("\n", " "))
+    raw = {"promises": [{"metric": "operating_margin", "metric_text": "margin guidance", "target_low": 11, "target_high": 13,
+                         "unit": "%", "basis": "unspecified", "period": "medium_term", "passage_id": p.id, "scope": "company",
+                         "quote": "We continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business."}]}
+    kept, _ = P.check_promises(raw, t, t.passages, research_cfg())
+    assert kept[0]["scope"] == "a business segment"
+    g = P.group(kept)[0]
+    ev = L.build_evidence(g, infy_record(), [t], research_cfg())
+    assert ev["allowed"] == ["Pending", "Unverified"]  # an ongoing range has no moment of delivery
+    entry = L.finalise(g, ev, {"verdict": "Delivered", "evidence_ids": [], "rationale": "13.3% beats it."}, "m", research_cfg())
+    assert entry["verdict"] == "Pending" and entry["verdict_by"] == "rules"
+
+
+def test_screener_figure_far_outside_the_range_is_not_used():
+    # ETERNAL: "a 15% sort of year-on-year growth" for FY26 against 168% reported revenue growth.
+    st = {"call": "Oct 2025", "call_month": "2025-10", "fiscal": "Q2 FY26", "speaker": "CFO", "quote": "we're expecting a 15% sort of year-on-year growth",
+          "target_text": "15%", "target_low": 15.0, "target_high": 15.0, "unit": "%", "basis": "unspecified", "scope": "company",
+          "quote_score": 100, "source_url": "u", "metric_label": "Revenue growth", "metric_text": "growth"}
+    g = {"id": "g1", "metric": "revenue_growth", "metric_label": "Revenue growth", "metric_text": "growth", "scope": "company",
+         "period": "FY26", "revised": False, "path": None, "direction": None, "statements": [st], "latest": st}
+    rec = infy_record()
+    rows = rec["views"]["consolidated"]["tables"]["quarters"]["rows"]["Sales"]
+    rec["views"]["consolidated"]["tables"]["quarters"]["rows"]["Sales"] = [v * (2.7 if i >= 4 else 1) for i, v in enumerate(rows)]
+    ev = L.build_evidence(g, rec, [], research_cfg())
+    assert ev["check"]["comparable"] is False and any("far outside" in n for n in ev["notes"])
+    entry = L.finalise(g, ev, {"verdict": "Delivered", "evidence_ids": [], "rationale": "Beat it."}, "m", research_cfg())
+    assert entry["verdict"] == "Unverified"
+
+
+def test_quoted_actual_about_another_period_is_dropped():
+    doc = _build(ScriptedModel(judge_replies=GOOD_JUDGE))
+    gid = _entry(doc, "operating_margin", "FY26")["id"]
+    ev_id = next(e["id"] for e in _entry(doc, "operating_margin", "FY26")["evidence"] if e["kind"] == "transcript" and e["call"] == "Oct 2026")
+    judge = {**GOOD_JUDGE, "operating_margin:FY26": {"verdict": "Delivered", "evidence_ids": [ev_id], "rationale": "Margin 21%.",
+                                                     "actual_quote": "Operating margin was stable at 21%.", "actual_evidence_id": ev_id}}
+    e = _entry(_build(ScriptedModel(judge_replies=judge)), "operating_margin", "FY26")
+    assert gid and any("different period" in n for n in e["notes"])
+    assert e["actual_quote"] is None or e["actual_quote"]["call"] == "Apr 2026"
+
+
+def test_duplicate_transcript_is_skipped():
+    rec = infy_record()
+    rec["documents"]["concalls"].append({"period": "Jan 2026", "month": "2026-01", "transcript_url": "https://example.test/infy-2026-01.pdf?copy=1"})
+    cfg = research_cfg()
+    cfg["transcripts"]["count"] = 7
+    doc = build_research("INFY", rec, cfg, lambda u: fixture_text(u.split("?")[0]), ScriptedModel(judge_replies=GOOD_JUDGE))
+    dups = [t for t in doc["transcripts"] if (t["error"] or "").startswith("duplicate of")]
+    assert [t["call"] for t in dups] == ["Jan 2026"] and dups[0]["error"] == "duplicate of the Jan 2026 transcript"
+    assert len(doc["transcripts"]) == 7

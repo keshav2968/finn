@@ -220,6 +220,12 @@ function Entry({ e }: { e: LedgerEntry }) {
           <h3 className={s.entryTitle}>{title}</h3>
           <p className={s.entryMeta}>
             {e.period === "unspecified" ? "No period stated" : e.period === "medium_term" ? "Medium term" : e.period}
+            {e.scope && e.scope !== "company" && (
+              <>
+                <Sep />
+                for {e.scope}
+              </>
+            )}
             <Sep />
             {e.period_status}
             {e.target.text && (
@@ -267,7 +273,7 @@ function Entry({ e }: { e: LedgerEntry }) {
         ))}
         {e.actual_quote && (
           <li className={s.actualQuote}>
-            <span className={s.actualTag}>Stated actual</span>
+            <span className={s.actualTag}>Stated actual{e.actual_quote.found_by === "python" ? " · from the year-end call" : ""}</span>
             <blockquote>&ldquo;{e.actual_quote.text}&rdquo;</blockquote>
             <p className={s.cite}>
               {e.actual_quote.speaker}

@@ -79,6 +79,7 @@ def schema(metric_keys: list[str]) -> dict[str, Any]:
                         "period": {"type": "string", "maxLength": 24},
                         "quote": {"type": "string", "maxLength": 700},
                         "passage_id": {"type": "string", "maxLength": 40},
+                        "scope": {"type": "string", "maxLength": 60},
                     },
                 },
             }
@@ -106,6 +107,8 @@ def system_prompt(metrics: dict[str, Any]) -> str:
         "\"for the year\" means the fiscal year of the quarter being reported (given below); \"next year\" or "
         "\"the coming financial year\" means the one after.\n"
         "- passage_id: the id of the passage the quote comes from.\n"
+        "- scope: \"company\" when the target is for the whole company; otherwise the business segment, division or "
+        "product line it is for, in the passage's own words (e.g. \"FMEG\", \"Wires & Cables\", \"quick commerce\").\n"
         'Return {"promises": []} when there are none.'
     )
 
@@ -210,6 +213,33 @@ def unit_from_quote(quote: str, value: float) -> str | None:
     return None
 
 
+REPORTED_SPEECH = re.compile(r"\byou (?:have |had )?(?:spoke|spoken|said|mentioned|talked|guided|indicated|highlighted|called out)\b|\byour (?:guidance|target|aspiration)\b", re.I)
+
+
+SEGMENT_CUE = re.compile(r"\b(for this business|this business|the business|segment|division|vertical|this category)\b", re.I)
+
+
+def resolve_scope(item_scope: str | None, quote: str, passage_text: str) -> str:
+    """"company", or the segment a target is for. A segment the model names must appear in
+    the passage; a quote that says "this business"/"segment" is a segment even if unnamed."""
+    s = (item_scope or "company").strip()
+    if s.lower() not in ("company", "whole company", "consolidated", "") and s.lower() in passage_text.lower():
+        return s
+    if SEGMENT_CUE.search(quote or ""):
+        return "a business segment"
+    return "company"
+
+
+def remap_metric(metric: str, quote: str, metrics: dict[str, Any]) -> str:
+    """An "other" promise whose quote names exactly one known metric by a multi-word alias
+    ("EBITDA margin", "revenue growth") is that metric."""
+    if metric != "other":
+        return metric
+    low = (quote or "").lower()
+    hits = {k for k, m in metrics.items() if k != "other" and any(" " in a and a in low for a in m.get("aliases") or [])}
+    return hits.pop() if len(hits) == 1 else metric
+
+
 def forward_looking(quote: str, words: list[str]) -> bool:
     low = (quote or "").lower()
     return any(w in low for w in words)
@@ -243,6 +273,9 @@ def check_promises(
         if not best.management:
             dropped.append({"call": transcript.period, "quote": quote[:200], "reason": f"said by {best.speaker}, not management"})
             continue
+        if REPORTED_SPEECH.search(quote):
+            dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "reports what management said (\"you said...\"): an analyst's words"})
+            continue
         if not forward_looking(quote, cfg["filter"]["forward"]):
             dropped.append({"call": transcript.period, "quote": quote[:200], "reason": "no forward-looking words: reads as a reported result, not a promise"})
             continue
@@ -261,6 +294,11 @@ def check_promises(
         if low is not None and high is not None and low > high:
             low, high = high, low
         metric = item.get("metric") if item.get("metric") in metrics else "other"
+        remapped = remap_metric(metric, quote, metrics)
+        if remapped != metric:
+            notes.append(f"metric set to {metrics[remapped]['label']} from the quote (model said other)")
+            metric = remapped
+        scope = resolve_scope(item.get("scope"), quote, best.text)
         period, pnote = resolve_period(item.get("period", ""), quote, transcript)
         if pnote:
             notes.append(pnote)
@@ -280,6 +318,7 @@ def check_promises(
             "target_high": high,
             "unit": unit,
             "basis": basis,
+            "scope": scope,
             "period": period,
             "quote": quote,
             "quote_score": best_score,
@@ -329,7 +368,8 @@ def _target_text(low: float | None, high: float | None, unit: str | None) -> str
     return f"{_num(low)}{u}" if low == high else f"{_num(low)}–{_num(high)}{u}"
 
 
-GENERIC = {"target", "guidance", "growth", "plan", "expected", "expect", "around", "approximately", "about", "year", "this", "that", "with", "will"}
+GENERIC = {"target", "guidance", "growth", "plan", "expected", "expect", "around", "approximately", "about", "year", "this", "that",
+           "with", "will", "long", "term", "medium", "range", "annual", "goal", "over", "remain", "within"}
 
 
 def _words(text: str) -> set[str]:
@@ -342,11 +382,13 @@ def _same_other(a: dict[str, Any], b: dict[str, Any]) -> bool:
     descriptive words and the same target."""
     if a["period"] != b["period"]:
         return False
+    if (a["target_low"] is None) != (b["target_low"] is None):
+        return False  # a number and a no-number statement are never the same promise
     same_target = a["target_low"] is not None and (a["target_low"], a["target_high"]) == (b["target_low"], b["target_high"])
     if same_target and (a.get("unit") or "") not in ("%", "bps"):
         return True
-    overlap = _words(a["metric_text"] + " " + a["quote"]) & _words(b["metric_text"] + " " + b["quote"])
-    return bool(overlap) and (same_target or a["target_low"] is None or b["target_low"] is None) and len(overlap) >= 2
+    overlap = _words(a["metric_text"]) & _words(b["metric_text"])
+    return len(overlap) >= 2 and (same_target or a["target_low"] is None)
 
 
 def _direction(first: tuple[float, float], last: tuple[float, float]) -> str:
@@ -365,6 +407,8 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
         for b in buckets:
             head = b[0]
             if p["metric"] != head["metric"]:
+                continue
+            if p.get("scope", "company") != head.get("scope", "company"):
                 continue
             if p["metric"] != "other" and p["period"] == head["period"]:
                 home = b
@@ -399,6 +443,7 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "metric": items[0]["metric"],
             "metric_label": statements[0]["metric_label"],
             "metric_text": latest["metric_text"],
+            "scope": items[0].get("scope", "company"),
             "period": items[0]["period"],
             "statements": statements,
             "latest": latest,
