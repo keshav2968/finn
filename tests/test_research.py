@@ -586,3 +586,60 @@ def test_open_ended_promise_is_always_pending():
     assert ev["allowed"] == ["Pending"]
     entry = L.finalise(g, ev, {"verdict": "Unverified", "evidence_ids": [], "rationale": "No figure yet."}, "m", research_cfg())
     assert entry["verdict"] == "Pending" and entry["period_status"] == "no end date"
+
+
+# ---------------------------------------------------------------- fifth review (POLYCAB, fourth run)
+
+def _pct(**kw):
+    return _promise(unit="%", **kw)
+
+
+def test_one_margin_guide_said_three_ways_is_one_entry():
+    a = _pct(metric="ebitda_margin", metric_label="EBITDA margin", period="medium_term", scope="cables and wires business",
+             target_low=11.0, target_high=13.0, call_month="2025-07",
+             quote="11% to 13% of EBITDA margins in the cables and wires business as our guidance")
+    b = _pct(metric="operating_margin", metric_label="Operating (EBIT) margin", period="medium_term", scope="Wires & Cables",
+             target_low=11.0, target_high=13.0, call_month="2026-07",
+             quote="we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business.")
+    c = _pct(period="medium_term", target_low=11.0, target_high=13.0, call_month="2025-10",
+             quote="the guidance of 11% to 13% of margins is a 5-year guidance")
+    groups = P.group([a, b, c])
+    assert len(groups) == 1
+    g = groups[0]
+    assert g["metric"] == "ebitda_margin" and g["period"] == "medium_term" and P._scope_key(g["scope"]) == "cables wires"
+    assert not g["revised"] and len(g["statements"]) == 3
+
+
+def test_dated_and_undated_capex_plan_with_the_same_total_is_one_entry():
+    dated = _promise(metric="capex", metric_label="Capex", period="FY30", target_low=6000.0, target_high=8000.0, unit="crore",
+                     low_crore=6000.0, high_crore=8000.0, call_month="2026-05",
+                     quote="in line with our Project Spring guidance of INR 6,000 crores to INR 8,000 crores capex by financial year 2030")
+    undated = _promise(metric="capex", metric_label="Capex", period="medium_term", target_low=60.0, target_high=80.0, unit="bn",
+                       low_crore=6000.0, high_crore=8000.0, call_month="2025-07",
+                       quote="We remain on track to execute our planned capex program of INR 60 billion to INR 80 billion over the next 5 years")
+    annual = _promise(metric="capex", metric_label="Capex", period="FY30", target_low=12.0, target_high=16.0, unit="bn",
+                      low_crore=1200.0, high_crore=1600.0, annual=True, call_month="2025-10",
+                      quote="Project Spring guidance of investing ₹ 12 billion - ₹ 16 billion annually through to FY 2030")
+    groups = P.group([dated, undated, annual])
+    assert len(groups) == 2  # the annual rate is a different commitment from the five-year total
+    total = next(g for g in groups if not g["statements"][0]["annual"])
+    assert total["period"] == "FY30" and len(total["statements"]) == 2 and not total["revised"]
+
+
+def test_different_dated_targets_and_named_segments_never_merge():
+    fy27 = _pct(metric="ebitda_margin", metric_label="EBITDA margin", period="FY27", scope="FMEG", target_low=8.0, target_high=10.0,
+                quote="on a full year basis, we should be able to reach 8% to 10% of EBITDA margins on FMEG.")
+    fy30 = _pct(metric="ebitda_margin", metric_label="EBITDA margin", period="FY30", scope="FMEG", target_low=8.0, target_high=10.0,
+                quote="where we target EBITDA margins of 8% to 10% by FY 2030.")
+    other_seg = _pct(metric="ebitda_margin", metric_label="EBITDA margin", period="medium_term", scope="Wires & Cables",
+                     target_low=8.0, target_high=10.0, quote="EBITDA margins of 8% to 10% in wires over the medium term")
+    assert len(P.group([fy27, fy30, other_seg])) == 3
+
+
+def test_by_2030_names_the_year_and_a_share_of_revenue_is_not_growth():
+    jul26 = _t("Jul 2026", "2026-07", "Jun 2026")
+    quote = ("We assure that we'll be able to deliver higher growth. And there is no specific target because it's an uncapped "
+             "growth opportunity. We have given our guidance of going north of 10% of our overall top line by 2030.")
+    assert P.resolve_period("FY27", quote, jul26)[0] == "FY30"
+    assert P.SHARE_OF.search(quote)
+    assert not P.SHARE_OF.search("revenue growth of 10% for the year")

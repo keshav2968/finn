@@ -142,6 +142,7 @@ def normalise_period(raw: str, transcript: Transcript) -> str:
 
 # A year named in the quote: "FY27", "FY 2027", "FY2026-27", "financial year '27", "fiscal 2027".
 YEAR_NAMED = re.compile(r"\b(?:fy|financial year|fiscal(?: year)?)\s*'?\s*(\d{2}(?:\d{2})?)(?:\s*[-–/]\s*(\d{2}))?\b", re.I)
+YEAR_BY = re.compile(r"\b(?:by|through|till|until|to)\s+(?:the\s+end\s+of\s+)?(?:march\s+)?(20[2-4]\d)\b", re.I)
 NEXT_YEAR = re.compile(r"\b(next|coming|following)\s+(financial\s+|fiscal\s+)?year\b|\byear ahead\b", re.I)
 THIS_YEAR = re.compile(r"\b(full year|this year|for the year|this financial year|current (financial |fiscal )?year|the financial year|the year)\b", re.I)
 BASIS_WORDS = [
@@ -171,6 +172,7 @@ def resolve_period(model_period: str, quote: str, transcript: Transcript) -> tup
     for m in YEAR_NAMED.finditer(quote or ""):
         yy = m.group(2) or m.group(1)
         named.append(int(yy[-2:]))
+    named += [int(m.group(1)[-2:]) for m in YEAR_BY.finditer(quote or "")]  # "by 2030" = by March 2030 = FY30
     cur = transcript.current_fy()
     if not named and MEDIUM_TERM.search(quote or "") and not THIS_YEAR.search(quote or ""):
         resolved = "medium_term"
@@ -288,6 +290,8 @@ def scope_from_quote(quote: str) -> str | None:
     return None
 
 
+GROWTH_METRICS = ("revenue_growth", "profit_growth", "loan_growth")
+SHARE_OF = re.compile(r"\d\s?%\s+(?:of|contribution (?:to|from))\s+(?:our\s+|the\s+)?(?:overall\s+|total\s+|consolidated\s+)?(?:top[- ]?line|revenues?|sales|turnover)\b", re.I)
 HAS_FIGURE = re.compile(r"\d+(?:\.\d+)?\s?(?:%|x\b|crores?|cr\b|bn|billion|mn|million|days|lakh)", re.I)
 AMOUNT_UNITS = {"crore": 1.0, "bn": 100.0, "mn": 0.1}  # in ₹ crore
 
@@ -356,6 +360,9 @@ def check_promises(
         metric = item.get("metric") if item.get("metric") in metrics else "other"
         if metric != "other" and not metric_named(metric, quote, metrics, best.text):
             notes.append(f"the quote does not name {metrics[metric]['label'].lower()}; filed as other (model said {metric})")
+            metric = "other"
+        if metric in GROWTH_METRICS and SHARE_OF.search(quote):
+            notes.append(f"the target is a share of revenue, not growth; filed as other (model said {metric})")
             metric = "other"
         remapped = remap_metric(metric, quote, metrics)
         if remapped != metric:
@@ -473,6 +480,85 @@ def _direction(first: tuple[float, float], last: tuple[float, float]) -> str:
     return "raised" if b > a else ("cut" if b < a else "changed")
 
 
+UNDATED = ("medium_term", "unspecified")
+MARGINS = ("operating_margin", "ebitda_margin")
+NAMES_MARGIN_KIND = re.compile(r"\bebitda\b|\bebit\b|\boperating\b", re.I)
+
+
+def _targets(b: list[dict[str, Any]]) -> set[tuple[Any, ...]]:
+    return {(p["low_crore"], p["high_crore"], "crore") if p.get("low_crore") is not None else (p["target_low"], p["target_high"], p.get("unit"))
+            for p in b if p["target_low"] is not None}
+
+
+def _bare_margin(b: list[dict[str, Any]]) -> bool:
+    """Every quote says just "margin": it could be the EBITDA or the EBIT margin guide."""
+    return all("margin" in p["quote"].lower() and not NAMES_MARGIN_KIND.search(p["quote"]) for p in b) and b[0]["metric"] in MARGINS + ("other",)
+
+
+def _mergeable(a: list[dict[str, Any]], b: list[dict[str, Any]]) -> list[dict[str, Any]] | None:
+    """The bucket the two should become one under (its metric, period and scope win), or None.
+    Only for a single identical target, so a revision is never hidden: "Rs 6,000-8,000 crore
+    over the next 5 years" and "Rs 6,000-8,000 crore capex by FY2030" are one plan; "11-13%
+    margin guidance for this business" and "11-13% EBITDA margins in cables and wires" are one guide."""
+    ta, tb = _targets(a), _targets(b)
+    if len(ta) != 1 or ta != tb or a[0].get("annual") != b[0].get("annual"):
+        return None
+    ha, hb = a[0], b[0]
+    if ha["period"] != hb["period"] and ha["period"] not in UNDATED and hb["period"] not in UNDATED:
+        return None
+    if ha["metric"] == hb["metric"]:
+        main = a
+    elif ha["metric"] in MARGINS and _bare_margin(b):
+        main = a
+    elif hb["metric"] in MARGINS and _bare_margin(a):
+        main = b
+    elif "crore" in next(iter(ta)) and "other" in (ha["metric"], hb["metric"]):
+        main = a if hb["metric"] == "other" else b
+    else:
+        return None
+    if ha["metric"] == hb["metric"] == "other" and not (_words(" ".join(p["quote"] for p in a)) & _words(" ".join(p["quote"] for p in b))):
+        return None
+    ka, kb = _scope_key(ha.get("scope")), _scope_key(hb.get("scope"))
+    if ka != kb:
+        low, high = next(iter(ta))[:2]
+        unnamed = {"company", "segment"}
+        if not ({ka, kb} & unnamed) or low == high:
+            return None  # two named segments, or a single figure: too weak to call them one target
+    return main
+
+
+def _consolidate(buckets: list[list[dict[str, Any]]]) -> list[list[dict[str, Any]]]:
+    merged = True
+    while merged:
+        merged = False
+        for i in range(len(buckets)):
+            for j in range(i + 1, len(buckets)):
+                main = _mergeable(buckets[i], buckets[j])
+                if main is None:
+                    continue
+                other = buckets[j] if main is buckets[i] else buckets[i]
+                head = main[0]
+                period = head["period"] if head["period"] not in UNDATED else other[0]["period"]
+                if period in UNDATED and "medium_term" in (head["period"], other[0]["period"]):
+                    period = "medium_term"
+                scope = head.get("scope")
+                if _scope_key(scope) in ("company", "segment") and _scope_key(other[0].get("scope")) not in ("company", "segment"):
+                    scope = other[0].get("scope")
+                for p in main + other:
+                    moved = p in other
+                    if moved or p["period"] != period or p.get("scope") != scope:
+                        p["notes"] = list(p.get("notes") or []) + [
+                            f"grouped with the same {p.get('target_text') or 'target'} statement(s) filed as {head['metric_label']} {period}"]
+                    p["metric"], p["metric_label"], p["period"], p["scope"] = head["metric"], head["metric_label"], period, scope
+                buckets[i] = main + other
+                del buckets[j]
+                merged = True
+                break
+            if merged:
+                break
+    return buckets
+
+
 def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """The same commitment across calls: one group per (metric, period), statements oldest
     first. "Other" promises merge only when they are clearly the same commitment."""
@@ -506,6 +592,7 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             buckets.append([p])
         else:
             home.append(p)
+    buckets = _consolidate(buckets)
     buckets.sort(key=lambda b: (b[0]["metric"] == "other", b[0]["metric"], b[0]["period"]))
     out = []
     for i, items in enumerate(buckets):

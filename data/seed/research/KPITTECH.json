@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "KPITTECH",
   "name": "KPIT Technologies Ltd",
-  "generated_at": "2026-11-15T02:50:37+05:30",
+  "generated_at": "2026-11-15T02:59:35+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -371,6 +371,18 @@
       "statements": [
         {
           "id": "s1",
+          "call": "Aug 2025",
+          "call_label": "Aug 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "Kishor Patil",
+          "quote": "Right now, I would say, in a foreseeable future, we believe we can maintain the margins at 21%. I think as you have seen I mean, unless the currency plays very havoc. We don't know. That part, we don't know. But as long as it is in a reasonable way, we should be in a position to maintain it at 21% EBITDA. We do believe in the medium term, we can increase the margin, as I have been saying.",
+          "target_text": "21%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d90bb9-9e31-4b03-92ba-0df108f5a9b8.pdf"
+        },
+        {
+          "id": "s2",
           "call": "Nov 2025",
           "call_label": "Nov 2025 (Q2 FY26)",
           "fiscal": "Q2 FY26",
@@ -459,6 +471,7 @@
       "rationale": "Management stated 20.8% (May 2026) against a 21% target.",
       "cited": [
         "s1",
+        "s2",
         "g1-n1",
         "g1-q1"
       ],
@@ -480,6 +493,12 @@
         "unit": "%",
         "guides": [
           {
+            "call": "Aug 2025",
+            "fiscal": "Q1 FY26",
+            "low": 21,
+            "high": 21
+          },
+          {
             "call": "Nov 2025",
             "fiscal": "Q2 FY26",
             "low": 21,
@@ -497,102 +516,6 @@
         "screener's operating profit is used as EBITDA; the company's own definition can differ",
         "rationale replaced: it used an older figure than the latest call"
       ]
-    },
-    {
-      "id": "g2",
-      "metric": "ebitda_margin",
-      "metric_label": "EBITDA margin",
-      "metric_text": "Maintain EBITDA margin at 21% and increase it in the medium term",
-      "scope": "company",
-      "period": "medium_term",
-      "period_status": "no end date",
-      "target": {
-        "text": "21%",
-        "low": 21,
-        "high": 21,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "Aug 2025",
-          "call_label": "Aug 2025 (Q1 FY26)",
-          "fiscal": "Q1 FY26",
-          "speaker": "Kishor Patil",
-          "quote": "Right now, I would say, in a foreseeable future, we believe we can maintain the margins at 21%. I think as you have seen I mean, unless the currency plays very havoc. We don't know. That part, we don't know. But as long as it is in a reasonable way, we should be in a position to maintain it at 21% EBITDA. We do believe in the medium term, we can increase the margin, as I have been saying.",
-          "target_text": "21%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d90bb9-9e31-4b03-92ba-0df108f5a9b8.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g2-q1",
-          "kind": "transcript",
-          "call": "Nov 2026",
-          "call_month": "2026-11",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Kishor Patil",
-          "passage_id": "t1-p7",
-          "text": "In terms of profitability, our EBITDA has grown from 17.2% to 17.8%, this is 60 basis point, largely it is because of the business mix as the products contributions are higher as compared to the services part and solutions part.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf"
-        },
-        {
-          "id": "g2-q2",
-          "kind": "transcript",
-          "call": "Aug 2026",
-          "call_month": "2026-08",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Kishor Patil",
-          "passage_id": "t2-p7",
-          "text": "In terms of profits, the EBITDA was at 17.2%, EBIT at 12.3% and PAT at INR 1.17 billion .",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
-        },
-        {
-          "id": "g2-q3",
-          "kind": "transcript",
-          "call": "May 2026",
-          "call_month": "2026-05",
-          "call_quarter": "Mar 2026",
-          "fiscal": "Q4 FY26",
-          "latest": false,
-          "speaker": "Opening remarks (speaker not named)",
-          "passage_id": "t3-p4",
-          "text": "So these are some of the areas Where we saw that, detailed part about the growth, Sachin will talk, I'm just talking about the highlight of this quarter and overall And, EBITDA growth margin is for the year 20.8%.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
-        }
-      ],
-      "check": null,
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Medium‑term target has no defined end, so outcome is pending.",
-      "cited": [
-        "s1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Aug 2025",
-            "fiscal": "Q1 FY26",
-            "low": 21,
-            "high": 21
-          }
-        ],
-        "actual": null
-      },
-      "notes": []
     }
   ],
   "dropped": [],
@@ -636,23 +559,23 @@
   "summary": {
     "Delivered": 0,
     "Missed": 1,
-    "Pending": 1,
+    "Pending": 0,
     "Goalposts moved": 0,
     "Unverified": 0
   },
   "track_record": {
-    "promises": 2,
+    "promises": 1,
     "calls": 2,
     "checkable": 1,
-    "open_ended": 1,
+    "open_ended": 0,
     "revised": 0,
     "counts": {
       "Delivered": 0,
       "Missed": 1,
-      "Pending": 1,
+      "Pending": 0,
       "Goalposts moved": 0,
       "Unverified": 0
     },
-    "text": "1 checkable promise: 1 missed · 1 open-ended"
+    "text": "1 checkable promise: 1 missed"
   }
 }
