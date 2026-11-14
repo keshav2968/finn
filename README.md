@@ -165,12 +165,16 @@ npm test           # node --test: browser-side inbox reproduces alerts.json
 npm run build
 ```
 
-- **Inbox:** price alerts, then "Needs attention" and "Worth knowing" cards (repeats
-  collapsed), routine filings folded into one line. Marking done is stored per device
-  (localStorage); the bell filters to alerts. Window chips re-run the same grouping and
-  alert rules as `push/priority.py` and `push/alerts.py`, in the browser.
-- **Design tokens** in `web/app/globals.css`: ink, ivory, teal (interactive only), muted
-  green/red for price moves only, each with an arrow and sign. IBM Plex Sans is
-  self-hosted via `next/font/local`; its digits are tabular.
+- **Inbox:** price alerts (with a 7-session sparkline), then "Needs attention" and
+  "Worth knowing" cards (repeats collapsed), routine filings folded into one line. Each
+  row shows a title, one meta line and one key figure; tap for the detail sheet (results
+  table with per-figure checks, people and flags, why it ranks here). Swipe left to
+  clear, with undo; cleared state is stored per device (localStorage). The bell filters
+  to alerts. Window tabs re-run the same grouping and alert rules as `push/priority.py`
+  and `push/alerts.py`, in the browser.
+- **Design tokens** in `web/app/globals.css`: dark by default, ink / ivory / teal (teal
+  for interactive things only), muted green/red for price moves only, each with an arrow
+  and sign. Instrument Sans for text, Geist Mono for figures, both self-hosted via
+  `next/font/local`. Icons: lucide-react.
 - **Deploy:** Vercel project with Root Directory `web`; files outside it (seed, config)
   are read during the build.

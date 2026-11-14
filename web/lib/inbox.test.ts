@@ -34,7 +34,7 @@ test("default window reproduces alerts.json", () => {
 test("repeats collapse into one card led by the highest score, newest on ties", () => {
   const base: Omit<Item, "id" | "datetime" | "score" | "group_key"> = { symbol: "X", category: "fund_raise",
     category_label: "Fund raise", kind: "event", pending: false, method: "rule", tier: "worth_knowing", reasons: [],
-    reaction: null, pdf_url: null, results: null, management: null, headline: "h" };
+    reaction: null, pdf_url: null, results_symbol: null, management: null, headline: "h", score_parts: [] };
   const items: Item[] = [
     { ...base, id: "a", datetime: "2026-11-10T10:00:00+05:30", score: 55, group_key: "g" },
     { ...base, id: "b", datetime: "2026-11-11T10:00:00+05:30", score: 55, group_key: "g" },
@@ -46,8 +46,8 @@ test("repeats collapse into one card led by the highest score, newest on ties", 
 
 test("same-day results card is led by the earliest rule match", () => {
   const base: Omit<Item, "id" | "datetime" | "method"> = { symbol: "X", category: "results", category_label: "Results",
-    kind: "event", pending: false, tier: "needs_attention", reasons: [], reaction: null, pdf_url: null, results: null,
-    management: null, headline: "h", score: 80, group_key: "X|results|2026-11-07" };
+    kind: "event", pending: false, tier: "needs_attention", reasons: [], reaction: null, pdf_url: null,
+    results_symbol: null, management: null, headline: "h", score: 80, group_key: "X|results|2026-11-07", score_parts: [] };
   const items: Item[] = [
     { ...base, id: "press", datetime: "2026-11-07T17:28:00+05:30", method: "context" },
     { ...base, id: "statement", datetime: "2026-11-07T17:18:00+05:30", method: "rule" },

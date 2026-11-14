@@ -1,23 +1,30 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Bell, ChevronRight, CircleCheck, ExternalLink, Moon, Sun } from "lucide-react";
 import { alertKeys, buildInbox } from "@/lib/inbox";
-import { crore, day, dayTime, direction, pct, plural, price, times } from "@/lib/format";
+import { day, dayTime, direction, pct, plural } from "@/lib/format";
+import { alertReason, keyFigure, sparkValues } from "@/lib/present";
 import type { Card, InboxData, PriceAlert } from "@/lib/types";
-import { BellIcon, CheckIcon, ChevronIcon, ExternalIcon, MoonIcon, SunIcon, Tri } from "./Icons";
+import { FilingDetail, Move, PriceDetail } from "./Details";
+import Sheet from "./Sheet";
+import Spark from "./Spark";
+import SwipeRow from "./SwipeRow";
 import { useStored } from "./useStored";
 import s from "./inbox.module.css";
+import sh from "./sheet.module.css";
 
-type Done = Record<string, string>; // key -> when it was marked done
-type Toast = { key: string; label: string } | null;
+type Done = Record<string, string>; // key -> when it was cleared
+type Open = { type: "price"; alert: PriceAlert } | { type: "card"; card: Card } | null;
 
 export default function Inbox({ data }: { data: InboxData }) {
   const [windowKey, setWindowKey] = useStored<string>("finn.window", data.default_window);
   const [done, setDone] = useStored<Done>("finn.done.v1", {});
   const [alertsOnly, setAlertsOnly] = useState(false);
   const [routineOpen, setRoutineOpen] = useState(false);
-  const [doneOpen, setDoneOpen] = useState(false);
-  const [toast, setToast] = useState<Toast>(null);
+  const [clearedOpen, setClearedOpen] = useState(false);
+  const [open, setOpen] = useState<Open>(null);
+  const [toast, setToast] = useState<{ key: string; label: string } | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const win = data.windows.find((w) => w.key === windowKey) ?? data.windows.find((w) => w.key === data.default_window)!;
@@ -26,213 +33,224 @@ export default function Inbox({ data }: { data: InboxData }) {
 
   const isDone = (key: string) => key in done;
   const pick = (cards: Card[]) => cards.filter((c) => !alertsOnly || c.alert);
-
-  const priceList = view.priceAlerts;
   const needs = pick(view.needs);
   const worth = pick(view.worth);
-  const openPrice = priceList.filter((a) => !isDone(a.key));
+  const openPrice = view.priceAlerts.filter((a) => !isDone(a.key));
   const openNeeds = needs.filter((c) => !isDone(c.key));
   const openWorth = worth.filter((c) => !isDone(c.key));
-  const doneRows: { key: string; symbol: string; text: string }[] = [
-    ...priceList.filter((a) => isDone(a.key)).map((a) => ({ key: a.key, symbol: a.symbol, text: a.reasons.join(" · ") })),
+  const cleared = [
+    ...view.priceAlerts.filter((a) => isDone(a.key)).map((a) => ({ key: a.key, symbol: a.symbol, text: a.name })),
     ...[...needs, ...worth].filter((c) => isDone(c.key)).map((c) => ({ key: c.key, symbol: c.lead.symbol, text: c.lead.headline })),
   ];
-  const toReview = openPrice.length + openNeeds.length + openWorth.length;
-  const total = toReview + doneRows.length;
+  const left = openPrice.length + openNeeds.length + openWorth.length;
+  const total = left + cleared.length;
   const badge = [...alerts].filter((k) => !isDone(k)).length;
-
-  function mark(key: string, label: string) {
-    setDone((prev) => ({ ...prev, [key]: new Date().toISOString() }));
-    setToast({ key, label });
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-    toastTimer.current = setTimeout(() => setToast(null), 4000);
-  }
-
-  function unmark(key: string) {
-    setDone((prev) => {
-      const next = { ...prev };
-      delete next[key];
-      return next;
-    });
-    setToast((t) => (t?.key === key ? null : t));
-  }
-
-  useEffect(() => () => {
-    if (toastTimer.current) clearTimeout(toastTimer.current);
-  }, []);
-
-  const wider = data.windows.find((w) => w.hours > win.hours);
   const routineFilings = view.routine.reduce((n, c) => n + c.members.length, 0);
+  const wider = data.windows.find((w) => w.hours > win.hours);
+
+  const mark = useCallback(
+    (key: string, label: string) => {
+      setDone((prev) => ({ ...prev, [key]: new Date().toISOString() }));
+      setToast({ key, label });
+      if (toastTimer.current) clearTimeout(toastTimer.current);
+      toastTimer.current = setTimeout(() => setToast(null), 4500);
+    },
+    [setDone],
+  );
+
+  const unmark = useCallback(
+    (key: string) => {
+      setDone((prev) => {
+        const next = { ...prev };
+        delete next[key];
+        return next;
+      });
+      setToast((t) => (t?.key === key ? null : t));
+    },
+    [setDone],
+  );
+
+  useEffect(
+    () => () => {
+      if (toastTimer.current) clearTimeout(toastTimer.current);
+    },
+    [],
+  );
+
+  const close = useCallback(() => setOpen(null), []);
+  const openKey = open ? (open.type === "price" ? open.alert.key : open.card.key) : null;
 
   return (
     <div className={s.app}>
-      <header className={s.header}>
-        <div className={s.brandRow}>
-          <div>
-            <div className={s.brand}>FINN</div>
-            <div className={s.snapshot}>
-              Snapshot {dayTime(data.snapshot_at)} IST
-              {data.prices_as_of ? ` · prices to ${day(data.prices_as_of)} close` : ""}
-            </div>
-          </div>
-          <div className={s.actions}>
-            <ThemeToggle />
-            <button
-              type="button"
-              className={s.iconButton}
-              aria-pressed={alertsOnly}
-              aria-label={`${alertsOnly ? "Show everything" : "Show alerts only"}, ${plural(badge, "new alert")}`}
-              onClick={() => setAlertsOnly((v) => !v)}
-              data-active={alertsOnly || undefined}
-            >
-              <BellIcon />
-              {badge > 0 && <span className={s.badge}>{badge}</span>}
-            </button>
-          </div>
+      <header className={s.top}>
+        <div className={s.brand}>
+          <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="var(--fg)" />
+            <path d="M22 46V18h21M22 32h16" fill="none" stroke="var(--bg)" strokeWidth="6" />
+          </svg>
+          <span>Finn</span>
         </div>
-
-        <div className={s.chipRow}>
-          <div className={s.chips} role="group" aria-label="Time window">
-            {data.windows.map((w) => (
-              <button
-                key={w.key}
-                type="button"
-                className={s.chip}
-                aria-pressed={w.key === win.key}
-                onClick={() => setWindowKey(w.key)}
-              >
-                {w.label}
-              </button>
-            ))}
-          </div>
-          <span className={s.range}>
-            {day(view.from)} – {day(view.to)}
-          </span>
+        <div className={s.actions}>
+          <ThemeToggle />
+          <button
+            type="button"
+            className={s.iconButton}
+            aria-pressed={alertsOnly}
+            aria-label={`${alertsOnly ? "Show everything" : "Show alerts only"}, ${plural(badge, "open alert")}`}
+            onClick={() => setAlertsOnly((v) => !v)}
+          >
+            <Bell size={20} strokeWidth={1.75} />
+            {badge > 0 && <span className={`num ${s.badge}`}>{badge}</span>}
+          </button>
         </div>
       </header>
 
-      <main className={s.main}>
-        <section className={s.summary} aria-live="polite">
-          <div className={s.count}>
-            <span className={s.big}>{toReview}</span>
-            <span>{alertsOnly ? "alerts to review" : "to review"}</span>
-          </div>
-          <div className={s.sub}>
-            {doneRows.length} done · {plural(view.filingCount, "filing")} and {plural(priceList.length, "price alert")} in
-            this window
-          </div>
-          <div className={s.progress} role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={doneRows.length}>
-            <span style={{ width: total ? `${(100 * doneRows.length) / total}%` : "0%" }} />
-          </div>
-        </section>
-
-        {alertsOnly && (
-          <div className={s.filterBar}>
-            <span>Showing alerts only</span>
-            <button type="button" className={s.textButton} onClick={() => setAlertsOnly(false)}>
-              Show everything
+      <section className={s.queue} aria-live="polite">
+        <h1 className={s.count}>
+          <span className="num">{left}</span> {alertsOnly ? (left === 1 ? "alert" : "alerts") : "left"}
+        </h1>
+        <p className={s.queueSub}>
+          <span className="num">{cleared.length}</span> of <span className="num">{total}</span> cleared<span className="sep" aria-hidden="true">·</span>
+          {day(view.from)} – {day(view.to)}
+        </p>
+        <div className={s.line} role="progressbar" aria-label="Cleared" aria-valuemin={0} aria-valuemax={total} aria-valuenow={cleared.length}>
+          <span style={{ transform: `scaleX(${total ? cleared.length / total : 0})` }} />
+        </div>
+        <div className={s.tabs} role="group" aria-label="Time window">
+          {data.windows.map((w) => (
+            <button key={w.key} type="button" className={s.tab} aria-pressed={w.key === win.key} onClick={() => setWindowKey(w.key)}>
+              <span className="num">{w.label}</span>
             </button>
-          </div>
-        )}
+          ))}
+          {alertsOnly && (
+            <button type="button" className={s.filterOff} onClick={() => setAlertsOnly(false)}>
+              Alerts only · show all
+            </button>
+          )}
+        </div>
+      </section>
 
-        {toReview === 0 && (
-          <CaughtUp
+      <main className={s.main}>
+        {left === 0 ? (
+          <AllClear
             empty={total === 0}
             from={view.from}
             to={view.to}
             note={data.schedule_note}
             wider={wider ? { label: wider.label, onClick: () => setWindowKey(wider.key) } : null}
           />
+        ) : (
+          cleared.length === 0 && <p className={s.hint}>Swipe left to clear. Tap for details.</p>
         )}
 
         {openPrice.length > 0 && (
           <Section title="Price alerts" count={openPrice.length}>
             {openPrice.map((a) => (
-              <PriceRow key={a.key} alert={a} onDone={() => mark(a.key, `${a.symbol} price alert`)} />
+              <PriceRow
+                key={a.key}
+                alert={a}
+                data={data}
+                onOpen={() => setOpen({ type: "price", alert: a })}
+                onDone={() => mark(a.key, a.name)}
+              />
             ))}
           </Section>
         )}
-
         {openNeeds.length > 0 && (
           <Section title={data.tier_labels.needs_attention} count={openNeeds.length}>
             {openNeeds.map((c) => (
-              <CardRow key={c.key} card={c} data={data} onDone={() => mark(c.key, `${c.lead.symbol} ${c.lead.category_label.toLowerCase()}`)} />
+              <CardRow key={c.key} card={c} data={data} onOpen={() => setOpen({ type: "card", card: c })} onDone={() => mark(c.key, c.lead.symbol)} />
             ))}
           </Section>
         )}
-
         {openWorth.length > 0 && (
           <Section title={data.tier_labels.worth_knowing} count={openWorth.length}>
             {openWorth.map((c) => (
-              <CardRow key={c.key} card={c} data={data} onDone={() => mark(c.key, `${c.lead.symbol} ${c.lead.category_label.toLowerCase()}`)} />
+              <CardRow key={c.key} card={c} data={data} onOpen={() => setOpen({ type: "card", card: c })} onDone={() => mark(c.key, c.lead.symbol)} />
             ))}
           </Section>
         )}
 
         {!alertsOnly && view.routine.length > 0 && (
-          <section className={s.fold}>
-            <button type="button" className={s.foldHead} aria-expanded={routineOpen} onClick={() => setRoutineOpen((v) => !v)}>
-              <span>
-                <span className={s.foldTitle}>
-                  {data.tier_labels.routine} · {plural(routineFilings, "filing")}
-                </span>
-                <span className={s.foldSub}>{routineMix(view.routine)} · not counted</span>
-              </span>
-              <ChevronIcon className={s.chev} />
-            </button>
-            {routineOpen && (
-              <ul className={s.compact}>
-                {view.routine.map((c) => (
-                  <li key={c.key}>
-                    <div className={s.compactMeta}>
-                      <span className={s.sym}>{c.lead.symbol}</span>
-                      <span>{c.lead.category_label}</span>
-                      <span className={s.time}>{dayTime(c.lead.datetime)}</span>
-                    </div>
-                    <div className={s.compactText}>
-                      {c.lead.headline}
-                      {c.members.length > 1 && <span className={s.muted}> · +{c.members.length - 1} similar</span>}
-                      {c.lead.pdf_url && <Pdf url={c.lead.pdf_url} />}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
+          <Fold
+            title={`${data.tier_labels.routine} filings`}
+            count={routineFilings}
+            sub={`${routineMix(view.routine)}. Not counted.`}
+            open={routineOpen}
+            onToggle={() => setRoutineOpen((v) => !v)}
+          >
+            {view.routine.map((c) => (
+              <li key={c.key}>
+                <button type="button" className={s.mini} onClick={() => setOpen({ type: "card", card: c })}>
+                  <span className={s.miniTitle}>{c.lead.headline}</span>
+                  <span className={s.meta}>
+                    <span className="num">{c.lead.symbol}</span><span className="sep" aria-hidden="true">·</span>{c.lead.category_label}<span className="sep" aria-hidden="true">·</span>{day(c.lead.datetime)}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </Fold>
         )}
 
-        {doneRows.length > 0 && (
-          <section className={s.fold}>
-            <button type="button" className={s.foldHead} aria-expanded={doneOpen} onClick={() => setDoneOpen((v) => !v)}>
-              <span className={s.foldTitle}>Done · {doneRows.length}</span>
-              <ChevronIcon className={s.chev} />
-            </button>
-            {doneOpen && (
-              <ul className={s.compact}>
-                {doneRows.map((r) => (
-                  <li key={r.key} className={s.doneItem}>
-                    <span className={s.compactText}>
-                      <span className={s.sym}>{r.symbol}</span> {r.text}
-                    </span>
-                    <button type="button" className={s.textButton} onClick={() => unmark(r.key)}>
-                      Undo
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </section>
+        {cleared.length > 0 && (
+          <Fold title="Cleared" count={cleared.length} open={clearedOpen} onToggle={() => setClearedOpen((v) => !v)}>
+            {cleared.map((r) => (
+              <li key={r.key} className={s.clearedItem}>
+                <span className={s.clearedText}>
+                  <span className="num">{r.symbol}</span> {r.text}
+                </span>
+                <button type="button" className={s.textButton} onClick={() => unmark(r.key)}>
+                  Undo
+                </button>
+              </li>
+            ))}
+          </Fold>
         )}
 
         <footer className={s.footer}>
-          Filings from BSE, prices from Yahoo Finance (end of day), results checked against screener.in. Scores rank
-          what to read first; they are not advice.
+          Filings from BSE · prices from Yahoo Finance, end of day · results checked against screener.in. Rankings
+          tell you what to read first; they aren&apos;t advice.
         </footer>
       </main>
 
+      <Sheet
+        open={open !== null}
+        label={open?.type === "price" ? `${open.alert.name} price alert` : open?.card.lead.headline ?? ""}
+        onClose={close}
+        footer={
+          open && (
+            <>
+              {open.type === "card" && open.card.lead.pdf_url ? (
+                <a className={sh.link} href={open.card.lead.pdf_url} target="_blank" rel="noopener noreferrer">
+                  Open filing <ExternalLink size={15} strokeWidth={1.75} aria-hidden="true" />
+                </a>
+              ) : (
+                <span />
+              )}
+              {openKey && !(open.type === "card" && open.card.lead.tier === "routine") && (
+                <button
+                  type="button"
+                  className={sh.primary}
+                  onClick={() => {
+                    if (isDone(openKey)) unmark(openKey);
+                    else mark(openKey, open.type === "price" ? open.alert.name : open.card.lead.symbol);
+                    close();
+                  }}
+                >
+                  {isDone(openKey) ? "Move back to inbox" : "Done"}
+                </button>
+              )}
+            </>
+          )
+        }
+      >
+        {open?.type === "price" && <PriceDetail alert={open.alert} data={data} />}
+        {open?.type === "card" && <FilingDetail card={open.card} data={data} />}
+      </Sheet>
+
       {toast && (
         <div className={s.toast} role="status">
-          <span>Done: {toast.label}</span>
+          <span className={s.toastText}>Cleared {toast.label}</span>
           <button type="button" onClick={() => unmark(toast.key)}>
             Undo
           </button>
@@ -247,140 +265,97 @@ function Section({ title, count, children }: { title: string; count: number; chi
     <section className={s.section}>
       <h2 className={s.sectionHead}>
         <span>{title}</span>
-        <span className={s.sectionCount}>{count}</span>
+        <span className="num">{count}</span>
       </h2>
       <div className={s.rows}>{children}</div>
     </section>
   );
 }
 
-function DoneButton({ label, onDone }: { label: string; onDone: () => void }) {
+function PriceRow({ alert, data, onOpen, onDone }: { alert: PriceAlert; data: InboxData; onOpen: () => void; onDone: () => void }) {
+  const series = data.prices[alert.symbol];
+  const dir = direction(alert.pct_change);
   return (
-    <button type="button" className={s.doneButton} aria-label={`Mark done: ${label}`} onClick={onDone}>
-      <span className={s.doneRing}>
-        <CheckIcon />
-      </span>
-    </button>
-  );
-}
-
-function Move({ value, suffix = "" }: { value: number | null; suffix?: string }) {
-  const dir = direction(value);
-  return (
-    <span className={s.move} data-dir={dir}>
-      <Tri dir={dir} />
-      {pct(value)}
-      {suffix}
-    </span>
-  );
-}
-
-function PriceRow({ alert, onDone }: { alert: PriceAlert; onDone: () => void }) {
-  return (
-    <article className={s.row}>
+    <SwipeRow label={`${alert.name}, ${pct(alert.pct_change)}. Open details`} onOpen={onOpen} onDone={onDone}>
       <div className={s.rowMain}>
-        <div className={s.meta}>
-          <span className={s.sym}>{alert.symbol}</span>
-          <span className={s.name}>{alert.name}</span>
-          <span className={s.time}>{day(alert.date)} close</span>
-        </div>
-        <div className={s.priceLine}>
-          <span className={s.close}>{price(alert.close)}</span>
-          <span data-hit={alert.triggers.includes("price_move") || undefined} className={s.metric}>
-            <Move value={alert.pct_change} />
-          </span>
-          <span data-hit={alert.triggers.includes("volume_spike") || undefined} className={s.metric}>
-            Vol {times(alert.vol_ratio)} avg
-          </span>
-          {alert.move_z !== null && (
-            <span data-hit={alert.triggers.includes("move_z") || undefined} className={s.metric}>
-              {Math.abs(alert.move_z).toFixed(1)}σ
-            </span>
+        <span className={s.title}>{alert.name}</span>
+        <span className={s.meta}>
+          <span className="num">{alert.symbol}</span><span className="sep" aria-hidden="true">·</span>{day(alert.date)}<span className="sep" aria-hidden="true">·</span>
+          {alertReason(alert, data.rules, series?.volume_avg_window ?? 20)}
+        </span>
+      </div>
+      <div className={s.key}>
+        <Spark values={sparkValues(series, alert.date, data.spark_sessions)} dir={dir} />
+        <Move value={alert.pct_change} className={s.keyValue} />
+      </div>
+    </SwipeRow>
+  );
+}
+
+function CardRow({ card, data, onOpen, onDone }: { card: Card; data: InboxData; onOpen: () => void; onDone: () => void }) {
+  const { lead } = card;
+  const fig = keyFigure(card, data, day);
+  return (
+    <SwipeRow label={`${lead.symbol}: ${lead.headline}. Open details`} onOpen={onOpen} onDone={onDone}>
+      <div className={s.rowMain}>
+        <span className={s.title}>{lead.headline}</span>
+        <span className={s.meta}>
+          {card.alert && <Bell size={12} strokeWidth={2} aria-label="Alert" className={s.metaIcon} />}
+          <span className="num">{lead.symbol}</span><span className="sep" aria-hidden="true">·</span>{lead.category_label}<span className="sep" aria-hidden="true">·</span>{day(lead.datetime)}
+        </span>
+      </div>
+      {fig && (
+        <div className={s.key}>
+          {fig.kind === "flag" ? (
+            <span className={s.flag}>{fig.label}</span>
+          ) : (
+            <>
+              {fig.kind === "move" ? (
+                <Move value={fig.value} className={s.keyValue} />
+              ) : (
+                <span className={`num ${s.keyValue}`}>{pct(fig.value, 1)}</span>
+              )}
+              <span className={s.keyCaption}>{fig.caption}</span>
+            </>
           )}
         </div>
-      </div>
-      <DoneButton label={`${alert.symbol} price alert`} onDone={onDone} />
-    </article>
+      )}
+    </SwipeRow>
   );
 }
 
-function CardRow({ card, data, onDone }: { card: Card; data: InboxData; onDone: () => void }) {
-  const { lead } = card;
-  const name = data.companies[lead.symbol]?.name;
-  const reasons = lead.reasons.filter((r) => r !== lead.category_label).slice(0, data.max_reasons);
-  const related = card.members.length - 1;
+function Fold({
+  title,
+  count,
+  sub,
+  open,
+  onToggle,
+  children,
+}: {
+  title: string;
+  count: number;
+  sub?: string;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}) {
   return (
-    <article className={s.row}>
-      <div className={s.rowMain}>
-        <div className={s.meta}>
-          <span className={s.sym}>{lead.symbol}</span>
-          {name && <span className={s.name}>{name}</span>}
-          <span className={s.time}>{dayTime(lead.datetime)}</span>
-        </div>
-        <h3 className={s.headline}>{lead.headline}</h3>
-
-        {card.results && card.results.metrics.length > 0 && (
-          <div className={s.facts}>
-            {card.results.metrics.map((m) => (
-              <span key={m.key} className={s.fact}>
-                <span className={s.factLabel}>{m.label}</span> {crore(m.current)}
-                {m.yoy_pct !== null && <span className={s.muted}> {pct(m.yoy_pct, 1)} YoY</span>}
-              </span>
-            ))}
-            <span className={s.muted}>{card.results.period} qtr</span>
-          </div>
-        )}
-
-        {card.management && (
-          <div className={s.mgmt}>
-            {card.management.flags.length > 0 && (
-              <div className={s.tags}>
-                {card.management.flags.map((f, i) => (
-                  <span key={`${f.code}-${i}`} className={s.tag} data-strong={f.code === "ceo_exit" || f.code === "cfo_exit" || undefined}>
-                    {f.label}
-                  </span>
-                ))}
-              </div>
-            )}
-            <p className={s.summaryText}>{card.management.summary}</p>
-          </div>
-        )}
-
-        {lead.reaction && lead.reaction.pct_change !== null && (
-          <div className={s.reaction}>
-            <span className={s.muted}>Stock on {day(lead.reaction.date)}</span>
-            <Move value={lead.reaction.pct_change} />
-            {lead.reaction.vol_ratio !== null && <span className={s.muted}>Vol {times(lead.reaction.vol_ratio)}</span>}
-          </div>
-        )}
-
-        <div className={s.why}>
-          <span className={s.category}>
-            {card.alert && <BellIcon size={12} />}
-            {lead.category_label}
+    <section className={s.fold}>
+      <button type="button" className={s.foldHead} aria-expanded={open} onClick={onToggle}>
+        <span className={s.foldText}>
+          <span className={s.foldTitle}>
+            {title} <span className={`num ${s.foldCount}`}>{count}</span>
           </span>
-          {reasons.map((r) => (
-            <span key={r}>{r}</span>
-          ))}
-          <span>Score {Math.round(lead.score)}</span>
-          {related > 0 && <span>+{related} related</span>}
-          {lead.pdf_url && <Pdf url={lead.pdf_url} />}
-        </div>
-      </div>
-      <DoneButton label={`${lead.symbol}: ${lead.headline}`} onDone={onDone} />
-    </article>
+          {sub && <span className={s.meta}>{sub}</span>}
+        </span>
+        <ChevronRight size={18} strokeWidth={1.75} className={s.chev} aria-hidden="true" />
+      </button>
+      {open && <ul className={s.foldList}>{children}</ul>}
+    </section>
   );
 }
 
-function Pdf({ url }: { url: string }) {
-  return (
-    <a className={s.pdf} href={url} target="_blank" rel="noopener noreferrer">
-      Filing <ExternalIcon />
-    </a>
-  );
-}
-
-function CaughtUp({
+function AllClear({
   empty,
   from,
   to,
@@ -394,14 +369,12 @@ function CaughtUp({
   wider: { label: string; onClick: () => void } | null;
 }) {
   return (
-    <section className={s.caught}>
-      <span className={s.caughtMark}>
-        <CheckIcon size={20} />
-      </span>
-      <h2>{empty ? "Nothing new in this window" : "You're caught up"}</h2>
+    <section className={s.clear}>
+      <CircleCheck size={28} strokeWidth={1.5} aria-hidden="true" />
+      <h2>{empty ? "Nothing new here" : "All clear"}</h2>
       <p>
-        {empty ? "No alerts or filings worth reading" : "Everything worth reading"} from {dayTime(from)} to {dayTime(to)}
-        {empty ? "." : " is done."} {note}
+        {empty ? "No alerts or filings worth reading" : "You've been through everything"} from{" "}
+        <span className="num">{dayTime(from)}</span> to <span className="num">{dayTime(to)}</span>. {note}
       </p>
       {wider && (
         <button type="button" className={s.textButton} onClick={wider.onClick}>
@@ -413,9 +386,9 @@ function CaughtUp({
 }
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+    setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
   }, []);
   const next = theme === "dark" ? "light" : "dark";
   return (
@@ -425,6 +398,7 @@ function ThemeToggle() {
       aria-label={`Switch to ${next} mode`}
       onClick={() => {
         document.documentElement.dataset.theme = next;
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", next === "light" ? "#f6f1e6" : "#0e1013");
         try {
           localStorage.setItem("finn.theme", next); // raw string: read by the pre-paint script in layout.tsx
         } catch {
@@ -433,17 +407,19 @@ function ThemeToggle() {
         setTheme(next);
       }}
     >
-      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      {theme === "dark" ? <Sun size={20} strokeWidth={1.75} /> : <Moon size={20} strokeWidth={1.75} />}
     </button>
   );
 }
 
 function routineMix(cards: Card[]): string {
   const counts = new Map<string, number>();
-  for (const c of cards) counts.set(c.lead.category_label, (counts.get(c.lead.category_label) ?? 0) + c.members.length);
-  return [...counts.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3)
-    .map(([label]) => label)
-    .join(", ");
+  let other = 0;
+  for (const c of cards) {
+    if (c.lead.category === "unclassified") other += c.members.length;
+    else counts.set(c.lead.category_label, (counts.get(c.lead.category_label) ?? 0) + c.members.length);
+  }
+  const top = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(([label]) => label);
+  const text = top.join(", ") + (other || counts.size > 3 ? " and other paperwork" : "");
+  return text.replace(/^./, (c) => c.toUpperCase());
 }

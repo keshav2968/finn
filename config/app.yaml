@@ -10,9 +10,9 @@ inbox:
     - {key: 7d, label: 7d, hours: 168}
     - {key: 30d, label: 30d, hours: 720}
   default_window: 7d
-  max_reasons: 3
-  # Results line on an inbox card: the first metrics of the company's layout whose
-  # current-quarter figure passed one of these checks (see results_cards.json).
+  spark_sessions: 7          # sessions in a price alert's sparkline, ending on the alert day
+  # Key figure on a results card in the inbox: YoY change of the first of these metrics
+  # whose current-quarter figure passed one of results_checks (see results_cards.json).
   results_metrics:
     standard: [revenue, pat]
     lender: [nii, pat]

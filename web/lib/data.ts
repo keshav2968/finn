@@ -1,10 +1,10 @@
 // Build-time loader: reads data/seed and config/ from the repo and slims them into what
-// the inbox needs. Runs only on the server (during `next build`), never in the browser.
+// the app needs. Runs only on the server (during `next build`), never in the browser.
 
 import fs from "node:fs";
 import path from "node:path";
 import YAML from "yaml";
-import type { InboxData, Item, ManagementLine, PriceSeries, ResultsLine, Tier } from "./types";
+import type { InboxData, Item, ManagementCard, PriceSeries, ResultsCard, Tier } from "./types";
 
 // The repo root: web/ sits one level below it. FINN_ROOT overrides (e.g. a CI checkout).
 const ROOT = process.env.FINN_ROOT ? path.resolve(process.env.FINN_ROOT) : path.resolve(process.cwd(), "..");
@@ -25,7 +25,7 @@ interface AppConfig {
   inbox: {
     windows: { key: string; label: string; hours: number }[];
     default_window: string;
-    max_reasons: number;
+    spark_sessions: number;
     results_metrics: Record<string, string[]>;
     results_checks: string[];
   };
@@ -44,28 +44,64 @@ function seedDir(): string {
   return settings.paths?.seed_dir ?? "data/seed";
 }
 
-function resultsLines(cards: Json, cfg: AppConfig): Map<string, ResultsLine> {
-  // filing id -> the company's results line (only figures that passed a check)
-  const byFiling = new Map<string, ResultsLine>();
+function resultsCards(cards: Json): { bySymbol: Record<string, ResultsCard>; byFiling: Map<string, string> } {
+  const bySymbol: Record<string, ResultsCard> = {};
+  const byFiling = new Map<string, string>();
   for (const card of Object.values<Json>(cards ?? {})) {
     if (!card || card.status === "unavailable") continue;
-    const wanted = cfg.inbox.results_metrics[card.layout] ?? [];
-    const metrics = wanted
-      .map((key) => (card.metrics as Json[]).find((m) => m.key === key))
-      .filter((m) => m && m.current !== null && cfg.inbox.results_checks.includes(m.check?.current))
-      .map((m) => ({ key: m.key, label: m.label, current: m.current, yoy_pct: m.yoy_pct ?? null }));
-    const line: ResultsLine = { symbol: card.symbol, status: card.status, period: card.periods?.current ?? "", metrics };
+    bySymbol[card.symbol] = {
+      symbol: card.symbol,
+      status: card.status,
+      layout: card.layout,
+      basis: card.basis,
+      periods: card.periods,
+      metrics: (card.metrics as Json[]).map((m) => ({
+        key: m.key,
+        label: m.label,
+        main: Boolean(m.main),
+        kind: m.kind,
+        current: m.current ?? null,
+        previous: m.previous ?? null,
+        year_ago: m.year_ago ?? null,
+        qoq: (m.kind === "margin" ? m.qoq_pp : m.qoq_pct) ?? null,
+        yoy: (m.kind === "margin" ? m.yoy_pp : m.yoy_pct) ?? null,
+        check: m.check,
+        screener: m.screener ?? {},
+      })),
+      notes: card.notes ?? [],
+      formula: card.formula ?? null,
+      pdf_url: card.source?.pdf_url ?? null,
+      page: card.source?.page ?? null,
+    };
     const ids: string[] = card.source?.filing_ids ?? (card.source?.filing_id ? [card.source.filing_id] : []);
-    for (const id of ids) byFiling.set(id, line);
+    for (const id of ids) byFiling.set(id, card.symbol);
   }
-  return byFiling;
+  return { bySymbol, byFiling };
 }
 
-function managementLines(cards: Json): Map<string, ManagementLine> {
-  const byFiling = new Map<string, ManagementLine>();
+function managementCards(cards: Json): Map<string, ManagementCard> {
+  const byFiling = new Map<string, ManagementCard>();
   for (const [id, card] of Object.entries<Json>(cards ?? {})) {
     if (!card || card.status !== "ok") continue;
-    byFiling.set(id, { severity: card.severity, summary: card.summary, flags: card.flags ?? [] });
+    byFiling.set(id, {
+      severity: card.severity,
+      summary: card.summary,
+      flags: card.flags ?? [],
+      notes: card.notes ?? [],
+      people: (card.people as Json[]).map((p) => ({
+        name: p.name,
+        role: p.role,
+        change: p.change,
+        direction: p.direction,
+        entity: p.entity ?? null,
+        at_subsidiary: Boolean(p.at_subsidiary),
+        effective_date: p.effective_date ?? null,
+        stated_reason: p.stated_reason ?? null,
+        prior_roles: p.prior_roles ?? [],
+        tenure: p.tenure ?? null,
+        flags: p.flags ?? [],
+      })),
+    });
   }
   return byFiling;
 }
@@ -78,8 +114,8 @@ export function loadInbox(): InboxData {
   const feed = readJson<Json>(`${seed}/push/feed.json`);
   if (!feed) throw new Error(`${seed}/push/feed.json is missing: run scripts/build_push.py`);
   const manifest = readJson<Json>(`${seed}/manifest.json`);
-  const results = resultsLines(readJson<Json>(`${seed}/push/results_cards.json`)?.cards, cfg);
-  const management = managementLines(readJson<Json>(`${seed}/push/management_cards.json`)?.cards);
+  const results = resultsCards(readJson<Json>(`${seed}/push/results_cards.json`)?.cards);
+  const management = managementCards(readJson<Json>(`${seed}/push/management_cards.json`)?.cards);
 
   const maxHours = Math.max(...cfg.inbox.windows.map((w) => w.hours));
   const snapshot = Date.parse(feed.snapshot_at);
@@ -100,14 +136,16 @@ export function loadInbox(): InboxData {
       score: it.score,
       tier: it.tier as Tier,
       reasons: it.reasons ?? [],
+      score_parts: it.score_parts ?? [],
       reaction: it.reaction ?? null,
       group_key: it.group_key,
       pdf_url: it.pdf_url ?? null,
-      results: results.get(it.id) ?? null,
+      results_symbol: results.byFiling.get(it.id) ?? null,
       management: management.get(it.id) ?? null,
     }));
 
-  // Price series trimmed to the sessions the widest window can reach.
+  // Price series trimmed to the sessions the widest window can reach, plus enough
+  // earlier sessions to draw a sparkline for the first alert in that window.
   const companies: InboxData["companies"] = {};
   const prices: Record<string, PriceSeries> = {};
   for (const c of (manifest?.companies as Json[]) ?? []) {
@@ -116,8 +154,8 @@ export function loadInbox(): InboxData {
     const rec = readJson<Json>(`${seed}/prices/${c.symbol}.json`);
     const s = rec?.series;
     if (!s?.date?.length) continue;
-    const from = s.date.findIndex((d: string) => Date.parse(`${d}T23:59:59+05:30`) > earliest);
-    const at = from < 0 ? s.date.length : from;
+    const first = s.date.findIndex((d: string) => Date.parse(`${d}T23:59:59+05:30`) > earliest);
+    const at = Math.max(0, (first < 0 ? s.date.length : first) - cfg.inbox.spark_sessions);
     prices[c.symbol] = {
       date: s.date.slice(at),
       close: s.close.slice(at),
@@ -139,13 +177,17 @@ export function loadInbox(): InboxData {
     schedule_note: cfg.schedule_note,
     windows: cfg.inbox.windows,
     default_window: cfg.inbox.default_window,
-    max_reasons: cfg.inbox.max_reasons,
+    spark_sessions: cfg.inbox.spark_sessions,
+    results_metrics: cfg.inbox.results_metrics,
+    results_checks: cfg.inbox.results_checks,
     tier_labels: feed.rules.tier_labels,
+    tiers: feed.rules.tiers,
     rules: feed.rules.alerts,
     market_close: push.reaction?.market_close_ist ?? "15:30",
     same_day_categories: push.grouping?.same_day_categories ?? [],
     companies,
     items,
     prices,
+    results: results.bySymbol,
   };
 }

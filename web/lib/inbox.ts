@@ -42,7 +42,7 @@ export function buildCards(items: Item[], sameDayCategories: string[]): Omit<Car
       key: `card:${key}`,
       lead: members[0],
       members,
-      results: members.find((m) => m.results)?.results ?? null,
+      results_symbol: members.find((m) => m.results_symbol)?.results_symbol ?? null,
       management: members.find((m) => m.management)?.management ?? null,
     });
   }
