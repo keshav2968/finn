@@ -7,3 +7,4 @@ lxml>=5.0
 PyYAML>=6.0
 jsonschema>=4.18
 pdfplumber>=0.11
+rapidfuzz>=3.6          # quote matching for the research ledger

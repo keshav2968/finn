@@ -182,3 +182,38 @@ npm run build
   `next/font/local`. Icons: lucide-react. Dark by default; light mode uses the same tokens.
 - **Deploy:** Vercel project with Root Directory `web`; files outside it (seed, config)
   are read during the build.
+
+## Phase 4: research (pull side)
+
+`python scripts/build_research.py SYMBOL [SYMBOL ...]` works for any NSE symbol and writes
+`data/seed/research/SYMBOL.json`. Sources: the company's screener.in page and the
+earnings-call transcript PDFs it links. No news, broker notes or model memory.
+
+1. **Numbers (Python only):** last 8 quarters and 5 years from screener, plus this fiscal
+   year so far: revenue and profit growth, EBITDA and EBIT margins, ROCE/ROE.
+2. **Transcripts:** the latest 6 calls with a transcript. Python finds the management
+   roster and speaker turns, splits them into passages and keeps only management passages
+   with a metric, a number and a forward-looking cue (`config/research.yaml`), about
+   9,000 characters per call, before any model sees them.
+3. **Promises (cheap model):** metric, target, period, basis, exact quote. Python drops a
+   quote that does not fuzzy-match the transcript (rapidfuzz, 90/100), anything not said
+   by management, and any target number not in the quote.
+4. **Join (Python):** the same promise across calls (revisions are kept as a path, e.g.
+   1.5–3.5% → 1.5–3% → 1–2%), the actual computed from screener for the same fiscal
+   period, and later-call passages where management states an actual.
+5. **Verdict (stronger model):** Delivered, Missed, Pending, Goalposts moved or
+   Unverified, with cited evidence. Python decides which verdicts the dates allow, checks
+   any quoted actual against its source, replaces a rationale that uses numbers not in the
+   evidence, and lets the arithmetic overrule a Delivered/Missed that contradicts it. A
+   constant-currency target is never judged on rupee growth.
+
+Every stage records its own failure: no transcripts, a blocked PDF, a model outage or a
+company with no numeric guidance gives a valid file with a `status` and notes. Use
+`--no-llm` for numbers and filtering only, `--dry-run` to see what the extractor is sent.
+
+**Research screen** (`/research/SYMBOL` in the app): numbers first, then the ledger. Each
+promise shows the guided range from every call as a band and the actual as a dot, with
+the quotes and source links underneath; the track-record line at the top is counted in
+Python. Companies without a research file show "not researched yet", and companies with
+no transcripts show their numbers only. The ask buttons on inbox cards open the right
+company's page with the question carried over.

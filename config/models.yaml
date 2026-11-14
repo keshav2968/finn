@@ -60,6 +60,21 @@ tasks:
       - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
       - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
 
+  # Research: guidance passages from one call transcript (keyword-filtered in Python, ~9k chars).
+  extract_promises:
+    temperature: 0
+    max_output_tokens: 2000
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
+      - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
+  # Research: verdicts on up to four promise groups, with their quotes and computed actuals.
+  judge_promises:
+    temperature: 0
+    max_output_tokens: 2000
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-120b,    params: {reasoning_effort: medium}}
+      - {provider: gemini, model: gemini-3.8-flash,      params: {thinking_level: medium}}
+
 paths:
   cache_dir: data/cache/llm          # responses by content hash (git-ignored)
   usage_log: data/seed/llm_usage.jsonl  # one line per call, committed: the cost log

@@ -1,0 +1,1161 @@
+{
+  "schema": 1,
+  "symbol": "POLYCAB",
+  "name": "Polycab India Ltd",
+  "generated_at": "2026-11-15T01:43:41+05:30",
+  "status": "ok",
+  "notes": [],
+  "numbers": {
+    "basis": "consolidated",
+    "layout": "standard",
+    "unit": "₹ crore",
+    "latest_quarter": "Sep 2026",
+    "latest_fiscal": "Q2 FY27",
+    "quarters": [
+      {
+        "period": "Dec 2024",
+        "fiscal": "Q3 FY25",
+        "revenue": 5226.0,
+        "revenue_yoy": 20.41,
+        "net_profit": 464.0,
+        "net_profit_yoy": 11.27,
+        "ebitda": 720.0,
+        "ebitda_margin": 13.78,
+        "ebit_margin": 12.27
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "Q4 FY25",
+        "revenue": 6986.0,
+        "revenue_yoy": 24.93,
+        "net_profit": 734.0,
+        "net_profit_yoy": 32.73,
+        "ebitda": 1025.0,
+        "ebitda_margin": 14.67,
+        "ebit_margin": 13.53
+      },
+      {
+        "period": "Jun 2025",
+        "fiscal": "Q1 FY26",
+        "revenue": 5906.0,
+        "revenue_yoy": 25.71,
+        "net_profit": 600.0,
+        "net_profit_yoy": 49.25,
+        "ebitda": 858.0,
+        "ebitda_margin": 14.53,
+        "ebit_margin": 13.07
+      },
+      {
+        "period": "Sep 2025",
+        "fiscal": "Q2 FY26",
+        "revenue": 6477.0,
+        "revenue_yoy": 17.81,
+        "net_profit": 693.0,
+        "net_profit_yoy": 55.73,
+        "ebitda": 1021.0,
+        "ebitda_margin": 15.76,
+        "ebit_margin": 14.27
+      },
+      {
+        "period": "Dec 2025",
+        "fiscal": "Q3 FY26",
+        "revenue": 7636.0,
+        "revenue_yoy": 46.12,
+        "net_profit": 630.0,
+        "net_profit_yoy": 35.78,
+        "ebitda": 966.0,
+        "ebitda_margin": 12.65,
+        "ebit_margin": 11.26
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "Q4 FY26",
+        "revenue": 8864.0,
+        "revenue_yoy": 26.88,
+        "net_profit": 786.0,
+        "net_profit_yoy": 7.08,
+        "ebitda": 1161.0,
+        "ebitda_margin": 13.1,
+        "ebit_margin": 11.99
+      },
+      {
+        "period": "Jun 2026",
+        "fiscal": "Q1 FY27",
+        "revenue": 8210.0,
+        "revenue_yoy": 39.01,
+        "net_profit": 797.0,
+        "net_profit_yoy": 32.83,
+        "ebitda": 1136.0,
+        "ebitda_margin": 13.84,
+        "ebit_margin": 12.58
+      },
+      {
+        "period": "Sep 2026",
+        "fiscal": "Q2 FY27",
+        "revenue": 9899.0,
+        "revenue_yoy": 52.83,
+        "net_profit": 990.0,
+        "net_profit_yoy": 42.86,
+        "ebitda": 1422.0,
+        "ebitda_margin": 14.37,
+        "ebit_margin": 13.24
+      }
+    ],
+    "years": [
+      {
+        "period": "Mar 2022",
+        "fiscal": "FY22",
+        "revenue": 12204.0,
+        "revenue_growth": 38.81,
+        "net_profit": 917.0,
+        "net_profit_growth": 3.5,
+        "roce_pct": 21.0,
+        "ebitda_margin": 10.36
+      },
+      {
+        "period": "Mar 2023",
+        "fiscal": "FY23",
+        "revenue": 14108.0,
+        "revenue_growth": 15.6,
+        "net_profit": 1282.0,
+        "net_profit_growth": 39.8,
+        "roce_pct": 27.0,
+        "ebitda_margin": 13.06
+      },
+      {
+        "period": "Mar 2024",
+        "fiscal": "FY24",
+        "revenue": 18039.0,
+        "revenue_growth": 27.86,
+        "net_profit": 1803.0,
+        "net_profit_growth": 40.64,
+        "roce_pct": 31.0,
+        "ebitda_margin": 13.81
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "FY25",
+        "revenue": 22408.0,
+        "revenue_growth": 24.22,
+        "net_profit": 2046.0,
+        "net_profit_growth": 13.48,
+        "roce_pct": 30.0,
+        "ebitda_margin": 13.23
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "FY26",
+        "revenue": 28884.0,
+        "revenue_growth": 28.9,
+        "net_profit": 2708.0,
+        "net_profit_growth": 32.36,
+        "roce_pct": 33.0,
+        "ebitda_margin": 13.89
+      }
+    ],
+    "fiscal_year_to_date": {
+      "period": "FY27",
+      "metrics": {
+        "revenue_growth": {
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 46.24,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 18109.0,
+            "revenue_year_earlier": 12383.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/POLYCAB/consolidated/"
+        },
+        "profit_growth": {
+          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
+          "value": 38.21,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "net_profit": 1787.0,
+            "net_profit_year_earlier": 1293.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/POLYCAB/consolidated/"
+        },
+        "ebitda_margin": {
+          "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+          "value": 14.13,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 2558.0,
+            "revenue": 18109.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/POLYCAB/consolidated/"
+        },
+        "ebit_margin": {
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 12.94,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 2558.0,
+            "depreciation": 214.0,
+            "revenue": 18109.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/POLYCAB/consolidated/"
+        }
+      }
+    },
+    "source": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/POLYCAB/consolidated/",
+      "fetched_at": "2026-11-14T14:55:34+05:30"
+    }
+  },
+  "transcripts": [
+    {
+      "call": "Oct 2026",
+      "kind": "earnings",
+      "label": "Oct 2026 (Q2 FY27)",
+      "quarter": "Sep 2026",
+      "fiscal": "Q2 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf",
+      "error": "no forward-looking passages found",
+      "management": [
+        "NIYANT MARU"
+      ],
+      "passages": 121,
+      "sent": 0,
+      "sent_chars": 0,
+      "promises": 0
+    },
+    {
+      "call": "Jul 2026",
+      "kind": "earnings",
+      "label": "Jul 2026 (Q1 FY27)",
+      "quarter": "Jun 2026",
+      "fiscal": "Q1 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf",
+      "error": null,
+      "management": [
+        "Polycab India Limited"
+      ],
+      "passages": 103,
+      "sent": 7,
+      "sent_chars": 5720,
+      "promises": 3
+    },
+    {
+      "call": "May 2026",
+      "kind": "earnings",
+      "label": "May 2026 (Q4 FY26)",
+      "quarter": "Mar 2026",
+      "fiscal": "Q4 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf",
+      "error": null,
+      "management": [
+        "Polycab India Limited"
+      ],
+      "passages": 104,
+      "sent": 11,
+      "sent_chars": 8746,
+      "promises": 6
+    },
+    {
+      "call": "Jan 2026",
+      "kind": "earnings",
+      "label": "Jan 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf",
+      "error": null,
+      "management": [
+        "Polycab India Limited"
+      ],
+      "passages": 129,
+      "sent": 6,
+      "sent_chars": 4397,
+      "promises": 2
+    },
+    {
+      "call": "Oct 2025",
+      "kind": "earnings",
+      "label": "Oct 2025 (Q2 FY26)",
+      "quarter": "Sep 2025",
+      "fiscal": "Q2 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf",
+      "error": null,
+      "management": [
+        "GANDHARV TONGIA",
+        "FINANCIAL OFFICER",
+        "NIYANT MARU",
+        "Chirayu Upadhyaya."
+      ],
+      "passages": 105,
+      "sent": 1,
+      "sent_chars": 851,
+      "promises": 0
+    },
+    {
+      "call": "Jul 2025",
+      "kind": "earnings",
+      "label": "Jul 2025 (Q1 FY26)",
+      "quarter": "Jun 2025",
+      "fiscal": "Q1 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf",
+      "error": null,
+      "management": [
+        "CHIRAYU UPADHYAYA",
+        "Polycab India Limited"
+      ],
+      "passages": 152,
+      "sent": 14,
+      "sent_chars": 8774,
+      "promises": 0
+    }
+  ],
+  "ledger": [
+    {
+      "id": "g1",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "annual guidance of INR 12 billion to INR 16 billion per annum for FY26",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": "12–16 bn",
+        "low": 12,
+        "high": 16,
+        "unit": "bn",
+        "basis": "reported"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "in line with our annual guidance of INR 12 billion to INR 16 billion per annum",
+          "target_text": "12–16 bn",
+          "basis": "reported",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g1-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p2",
+          "text": "Capital expenditure during the quarter amounted to INR 3.2 billion, reflecting our continued commitment to building capacity and strengthening future growth drivers.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g1-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p6",
+          "text": "May 06, 2026 Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 capex period still in progress; target was INR 12–16 bn.",
+      "cited": [
+        "s1",
+        "g1-q1",
+        "g1-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g2",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "planned capex program of INR 60 billion to INR 80 billion over the next 5 years",
+      "period": "medium_term",
+      "period_status": "no end date",
+      "target": {
+        "text": "60–80 bn",
+        "low": 60,
+        "high": 80,
+        "unit": "bn",
+        "basis": "reported"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "We remain on track to execute our planned capex program of INR 60 billion to INR 80 billion over the next 5 years",
+          "target_text": "60–80 bn",
+          "basis": "reported",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p2",
+          "text": "Capital expenditure during the quarter amounted to INR 3.2 billion, reflecting our continued commitment to building capacity and strengthening future growth drivers.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g2-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p6",
+          "text": "May 06, 2026 Capital expenditure for the quarter stood at INR3.9 billion, taking the total capex for full financial year to approximately INR14.8 billion, and this is very much in line with the Project Spring guidance.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Capex program of INR 60–80 bn over next 5 years is ongoing.",
+      "cited": [
+        "s1",
+        "g2-q1",
+        "g2-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g3",
+      "metric": "ebitda_margin",
+      "metric_label": "EBITDA margin",
+      "metric_text": "where we target EBITDA margins of 8% to 10% by FY 2030",
+      "period": "FY30",
+      "period_status": "in progress",
+      "target": {
+        "text": "8–10%",
+        "low": 8,
+        "high": 10,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "EBITDA margins in the range of 8% to 10% by FY30",
+          "target_text": "8–10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Polycab India Limited",
+          "quote": "where we target EBITDA margins of 8% to 10% by FY 2030",
+          "target_text": "8–10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g3-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p7",
+          "text": "EBIT margins for the quarter were 8%, very much in line with the milestones laid out under Project Spring, where we target EBITDA margins of 8% to 10% by FY 2030.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g3-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p6",
+          "text": "FY26 has been a landmark year for the company with record high revenue, EBITDA and PAT. EBITDA grew faster than revenue, increasing by 35% year-on-year with margins expanding to 13.9%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        },
+        {
+          "id": "g3-q3",
+          "kind": "transcript",
+          "call": "Jan 2026",
+          "call_month": "2026-01",
+          "fiscal": "Q3 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t4-p10",
+          "text": "Looking ahead, we are confident in the long-term potential of the FMEG segment and remain on track to achieve our Project Spring targets of 1.5x - 2x industry growth and EBITDA margins in the range of 8% to 10% by FY30, positioning the business for sustained growth and value creation.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY30 EBITDA margin target 8–10% not yet reached.",
+      "cited": [
+        "s1",
+        "s2",
+        "g3-q1",
+        "g3-q2",
+        "g3-q3"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 8,
+            "high": 10
+          },
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 8,
+            "high": 10
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    },
+    {
+      "id": "g4",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business",
+      "period": "medium_term",
+      "period_status": "no end date",
+      "target": {
+        "text": "11–13%",
+        "low": 11,
+        "high": 13,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Polycab India Limited",
+          "quote": "we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business",
+          "target_text": "11–13%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g4-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p4",
+          "text": "EBIT margins for the Wires & Cables business stood at 13.3%. Consistent with our Project Spring roadmap, we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "EBIT margin 13.3% meets 11–13% target per g4-q1.",
+      "cited": [
+        "s1",
+        "g4-q1"
+      ],
+      "actual_quote": {
+        "text": "EBIT margins for the Wires & Cables business stood at 13.3%. Consistent with our Project Spring roadmap, we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business.",
+        "speaker": "Polycab India Limited",
+        "call": "Jul 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+      },
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 11,
+            "high": 13
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    },
+    {
+      "id": "g5",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "annual sustainable operating margin is expected to remain in the high single digits over mid- to long term",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "annual sustainable operating margin is expected to remain in the high single digits over mid- to long term",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g5-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p4",
+          "text": "EBIT margins for the Wires & Cables business stood at 13.3%. Consistent with our Project Spring roadmap, we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g5-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p6",
+          "text": "FY26 has been a landmark year for the company with record high revenue, EBITDA and PAT. EBITDA grew faster than revenue, increasing by 35% year-on-year with margins expanding to 13.9%. PAT rose by 32% year-on-year, surpassing INR 27 billion with PAT margins at 9.4%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        },
+        {
+          "id": "g5-q3",
+          "kind": "transcript",
+          "call": "Jan 2026",
+          "call_month": "2026-01",
+          "fiscal": "Q3 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t4-p11",
+          "text": "Segment profitability stood at ₹ 272 million, translating to a margin of 6.7%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "EBIT margin 13.3% exceeds high‑single‑digit target.",
+      "cited": [
+        "s1",
+        "g5-q1"
+      ],
+      "actual_quote": {
+        "text": "EBIT margins for the Wires & Cables business stood at 13.3%.",
+        "speaker": "Polycab India Limited",
+        "call": "Jul 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+      },
+      "stated": {
+        "actual": 13.3,
+        "position": null,
+        "call": "Jul 2026",
+        "speaker": "Polycab India Limited"
+      },
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g6",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "goal of achieving a 30% payout ratio by financial year 2030",
+      "period": "FY30",
+      "period_status": "in progress",
+      "target": {
+        "text": "30%",
+        "low": 30,
+        "high": 30,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "goal of achieving a 30% payout ratio by financial year 2030",
+          "target_text": "30%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g6-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p4",
+          "text": "Our international business witnessed a decline on Y-o-Y basis, reflecting the impact of near- term geopolitical developments. However, the underlying fundamentals remain strong and intact. We continue to maintain a healthy order book and remain confident of a strong recovery, supported by a positive long-term outlook. EBIT margins for the Wires & Cables business stood at 13.3%. Sequential margin improvement was driven by a favourable business mix and continued focus on operational excellence. Consistent with our Project Spring roadmap, we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business. Turning now to Slide number 8 for our FMEG business.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g6-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p11",
+          "text": "May 06, 2026 goal of achieving a 30% payout ratio by financial year 2030.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY2030 not reached; 30% payout ratio outcome pending.",
+      "cited": [
+        "s1",
+        "g6-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "May 2026",
+            "fiscal": "Q4 FY26",
+            "low": 30,
+            "high": 30
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    },
+    {
+      "id": "g7",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "target of greater than 10% contribution from exports by financial year 2030",
+      "period": "FY30",
+      "period_status": "in progress",
+      "target": {
+        "text": "10%",
+        "low": 10,
+        "high": 10,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "We remain firm on track to achieve our target of greater than 10% contribution from exports by financial year 2030",
+          "target_text": "10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g7-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p4",
+          "text": "The FMEG segment delivered another outstanding quarter, recording 71% year-on-year growth with strong contributions across all product categories.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g7-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p11",
+          "text": "May 06, 2026 goal of achieving a 30% payout ratio by financial year 2030.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Export contribution target for FY2030 cannot be assessed yet.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "May 2026",
+            "fiscal": "Q4 FY26",
+            "low": 10,
+            "high": 10
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    },
+    {
+      "id": "g8",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "EBITDA margin goal of 8% to 10% by FY2030",
+      "period": "FY30",
+      "period_status": "in progress",
+      "target": {
+        "text": "8–10%",
+        "low": 8,
+        "high": 10,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "progressing towards our EBITDA margin goal of 8% to 10% by FY2030",
+          "target_text": "8–10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g8-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p4",
+          "text": "EBIT margins for the Wires & Cables business stood at 13.3%. Consistent with our Project Spring roadmap, we continue to maintain our medium- to long-term margin guidance of 11% to 13% for this business.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g8-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p6",
+          "text": "FY26 has been a landmark year for the company with record high revenue, EBITDA and PAT. EBITDA grew faster than revenue, increasing by 35% year-on-year with margins expanding to 13.9%. PAT rose by 32% year-on-year, surpassing INR 27 billion with PAT margins at 9.4%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Period still running (in progress).",
+      "cited": [
+        "s1",
+        "g8-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "May 2026",
+            "fiscal": "Q4 FY26",
+            "low": 8,
+            "high": 10
+          }
+        ],
+        "actual": null
+      },
+      "notes": [
+        "rationale replaced: it used an older figure than the latest call"
+      ]
+    },
+    {
+      "id": "g9",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "expect the working capital cycle to settle within our long-term operating range of 45 to 50 days",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "45–50 days",
+        "low": 45,
+        "high": 50,
+        "unit": "days",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "May 2026",
+          "call_label": "May 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Polycab India Limited",
+          "quote": "the annual sustainable operating margin is expected to remain in the mid- to high single digits over mid- to long term",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Polycab India Limited",
+          "quote": "expect the working capital cycle to settle within our long-term operating range of 45 to 50 days",
+          "target_text": "45–50 days",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g9-q1",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": true,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t2-p3",
+          "text": "Within this, the domestic Wires & Cables business delivered an impressive 43% year-on-year growth, supported by robust market demand, effective execution across key channels and favourable commodity-linked realizations.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        },
+        {
+          "id": "g9-q2",
+          "kind": "transcript",
+          "call": "May 2026",
+          "call_month": "2026-05",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Polycab India Limited",
+          "passage_id": "t3-p11",
+          "text": "Within this quarter, the domestic cables business recorded an impressive 30% year-on-year growth, supported by resilient execution despite a challenging operating environment.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Period unspecified and no working‑capital data provided, so outcome cannot be determined.",
+      "cited": [
+        "s2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    }
+  ],
+  "dropped": [
+    {
+      "call": "Jul 2026",
+      "quote": "grow at 1.5x to 2x of the industry growth",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    },
+    {
+      "call": "Jul 2026",
+      "quote": "going north of 10% of our overall top line by 2030",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    }
+  ],
+  "models": [
+    "groq/openai/gpt-oss-20b",
+    "groq/openai/gpt-oss-120b"
+  ],
+  "sources": {
+    "screener": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/POLYCAB/consolidated/",
+      "fetched_at": "2026-11-14T14:55:34+05:30"
+    },
+    "transcripts": [
+      {
+        "call": "Oct 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+      },
+      {
+        "call": "Jul 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+      },
+      {
+        "call": "May 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
+      },
+      {
+        "call": "Jan 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c54bf2c3-22fa-45e1-bf1a-2194e7b46183.pdf"
+      },
+      {
+        "call": "Oct 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7a5825e0-67d1-41af-96e0-d78387aaba8d.pdf"
+      },
+      {
+        "call": "Jul 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d06e9ad-0c88-4d9a-beda-c76de11b708e.pdf"
+      }
+    ]
+  },
+  "summary": {
+    "Delivered": 2,
+    "Missed": 0,
+    "Pending": 7,
+    "Goalposts moved": 0,
+    "Unverified": 0
+  },
+  "track_record": {
+    "promises": 9,
+    "calls": 3,
+    "checkable": 2,
+    "revised": 0,
+    "counts": {
+      "Delivered": 2,
+      "Missed": 0,
+      "Pending": 7,
+      "Goalposts moved": 0,
+      "Unverified": 0
+    },
+    "text": "2 checkable promises: 2 delivered · 7 still running"
+  }
+}

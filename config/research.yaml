@@ -1,0 +1,140 @@
+# Research (pull side): management's promises vs what was delivered.
+# Primary sources only: screener.in tables and earnings-call transcripts linked from the
+# company's screener page. No news, no broker notes, no model memory of the company.
+# Works for any NSE symbol; nothing here names a company.
+
+output_dir: data/seed/research
+
+transcripts:
+  count: 6                    # most recent calls with a transcript PDF
+  max_pdf_pages: 90
+  min_text_chars: 2000        # less than this means a scanned PDF with no text layer
+  passage_chars: 900          # target size of one passage (a speaker's turn is split to this)
+  max_chars_per_call: 9000    # forward-looking passages sent to the extractor, per transcript
+  outcome_chars: 700          # one outcome passage shown to the judge
+  max_outcome_passages: 3     # per promise
+  # The cover page tells an earnings call from another event (investor day, analyst meet);
+  # an event is dated, not tied to a quarter.
+  earnings_markers: '(earnings (call|conference)|quarterly results|financial results|results conference|quarter ended)'
+  event_markers: '(investor (ai )?day|analyst (meet|day)|investor (meet|conference)|capital markets day|annual general meeting|\bagm\b)'
+  # Lines that open the management roster in a transcript header ...
+  roster_start: '(corporate participants|company participants|management participants|management team|^management\b|from the management|on behalf of the company)'
+  # ... and lines that close it.
+  roster_end: '(journalists|analysts|participants from|^moderator|ladies and gentlemen|good (morning|afternoon|evening))'
+
+# Passage filter: run in Python before any model sees the text. A passage is kept for
+# promise extraction when it is spoken by management, mentions a metric, carries a
+# number and has at least `min_forward_hits` forward-looking cues (or says "guidance").
+filter:
+  min_forward_hits: 1
+  forward:
+    - guidance
+    - guide
+    - outlook
+    - expect
+    - target
+    - aim to
+    - aspir
+    - plan to
+    - going forward
+    - next year
+    - coming year
+    - this year
+    - full year
+    - for the year
+    - medium term
+    - medium-term
+    - long term
+    - financial year
+    - fy2
+    - fy '
+    - band
+    - range
+    - reiterate
+    - maintain
+    - revise
+    - on track
+    - visibility
+    - we will
+    - we would
+    - should be
+    - trajectory
+    - run rate
+    - run-rate
+    - by the end of
+    - over the next
+  outcome:
+    - grew
+    - growth was
+    - growth for
+    - came in
+    - delivered
+    - for the quarter
+    - in the quarter
+    - this quarter
+    - was at
+    - stood at
+    - we reported
+    - year-on-year
+    - yoy
+    - sequential
+  number: '\d+(\.\d+)?\s?(%|percent|per cent|bps|basis points|crore|cr\b|bn|billion|mn|million|lakh|x\b)'
+
+# Metrics the ledger knows how to check against screener. `aliases` feed the passage
+# filter and the extractor's metric list; `compute` says which Python calculation gives
+# the actual (see research/numbers.py). Anything else is extracted as "other": it can
+# still be judged, but only on management's own stated actuals (quoted).
+metrics:
+  revenue_growth:
+    label: Revenue growth
+    unit: "%"
+    compute: revenue_growth
+    aliases: [revenue growth, revenue, top line, topline, sales growth, sales, income growth, growth guidance, constant currency, cc terms, growth of]
+  operating_margin:
+    label: Operating (EBIT) margin
+    unit: "%"
+    compute: ebit_margin
+    aliases: [operating margin, ebit margin, ebit, operating profit margin, margin]
+  ebitda_margin:
+    label: EBITDA margin
+    unit: "%"
+    compute: ebitda_margin
+    aliases: [ebitda margin, ebitda, operating profit]
+  profit_growth:
+    label: Net profit growth
+    unit: "%"
+    compute: profit_growth
+    aliases: [net profit, pat, profit after tax, bottom line, earnings growth, profit growth]
+  loan_growth:
+    label: Loan / advances growth
+    unit: "%"
+    compute: null              # screener has no loan book; judged on stated actuals
+    aliases: [loan growth, advances growth, credit growth, aum growth, book growth, disbursement]
+  margin_lender:
+    label: Net interest margin
+    unit: "%"
+    compute: null
+    aliases: [nim, net interest margin, spread]
+  asset_quality:
+    label: Asset quality / credit cost
+    unit: "%"
+    compute: null
+    aliases: [credit cost, gnpa, gross npa, net npa, slippage, provision]
+  capex:
+    label: Capex
+    unit: crore
+    compute: null
+    aliases: [capex, capital expenditure, investment of, capacity expansion]
+  other:
+    label: Other
+    unit: null
+    compute: null
+    aliases: []
+
+quotes:
+  min_score: 90               # rapidfuzz partial_ratio of a quote against its source text
+  min_chars: 20
+
+judge:
+  groups_per_call: 4          # promise groups judged in one model call
+  verdicts: [Delivered, Missed, Pending, Goalposts moved, Unverified]

@@ -1,0 +1,177 @@
+{
+ "symbol": "INFY",
+ "name": "Infosys",
+ "primary_view": "consolidated",
+ "layout": "standard",
+ "documents": {
+  "concalls": [
+   {
+    "period": "Oct 2026",
+    "month": "2026-10",
+    "transcript_url": "https://example.test/infy-2026-10.pdf"
+   },
+   {
+    "period": "Jul 2026",
+    "month": "2026-07",
+    "transcript_url": "https://example.test/infy-2026-07.pdf"
+   },
+   {
+    "period": "Apr 2026",
+    "month": "2026-04",
+    "transcript_url": "https://example.test/infy-2026-04.pdf"
+   },
+   {
+    "period": "Feb 2026",
+    "month": "2026-02",
+    "transcript_url": "https://example.test/infy-2026-02.pdf"
+   },
+   {
+    "period": "Jan 2026",
+    "month": "2026-01",
+    "transcript_url": "https://example.test/infy-2026-01.pdf"
+   },
+   {
+    "period": "Oct 2025",
+    "month": "2025-10",
+    "transcript_url": "https://example.test/infy-2025-10.pdf"
+   }
+  ],
+  "annual_reports": []
+ },
+ "views": {
+  "consolidated": {
+   "layout": "standard",
+   "url": "https://www.screener.in/company/INFY/consolidated/",
+   "tables": {
+    "quarters": {
+     "periods": [
+      "Jun 2024",
+      "Sep 2024",
+      "Dec 2024",
+      "Mar 2025",
+      "Jun 2025",
+      "Sep 2025",
+      "Dec 2025",
+      "Mar 2026",
+      "Jun 2026",
+      "Sep 2026"
+     ],
+     "rows": {
+      "Sales": [
+       39315.0,
+       40986.0,
+       41764.0,
+       40925.0,
+       42279.0,
+       44490.0,
+       45479.0,
+       46402.0,
+       48211.0,
+       49244.0
+      ],
+      "Operating Profit": [
+       9437.0,
+       9809.0,
+       10115.0,
+       9874.0,
+       9943.0,
+       10535.0,
+       10634.0,
+       11167.0,
+       11409.0,
+       11689.0
+      ],
+      "Depreciation": [
+       1149.0,
+       1160.0,
+       1203.0,
+       1299.0,
+       1140.0,
+       1182.0,
+       1155.0,
+       1424.0,
+       1246.0,
+       1359.0
+      ],
+      "Net Profit": [
+       6374.0,
+       6516.0,
+       6822.0,
+       7038.0,
+       6924.0,
+       7375.0,
+       6666.0,
+       8509.0,
+       7775.0,
+       7838.0
+      ],
+      "OPM %": [
+       24.0,
+       24.0,
+       24.0,
+       24.0,
+       24.0,
+       24.0,
+       23.0,
+       24.0,
+       24.0,
+       24.0
+      ]
+     }
+    },
+    "profit_loss": {
+     "periods": [
+      "Mar 2024",
+      "Mar 2025",
+      "Mar 2026"
+     ],
+     "rows": {
+      "Sales": [
+       153670.0,
+       162990.0,
+       178650.0
+      ],
+      "Operating Profit": [
+       36425.0,
+       39236.0,
+       42280.0
+      ],
+      "Net Profit": [
+       26248.0,
+       26750.0,
+       29474.0
+      ]
+     }
+    },
+    "ratios": {
+     "periods": [
+      "Mar 2024",
+      "Mar 2025",
+      "Mar 2026"
+     ],
+     "rows": {
+      "ROCE %": [
+       39,
+       40,
+       40
+      ]
+     }
+    }
+   },
+   "fields": {
+    "quarters": {
+     "revenue": "Sales",
+     "operating_profit": "Operating Profit",
+     "depreciation": "Depreciation",
+     "net_profit": "Net Profit",
+     "opm_pct": "OPM %"
+    },
+    "profit_loss": {
+     "revenue": "Sales",
+     "operating_profit": "Operating Profit",
+     "net_profit": "Net Profit"
+    }
+   }
+  }
+ }
+}

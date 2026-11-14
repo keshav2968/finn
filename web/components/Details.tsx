@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Check, ExternalLink, MessageCircleQuestion, TriangleAlert } from "lucide-react";
+import Link from "next/link";
+import { Check, ChevronRight, ExternalLink, MessageCircleQuestion, TriangleAlert } from "lucide-react";
 import { amount, croreShort, day, dayTime, direction, longDate, pct, pp, rupees, signed, times } from "@/lib/format";
 import { alertReasons, askQuestions, resultsHeadlines, sparkValues } from "@/lib/present";
 import type { Card, InboxData, ManagementCard, PriceAlert, ResultsCard, ResultsMetric } from "@/lib/types";
@@ -28,29 +28,22 @@ function Fact({ label, children }: { label: string; children: React.ReactNode })
 
 // ---------------------------------------------------------------- ask (research comes next)
 
-function Ask({ questions }: { questions: string[] }) {
-  const [asked, setAsked] = useState<string | null>(null);
+function Ask({ symbol, questions }: { symbol: string; questions: string[] }) {
   if (!questions.length) return null;
   return (
     <section className={s.section}>
       <h3>Ask Finn</h3>
       <div className={s.asks}>
         {questions.map((q) => (
-          <button key={q} type="button" className={s.ask} aria-pressed={asked === q} onClick={() => setAsked(q)}>
+          <Link key={q} className={s.ask} href={`/research/${encodeURIComponent(symbol)}?q=${encodeURIComponent(q)}`}>
             <MessageCircleQuestion size={16} strokeWidth={1.75} aria-hidden="true" />
             <span>{q}</span>
-          </button>
+          </Link>
         ))}
       </div>
-      {asked && (
-        <div className={s.asked} role="status">
-          <p className={s.askedQ}>&ldquo;{asked}&rdquo;</p>
-          <p className={s.note}>
-            Research comes next: this question will open there, answered from annual reports and call transcripts with
-            sources.
-          </p>
-        </div>
-      )}
+      <Link className={s.researchLink} href={`/research/${encodeURIComponent(symbol)}`}>
+        Promises vs delivery for this company <ChevronRight size={15} strokeWidth={2} aria-hidden="true" />
+      </Link>
     </section>
   );
 }
@@ -100,7 +93,7 @@ export function PriceDetail({ alert, data }: { alert: PriceAlert; data: InboxDat
         </dl>
       </section>
 
-      <Ask questions={questions} />
+      <Ask symbol={alert.symbol} questions={questions} />
     </>
   );
 }
@@ -207,7 +200,7 @@ export function FilingDetail({ card, data }: { card: Card; data: InboxData }) {
         </section>
       )}
 
-      <Ask questions={questions} />
+      <Ask symbol={lead.symbol} questions={questions} />
     </>
   );
 }

@@ -149,3 +149,55 @@ interface ManagementCard {
 }
 type FlagCode = "ceo_exit" | "cfo_exit" | "vague_reason" | "mid_quarter";
 ```
+
+## Research (`data/seed/research/SYMBOL.json`, built by `scripts/build_research.py`)
+
+```ts
+interface Research {
+  schema: 1; symbol: string; name: string; generated_at: ISO;
+  status: "ok" | "no_transcripts" | "no_promises" | "numbers_only" | "failed";
+  error?: string;                                     // only when status is "failed"
+  notes: string[];
+  numbers: {
+    basis: "consolidated" | "standalone"; layout: "standard" | "lender"; unit: "₹ crore";
+    latest_quarter: string; latest_fiscal: string;    // "Sep 2026", "Q2 FY27"
+    quarters: { period: string; fiscal: string; revenue: number | null; revenue_yoy: number | null;
+                net_profit: number | null; net_profit_yoy: number | null;
+                ebitda?: number | null; ebitda_margin?: number | null; ebit_margin?: number | null;     // standard
+                financing_profit?: number | null; gross_npa_pct?: number | null; net_npa_pct?: number | null }[];  // lender
+    years: { period: string; fiscal: string; revenue: number | null; revenue_growth: number | null;
+             net_profit: number | null; net_profit_growth: number | null; roce_pct?: number | null; roe_pct?: number | null;
+             ebitda_margin?: number | null }[];
+    fiscal_year_to_date: { period: string; metrics: Record<string, Actual | null> } | null;
+    source: { name: string; url: string | null; fetched_at: ISO | null };
+  } | null;
+  transcripts: { call: string; quarter: string | null; fiscal: string | null; url: string; error: string | null;
+                 management: string[]; passages: number; sent: number; sent_chars: number; promises: number }[];
+  ledger: LedgerEntry[];
+  summary?: Record<Verdict, number>;
+  dropped: { call: string; quote: string; reason: string }[];   // extractions that failed a check
+  models: string[];
+  sources: { screener: { name: string; url: string | null } | null; transcripts: { call: string; url: string }[] };
+}
+type Verdict = "Delivered" | "Missed" | "Pending" | "Goalposts moved" | "Unverified";
+interface Actual { label: string; value: number; unit: "%"; period: string; quarters: string[]; complete: boolean;
+                   basis: string; inputs: Record<string, number | null>; source: string; url: string | null }
+interface LedgerEntry {
+  id: string; metric: string; metric_label: string; metric_text: string;
+  period: string;                                     // "FY27", "H2FY27", "medium_term", "unspecified"
+  period_status: string;                              // "in progress (2 of 4 quarters reported)", "period ended", ...
+  target: { text: string | null; low: number | null; high: number | null; unit: string | null; basis: string };
+  revised: boolean; revision_path: string | null;     // "1.5–3.5% → 1.5–3% → 1–2%"
+  statements: { id: string; call: string; fiscal: string | null; speaker: string; quote: string;
+                target_text: string | null; basis: string; quote_score: number; source_url: string }[];
+  evidence: ({ id: string; kind: "screener" } & Actual |
+             { id: string; kind: "transcript"; call: string; fiscal: string | null; speaker: string; passage_id: string; text: string; source_url: string })[];
+  check: { comparable: boolean; position: "within" | "above" | "below" | null; actual: number;
+           target_low: number; target_high: number; complete: boolean; evidence_id: string } | null;
+  verdict: Verdict; verdict_by: string;               // "groq/openai/gpt-oss-120b" or "rules"
+  rationale: string; cited: string[];
+  actual_quote: { text: string; speaker: string; call: string; source_url: string } | null;
+  notes: string[];
+}
+```
+

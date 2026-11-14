@@ -1,0 +1,603 @@
+{
+  "schema": 1,
+  "symbol": "KPITTECH",
+  "name": "KPIT Technologies Ltd",
+  "generated_at": "2026-11-15T01:46:07+05:30",
+  "status": "ok",
+  "notes": [],
+  "numbers": {
+    "basis": "consolidated",
+    "layout": "standard",
+    "unit": "₹ crore",
+    "latest_quarter": "Sep 2026",
+    "latest_fiscal": "Q2 FY27",
+    "quarters": [
+      {
+        "period": "Dec 2024",
+        "fiscal": "Q3 FY25",
+        "revenue": 1478.0,
+        "revenue_yoy": 17.58,
+        "net_profit": 187.0,
+        "net_profit_yoy": 19.11,
+        "ebitda": 306.0,
+        "ebitda_margin": 20.7,
+        "ebit_margin": 16.78
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "Q4 FY25",
+        "revenue": 1528.0,
+        "revenue_yoy": 15.93,
+        "net_profit": 245.0,
+        "net_profit_yoy": 47.59,
+        "ebitda": 323.0,
+        "ebitda_margin": 21.14,
+        "ebit_margin": 17.34
+      },
+      {
+        "period": "Jun 2025",
+        "fiscal": "Q1 FY26",
+        "revenue": 1539.0,
+        "revenue_yoy": 12.75,
+        "net_profit": 172.0,
+        "net_profit_yoy": -15.69,
+        "ebitda": 295.0,
+        "ebitda_margin": 19.17,
+        "ebit_margin": 15.07
+      },
+      {
+        "period": "Sep 2025",
+        "fiscal": "Q2 FY26",
+        "revenue": 1588.0,
+        "revenue_yoy": 7.95,
+        "net_profit": 169.0,
+        "net_profit_yoy": -17.16,
+        "ebitda": 298.0,
+        "ebitda_margin": 18.77,
+        "ebit_margin": 14.04
+      },
+      {
+        "period": "Dec 2025",
+        "fiscal": "Q3 FY26",
+        "revenue": 1617.0,
+        "revenue_yoy": 9.4,
+        "net_profit": 133.0,
+        "net_profit_yoy": -28.88,
+        "ebitda": 311.0,
+        "ebitda_margin": 19.23,
+        "ebit_margin": 14.22
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "Q4 FY26",
+        "revenue": 1711.0,
+        "revenue_yoy": 11.98,
+        "net_profit": 163.0,
+        "net_profit_yoy": -33.47,
+        "ebitda": 317.0,
+        "ebitda_margin": 18.53,
+        "ebit_margin": 13.73
+      },
+      {
+        "period": "Jun 2026",
+        "fiscal": "Q1 FY27",
+        "revenue": 1675.0,
+        "revenue_yoy": 8.84,
+        "net_profit": 116.0,
+        "net_profit_yoy": -32.56,
+        "ebitda": 257.0,
+        "ebitda_margin": 15.34,
+        "ebit_margin": 10.39
+      },
+      {
+        "period": "Sep 2026",
+        "fiscal": "Q2 FY27",
+        "revenue": 1691.0,
+        "revenue_yoy": 6.49,
+        "net_profit": 121.0,
+        "net_profit_yoy": -28.4,
+        "ebitda": 267.0,
+        "ebitda_margin": 15.79,
+        "ebit_margin": 10.7
+      }
+    ],
+    "years": [
+      {
+        "period": "Mar 2022",
+        "fiscal": "FY22",
+        "revenue": 2432.0,
+        "revenue_growth": 19.45,
+        "net_profit": 276.0,
+        "net_profit_growth": 87.76,
+        "roce_pct": 24.0,
+        "ebitda_margin": 18.05
+      },
+      {
+        "period": "Mar 2023",
+        "fiscal": "FY23",
+        "revenue": 3365.0,
+        "revenue_growth": 38.36,
+        "net_profit": 387.0,
+        "net_profit_growth": 40.22,
+        "roce_pct": 30.0,
+        "ebitda_margin": 18.81
+      },
+      {
+        "period": "Mar 2024",
+        "fiscal": "FY24",
+        "revenue": 4872.0,
+        "revenue_growth": 44.78,
+        "net_profit": 599.0,
+        "net_profit_growth": 54.78,
+        "roce_pct": 38.0,
+        "ebitda_margin": 20.34
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "FY25",
+        "revenue": 5842.0,
+        "revenue_growth": 19.91,
+        "net_profit": 840.0,
+        "net_profit_growth": 40.23,
+        "roce_pct": 40.0,
+        "ebitda_margin": 21.05
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "FY26",
+        "revenue": 6455.0,
+        "revenue_growth": 10.49,
+        "net_profit": 637.0,
+        "net_profit_growth": -24.17,
+        "roce_pct": 26.0,
+        "ebitda_margin": 18.9
+      }
+    ],
+    "fiscal_year_to_date": {
+      "period": "FY27",
+      "metrics": {
+        "revenue_growth": {
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 7.64,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 3366.0,
+            "revenue_year_earlier": 3127.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+        },
+        "profit_growth": {
+          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
+          "value": -30.5,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "net_profit": 237.0,
+            "net_profit_year_earlier": 341.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+        },
+        "ebitda_margin": {
+          "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+          "value": 15.57,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 524.0,
+            "revenue": 3366.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+        },
+        "ebit_margin": {
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 10.55,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 524.0,
+            "depreciation": 169.0,
+            "revenue": 3366.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+        }
+      }
+    },
+    "source": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/KPITTECH/consolidated/",
+      "fetched_at": "2026-11-14T14:55:58+05:30"
+    }
+  },
+  "transcripts": [
+    {
+      "call": "Nov 2026",
+      "kind": "earnings",
+      "label": "Nov 2026 (Q2 FY27)",
+      "quarter": "Sep 2026",
+      "fiscal": "Q2 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf",
+      "error": null,
+      "management": [
+        "KPIT Technologies Limited"
+      ],
+      "passages": 116,
+      "sent": 3,
+      "sent_chars": 2463,
+      "promises": 0
+    },
+    {
+      "call": "Aug 2026",
+      "kind": "earnings",
+      "label": "Aug 2026 (Q1 FY27)",
+      "quarter": "Jun 2026",
+      "fiscal": "Q1 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf",
+      "error": null,
+      "management": [],
+      "passages": 120,
+      "sent": 6,
+      "sent_chars": 4333,
+      "promises": 1
+    },
+    {
+      "call": "May 2026",
+      "kind": "earnings",
+      "label": "May 2026 (Q4 FY26)",
+      "quarter": "Mar 2026",
+      "fiscal": "Q4 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf",
+      "error": null,
+      "management": [
+        "Anup Sable",
+        "Gaurav Kakati"
+      ],
+      "passages": 140,
+      "sent": 1,
+      "sent_chars": 894,
+      "promises": 0
+    },
+    {
+      "call": "Feb 2026",
+      "kind": "earnings",
+      "label": "Feb 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a574a9b4-2ec3-4418-afd7-7deb13264328.pdf",
+      "error": null,
+      "management": [],
+      "passages": 180,
+      "sent": 1,
+      "sent_chars": 898,
+      "promises": 0
+    },
+    {
+      "call": "Nov 2025",
+      "kind": "earnings",
+      "label": "Nov 2025 (Q2 FY26)",
+      "quarter": "Sep 2025",
+      "fiscal": "Q2 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bcf7302f-a4b8-4d59-8914-f53018acd102.pdf",
+      "error": null,
+      "management": [],
+      "passages": 156,
+      "sent": 5,
+      "sent_chars": 3894,
+      "promises": 1
+    },
+    {
+      "call": "Aug 2025",
+      "kind": "earnings",
+      "label": "Aug 2025 (Q1 FY26)",
+      "quarter": "Jun 2025",
+      "fiscal": "Q1 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d90bb9-9e31-4b03-92ba-0df108f5a9b8.pdf",
+      "error": null,
+      "management": [
+        "KPIT Technologies Limited"
+      ],
+      "passages": 142,
+      "sent": 1,
+      "sent_chars": 846,
+      "promises": 0
+    }
+  ],
+  "ledger": [
+    {
+      "id": "g1",
+      "metric": "ebitda_margin",
+      "metric_label": "EBITDA margin",
+      "metric_text": "Maintain 21% EBITDA for the full year",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "21%",
+        "low": 21,
+        "high": 21,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Nov 2025",
+          "call_label": "Nov 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "KPIT Technologies Limited",
+          "quote": "we will be in a position to maintain 21% EBITDA for the full year.",
+          "target_text": "21%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bcf7302f-a4b8-4d59-8914-f53018acd102.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g1-n1",
+          "kind": "screener",
+          "label": "EBITDA margin, FY26",
+          "value": 18.92,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 1221.0,
+            "revenue": 6455.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+        },
+        {
+          "id": "g1-q1",
+          "kind": "transcript",
+          "call": "Nov 2026",
+          "call_month": "2026-11",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "KPIT Technologies Limited",
+          "passage_id": "t1-p9",
+          "text": "In terms of profitability, our EBITDA has grown from 17.2% to 17.8%, this is 60 basis point, largely it is because of the business mix as the products contributions are higher as compared to the services part and solutions part.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf"
+        },
+        {
+          "id": "g1-q2",
+          "kind": "transcript",
+          "call": "Aug 2026",
+          "call_month": "2026-08",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "KPIT Technologies Limited",
+          "passage_id": "t2-p13",
+          "text": "In terms of profits, the EBITDA was at 17.2%, EBIT at 12.3% and PAT at INR 1.17 billion .",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
+        },
+        {
+          "id": "g1-q3",
+          "kind": "transcript",
+          "call": "Feb 2026",
+          "call_month": "2026-02",
+          "fiscal": "Q3 FY26",
+          "latest": false,
+          "speaker": "KPIT Technologies Limited",
+          "passage_id": "t4-p11",
+          "text": "EBITDA growth was 6.8% post-absorbing partial increments Organic growth is negative under 1% for the quarter.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a574a9b4-2ec3-4418-afd7-7deb13264328.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "below",
+        "actual": 18.92,
+        "target_low": 21,
+        "target_high": 21,
+        "complete": true,
+        "evidence_id": "g1-n1"
+      },
+      "verdict": "Missed",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Actual 18.92% is below the 21% target for FY26.",
+      "cited": [
+        "s1",
+        "g1-n1",
+        "g1-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Nov 2025",
+            "fiscal": "Q2 FY26",
+            "low": 21,
+            "high": 21
+          }
+        ],
+        "actual": {
+          "value": 18.92,
+          "kind": "screener",
+          "label": "EBITDA margin, FY26",
+          "complete": true
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "g2",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "Aspiration of achieving 22% to 24% by FY '29",
+      "period": "FY29",
+      "period_status": "in progress",
+      "target": {
+        "text": "22–24%",
+        "low": 22,
+        "high": 24,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Aug 2026",
+          "call_label": "Aug 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Nitin Padmanabhan",
+          "quote": "During the Analyst Day, you spoke about an aspiration of achieving 22% to 24% by FY '29. That aspiration can still hold? Or would you worry about it at the moment?",
+          "target_text": "22–24%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "Nov 2026",
+          "call_month": "2026-11",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "KPIT Technologies Limited",
+          "passage_id": "t1-p9",
+          "text": "In terms of profitability, our EBITDA has grown from 17.2% to 17.8%, this is 60 basis point, largely it is because of the business mix as the products contributions are higher as compared to the services part and solutions part.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf"
+        },
+        {
+          "id": "g2-q2",
+          "kind": "transcript",
+          "call": "Aug 2026",
+          "call_month": "2026-08",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "KPIT Technologies Limited",
+          "passage_id": "t2-p13",
+          "text": "In terms of profits, the EBITDA was at 17.2%, EBIT at 12.3% and PAT at INR 1.17 billion .",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY29 is still in progress, so the target cannot be assessed yet.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Aug 2026",
+            "fiscal": "Q1 FY27",
+            "low": 22,
+            "high": 24
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    }
+  ],
+  "dropped": [],
+  "models": [
+    "groq/openai/gpt-oss-20b",
+    "groq/openai/gpt-oss-120b"
+  ],
+  "sources": {
+    "screener": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/KPITTECH/consolidated/",
+      "fetched_at": "2026-11-14T14:55:58+05:30"
+    },
+    "transcripts": [
+      {
+        "call": "Nov 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7331811-fe14-4c79-896d-f0a9df901335.pdf"
+      },
+      {
+        "call": "Aug 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d07f9c52-5c5a-443b-b239-6acd5e94b97a.pdf"
+      },
+      {
+        "call": "May 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c85b6c-58e6-423f-9b32-50b17a948674.pdf"
+      },
+      {
+        "call": "Feb 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a574a9b4-2ec3-4418-afd7-7deb13264328.pdf"
+      },
+      {
+        "call": "Nov 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bcf7302f-a4b8-4d59-8914-f53018acd102.pdf"
+      },
+      {
+        "call": "Aug 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d90bb9-9e31-4b03-92ba-0df108f5a9b8.pdf"
+      }
+    ]
+  },
+  "summary": {
+    "Delivered": 0,
+    "Missed": 1,
+    "Pending": 1,
+    "Goalposts moved": 0,
+    "Unverified": 0
+  },
+  "track_record": {
+    "promises": 2,
+    "calls": 2,
+    "checkable": 1,
+    "revised": 0,
+    "counts": {
+      "Delivered": 0,
+      "Missed": 1,
+      "Pending": 1,
+      "Goalposts moved": 0,
+      "Unverified": 0
+    },
+    "text": "1 checkable promise: 1 missed · 1 still running"
+  }
+}

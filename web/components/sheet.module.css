@@ -536,26 +536,28 @@
   line-height: 1.4;
 }
 
+.ask {
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.researchLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--tap);
+  margin-top: var(--s-half);
+  font-size: var(--t-md);
+  font-weight: 600;
+}
+
 .ask svg {
   flex: none;
   color: var(--teal-text);
 }
 
-.ask[aria-pressed="true"] {
+.ask:hover {
   border-color: var(--teal);
-}
-
-.asked {
-  margin-top: var(--s1);
-  padding: var(--s2);
-  border-radius: 12px;
-  border: 1px dashed var(--border);
-}
-
-.askedQ {
-  margin: 0;
-  font-size: var(--t-md);
-  font-weight: 600;
 }
 
 @keyframes up {

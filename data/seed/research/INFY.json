@@ -1,0 +1,1291 @@
+{
+  "schema": 1,
+  "symbol": "INFY",
+  "name": "Infosys Ltd",
+  "generated_at": "2026-11-15T01:43:20+05:30",
+  "status": "ok",
+  "notes": [],
+  "numbers": {
+    "basis": "consolidated",
+    "layout": "standard",
+    "unit": "₹ crore",
+    "latest_quarter": "Sep 2026",
+    "latest_fiscal": "Q2 FY27",
+    "quarters": [
+      {
+        "period": "Dec 2024",
+        "fiscal": "Q3 FY25",
+        "revenue": 41764.0,
+        "revenue_yoy": 7.58,
+        "net_profit": 6822.0,
+        "net_profit_yoy": 11.6,
+        "ebitda": 10115.0,
+        "ebitda_margin": 24.22,
+        "ebit_margin": 21.34
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "Q4 FY25",
+        "revenue": 40925.0,
+        "revenue_yoy": 7.92,
+        "net_profit": 7038.0,
+        "net_profit_yoy": -11.75,
+        "ebitda": 9874.0,
+        "ebitda_margin": 24.13,
+        "ebit_margin": 20.95
+      },
+      {
+        "period": "Jun 2025",
+        "fiscal": "Q1 FY26",
+        "revenue": 42279.0,
+        "revenue_yoy": 7.54,
+        "net_profit": 6924.0,
+        "net_profit_yoy": 8.63,
+        "ebitda": 9943.0,
+        "ebitda_margin": 23.52,
+        "ebit_margin": 20.82
+      },
+      {
+        "period": "Sep 2025",
+        "fiscal": "Q2 FY26",
+        "revenue": 44490.0,
+        "revenue_yoy": 8.55,
+        "net_profit": 7375.0,
+        "net_profit_yoy": 13.18,
+        "ebitda": 10535.0,
+        "ebitda_margin": 23.68,
+        "ebit_margin": 21.02
+      },
+      {
+        "period": "Dec 2025",
+        "fiscal": "Q3 FY26",
+        "revenue": 45479.0,
+        "revenue_yoy": 8.9,
+        "net_profit": 6666.0,
+        "net_profit_yoy": -2.29,
+        "ebitda": 10634.0,
+        "ebitda_margin": 23.38,
+        "ebit_margin": 20.84
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "Q4 FY26",
+        "revenue": 46402.0,
+        "revenue_yoy": 13.38,
+        "net_profit": 8509.0,
+        "net_profit_yoy": 20.9,
+        "ebitda": 11167.0,
+        "ebitda_margin": 24.07,
+        "ebit_margin": 21.0
+      },
+      {
+        "period": "Jun 2026",
+        "fiscal": "Q1 FY27",
+        "revenue": 48211.0,
+        "revenue_yoy": 14.03,
+        "net_profit": 7775.0,
+        "net_profit_yoy": 12.29,
+        "ebitda": 11409.0,
+        "ebitda_margin": 23.66,
+        "ebit_margin": 21.08
+      },
+      {
+        "period": "Sep 2026",
+        "fiscal": "Q2 FY27",
+        "revenue": 49244.0,
+        "revenue_yoy": 10.69,
+        "net_profit": 7838.0,
+        "net_profit_yoy": 6.28,
+        "ebitda": 11689.0,
+        "ebitda_margin": 23.74,
+        "ebit_margin": 20.98
+      }
+    ],
+    "years": [
+      {
+        "period": "Mar 2022",
+        "fiscal": "FY22",
+        "revenue": 121641.0,
+        "revenue_growth": 21.07,
+        "net_profit": 22146.0,
+        "net_profit_growth": 14.02,
+        "roce_pct": 37.0,
+        "ebitda_margin": 25.89
+      },
+      {
+        "period": "Mar 2023",
+        "fiscal": "FY23",
+        "revenue": 146767.0,
+        "revenue_growth": 20.66,
+        "net_profit": 24108.0,
+        "net_profit_growth": 8.86,
+        "roce_pct": 40.0,
+        "ebitda_margin": 23.94
+      },
+      {
+        "period": "Mar 2024",
+        "fiscal": "FY24",
+        "revenue": 153670.0,
+        "revenue_growth": 4.7,
+        "net_profit": 26248.0,
+        "net_profit_growth": 8.88,
+        "roce_pct": 40.0,
+        "ebitda_margin": 23.7
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "FY25",
+        "revenue": 162990.0,
+        "revenue_growth": 6.06,
+        "net_profit": 26750.0,
+        "net_profit_growth": 1.91,
+        "roce_pct": 38.0,
+        "ebitda_margin": 24.07
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "FY26",
+        "revenue": 178650.0,
+        "revenue_growth": 9.61,
+        "net_profit": 29474.0,
+        "net_profit_growth": 10.18,
+        "roce_pct": 40.0,
+        "ebitda_margin": 23.67
+      }
+    ],
+    "fiscal_year_to_date": {
+      "period": "FY27",
+      "metrics": {
+        "revenue_growth": {
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 12.32,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 97455.0,
+            "revenue_year_earlier": 86769.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        "profit_growth": {
+          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
+          "value": 9.19,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "net_profit": 15613.0,
+            "net_profit_year_earlier": 14299.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        "ebitda_margin": {
+          "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+          "value": 23.7,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 23098.0,
+            "revenue": 97455.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        "ebit_margin": {
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 21.03,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 23098.0,
+            "depreciation": 2605.0,
+            "revenue": 97455.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        }
+      }
+    },
+    "source": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/INFY/consolidated/",
+      "fetched_at": "2026-11-14T14:55:54+05:30"
+    }
+  },
+  "transcripts": [
+    {
+      "call": "Oct 2026",
+      "kind": "earnings",
+      "label": "Oct 2026 (Q2 FY27)",
+      "quarter": "Sep 2026",
+      "fiscal": "Q2 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf",
+      "error": null,
+      "management": [
+        "Salil Parekh",
+        "Jayesh Sanghrajka",
+        "Rishi Basu",
+        "Sandeep Mahindroo"
+      ],
+      "passages": 239,
+      "sent": 14,
+      "sent_chars": 8692,
+      "promises": 4
+    },
+    {
+      "call": "Jul 2026",
+      "kind": "earnings",
+      "label": "Jul 2026 (Q1 FY27)",
+      "quarter": "Jun 2026",
+      "fiscal": "Q1 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf",
+      "error": null,
+      "management": [
+        "Nandan Nilekani",
+        "Salil Parekh",
+        "Jayesh Sanghrajka",
+        "Rishi Basu",
+        "Haripriya Suresh",
+        "Sandeep Mahindroo",
+        "Gaurav Rateria"
+      ],
+      "passages": 229,
+      "sent": 13,
+      "sent_chars": 8893,
+      "promises": 3
+    },
+    {
+      "call": "Apr 2026",
+      "kind": "earnings",
+      "label": "Apr 2026 (Q4 FY26)",
+      "quarter": "Mar 2026",
+      "fiscal": "Q4 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf",
+      "error": null,
+      "management": [
+        "Salil Parekh",
+        "Jayesh Sanghrajka",
+        "Rishi Basu",
+        "Sandeep Mahindroo"
+      ],
+      "passages": 240,
+      "sent": 11,
+      "sent_chars": 8951,
+      "promises": 2
+    },
+    {
+      "call": "Feb 2026",
+      "kind": "event",
+      "label": "Feb 2026 (investor event)",
+      "quarter": null,
+      "fiscal": "FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b4632b94-2a41-4103-876d-cdb1f6848d64.pdf",
+      "error": null,
+      "management": [
+        "Nandan Nilekani",
+        "Salil Parekh",
+        "Satish H.C.",
+        "Dinesh Rao",
+        "Balakrishna D.R",
+        "Mohammed Rafee Tarafdar",
+        "Anand Swaminathan",
+        "Segment Head",
+        "Jasmeet Singh",
+        "Dennis Gada",
+        "Ashiss Kumar Dash",
+        "Segment Head-Energy",
+        "Ambeshwar Nath",
+        "Industry Head-CPG",
+        "Shaji Mathew",
+        "Sumit Virmani",
+        "Jayesh Sanghrajka"
+      ],
+      "passages": 209,
+      "sent": 5,
+      "sent_chars": 4178,
+      "promises": 0
+    },
+    {
+      "call": "Jan 2026",
+      "kind": "earnings",
+      "label": "Jan 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf",
+      "error": null,
+      "management": [
+        "Salil Parekh",
+        "Jayesh Sanghrajka",
+        "Rishi Basu",
+        "Sandeep Mahindroo"
+      ],
+      "passages": 197,
+      "sent": 11,
+      "sent_chars": 8236,
+      "promises": 3
+    },
+    {
+      "call": "Oct 2025",
+      "kind": "earnings",
+      "label": "Oct 2025 (Q2 FY26)",
+      "quarter": "Sep 2025",
+      "fiscal": "Q2 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf4a6179-8e43-4959-b055-91f1f7f4f076.pdf",
+      "error": null,
+      "management": [
+        "Salil Parekh",
+        "Jayesh Sanghrajka",
+        "Rishi Basu",
+        "Satish H.C.",
+        "Sandeep Mahindroo"
+      ],
+      "passages": 182,
+      "sent": 9,
+      "sent_chars": 6081,
+      "promises": 2
+    }
+  ],
+  "ledger": [
+    {
+      "id": "g1",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "Operating margin guidance for FY26",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "20–22%",
+        "low": 20,
+        "high": 22,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "And our operating margin guidance remains the same as in the past quarter at 20% to 22% for the full year.",
+          "target_text": "20–22%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf4a6179-8e43-4959-b055-91f1f7f4f076.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "Our operating margin guidance for the financial year remains the same at 20% to 22%.",
+          "target_text": "20–22%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g1-n1",
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY26",
+          "value": 20.92,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 42279.0,
+            "depreciation": 4901.0,
+            "revenue": 178650.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        {
+          "id": "g1-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t3-p149",
+          "text": "Adjusted operating margin was stable at 21%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "g1-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Salil Parekh",
+          "passage_id": "t1-p14",
+          "text": "Operating margin was stable at 21%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g1-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t2-p133",
+          "text": "Our operating margin was 21.1%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "within",
+        "actual": 20.92,
+        "target_low": 20,
+        "target_high": 22,
+        "complete": true,
+        "evidence_id": "g1-n1"
+      },
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Actual 20.92% falls within 20–22% target.",
+      "cited": [
+        "s1",
+        "s2",
+        "g1-n1",
+        "g1-q2"
+      ],
+      "actual_quote": {
+        "text": "Operating margin was stable at 21%.",
+        "speaker": "Salil Parekh",
+        "call": "Oct 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+      },
+      "stated": {
+        "actual": 21.0,
+        "position": "within",
+        "call": "Oct 2026",
+        "speaker": "Salil Parekh"
+      },
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2025",
+            "fiscal": "Q2 FY26",
+            "low": 20,
+            "high": 22
+          },
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 20,
+            "high": 22
+          }
+        ],
+        "actual": {
+          "value": 20.92,
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY26",
+          "complete": true
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "g2",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "Operating margin guidance",
+      "period": "FY27",
+      "period_status": "in progress (2 of 4 quarters reported)",
+      "target": {
+        "text": "20–22%",
+        "low": 20,
+        "high": 22,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Apr 2026",
+          "call_label": "Apr 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "Our operating margin guidance for financial year '27 is 20% to 22%.",
+          "target_text": "20–22%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Salil Parekh",
+          "quote": "Our operating margin guidance remains the same at 20% to 22% operating margin.",
+          "target_text": "20–22%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "s3",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Salil Parekh",
+          "quote": "Our operating margin guidance remains at 20% to 22% for the year.",
+          "target_text": "20–22%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g2-n1",
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 21.03,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 23098.0,
+            "depreciation": 2605.0,
+            "revenue": 97455.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Salil Parekh",
+          "passage_id": "t1-p14",
+          "text": "Operating margin was stable at 21%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g2-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t2-p133",
+          "text": "Our operating margin was 21.1%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "g2-q3",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t3-p149",
+          "text": "Adjusted operating margin was stable at 21%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "within",
+        "actual": 21.03,
+        "target_low": 20,
+        "target_high": 22,
+        "complete": false,
+        "evidence_id": "g2-n1"
+      },
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 still in progress; final margin not yet determined.",
+      "cited": [
+        "s1",
+        "s2",
+        "s3",
+        "g2-n1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Apr 2026",
+            "fiscal": "Q4 FY26",
+            "low": 20,
+            "high": 22
+          },
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 20,
+            "high": 22
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 20,
+            "high": 22
+          }
+        ],
+        "actual": {
+          "value": 21.03,
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "complete": false
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "g3",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "Revenue growth guidance for FY26",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "3–3.5%",
+        "low": 3,
+        "high": 3.5,
+        "unit": "%",
+        "basis": "constant_currency"
+      },
+      "revised": true,
+      "revision_direction": "raised",
+      "revision_path": "2–3% → 3–3.5%",
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "The new guidance is growth between 2% and 3% in constant currency terms for the full year.",
+          "target_text": "2–3%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf4a6179-8e43-4959-b055-91f1f7f4f076.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "The new revenue growth guidance for this financial year is 3% to 3.5% growth in constant currency.",
+          "target_text": "3–3.5%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g3-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY26",
+          "value": 9.61,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 178650.0,
+            "revenue_year_earlier": 162990.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        {
+          "id": "g3-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t3-p144",
+          "text": "We had a growth of 3.1% for the full year in constant currency terms. Our Q4 revenue growth was 4.1% year-on-year in constant currency terms. This is a growth of 28% over the prior year.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "g3-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Salil Parekh",
+          "passage_id": "t1-p14",
+          "text": "Our revenue growth for Q2 was 1.5% YoY and 1.2% sequentially in constant currency terms. AI revenue was a standout at 10.5% of our revenue, growing at 29% sequentially. This deal is expected to contribute over 1% revenue growth in the coming financial year.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g3-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t2-p133",
+          "text": "Let me start off with the update for the business in this quarter. --- page 29 --- Our revenue growth for Q1 was 2.4% Y-on-Y and 1% Q-on-Q in constant currency terms. Our AI services revenue was 8.2% of overall revenue. We saw a strong acceleration in our AI business, as I shared earlier, with AI revenues for the quarter at 8.2%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        }
+      ],
+      "check": {
+        "comparable": false,
+        "position": null,
+        "actual": 9.61,
+        "target_low": 3,
+        "target_high": 3.5,
+        "complete": true,
+        "evidence_id": "g3-n1"
+      },
+      "verdict": "Unverified",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Revenue growth reported in ₹ cannot be compared to constant‑currency target.",
+      "cited": [
+        "s1",
+        "s2",
+        "g3-n1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2025",
+            "fiscal": "Q2 FY26",
+            "low": 2,
+            "high": 3
+          },
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 3,
+            "high": 3.5
+          }
+        ],
+        "actual": null
+      },
+      "notes": [
+        "guidance is in constant currency terms; screener reports ₹, so the two are not comparable"
+      ]
+    },
+    {
+      "id": "g4",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "Revenue growth guidance",
+      "period": "FY27",
+      "period_status": "in progress (2 of 4 quarters reported)",
+      "target": {
+        "text": "1–2%",
+        "low": 1,
+        "high": 2,
+        "unit": "%",
+        "basis": "constant_currency"
+      },
+      "revised": true,
+      "revision_direction": "cut",
+      "revision_path": "1.5–3.5% → 1.5–3% → 1–2%",
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Apr 2026",
+          "call_label": "Apr 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "Our revenue growth guidance for the financial year 2027 is 1.5% to 3.5% growth year-on-year in constant currency terms.",
+          "target_text": "1.5–3.5%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Salil Parekh",
+          "quote": "With our Q1 results and a view for the rest of the financial year, we are changing our revenue growth guidance to 1.5% to 3% Y-on-Y growth in constant currency terms.",
+          "target_text": "1.5–3%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "s3",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Salil Parekh",
+          "quote": "Based on our Q2 performance and revised outlook for rest of the year, our revenue growth guidance is 1% to 2% YoY in constant currency terms.",
+          "target_text": "1–2%",
+          "basis": "constant_currency",
+          "quote_score": 99.3,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g4-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 12.32,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 97455.0,
+            "revenue_year_earlier": 86769.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/INFY/consolidated/"
+        },
+        {
+          "id": "g4-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Salil Parekh",
+          "passage_id": "t1-p14",
+          "text": "Our revenue growth for Q2 was 1.5% YoY and 1.2% sequentially in constant currency terms. AI revenue was a standout at 10.5% of our revenue, growing at 29% sequentially. This deal is expected to contribute over 1% revenue growth in the coming financial year.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g4-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t2-p133",
+          "text": "Let me start off with the update for the business in this quarter. --- page 29 --- Our revenue growth for Q1 was 2.4% Y-on-Y and 1% Q-on-Q in constant currency terms. Our AI services revenue was 8.2% of overall revenue. We saw a strong acceleration in our AI business, as I shared earlier, with AI revenues for the quarter at 8.2%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "g4-q3",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t3-p144",
+          "text": "We had a growth of 3.1% for the full year in constant currency terms. Our Q4 revenue growth was 4.1% year-on-year in constant currency terms. This is a growth of 28% over the prior year.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        }
+      ],
+      "check": {
+        "comparable": false,
+        "position": null,
+        "actual": 12.32,
+        "target_low": 1,
+        "target_high": 2,
+        "complete": false,
+        "evidence_id": "g4-n1"
+      },
+      "verdict": "Goalposts moved",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Revenue growth guidance was reduced from 1.5–3.5% to 1–2%.",
+      "cited": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Apr 2026",
+            "fiscal": "Q4 FY26",
+            "low": 1.5,
+            "high": 3.5
+          },
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 1.5,
+            "high": 3
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 1,
+            "high": 2
+          }
+        ],
+        "actual": null
+      },
+      "notes": [
+        "guidance is in constant currency terms; screener reports ₹, so the two are not comparable"
+      ]
+    },
+    {
+      "id": "g5",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Investor day presentation plan",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Salil Parekh",
+          "quote": "We will share a comprehensive view of our approach at an investor day later this quarter.",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g5-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "fiscal": "Q4 FY26",
+          "latest": true,
+          "speaker": "Salil Parekh",
+          "passage_id": "t3-p144",
+          "text": "Thanks, Sandeep. Good afternoon, good evening, good morning to everyone. Thank you for joining in. We delivered a strong performance in the financial year 2026. We had a growth of 3.1% for the full year in constant currency terms. Our Q4 revenue growth was 4.1% year-on-year in constant currency terms. We had strong growth in Financial Services, in the Communications industry, Manufacturing industry, and for the Europe geography for the full year. Large deals were strong. For the full year, we had $14.9 bn of large deals. This is a growth of 28% over the prior year. And for Q4, we were at $3.2 bn, a strong showing for the quarter.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+        },
+        {
+          "id": "g5-q2",
+          "kind": "transcript",
+          "call": "Jan 2026",
+          "call_month": "2026-01",
+          "fiscal": "Q3 FY26",
+          "latest": false,
+          "speaker": "Salil Parekh",
+          "passage_id": "t5-p14",
+          "text": "The six large AI-led value pools are: - AI engineering services, - Data for AI, - Agents for operations, - AI software development and legacy modernization, --- page 4 --- - AI deployed in physical devices and - AI trust and risk services We believe we are uniquely positioned to capture market share across these value pools and emerge as the leading AI value creator for global enterprises. We will share a comprehensive view of our approach at an investor day later this quarter. With a strong performance in this quarter, we have revised our revenue growth guidance for the financial year. The new revenue growth guidance for this financial year is 3% to 3.5% growth in constant currency.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Unverified",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "No evidence confirms the investor day was held.",
+      "cited": [
+        "s1",
+        "g5-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g6",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Net headcount target",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": "20,000",
+        "low": 20000,
+        "high": 20000,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Salil Parekh",
+          "quote": "This year, we have a plan to recruit 20,000 college graduates.",
+          "target_text": "20,000",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Jayesh Sanghrajka",
+          "quote": "We hired about 13,000 freshers in H1 in line with our target of approximately 20,000 for FY27.",
+          "target_text": "20,000",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g6-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t1-p134",
+          "text": "Net headcount increased by about 4,400 employees.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        },
+        {
+          "id": "g6-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t2-p140",
+          "text": "Headcount reduced by 500 employees after adding over 2,000 employees from acquisitions.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 is still in progress, headcount target not final.",
+      "cited": [
+        "s1",
+        "s2",
+        "g6-q1",
+        "g6-q2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": []
+    },
+    {
+      "id": "g7",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Effective tax rate target",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": "29–30%",
+        "low": 29,
+        "high": 30,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Jayesh Sanghrajka",
+          "quote": "We expect effective tax rate for the year to be in the range of 29% to 30%.",
+          "target_text": "29–30%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g7-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Jayesh Sanghrajka",
+          "passage_id": "t1-p134",
+          "text": "As mentioned last quarter, we are rolling out compensation hikes to most of our employees effective October '26, with the next phase effective January '27. We expect effective tax rate for the year to be in the range of 29% to 30%.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 not ended, effective tax rate target remains unassessed.",
+      "cited": [
+        "s1",
+        "g7-q1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 29,
+            "high": 30
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    }
+  ],
+  "dropped": [
+    {
+      "call": "Oct 2026",
+      "quote": "DSO, including unbilled net of unearned was 77 days, down by 10 days as compared to last year.",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    }
+  ],
+  "models": [
+    "groq/openai/gpt-oss-20b",
+    "groq/openai/gpt-oss-120b"
+  ],
+  "sources": {
+    "screener": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/INFY/consolidated/",
+      "fetched_at": "2026-11-14T14:55:54+05:30"
+    },
+    "transcripts": [
+      {
+        "call": "Oct 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7982fc61-7765-4981-ab3d-6aec36ba2137.pdf"
+      },
+      {
+        "call": "Jul 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95f8af86-dc92-49dc-a7cf-ecce287f8cce.pdf"
+      },
+      {
+        "call": "Apr 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ab7badf-388c-4dab-bfcc-3e128677734c.pdf"
+      },
+      {
+        "call": "Feb 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b4632b94-2a41-4103-876d-cdb1f6848d64.pdf"
+      },
+      {
+        "call": "Jan 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=373b3501-e2a7-4ba4-bdd1-83f6bc21c25c.pdf"
+      },
+      {
+        "call": "Oct 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf4a6179-8e43-4959-b055-91f1f7f4f076.pdf"
+      }
+    ]
+  },
+  "summary": {
+    "Delivered": 1,
+    "Missed": 0,
+    "Pending": 3,
+    "Goalposts moved": 1,
+    "Unverified": 2
+  },
+  "track_record": {
+    "promises": 7,
+    "calls": 5,
+    "checkable": 3,
+    "revised": 2,
+    "counts": {
+      "Delivered": 1,
+      "Missed": 0,
+      "Pending": 3,
+      "Goalposts moved": 1,
+      "Unverified": 2
+    },
+    "text": "3 checkable promises: 1 delivered, 2 unverified · 4 still running, 1 with goalposts moved · 2 targets revised along the way"
+  }
+}

@@ -1,0 +1,631 @@
+{
+  "schema": 1,
+  "symbol": "ETERNAL",
+  "name": "Eternal Ltd",
+  "generated_at": "2026-11-15T01:48:02+05:30",
+  "status": "ok",
+  "notes": [],
+  "numbers": {
+    "basis": "consolidated",
+    "layout": "standard",
+    "unit": "₹ crore",
+    "latest_quarter": "Sep 2026",
+    "latest_fiscal": "Q2 FY27",
+    "quarters": [
+      {
+        "period": "Dec 2024",
+        "fiscal": "Q3 FY25",
+        "revenue": 5405.0,
+        "revenue_yoy": 64.39,
+        "net_profit": 59.0,
+        "net_profit_yoy": -57.25,
+        "ebitda": 162.0,
+        "ebitda_margin": 3.0,
+        "ebit_margin": -1.57
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "Q4 FY25",
+        "revenue": 5833.0,
+        "revenue_yoy": 63.76,
+        "net_profit": 39.0,
+        "net_profit_yoy": -77.71,
+        "ebitda": 72.0,
+        "ebitda_margin": 1.23,
+        "ebit_margin": -3.69
+      },
+      {
+        "period": "Jun 2025",
+        "fiscal": "Q1 FY26",
+        "revenue": 7167.0,
+        "revenue_yoy": 70.4,
+        "net_profit": 25.0,
+        "net_profit_yoy": -90.12,
+        "ebitda": 115.0,
+        "ebitda_margin": 1.6,
+        "ebit_margin": -2.78
+      },
+      {
+        "period": "Sep 2025",
+        "fiscal": "Q2 FY26",
+        "revenue": 13590.0,
+        "revenue_yoy": 183.18,
+        "net_profit": 65.0,
+        "net_profit_yoy": -63.07,
+        "ebitda": 239.0,
+        "ebitda_margin": 1.76,
+        "ebit_margin": -1.01
+      },
+      {
+        "period": "Dec 2025",
+        "fiscal": "Q3 FY26",
+        "revenue": 16315.0,
+        "revenue_yoy": 201.85,
+        "net_profit": 102.0,
+        "net_profit_yoy": 72.88,
+        "ebitda": 368.0,
+        "ebitda_margin": 2.26,
+        "ebit_margin": -0.44
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "Q4 FY26",
+        "revenue": 17292.0,
+        "revenue_yoy": 196.45,
+        "net_profit": 174.0,
+        "net_profit_yoy": 346.15,
+        "ebitda": 486.0,
+        "ebitda_margin": 2.81,
+        "ebit_margin": 0.1
+      },
+      {
+        "period": "Jun 2026",
+        "fiscal": "Q1 FY27",
+        "revenue": 20211.0,
+        "revenue_yoy": 182.0,
+        "net_profit": 92.0,
+        "net_profit_yoy": 268.0,
+        "ebitda": 594.0,
+        "ebitda_margin": 2.94,
+        "ebit_margin": 0.24
+      },
+      {
+        "period": "Sep 2026",
+        "fiscal": "Q2 FY27",
+        "revenue": 24138.0,
+        "revenue_yoy": 77.62,
+        "net_profit": 125.0,
+        "net_profit_yoy": 92.31,
+        "ebitda": 752.0,
+        "ebitda_margin": 3.12,
+        "ebit_margin": 0.53
+      }
+    ],
+    "years": [
+      {
+        "period": "Mar 2022",
+        "fiscal": "FY22",
+        "revenue": 4192.0,
+        "revenue_growth": 110.23,
+        "net_profit": -1222.0,
+        "net_profit_growth": null,
+        "roce_pct": -13.0,
+        "ebitda_margin": -44.16
+      },
+      {
+        "period": "Mar 2023",
+        "fiscal": "FY23",
+        "revenue": 7079.0,
+        "revenue_growth": 68.87,
+        "net_profit": -971.0,
+        "net_profit_growth": null,
+        "roce_pct": -6.0,
+        "ebitda_margin": -17.11
+      },
+      {
+        "period": "Mar 2024",
+        "fiscal": "FY24",
+        "revenue": 12114.0,
+        "revenue_growth": 71.13,
+        "net_profit": 351.0,
+        "net_profit_growth": null,
+        "roce_pct": 1.0,
+        "ebitda_margin": 0.35
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "FY25",
+        "revenue": 20243.0,
+        "revenue_growth": 67.1,
+        "net_profit": 527.0,
+        "net_profit_growth": 50.14,
+        "roce_pct": 3.0,
+        "ebitda_margin": 3.15
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "FY26",
+        "revenue": 54364.0,
+        "revenue_growth": 168.56,
+        "net_profit": 366.0,
+        "net_profit_growth": -30.55,
+        "roce_pct": 2.0,
+        "ebitda_margin": 2.22
+      }
+    ],
+    "fiscal_year_to_date": {
+      "period": "FY27",
+      "metrics": {
+        "revenue_growth": {
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 113.66,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 44349.0,
+            "revenue_year_earlier": 20757.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/ETERNAL/consolidated/"
+        },
+        "profit_growth": {
+          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
+          "value": 141.11,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "net_profit": 217.0,
+            "net_profit_year_earlier": 90.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/ETERNAL/consolidated/"
+        },
+        "ebitda_margin": {
+          "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+          "value": 3.04,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 1346.0,
+            "revenue": 44349.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/ETERNAL/consolidated/"
+        },
+        "ebit_margin": {
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 0.39,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 1346.0,
+            "depreciation": 1171.0,
+            "revenue": 44349.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/ETERNAL/consolidated/"
+        }
+      }
+    },
+    "source": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/ETERNAL/consolidated/",
+      "fetched_at": "2026-11-14T14:55:50+05:30"
+    }
+  },
+  "transcripts": [
+    {
+      "call": "Oct 2026",
+      "kind": "earnings",
+      "label": "Oct 2026 (Q2 FY27)",
+      "quarter": "Sep 2026",
+      "fiscal": "Q2 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64f36e3b-87e9-426e-be3e-515dca4525d2.pdf",
+      "error": "no forward-looking passages found",
+      "management": [
+        "Albinder Singh Dhindsa"
+      ],
+      "passages": 109,
+      "sent": 0,
+      "sent_chars": 0,
+      "promises": 0
+    },
+    {
+      "call": "Jul 2026",
+      "kind": "earnings",
+      "label": "Jul 2026 (Q1 FY27)",
+      "quarter": "Jun 2026",
+      "fiscal": "Q1 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=faa4f0f7-06e4-4066-9d68-3da95dfe02d9.pdf",
+      "error": "no forward-looking passages found",
+      "management": [
+        "Albinder Singh Dhindsa"
+      ],
+      "passages": 129,
+      "sent": 0,
+      "sent_chars": 0,
+      "promises": 0
+    },
+    {
+      "call": "May 2026",
+      "kind": "earnings",
+      "label": "May 2026 (Q4 FY26)",
+      "quarter": "Mar 2026",
+      "fiscal": "Q4 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf",
+      "error": "no forward-looking passages found",
+      "management": [
+        "Albinder Singh Dhindsa"
+      ],
+      "passages": 122,
+      "sent": 0,
+      "sent_chars": 0,
+      "promises": 0
+    },
+    {
+      "call": "Jan 2026",
+      "kind": "earnings",
+      "label": "Jan 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf",
+      "error": null,
+      "management": [
+        "Akshant Goyal"
+      ],
+      "passages": 140,
+      "sent": 2,
+      "sent_chars": 1179,
+      "promises": 2
+    },
+    {
+      "call": "Jan 2026",
+      "kind": "earnings",
+      "label": "Jan 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://b.zmtcdn.com/investor-relations/Q3FY26-earnings-call-transcript.pdf",
+      "error": null,
+      "management": [
+        "Akshant Goyal"
+      ],
+      "passages": 140,
+      "sent": 2,
+      "sent_chars": 1179,
+      "promises": 0
+    },
+    {
+      "call": "Oct 2025",
+      "kind": "earnings",
+      "label": "Oct 2025 (Q2 FY26)",
+      "quarter": "Sep 2025",
+      "fiscal": "Q2 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf",
+      "error": null,
+      "management": [
+        "Akshant Goyal"
+      ],
+      "passages": 127,
+      "sent": 2,
+      "sent_chars": 1339,
+      "promises": 1
+    }
+  ],
+  "ledger": [
+    {
+      "id": "g1",
+      "metric": "ebitda_margin",
+      "metric_label": "EBITDA margin",
+      "metric_text": "Adjusted EBITDA margin 5-6% of NOV",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "5–6%",
+        "low": 5,
+        "high": 6,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Akshant Goyal",
+          "quote": "Just to add, in the long term, in our letter we have mentioned that our confidence on margins going to 5% to 6% of NOV remains high, and we've shared data on a couple of cities in our business where we are already at 5% Adjusted EBITDA margin.",
+          "target_text": "5–6%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Target period not defined, so outcome cannot be assessed yet.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 5,
+            "high": 6
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    },
+    {
+      "id": "g2",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "Year-on-year growth expectation for this financial year",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "15%",
+        "low": 15,
+        "high": 15,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Akshant Goyal",
+          "quote": "for this financial year, we're unlikely to be at 20%, and we're expecting a 15% sort of year-on-year growth",
+          "target_text": "15%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g2-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY26",
+          "value": 168.56,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 54364.0,
+            "revenue_year_earlier": 20243.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/ETERNAL/consolidated/"
+        },
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "Oct 2025",
+          "call_month": "2025-10",
+          "fiscal": "Q2 FY26",
+          "latest": true,
+          "speaker": "Akshant Goyal",
+          "passage_id": "t6-p100",
+          "text": "So, when we move this business from sellers to directly on our platform, the supply chain cost, which includes first mile cost, went up and hence that entire gain on the top-line margin because of the model change did not flow through to contribution margin, which is also consistent with what we’ve mentioned in the past that the net gain or net flow through eventually should be 1%, part of which we have realized this quarter and the balance will keep flowing through in the next four to five quarters. --- page 15 --- So, just to be clear, this is the position on the impact of business model change on the top-line and the margin.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "above",
+        "actual": 168.56,
+        "target_low": 15,
+        "target_high": 15,
+        "complete": true,
+        "evidence_id": "g2-n1"
+      },
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Actual 168.56% exceeds target 15% for FY26.",
+      "cited": [
+        "s1",
+        "g2-n1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2025",
+            "fiscal": "Q2 FY26",
+            "low": 15,
+            "high": 15
+          }
+        ],
+        "actual": {
+          "value": 168.56,
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY26",
+          "complete": true
+        }
+      },
+      "notes": [
+        "basis not stated; compared with reported ₹ growth"
+      ]
+    },
+    {
+      "id": "g3",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "ROCE north of 40%",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": "40%",
+        "low": 40,
+        "high": 40,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Akshant Goyal",
+          "quote": "Even though we might see capex per store going up over the next few quarters, we don't expect net working capital to be beyond those 18 days that we had shared earlier, so that should remain within range and hence, as a consequence of that, the ROCE outcome should still be north of 40%. That's what we're solving for.",
+          "target_text": "40%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "No end date given, so ROCE outcome cannot be evaluated yet.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 40,
+            "high": 40
+          }
+        ],
+        "actual": null
+      },
+      "notes": []
+    }
+  ],
+  "dropped": [
+    {
+      "call": "Jan 2026",
+      "quote": "ROCE outcome should still be north of 40%",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    },
+    {
+      "call": "Jan 2026",
+      "quote": "our confidence on margins going to 5% to 6% of NOV remains high",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    },
+    {
+      "call": "Oct 2025",
+      "quote": "longer-term, our view on 20% remains as of now",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    }
+  ],
+  "models": [
+    "groq/openai/gpt-oss-20b",
+    "groq/openai/gpt-oss-120b"
+  ],
+  "sources": {
+    "screener": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/ETERNAL/consolidated/",
+      "fetched_at": "2026-11-14T14:55:50+05:30"
+    },
+    "transcripts": [
+      {
+        "call": "Oct 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64f36e3b-87e9-426e-be3e-515dca4525d2.pdf"
+      },
+      {
+        "call": "Jul 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=faa4f0f7-06e4-4066-9d68-3da95dfe02d9.pdf"
+      },
+      {
+        "call": "May 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60af607c-5f1b-4d5d-8425-4929efa6aad1.pdf"
+      },
+      {
+        "call": "Jan 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91f3f29f-c5c0-49b5-b425-a22374bf08ad.pdf"
+      },
+      {
+        "call": "Jan 2026",
+        "url": "https://b.zmtcdn.com/investor-relations/Q3FY26-earnings-call-transcript.pdf"
+      },
+      {
+        "call": "Oct 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69f3f58b-c856-4abf-9548-ab8c8f1a398e.pdf"
+      }
+    ]
+  },
+  "summary": {
+    "Delivered": 1,
+    "Missed": 0,
+    "Pending": 2,
+    "Goalposts moved": 0,
+    "Unverified": 0
+  },
+  "track_record": {
+    "promises": 3,
+    "calls": 2,
+    "checkable": 1,
+    "revised": 0,
+    "counts": {
+      "Delivered": 1,
+      "Missed": 0,
+      "Pending": 2,
+      "Goalposts moved": 0,
+      "Unverified": 0
+    },
+    "text": "1 checkable promise: 1 delivered · 2 still running"
+  }
+}
