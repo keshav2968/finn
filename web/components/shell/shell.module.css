@@ -187,7 +187,7 @@
 
 .bannerGo {
   flex: none;
-  min-height: 40px;
+  min-height: var(--tap);
   padding: 0 var(--s2);
   border-radius: var(--r-pill);
   background: var(--teal);
@@ -198,8 +198,8 @@
 
 .bannerX {
   flex: none;
-  width: 40px;
-  height: 40px;
+  width: var(--tap);
+  height: var(--tap);
   display: grid;
   place-items: center;
   margin-right: -6px;

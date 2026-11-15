@@ -204,9 +204,9 @@
 
 .note {
   margin: var(--s1) 0 0;
-  font-size: var(--t-sm);
+  font-size: var(--t-md);
   line-height: 1.5;
-  color: var(--muted);
+  color: var(--fg-2); /* running text: 7:1 or more */
 }
 
 .muted {

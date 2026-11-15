@@ -5,6 +5,13 @@ import { croreShort, pct } from "@/lib/format";
 import { exitFlag, resultsHeadlines } from "@/lib/present";
 import type { Card, InboxData } from "@/lib/types";
 
+/** Long exchange headlines cut at a word, so a row never hides text under the line below it. */
+export function shorten(text: string, max = 120): string {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(" "), max - 20)).replace(/[\s,;:.\-–]+$/, "")}…`;
+}
+
 /** Results cards lead with the figure that moved most; everything else with the filing headline. */
 export function storyHeadline(card: Card, data: InboxData): string {
   const heads = resultsHeadlines(card, data);
@@ -13,7 +20,7 @@ export function storyHeadline(card: Card, data: InboxData): string {
     const h = heads[0];
     return `${res.periods.current} quarter: ${h.label} ${croreShort(h.value)}, ${pct(h.yoy, 1)} YoY`;
   }
-  return card.lead.headline;
+  return shorten(card.lead.headline);
 }
 
 export function storyFlag(card: Card): string | null {

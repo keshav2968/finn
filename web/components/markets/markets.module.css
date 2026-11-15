@@ -39,41 +39,32 @@
   margin: 0;
 }
 
-/* top movers: horizontal cards */
+/* top movers: three columns on hairlines, nothing scrolls off the edge */
 .movers {
-  display: flex;
-  margin: 0 calc(-1 * var(--pad));
-  padding: 2px var(--pad) 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  scroll-snap-type: x mandatory;
-  gap: 0;
-}
-
-.movers::-webkit-scrollbar {
-  display: none;
-}
-
-.mover:last-child {
-  border-right: 0;
-}
-
-.mover + .mover {
-  padding-left: var(--s2);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .mover {
-  flex: none;
-  width: 148px;
   display: grid;
   gap: 6px;
+  min-width: 0;
+  padding: var(--s1h) var(--s1h) var(--s1h) 0;
   color: var(--fg);
-  scroll-snap-align: start;
-  padding: 0 var(--s2) 0 0;
-  border-right: 1px solid var(--border);
-  border-radius: 0;
 }
 
+.mover + .mover {
+  padding-left: var(--s1h);
+  border-left: 1px solid var(--border);
+}
+
+.mover :global(.ticker) {
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
 
 .moverName {
   font-size: var(--t-xs);
@@ -84,7 +75,7 @@
 }
 
 .moverBig {
-  font-size: var(--t-title);
+  font-size: var(--t-lg);
   font-weight: 700;
 }
 
@@ -141,9 +132,7 @@
 .watchName {
   font-size: var(--t-md);
   font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.3;
 }
 
 .watchPrice {
@@ -212,7 +201,6 @@
   align-items: center;
   gap: 2px;
   min-height: var(--tap);
-  margin-left: -6px;
   color: var(--fg);
   font-size: var(--t-md);
   font-weight: 600;
@@ -312,9 +300,18 @@
 }
 
 
-.marker:hover .markerDot,
-.marker:focus-visible .markerDot {
-  transform: scale(1.35);
+.markerRing {
+  opacity: 0;
+}
+
+.marker:focus-visible .markerRing {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .marker:hover .markerDot {
+    transform: scale(1.35);
+  }
 }
 
 .chartFoot {
@@ -462,11 +459,7 @@
 }
 
 .filingHead {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  overflow: hidden;
+  display: block;
   font-size: var(--t-md);
   font-weight: 700;
   line-height: 1.35;

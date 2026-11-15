@@ -1,5 +1,26 @@
 /* Alert rules sheet: chip choices in the inbox's tokens. */
 
+/* On the Alerts tab: the title at the section-head step, sub-heads a clear step below. */
+.title {
+  margin: 0;
+  font-size: var(--t-lg);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.lead {
+  margin: 6px 0 0;
+  font-size: var(--t-md);
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+
+.group h3 {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--fg);
+}
+
 .count {
   color: var(--fg);
   font-weight: 700;

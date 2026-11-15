@@ -34,11 +34,18 @@ The app has four tabs in a bottom bar:
 Every tab ends with a footer that names the data sources in words (no logos), gives the
 snapshot date, and says it isn't investment advice.
 
-**Motion:** tabs fade up as they open, story lists stagger in, charts draw their line and
-grow their volume bars, and numbers count up when you navigate to them. Cards and buttons
-give press feedback. All of it is CSS or `requestAnimationFrame`, with no animation library,
-and it switches off under "reduce motion". On a cold load the server HTML always shows the
-true figures; count-ups only play after that, so no page ever renders a starting value as data.
+**Design system:**
+- **Type:** one family (Plus Jakarta Sans) with tabular figures for every number; JetBrains
+  Mono only for ticker symbols. An eight-step type scale and sentence-case section heads.
+- **Colour:** teal only on things you can tap; green and red only on price moves (reported
+  figures and research verdicts are ink, told apart by shape).
+- **Layout:** 1px hairlines between rows instead of boxes inside boxes.
+- **Charts:** label their own high, low, last close and filing dates on the line.
+
+**Motion:** one entrance on the app's first screen (News, once a visit), a 120ms cross-fade
+between tabs, and a hover and press layer: rows take a faint wash, buttons and chips step up
+1px and sink when pressed, text actions draw an underline. Nothing animates because a page
+opened or scrolled, and everything rests under "reduce motion".
 
 **Installable app:**
 - **Android/Chrome:** a manifest with 192/512 icons and maskable versions, `display:

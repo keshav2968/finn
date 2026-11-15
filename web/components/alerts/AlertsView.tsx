@@ -65,9 +65,10 @@ export default function AlertsView({ data }: { data: InboxData }) {
 
       <section className={u.section} aria-labelledby="caught">
         <div className={s.row}>
-          <h2 id="caught" className={u.sectionHead}>
-            Notifications <span>{readLoaded ? `${unread} unread` : ""}</span>
-          </h2>
+          <div className={u.sectionHead}>
+            <h2 id="caught">Alerts in the last {win.label}</h2>
+            <span>{readLoaded ? `${unread} unread` : ""}</span>
+          </div>
           <button type="button" className={`${u.textButton} drawLine`} onClick={markAll} disabled={unread === 0}>
             <CheckCheck size={16} strokeWidth={2} aria-hidden="true" style={{ verticalAlign: "-3px", marginRight: 4 }} />
             Mark all read

@@ -96,6 +96,8 @@
 }
 
 html {
+  scroll-padding-top: calc(env(safe-area-inset-top) + 12px);
+  scroll-padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 96px); /* clear the nav and the install banner */
   background: var(--canvas);
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -188,6 +190,25 @@ button {
 }
 
 
+.skip {
+  position: fixed;
+  z-index: 60;
+  top: calc(env(safe-area-inset-top) + 8px);
+  left: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--fg);
+  color: var(--canvas);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+  transform: none;
+  outline-offset: 3px;
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -272,7 +293,7 @@ button {
     transform: translateY(1px) scale(0.985);
   }
   .row:hover {
-    background-color: color-mix(in srgb, var(--fg) 4%, transparent);
+    background-color: color-mix(in srgb, var(--fg) 6%, transparent);
     transition-duration: var(--m-in);
   }
   .drawLine:hover {

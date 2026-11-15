@@ -9,7 +9,7 @@ import type { Quote, StockSeries } from "@/lib/data";
 import type { Card, InboxData } from "@/lib/types";
 import Delta from "../Delta";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
-import { storyHeadline } from "../news/story";
+import { shorten, storyHeadline } from "../news/story";
 import { useReadState } from "../news/NewsFeed";
 import PriceChart, { type Marker } from "./PriceChart";
 import u from "../ui.module.css";
@@ -61,7 +61,7 @@ export default function StockView({
   return (
     <div className={u.page}>
       <nav className={s.back}>
-        <Link href="/markets" className={s.backLink}>
+        <Link href="/markets" className={`${s.backLink} drawLine`}>
           <ChevronLeft size={18} strokeWidth={2} aria-hidden="true" /> Markets
         </Link>
       </nav>
@@ -129,9 +129,9 @@ export default function StockView({
       </section>
 
       <section className={u.section} aria-labelledby="filings">
-        <h2 id="filings" className={u.sectionHead}>
-          Filings <span>since {firstFiling !== "9999" ? day(firstFiling) : "–"}</span>
-        </h2>
+        <div className={u.sectionHead}>
+          <h2 id="filings">Filings since {firstFiling !== "9999" ? day(firstFiling) : "–"}</h2>
+        </div>
         {notable.length === 0 ? (
           <p className={u.sub}>No filings above routine in the snapshot.</p>
         ) : (
@@ -165,7 +165,7 @@ export default function StockView({
                   <li key={c.key}>
                     <button type="button" className={`${s.filing} row`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
                       <span className={s.filingHead} style={{ fontWeight: 500 }}>
-                        {c.lead.headline}
+                        {shorten(c.lead.headline)}
                       </span>
                       <span className={s.filingMeta}>
                         {c.lead.category_label} · {day(c.lead.datetime)}

@@ -61,11 +61,7 @@
 }
 
 .title {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  overflow: hidden;
+  display: block;
   font-size: var(--t-md);
   font-weight: 700;
   line-height: 1.35;
@@ -123,7 +119,7 @@
 
 .go {
   flex: none;
-  min-height: 40px;
+  min-height: var(--tap);
   padding: 0 var(--s2);
   border-radius: var(--r-pill);
   background: var(--teal);

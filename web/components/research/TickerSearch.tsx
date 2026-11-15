@@ -32,10 +32,10 @@ export default function TickerSearch({ known }: { known: Known[] }) {
 
   return (
     <div className={s.search}>
+      <label htmlFor="ticker" className={s.searchLabel}>
+        NSE ticker or company name
+      </label>
       <form onSubmit={go} className={s.searchForm} role="search">
-        <label htmlFor="ticker" className={s.srOnly}>
-          NSE ticker or company name
-        </label>
         <Search size={18} strokeWidth={1.75} aria-hidden="true" className={s.searchIcon} />
         <input
           id="ticker"
@@ -45,18 +45,20 @@ export default function TickerSearch({ known }: { known: Known[] }) {
             setValue(e.target.value);
             setMissing(null);
           }}
-          placeholder="Any NSE ticker, e.g. TCS"
+          placeholder="e.g. TCS or Polycab"
           autoCapitalize="characters"
           autoComplete="off"
+          inputMode="search"
           spellCheck={false}
           enterKeyHint="go"
         />
-        <button type="submit" className={s.searchGo}>
-          Search
+        <button type="submit" className={`${s.searchGo} press`}>
+          Find company
         </button>
       </form>
+      <div role="status" aria-live="polite">
       {missing && (
-        <div className={s.searchMiss} role="status">
+        <div className={s.searchMiss}>
           {missing === "?" ? (
             <p>That doesn&apos;t look like an NSE ticker. Try the symbol, e.g. TCS or HDFCBANK.</p>
           ) : (
@@ -73,6 +75,7 @@ export default function TickerSearch({ known }: { known: Known[] }) {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }

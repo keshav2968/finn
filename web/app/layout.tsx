@@ -48,6 +48,13 @@ export const metadata: Metadata = {
   // iOS home-screen app: standalone, with the status bar drawn over FINN's own dark canvas.
   appleWebApp: { capable: true, title: "FINN", statusBarStyle: "black-translucent" },
   formatDetection: { telephone: false },
+  openGraph: {
+    title: "FINN",
+    description: "What changed in your portfolio, and why it matters.",
+    type: "website",
+    images: [{ url: "/icon-512.png", width: 512, height: 512, alt: "FINN" }],
+  },
+  twitter: { card: "summary", title: "FINN", description: "What changed in your portfolio, and why it matters." },
   other: { "mobile-web-app-capable": "yes" },
 };
 
@@ -75,8 +82,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript + installScript }} />
         <ThemeKeeper />
+        <a className="skip" href="#content">
+          Skip to content
+        </a>
         <div className={shell.frame}>
-          {children}
+          <main id="content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer snapshotAt={meta.snapshot_at} pricesAsOf={meta.prices_as_of} />
         </div>
         <BottomNav />

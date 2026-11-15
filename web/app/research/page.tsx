@@ -29,9 +29,10 @@ export default function Page() {
       <TickerSearch known={companies.map((c) => ({ symbol: c.symbol, name: c.name }))} />
 
       <section className={u.section} aria-labelledby="done">
-        <h2 id="done" className={u.sectionHead}>
-          Researched <span>{done.length}</span>
-        </h2>
+        <div className={u.sectionHead}>
+          <h2 id="done">Researched</h2>
+          <span>{done.length}</span>
+        </div>
         <ul className={s.cards}>
           {done.map((c, i) => {
             const counts = c.doc!.track_record?.counts;
@@ -70,9 +71,10 @@ export default function Page() {
 
       {notYet.length > 0 && (
         <section className={u.section} aria-labelledby="todo">
-          <h2 id="todo" className={u.sectionHead}>
-            Not researched yet <span>{notYet.length}</span>
-          </h2>
+          <div className={u.sectionHead}>
+            <h2 id="todo">Not researched yet</h2>
+            <span>{notYet.length}</span>
+          </div>
           <ul className={s.index}>
             {notYet.map((c) => (
               <li key={c.symbol}>

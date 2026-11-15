@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Check, Pencil } from "lucide-react";
-import { direction, pct, rupees, times, weekday } from "@/lib/format";
+import { day, direction, pct, rupees, times, weekday } from "@/lib/format";
 import type { Quote } from "@/lib/data";
 import Delta from "../Delta";
 import Sheet from "../Sheet";
@@ -28,9 +28,9 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
 
   const moverList = useMemo(() => {
     const by = [...quotes];
-    if (movers === "gainers") return by.filter((q) => (q.pct_change ?? 0) > 0).sort((a, b) => (b.pct_change ?? 0) - (a.pct_change ?? 0)).slice(0, 5);
-    if (movers === "losers") return by.filter((q) => (q.pct_change ?? 0) < 0).sort((a, b) => (a.pct_change ?? 0) - (b.pct_change ?? 0)).slice(0, 5);
-    return by.filter((q) => q.vol_ratio !== null).sort((a, b) => (b.vol_ratio ?? 0) - (a.vol_ratio ?? 0)).slice(0, 5);
+    if (movers === "gainers") return by.filter((q) => (q.pct_change ?? 0) > 0).sort((a, b) => (b.pct_change ?? 0) - (a.pct_change ?? 0)).slice(0, 3);
+    if (movers === "losers") return by.filter((q) => (q.pct_change ?? 0) < 0).sort((a, b) => (a.pct_change ?? 0) - (b.pct_change ?? 0)).slice(0, 3);
+    return by.filter((q) => q.vol_ratio !== null).sort((a, b) => (b.vol_ratio ?? 0) - (a.vol_ratio ?? 0)).slice(0, 3);
   }, [quotes, movers]);
 
   return (
@@ -52,7 +52,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
       <section className={u.section} aria-labelledby="movers">
         <div className={s.sectionRow}>
           <h2 id="movers" className={u.sectionHead}>
-            Top movers
+            Biggest moves{asOf ? `, ${day(asOf)}` : ""}
           </h2>
           <div className={u.segment} role="group" aria-label="Movers">
             {(["gainers", "losers", "volume"] as const).map((k) => (
@@ -86,9 +86,10 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
 
       <section className={u.section} aria-labelledby="watch">
         <div className={s.sectionRow}>
-          <h2 id="watch" className={u.sectionHead}>
-            Watchlist <span>{loaded ? listed.length : ""}</span>
-          </h2>
+          <div className={u.sectionHead}>
+            <h2 id="watch">Watchlist</h2>
+            <span>{loaded ? listed.length : ""}</span>
+          </div>
           <button type="button" className={`${u.textButton} drawLine`} onClick={() => setEditing(true)}>
             <Pencil size={14} strokeWidth={2} aria-hidden="true" style={{ verticalAlign: "-2px", marginRight: 4 }} />
             Edit

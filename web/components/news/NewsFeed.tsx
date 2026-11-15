@@ -11,7 +11,7 @@ import { useStored } from "../useStored";
 import FilingSheet, { type Opened } from "./FilingSheet";
 import MiniChart from "./MiniChart";
 import TickerChip from "./TickerChip";
-import { dayMove, storyChart, storyFlag, storyHeadline } from "./story";
+import { dayMove, shorten, storyChart, storyFlag, storyHeadline } from "./story";
 import u from "../ui.module.css";
 import s from "./news.module.css";
 
@@ -129,9 +129,10 @@ export default function NewsFeed({ data }: { data: InboxData }) {
 
       {top.length > 0 && (
         <section className={u.section} aria-labelledby="top">
-          <h2 id="top" className={u.sectionHead}>
-            {data.tier_labels.needs_attention} <span>{top.length}</span>
-          </h2>
+          <div className={u.sectionHead}>
+            <h2 id="top">{data.tier_labels.needs_attention}</h2>
+            <span>{top.length}</span>
+          </div>
           <div className={s.stack}>
             {top.map((c, i) => (
               <Story key={c.key} card={c} data={data} big read={readLoaded && isRead(c.key)} onOpen={() => openCard(c)} index={i} enter={entering && i < 2} />
@@ -142,9 +143,10 @@ export default function NewsFeed({ data }: { data: InboxData }) {
 
       {latest.length > 0 && (
         <section className={u.section} aria-labelledby="latest">
-          <h2 id="latest" className={u.sectionHead}>
-            {data.tier_labels.worth_knowing} <span>{latest.length}</span>
-          </h2>
+          <div className={u.sectionHead}>
+            <h2 id="latest">{data.tier_labels.worth_knowing}</h2>
+            <span>{latest.length}</span>
+          </div>
           <div className={s.list}>
             {latest.map((c, i) => (
               <Story key={c.key} card={c} data={data} read={readLoaded && isRead(c.key)} onOpen={() => openCard(c)} index={i} />
@@ -185,7 +187,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
               {routine.map((c) => (
                 <li key={c.key}>
                   <button type="button" className={`${s.routineRow} row`} onClick={() => openCard(c)}>
-                    <span className={s.routineTitle}>{c.lead.headline}</span>
+                    <span className={s.routineTitle}>{shorten(c.lead.headline)}</span>
                     <span className={s.meta}>
                       <span className="ticker">{c.lead.symbol}</span> · {c.lead.category_label} · {day(c.lead.datetime)}
                     </span>

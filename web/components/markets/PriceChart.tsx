@@ -189,6 +189,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
                 onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), onMarker(m.id))}
               >
                 <circle cx={geo.x(m.i)} cy={geo.y(close[m.i])} r={14} fill="transparent" />
+                <circle cx={geo.x(m.i)} cy={geo.y(close[m.i])} r={9} fill="none" stroke="var(--teal)" strokeWidth="2" className={s.markerRing} />
                 <circle
                   cx={geo.x(m.i)}
                   cy={geo.y(close[m.i])}

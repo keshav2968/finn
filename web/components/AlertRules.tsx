@@ -34,8 +34,8 @@ export default function AlertRulesPanel({
 
   return (
     <>
-      <h2 className={sh.title}>Alert rules</h2>
-      <p className={sh.sub}>
+      <h2 className={s.title}>Alert rules</h2>
+      <p className={s.lead}>
         What counts as unusual for you. Saved on this device.{" "}
         <strong className={s.count}>
           {alertCount} alert{alertCount === 1 ? "" : "s"} in the last {windowLabel}
@@ -68,7 +68,7 @@ export default function AlertRulesPanel({
         onPick={(v) => set({ move_z: v })}
       />
 
-      <section className={sh.section}>
+      <section className={`${sh.section} ${s.group}`}>
         <h3>Filings that alert</h3>
         <p className={sh.note}>
           {rules.filing_min_score === null
@@ -115,7 +115,7 @@ function Choice({
   onPick: (v: number | null) => void;
 }) {
   return (
-    <section className={sh.section}>
+    <section className={`${sh.section} ${s.group}`}>
       <h3>{title}</h3>
       <p className={sh.note}>{help}</p>
       <div className={s.chips} role="radiogroup" aria-label={title}>
