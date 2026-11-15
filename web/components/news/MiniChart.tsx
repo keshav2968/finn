@@ -5,7 +5,8 @@ import s from "./news.module.css";
 
 // A story's price strip: one thin line of closes across the window, the filing's session
 // marked and labelled on the chart, the two end dates under it. No fill, no grid.
-export default function MiniChart({ values, mark, dates, height = 44 }: { values: number[]; mark: number; dates: string[]; height?: number }) {
+// `mark` is the first session the filing could move the price; `filed` is when it was filed.
+export default function MiniChart({ values, mark, dates, filed, height = 44 }: { values: number[]; mark: number; dates: string[]; filed: string; height?: number }) {
   const W = 300;
   const pad = 3;
   const min = Math.min(...values);
@@ -17,13 +18,13 @@ export default function MiniChart({ values, mark, dates, height = 44 }: { values
   const up = values[values.length - 1] >= values[0];
   const markPct = (x(mark) / W) * 100;
   return (
-    <span className={s.mini} role="img" aria-label={`Closing price ${day(dates[0])} to ${day(dates[dates.length - 1])}; filed ${day(dates[mark])}`}>
+    <span className={s.mini} role="img" aria-label={`Closing price ${day(dates[0])} to ${day(dates[dates.length - 1])}; filed ${day(filed)}`}>
       <svg viewBox={`0 0 ${W} ${height}`} width="100%" height={height} preserveAspectRatio="none" aria-hidden="true">
         <line x1={x(mark)} x2={x(mark)} y1={0} y2={height} stroke="var(--fg-2)" strokeOpacity="0.45" vectorEffect="non-scaling-stroke" />
         <path d={line} fill="none" stroke={up ? "var(--pos)" : "var(--neg)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
       </svg>
       <span className={s.miniMark} style={{ left: `${markPct}%` }} data-edge={markPct > 78 ? "right" : markPct < 22 ? "left" : undefined} aria-hidden="true">
-        Filed {day(dates[mark])}
+        Filed {day(filed)}
       </span>
       <span className={s.miniAxis} aria-hidden="true">
         <span>{day(dates[0])}</span>

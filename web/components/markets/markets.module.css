@@ -273,6 +273,21 @@
   -webkit-user-select: none;
 }
 
+/* direct labels on the price line */
+.pointLabel {
+  font-size: var(--t-2xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  fill: var(--fg-2);
+}
+
+.lastLabel {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  fill: var(--fg);
+}
+
 .axis {
   font-family: var(--font-num);
   font-size: var(--t-2xs);
@@ -324,7 +339,8 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--fg-2);
+  border: 2px solid var(--teal);
+  background: transparent;
 }
 
 .legendDot[data-tier="needs_attention"] {
@@ -491,3 +507,17 @@
   font-size: var(--t-md);
 }
 
+
+/* the same filled/outlined pair in the filing list, in ink: the row is the control */
+.tierDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--fg-2);
+}
+
+.tierDot[data-tier="needs_attention"] {
+  background: var(--fg);
+  border-color: var(--fg);
+}

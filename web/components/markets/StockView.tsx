@@ -140,7 +140,7 @@ export default function StockView({
               <li key={c.key}>
                 <button type="button" className={`${s.filing} row`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
                   <span className={s.filingTop}>
-                    <span className={s.legendDot} data-tier={c.lead.tier} />
+                    <span className={s.tierDot} data-tier={c.lead.tier} />
                     <span className={s.filingImpact}>{data.tier_labels[c.lead.tier]}</span>
                     <span>{dayTime(c.lead.datetime)}</span>
                   </span>

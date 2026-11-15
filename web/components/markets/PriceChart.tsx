@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { day, pct, rupees, shares, signed } from "@/lib/format";
 import type { StockSeries } from "@/lib/data";
 import { useWidth } from "../motion";
@@ -22,17 +22,21 @@ const RANGES = [
 ] as const;
 type RangeKey = (typeof RANGES)[number]["key"];
 
-const PRICE_H = 200;
-const GAP = 14;
-const VOL_H = 44;
-const AXIS_H = 18;
-const H = PRICE_H + GAP + VOL_H + AXIS_H;
-const RIGHT = 52; // price labels
+const TOP = 22; // room for the high's label
+const PRICE_H = 188;
+const BOTTOM = 18; // room for the low's label
+const GAP = 12;
+const VOL_H = 36;
+const AXIS_H = 20;
+const H = TOP + PRICE_H + BOTTOM + GAP + VOL_H + AXIS_H;
+const RIGHT = 58; // the last close, labelled at the line's end
 
-// End-of-day closes with volume underneath and the snapshot's filings marked on the line.
-// Drag across to read any session; tap a marker to open that filing.
+const fmt = (v: number) => v.toLocaleString("en-IN", { maximumFractionDigits: v >= 1000 ? 0 : 1 });
+
+// End-of-day closes, drawn as one line with its own labels: the last close at the end, the
+// range's high and low at their points, the filings as teal dots you can tap. Volume sits
+// underneath in neutral grey. No grid, no fill, no axis column.
 export default function PriceChart({ series, markers, onMarker }: { series: StockSeries; markers: Marker[]; onMarker: (id: string) => void }) {
-  const id = useId().replace(/:/g, "");
   const [ref, width] = useWidth<HTMLDivElement>();
   const [range, setRange] = useState<RangeKey>("3M");
   const [hover, setHover] = useState<number | null>(null);
@@ -49,22 +53,20 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
   const geo = useMemo(() => {
     const lo = Math.min(...close);
     const hi = Math.max(...close);
-    const padY = (hi - lo) * 0.08 || hi * 0.01;
-    const min = lo - padY;
-    const max = hi + padY;
+    const span = hi - lo || hi * 0.01;
     const vmax = Math.max(...vol, 1);
     const x = (i: number) => (close.length === 1 ? plotW / 2 : (i * plotW) / (close.length - 1));
-    const y = (v: number) => 6 + (PRICE_H - 12) * (1 - (v - min) / (max - min));
+    const y = (v: number) => TOP + PRICE_H * (1 - (v - lo) / span);
     const line = close.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)} ${y(v).toFixed(1)}`).join("");
-    const area = `${line}L${x(close.length - 1).toFixed(1)} ${PRICE_H}L0 ${PRICE_H}Z`;
-    return { lo, hi, x, y, line, area, vmax };
+    return { lo, hi, iHi: close.indexOf(hi), iLo: close.indexOf(lo), x, y, line, vmax };
   }, [close, vol, plotW]);
 
   const first = close[0];
   const last = close[close.length - 1];
   const up = last >= first;
   const color = up ? "var(--pos)" : "var(--neg)";
-  const barW = Math.max(1, (plotW / close.length) * 0.62);
+  const barW = Math.max(1, (plotW / close.length) * 0.6);
+  const volTop = TOP + PRICE_H + BOTTOM + GAP;
 
   const visibleMarkers = markers
     .map((m) => ({ ...m, i: dates.findIndex((d) => d >= m.date) }))
@@ -76,6 +78,8 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
     setHover(Math.max(0, Math.min(close.length - 1, i)));
   };
 
+  // A point label sits centred on its point, pulled inside the plot near either edge.
+  const anchor = (i: number) => (geo.x(i) < 40 ? "start" : geo.x(i) > plotW - 40 ? "end" : "middle");
   const hi = hover ?? close.length - 1;
   const rangeChange = ((last - first) / first) * 100;
 
@@ -89,7 +93,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
             </span>
             <span className="num">{signed(last - first, 2)}</span>
             <span>
-              over {range} · {day(dates[0])} – {day(dates[dates.length - 1])}
+              over {range}, {day(dates[0])} – {day(dates[dates.length - 1])}
             </span>
           </>
         ) : (
@@ -99,7 +103,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
               {pct(chg[hi], 2)}
             </span>
             <span>
-              {day(dates[hi])} · vol {shares(vol[hi])}
+              {day(dates[hi])} · volume {shares(vol[hi])}
             </span>
           </>
         )}
@@ -114,48 +118,47 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
             height={H}
             viewBox={`0 0 ${W} ${H}`}
             role="img"
-            aria-label={`${range} closing prices from ${rupees(first)} to ${rupees(last)}, ${pct(rangeChange, 1)}. ${visibleMarkers.length} filings marked.`}
+            aria-label={`${range} closing prices from ${rupees(first)} to ${rupees(last)}, ${pct(rangeChange, 1)}; high ${fmt(geo.hi)}, low ${fmt(geo.lo)}. ${visibleMarkers.length} filings marked.`}
             onPointerMove={(e) => pick(e.clientX, e.currentTarget)}
             onPointerDown={(e) => pick(e.clientX, e.currentTarget)}
             onPointerLeave={() => setHover(null)}
             style={{ touchAction: "pan-y", display: "block" }}
           >
-            <defs>
-              <linearGradient id={`a${id}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={color} stopOpacity="0.26" />
-                <stop offset="100%" stopColor={color} stopOpacity="0" />
-              </linearGradient>
-            </defs>
+            {/* where the range started: one faint reference */}
+            <line x1={0} x2={plotW} y1={geo.y(first)} y2={geo.y(first)} stroke="var(--muted)" strokeOpacity="0.4" strokeDasharray="1 4" />
 
-            {/* price scale: high, low */}
-            {[geo.hi, geo.lo].map((v) => (
-              <g key={v}>
-                <line x1={0} x2={plotW} y1={geo.y(v)} y2={geo.y(v)} stroke="var(--border)" strokeDasharray="2 4" />
-                <text x={W - 2} y={geo.y(v) + 4} textAnchor="end" className={s.axis}>
-                  {Math.round(v).toLocaleString("en-IN")}
-                </text>
-              </g>
-            ))}
-            {/* where the range started */}
-            <line x1={0} x2={plotW} y1={geo.y(first)} y2={geo.y(first)} stroke="var(--muted)" strokeOpacity="0.5" strokeDasharray="1 3" />
+            <path d={geo.line} fill="none" stroke={color} strokeWidth="1.75" strokeLinejoin="round" strokeLinecap="round" />
 
-            <g key={range}>
-              <path d={geo.area} fill={`url(#a${id})`} />
-              <path d={geo.line} fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
-              <g transform={`translate(0 ${PRICE_H + GAP})`} className={s.bars}>
-                {vol.map((v, i) => (
-                  <rect
-                    key={i}
-                    x={geo.x(i) - barW / 2}
-                    y={VOL_H - (v / geo.vmax) * VOL_H}
-                    width={barW}
-                    height={(v / geo.vmax) * VOL_H}
-                    rx={Math.min(1.5, barW / 2)}
-                    fill={(chg[i] ?? 0) >= 0 ? "var(--pos)" : "var(--neg)"}
-                    opacity={hover === i ? 0.95 : 0.42}
-                  />
-                ))}
-              </g>
+            {/* direct labels: high, low, last */}
+            <text x={geo.x(geo.iHi)} y={geo.y(geo.hi) - 8} textAnchor={anchor(geo.iHi)} className={s.pointLabel}>
+              {fmt(geo.hi)}
+            </text>
+            {geo.iLo !== geo.iHi && (
+              <text x={geo.x(geo.iLo)} y={geo.y(geo.lo) + 15} textAnchor={anchor(geo.iLo)} className={s.pointLabel}>
+                {fmt(geo.lo)}
+              </text>
+            )}
+            <circle cx={geo.x(close.length - 1)} cy={geo.y(last)} r={3} fill={color} />
+            <text x={plotW + 8} y={geo.y(last) + 4} className={s.lastLabel}>
+              {fmt(last)}
+            </text>
+
+            {/* volume */}
+            <text x={0} y={volTop - 2} className={s.axis}>
+              Volume
+            </text>
+            <g transform={`translate(0 ${volTop})`}>
+              {vol.map((v, i) => (
+                <rect
+                  key={i}
+                  x={geo.x(i) - barW / 2}
+                  y={VOL_H - (v / geo.vmax) * VOL_H}
+                  width={barW}
+                  height={Math.max(0.5, (v / geo.vmax) * VOL_H)}
+                  fill="var(--fg-2)"
+                  opacity={hover === i ? 0.9 : 0.28}
+                />
+              ))}
             </g>
 
             {/* dates */}
@@ -165,18 +168,15 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
             <text x={plotW} y={H - 4} textAnchor="end" className={s.axis}>
               {day(dates[dates.length - 1])}
             </text>
-            <text x={W - 2} y={PRICE_H + GAP + 10} textAnchor="end" className={s.axis}>
-              vol
-            </text>
 
             {hover !== null && (
               <g pointerEvents="none">
-                <line x1={geo.x(hover)} x2={geo.x(hover)} y1={0} y2={PRICE_H + GAP + VOL_H} stroke="var(--fg-2)" strokeOpacity="0.5" />
-                <circle cx={geo.x(hover)} cy={geo.y(close[hover])} r={4.5} fill={color} stroke="var(--canvas)" strokeWidth="2" />
+                <line x1={geo.x(hover)} x2={geo.x(hover)} y1={TOP - 6} y2={volTop + VOL_H} stroke="var(--fg-2)" strokeOpacity="0.45" />
+                <circle cx={geo.x(hover)} cy={geo.y(close[hover])} r={4} fill="var(--canvas)" stroke={color} strokeWidth="2" />
               </g>
             )}
 
-            {/* filings on the price line */}
+            {/* filings on the price line: teal, because you can tap them */}
             {visibleMarkers.map((m) => (
               <g
                 key={m.id}
@@ -192,9 +192,9 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
                 <circle
                   cx={geo.x(m.i)}
                   cy={geo.y(close[m.i])}
-                  r={m.tier === "needs_attention" ? 6 : 4.5}
-                  fill={m.tier === "needs_attention" ? "var(--teal)" : "var(--fg-2)"}
-                  stroke="var(--canvas)"
+                  r={4.5}
+                  fill={m.tier === "needs_attention" ? "var(--teal)" : "var(--canvas)"}
+                  stroke="var(--teal)"
                   strokeWidth="2"
                   className={s.markerDot}
                 />
@@ -207,7 +207,15 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
       <div className={s.chartFoot}>
         <div className={u.segment} role="group" aria-label="Chart range">
           {RANGES.map((r) => (
-            <button key={r.key} type="button" aria-pressed={r.key === range} onClick={() => { setRange(r.key); setHover(null); }}>
+            <button
+              key={r.key}
+              type="button"
+              aria-pressed={r.key === range}
+              onClick={() => {
+                setRange(r.key);
+                setHover(null);
+              }}
+            >
               {r.key}
             </button>
           ))}

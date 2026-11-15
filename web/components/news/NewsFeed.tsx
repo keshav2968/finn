@@ -236,7 +236,7 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
       </span>
       {chart && (
         <span className={s.chart}>
-          <MiniChart values={chart.values} mark={chart.mark} dates={chart.dates} />
+          <MiniChart values={chart.values} mark={chart.mark} dates={chart.dates} filed={lead.datetime} />
         </span>
       )}
     </button>
