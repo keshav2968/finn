@@ -15,6 +15,7 @@ import { dayMove, storyHeadline } from "../news/story";
 import { publishUnreadAlerts } from "../shell/badge";
 import { IosSteps } from "../shell/InstallPrompt";
 import { useInstall } from "../shell/install";
+import { replayTour } from "../shell/Tour";
 import { useStored } from "../useStored";
 import u from "../ui.module.css";
 import s from "./alerts.module.css";
@@ -137,6 +138,15 @@ export default function AlertsView({ data }: { data: InboxData }) {
           Appearance
         </h2>
         <ThemeChoice />
+      </section>
+
+      <section className={u.section} aria-labelledby="tour">
+        <h2 id="tour" className={u.sectionHead}>
+          Tour
+        </h2>
+        <button type="button" className={`${u.chip} press`} onClick={replayTour}>
+          Show the four-screen tour again
+        </button>
       </section>
 
       <section className={u.section} aria-labelledby="install">

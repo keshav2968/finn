@@ -7,6 +7,7 @@ import BottomNav from "@/components/shell/BottomNav";
 import Footer from "@/components/shell/Footer";
 import InstallPrompt from "@/components/shell/InstallPrompt";
 import ServiceWorker from "@/components/shell/ServiceWorker";
+import Tour from "@/components/shell/Tour";
 import shell from "@/components/shell/shell.module.css";
 import { loadMeta } from "@/lib/data";
 
@@ -86,6 +87,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <BottomNav />
         <InstallPrompt />
+        <Tour />
         <ServiceWorker />
       </body>
     </html>

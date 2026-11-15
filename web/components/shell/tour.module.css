@@ -1,0 +1,152 @@
+/* First-run tour: full screen over the app, four slides on a native scroll-snap track. */
+.layer {
+  position: fixed;
+  z-index: 70;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--column);
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+  background: var(--canvas);
+  animation: tourIn 220ms var(--ease) backwards;
+}
+
+@keyframes tourIn {
+  from {
+    opacity: 0;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s1) var(--pad) 0;
+}
+
+.count {
+  font-size: var(--t-sm);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.skip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: var(--tap);
+  padding: 0 4px;
+  font-size: var(--t-md);
+  font-weight: 600;
+  color: var(--accent-text);
+}
+
+.track {
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--s3);
+}
+
+.art {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--fg);
+}
+
+.sketch {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin-top: var(--s3);
+}
+
+.title {
+  margin: var(--s3) 0 0;
+  font-size: var(--t-page);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.body {
+  margin: var(--s1h) 0 0;
+  font-size: var(--t-body);
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding: var(--s2) var(--pad) var(--s3);
+}
+
+.dots {
+  display: flex;
+  gap: 2px;
+}
+
+.dot {
+  width: 28px;
+  height: var(--tap);
+  display: grid;
+  place-items: center;
+}
+
+.dot::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--track);
+  transition: width 160ms var(--ease), background-color 160ms var(--ease);
+}
+
+.dot[aria-selected="true"]::before {
+  width: 20px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.next {
+  min-height: var(--tap);
+  padding: 0 var(--s3);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    animation: none;
+  }
+}
