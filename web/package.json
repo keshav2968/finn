@@ -24,6 +24,7 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5.9"
+    "typescript": "^5.9",
+    "web-push": "^3.6.7"
   }
 }

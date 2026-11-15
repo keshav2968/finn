@@ -16,6 +16,7 @@ import { publishUnreadAlerts } from "../shell/badge";
 import { IosSteps } from "../shell/InstallPrompt";
 import { useInstall } from "../shell/install";
 import { replayTour } from "../shell/Tour";
+import PhoneNotifications from "./PhoneNotifications";
 import { useStored } from "../useStored";
 import u from "../ui.module.css";
 import s from "./alerts.module.css";
@@ -160,10 +161,7 @@ export default function AlertsView({ data }: { data: InboxData }) {
         <h2 id="push" className={u.sectionHead}>
           Phone notifications
         </h2>
-        <p className={s.plain}>
-          Off. FINN lists alerts here when you open it and sends nothing to your phone. The data is the 14 Nov snapshot,
-          so there is nothing new to send until the daily refresh runs again.
-        </p>
+        <PhoneNotifications />
       </section>
 
       <FilingSheet open={open} data={data} onClose={() => setOpen(null)} />

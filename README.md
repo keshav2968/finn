@@ -208,6 +208,33 @@ by hand. BSE sometimes blocks cloud IPs, so local runs are the reliable path.
 
 ---
 
+## Phone notifications (optional, free)
+
+FINN has no server, so by default nothing reaches a phone while the app is closed. The Alerts
+tab shows what works on this device:
+- the notification permission;
+- whether it's installed (iPhone needs this, iOS 16.4+);
+- the service worker and HTTPS;
+- whether a sender is set up.
+
+It also offers a local test notification.
+
+To get real Web Push to your own phone at no cost:
+
+1. `cd web && npx web-push generate-vapid-keys`.
+2. In Vercel, add `NEXT_PUBLIC_VAPID_PUBLIC_KEY` = the public key, then redeploy. It's public by
+   design, and the only key in the app.
+3. On the phone, open FINN (on iPhone: from the Home Screen). In Alerts, tap **Allow
+   notifications**, then **Subscribe this phone**, then **Copy subscription for the sender**.
+4. In GitHub → Settings → Secrets → Actions, add:
+   - `VAPID_PUBLIC_KEY`
+   - `VAPID_PRIVATE_KEY`
+   - `VAPID_SUBJECT` (a `mailto:` address)
+   - `PUSH_SUBSCRIPTIONS` (the copied JSON, or a JSON array of several)
+5. Actions → **push-alerts** → Run workflow. It sends the current alerts as one notification
+   (`web/scripts/send-push.mjs`, which uses the `web-push` library). It's manual only and never
+   touches the deployed site. `node scripts/send-push.mjs --dry-run` shows the message first.
+
 ## Model routing
 
 Each task has a chain in `config/models.yaml`: the first model is tried, then the next. The

@@ -29,6 +29,32 @@ function cacheable(res) {
   return res && res.ok && res.type === "basic";
 }
 
+// Web Push: a message sent by scripts/send-push.mjs (run from a GitHub Action, where the
+// VAPID private key lives as a secret). Nothing here holds a key.
+self.addEventListener("push", (event) => {
+  let msg = {};
+  try { msg = event.data ? event.data.json() : {}; } catch (e) { msg = { body: event.data && event.data.text() }; }
+  const title = msg.title || "FINN";
+  event.waitUntil(self.registration.showNotification(title, {
+    body: msg.body || "",
+    icon: "/icon-192.png",
+    badge: "/icon-192.png",
+    tag: msg.tag || "finn-alerts",
+    data: { url: msg.url || "/alerts" },
+  }));
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || "/alerts";
+  event.waitUntil(
+    self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((list) => {
+      for (const c of list) { if ("focus" in c) { c.navigate(url); return c.focus(); } }
+      return self.clients.openWindow(url);
+    }),
+  );
+});
+
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
