@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import ThemeKeeper from "@/components/ThemeKeeper";
 import BottomNav from "@/components/shell/BottomNav";
@@ -9,32 +10,9 @@ import ServiceWorker from "@/components/shell/ServiceWorker";
 import shell from "@/components/shell/shell.module.css";
 import { loadMeta } from "@/lib/data";
 
-// Two free fonts (OFL), self-hosted from @fontsource-variable so builds need no font CDN.
-// Plus Jakarta Sans: headings, names and copy (its latin-ext file carries ₹).
-// JetBrains Mono: tickers, ₹ prices and percentages only (tabular by design; it has no
-// ₹ glyph, so the sign falls through to Jakarta's latin-ext file).
-const jakarta = localFont({
-  src: "../node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2",
-  weight: "200 800",
-  variable: "--font-jakarta",
-  display: "swap",
-  adjustFontFallback: false, // no metric fallback in between, so ₹ reaches the latin-ext file
-});
-
-const jakartaExt = localFont({
-  src: "../node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-wght-normal.woff2",
-  weight: "200 800",
-  variable: "--font-jakarta-ext",
-  display: "swap",
-});
-
-const jbm = localFont({
-  src: "../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
-  weight: "100 800",
-  variable: "--font-jbm",
-  display: "swap",
-  adjustFontFallback: false,
-});
+// Geist and Geist Mono (OFL), loaded through next/font from the geist package: self-hosted,
+// no font CDN. Geist has true tabular figures and the rupee sign, so prices come from one face;
+// the mono is for ticker symbols only.
 
 export const metadata: Metadata = {
   title: "FINN",
@@ -91,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-IN"
-      className={`${jakarta.variable} ${jakartaExt.variable} ${jbm.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
       suppressHydrationWarning
     >
       <body>
