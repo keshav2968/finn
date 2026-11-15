@@ -26,6 +26,22 @@ inbox:
     move_z: [2, 2.5, 3]                   # move in standard deviations of this stock's own daily moves
     hidden_categories: [unclassified]     # never offered as an alert category
 
+# News thumbnails: a monogram tile tinted by sector family (the part of the sector before
+# " - "). Hues in degrees; tiles are low-saturation, so they hint at the sector without
+# competing with the category chips, the violet accent or green/red price moves.
+sector_hues:
+  Banks: 215
+  NBFC: 215
+  IT Services: 195
+  Capital Goods: 28
+  Electricals: 48
+  Chemicals: 170
+  Pharma: 300
+  FMCG: 75
+  Consumer: 18
+  Consumer Internet: 260
+  Conglomerate: 235
+
 # "Ask" buttons in a card's detail sheet. Placeholders: {name}, {symbol}, {metric},
 # {change}, {date}, {person}. A category not listed uses `default`. Research (the pull
 # side) answers these in a later phase; for now the app shows the question pre-filled.

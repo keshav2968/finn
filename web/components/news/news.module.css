@@ -34,6 +34,21 @@
 }
 
 
+/* thumbnail on the left, the story beside it */
+.withThumb {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s1h);
+  min-width: 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
 .top {
   display: flex;
   align-items: center;

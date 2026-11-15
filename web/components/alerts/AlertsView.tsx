@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { BellRing, CheckCheck, Download, Smartphone } from "lucide-react";
+import { CheckCheck, Download, Smartphone } from "lucide-react";
 import { alertKeys, buildInbox } from "@/lib/inbox";
 import { day, dayTime, pct, times } from "@/lib/format";
 import { alertReasons } from "@/lib/present";
@@ -9,6 +9,7 @@ import type { Card, InboxData, PriceAlert } from "@/lib/types";
 import AlertRulesPanel from "../AlertRules";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
 import TickerChip from "../news/TickerChip";
+import { AlertThumb, CardThumb } from "../news/Thumb";
 import { useAlertRules, useReadState } from "../news/NewsFeed";
 import { dayMove, storyHeadline } from "../news/story";
 import { publishUnreadAlerts } from "../shell/badge";
@@ -95,9 +96,7 @@ export default function AlertsView({ data }: { data: InboxData }) {
               return (
                 <li key={r.key}>
                   <button type="button" className={`${s.item} row`} data-read={isRead || undefined} onClick={() => openRow(r)}>
-                    <span className={s.icon} data-kind={r.kind} aria-hidden="true">
-                      <BellRing size={16} strokeWidth={2} />
-                    </span>
+                    {r.kind === "price" ? <AlertThumb alert={r.alert} data={data} /> : <CardThumb card={r.card} data={data} />}
                     <span className={s.body}>
                       <span className={s.top}>
                         <TickerChip symbol={symbol} move={move.pct} date={move.date} />

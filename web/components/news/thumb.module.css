@@ -1,0 +1,29 @@
+/* 44px thumbnail tiles. Monograms take a low-saturation tint from the sector's hue. */
+.tile {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--track);
+  color: var(--fg-2);
+  font-family: var(--font-text);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.tile svg {
+  display: block;
+}
+
+.tile[data-tinted] {
+  background: hsl(var(--h) 28% 24%);
+  color: hsl(var(--h) 60% 86%);
+}
+
+:global(:root[data-theme="light"]) .tile[data-tinted] {
+  background: hsl(var(--h) 45% 90%);
+  color: hsl(var(--h) 45% 28%);
+}

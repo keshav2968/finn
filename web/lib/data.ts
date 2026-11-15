@@ -21,6 +21,7 @@ function readYaml<T>(rel: string): T {
 
 interface AppConfig {
   ask: InboxData["ask"];
+  sector_hues?: Record<string, number>;
   timezone: string;
   schedule_note: string;
   inbox: {
@@ -208,6 +209,7 @@ export function loadInbox(opts: LoadOptions = {}): InboxData {
     prices,
     results: results.bySymbol,
     ask: cfg.ask,
+    sector_hues: cfg.sector_hues ?? {},
   };
 }
 

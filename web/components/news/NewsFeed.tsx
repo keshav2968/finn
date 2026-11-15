@@ -11,6 +11,7 @@ import { publishUnreadAlerts } from "../shell/badge";
 import { useStored } from "../useStored";
 import FilingSheet, { type Opened } from "./FilingSheet";
 import MiniChart from "./MiniChart";
+import { CardThumb } from "./Thumb";
 import TickerChip from "./TickerChip";
 import { dayMove, shorten, storyChart, storyFlag, storyHeadline } from "./story";
 import u from "../ui.module.css";
@@ -224,6 +225,9 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
       data-read={read || undefined}
       onClick={onOpen}
     >
+      <span className={s.withThumb}>
+      <CardThumb card={card} data={data} />
+      <span className={s.body}>
       <span className={s.top}>
         <TickerChip symbol={lead.symbol} move={move.pct} date={move.date} />
         {flag && <span className={s.flag}>{flag}</span>}
@@ -246,6 +250,8 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
             alert
           </>
         )}
+      </span>
+      </span>
       </span>
       {chart && (
         <span className={s.chart}>
