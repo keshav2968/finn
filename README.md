@@ -1,219 +1,288 @@
-# FINN: financial investment agent
+# FINN: a filter for a daily investor
 
-Mobile-first investing assistant for the ENAM AI Engineer build challenge.
-**Push** tells you what changed in your portfolio and why it matters; **pull**
-researches any NSE company from primary sources (annual reports, call transcripts).
+FINN is a mobile-first investing assistant built for the ENAM AI Engineer build challenge.
+It does two jobs:
 
-This repository is being built in phases. Phase 1 is the data snapshot; Phase 2
-(in progress) is the push logic. Steps a–c below use no LLM.
+- **Push:** what changed in your portfolio, ranked so the few things that matter come first.
+- **Pull:** for any NSE company, what management promised on its earnings calls against
+  what the reported numbers show.
 
-## Phase 1: data snapshot
+**Try it on a phone:** https://finn-eight-psi.vercel.app (add it to your home screen; it
+is a PWA). Data is a snapshot taken on **14 Nov 2026, 15:06 IST** (prices to the 13 Nov
+close). Everything you see was built from that snapshot by the code in this repository.
 
-```
-config/portfolio.yaml   the only place tickers live (15 holdings + 4 research picks)
-config/settings.yaml    windows, throttles, cache TTL
-ingest/                 fetchers and parsers
-scripts/build_seed.py   builds data/seed/ (committed; the app reads only this)
-data/cache/             raw screener.in pages (git-ignored)
-```
+| | |
+|---|---|
+| Portfolio | 15 NSE names across banks, NBFC, IT, FMCG, pharma, capital goods, consumer internet, chemicals, a conglomerate and a small cap (`config/portfolio.yaml`) |
+| Research demo set | INFY, POLYCAB, KPITTECH, ETERNAL, plus HCLTECH run as an unseen ticker |
+| Tests | 263 Python (offline, real fixtures) + 7 web (`node --test`) |
+| Spend | ₹0. Free tiers only (Groq, then Gemini as fallback). Token log below |
 
-| Source | What | Stored as |
-|---|---|---|
-| Yahoo Finance (yfinance) | ~1 year of daily OHLCV; % move, volume vs 20-day average, volatility-scaled move (z), 52-week range, returns | `data/seed/prices/SYMBOL.json` |
-| BSE announcements API | last 60 days of filings: title, detail, BSE category, PDF link, timestamp | `data/seed/filings/SYMBOL.json` |
-| screener.in | consolidated **and** standalone tables (quarterly, P&L, balance sheet, cash flow, ratios, shareholding), annual report and transcript links | `data/seed/fundamentals/SYMBOL.json` |
-| all | per-company status (ok / stale / missing), warnings, `as_of` | `data/seed/manifest.json` |
+---
 
-### Run it
+## What it does
 
-```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate     macOS/Linux: source .venv/bin/activate
-pip install -r requirements-dev.txt
+### Push: the inbox
 
-pytest -q                                  # offline tests against real-markup fixtures
-python scripts/build_seed.py               # full build, ~3 minutes
-python scripts/build_seed.py --symbols TCS # any NSE symbol, in the config or not
-python scripts/build_seed.py --only prices,filings
-python scripts/build_seed.py --offline     # re-parse cached screener pages, no network
-```
+- **Windowed digest.** Pick 24h, 7d or 30d. Every BSE filing in the window across the
+  portfolio is classified into the 17 reference categories, scored and tiered:
+  - **Needs attention** and **Worth knowing** are cards.
+  - Routine paperwork is one collapsed row that isn't counted in your queue.
+  - Repeats (the same filing re-sent, everything filed on results day) collapse into one card.
+- **Your alert rules.** The sliders icon opens "Alert rules", which sets:
+  - a price move threshold (±%);
+  - a volume spike threshold (× the 20-day average);
+  - an optional "unusual for this stock" threshold (σ of its own daily moves);
+  - which filing categories ping you.
 
-A failing ticker or source never stops the run. It is logged, the previous seed
-file is kept and marked `stale` in the manifest, and a summary prints at the end.
+  Choices are saved on the device. The browser re-runs the same alert rules the pipeline
+  uses on the stored metrics, so the badge and the list change immediately. Defaults are
+  in `config/push.yaml`; the choices offered are in `config/app.yaml`.
+- **Results card.** Revenue, EBITDA, PBT and PAT for the quarter, QoQ and YoY.
+  - Lenders show NII, PPOP, provisions and PAT instead.
+  - Figures are read off the results PDF, then checked against the statement's own totals
+    and against screener.in. Each figure carries its check: ✓ verified, ⚠ mismatch (with
+    screener's figure underneath), ? not checked.
+  - The inbox headline only ever uses a checked figure.
+- **Management change.** From the filing itself:
+  - who is joining or leaving, the role, the effective date, the stated reason and prior roles;
+  - flags for a CEO or CFO exit, a vague reason, or an exit far from a quarter end.
+- **Everything else** gets its rank and the reason for it ("Volume 3.4× its 20-day
+  average", "CFO change", "rating downgrade").
+- **Ask buttons.** Each card has two or three questions. They open the company's research
+  page with the question carried over.
 
-### Design notes
+### Pull: promises vs delivery (`/research/SYMBOL`)
 
-- **Numbers, not alerts.** Prices store raw derived metrics; the user's thresholds
-  are applied when the app reads them, so changing a slider re-evaluates instantly.
-- **Volatility-aware moves.** `move_z` = today's % move / std-dev of the previous
-  60 sessions. A 3% day is routine for a small cap and rare for HUL.
-- **Lenders.** Screener uses a different table layout for banks and NBFCs; the parser
-  detects it and maps both layouts to stable keys (`fields`), so later phases never
-  depend on label spelling. HDFC Bank and Federal Bank use the standalone view:
-  HDFC Bank's consolidated view includes its insurance subsidiaries.
-- **EBITDA** is PBT + finance cost + depreciation − other income, which equals
-  screener's "Operating Profit". That gives Phase 2 a free cross-check on numbers
-  extracted from results PDFs.
-- **BSE quirk.** Errors come back as HTTP 200 with an HTML page, and a failing URL can
-  stay failed for a while; the fetcher validates JSON and retries with a different
-  spelling of the same query.
-- **Scheduling.** `.github/workflows/ingest.yml` runs the build at 17:05 IST on
-  weekdays and commits `data/seed`. Exchanges sometimes block cloud IPs; if that
-  happens, run the build locally and push.
+1. **Numbers** (Python only, from screener.in): the last 8 quarters, 5 years, and this fiscal
+   year so far.
+2. **Track record line,** counted in Python, e.g. "2 checkable promises: 2 delivered · 4 still
+   running, 1 with goalposts moved".
+3. **The ledger.** Each promise shows:
+   - every guided range across calls as a band, with the actual as a dot;
+   - the exact quotes with links to the transcript PDF;
+   - a verdict: Delivered, Missed, Pending, Goalposts moved or Unverified.
 
-## Phase 2 (a–c): classify, rank, alert
+   A "guidance has gone quiet" note appears when a metric was guided earlier and on none
+   of the last three calls. For KPIT: 21% EBITDA margin guided in Nov 2025, nothing in
+   four calls since, 15.6% so far this year.
+4. **Any ticker.** The search box opens a pre-built company. For one that hasn't been run,
+   it shows the one command that builds it.
 
-```
-config/push.yaml        categories, classifier rules, scoring, alert defaults (no code changes to tune)
-push/classify.py        BSE filing -> one of the 17 reference categories
-push/priority.py        score, tier, collapse repeats, windowed digest
-push/alerts.py          price/volume and filing alerts with stored reasons
-scripts/build_push.py   writes data/seed/push/feed.json and alerts.json, prints a digest
-```
+The pull side uses primary sources only: the company's screener.in tables and the
+earnings-call transcripts it links. No news, no broker notes, no model memory.
 
-```bash
-python scripts/build_push.py                 # last 24h to the snapshot time
-python scripts/build_push.py --window 7d --show-routine
-python scripts/build_push.py --price-move 3 --volume 1.5 --no-write
-```
+---
 
-- **Classifier.** Ordered rules, first match wins: unambiguous BSE subcategories,
-  then routine paperwork (ESOPs, newspaper ads, trading-window notices, ESG), then
-  keywords on title + detail, then a same-day pass (a generic "Outcome of Board
-  Meeting" on results day is results). On the 14 Nov snapshot rules place 379 of
-  392 filings; the 13 left say nothing beyond "Disclosure under Regulation 30" and
-  go to the LLM in step d (cached by filing id in `data/seed/push/llm_classifications.json`).
-- **Score** = category base (or its lower advance-notice score) + text modifiers
-  (CEO/CFO change +, re-appointment −, routine debt paperwork −, rating downgrade +)
-  + the market reaction in the first session that could react. A move is credited to
-  one filing per session (results beat a board change on results day). Tiers: ≥70
-  Needs attention, ≥40 Worth knowing, else Routine (collapsed to a count).
-- **Repeats** collapse into one card: same company, category and title with dates and
-  numbers removed; everything filed on results day is one card.
-- **Alerts** fire on |move| ≥ 4%, volume ≥ 2× its 20-day average, optionally a σ
-  threshold, and on filings in chosen categories at or above "Worth knowing". Each
-  stores its reasons ("Volume 3.4× its 20-day average"). The defaults are written into
-  both JSON files so the app re-applies the user's own thresholds to stored metrics.
-
-## Phase 2 (d): LLM router
+## Architecture
 
 ```
-config/models.yaml        providers, per-task model chains, free-tier budgets
-llm/router.py             Groq -> Gemini fallback, JSON-schema validation, cache, usage log
-llm/env.py                .env loader (keys never leave .env; .env is git-ignored)
-ingest/pdfs.py            PDF download (cached) and text extraction in Python
-push/llm_classify.py      classifies filings no rule could place
-scripts/llm_check.py      keys, model availability, --ping, --usage (the cost log)
-scripts/classify_pending.py
+                    config/*.yaml  (tickers, thresholds, model chains: no tickers or thresholds in code)
+                          │
+  Yahoo Finance ──┐       ▼
+  BSE filings ────┼─► ingest/ ──► data/seed/ (committed JSON snapshot)
+  screener.in ────┘                 │
+                                    ├─► push/      classify → score/tier → group → alerts      (rules, no LLM)
+                                    │      └─ LLM only for: filings no rule can place, results PDFs, management filings
+                                    ├─► research/  numbers → transcript filter → extract → join → judge
+                                    │      └─ LLM only for: extracting promises (cheap), verdicts (strong), labels (cheap)
+                                    ▼
+                      data/seed/push/*.json, data/seed/research/SYMBOL.json
+                                    │  read at build time
+                                    ▼
+                      web/ (Next.js, static pages) ──► Vercel, rebuilt on every push
 ```
 
-Each task has a chain of models. The router moves to the next one when a key is
-missing, the input is a PDF the provider can't read, the request exceeds the
-model's tokens/minute, its daily budget is used, the call fails or is rate-limited
-for too long, or the reply still fails the JSON schema after one repair attempt.
-Models are asked for categories, text and copied figures only; every number FINN
-shows is computed in Python. Every call is logged to `data/seed/llm_usage.jsonl`.
-
-## Phase 2 (e): results card
+- **The app needs no server and no keys.** `web/` reads the committed JSON at build time
+  and ships static pages. The browser re-applies window and alert-rule choices to the
+  stored metrics.
+- **Models never do arithmetic.** They classify, copy figures off a page, extract quotes
+  and pick a verdict. Every sum, margin, growth rate, comparison and count is Python.
+- **Every model output is checked:**
+  - A quote must fuzzy-match the transcript (rapidfuzz ≥ 90/100) and be spoken by management.
+  - A target number must appear in its own quote.
+  - Names in a management card must appear in the filing.
+  - Results figures must reconcile with the statement or screener.
+  - A verdict must be one the dates allow, and Python's arithmetic overrules a model that
+    contradicts it.
+- **One failing ticker, PDF or model call never stops a run.** It is logged, the previous
+  file is kept, and the output carries a `status` and notes.
 
 ```
-push/results.py                 page choice, extraction schema, statement checks, metrics
-scripts/build_results_cards.py  writes data/seed/push/results_cards.json
-scripts/fetch_results_pdfs.py   saves a company's statement pages as test input
+config/        portfolio, settings, push rules, research rules, model chains, app settings
+ingest/        prices (yfinance), BSE announcements, screener.in parser, PDF download + text
+push/          classify.py, priority.py, alerts.py, results.py, management.py, llm_classify.py
+research/      numbers.py, transcripts.py, promises.py, ledger.py, build.py, periods.py
+llm/           router.py (chains, budgets, JSON-schema validation, cache, usage log), env.py
+scripts/       build_seed, build_push, classify_pending, build_results_cards,
+               build_management_cards, build_research, llm_check
+web/           Next.js app: app/ (inbox, research), components/, lib/ (loaders, inbox logic)
+tests/         offline tests with real-markup and real-transcript fixtures
+docs/          data-contract.md: the JSON the app reads
 ```
 
-This quarter vs last quarter vs the same quarter last year. Standard companies show
-Revenue, EBITDA (+ margin), PBT and PAT; lenders show NII, PPOP, provisions and PAT.
+---
 
-1. **Page.** The newest results card holding the statements (not a half-yearly report
-   or a deck); in its PDF, the best-scoring P&L page on the company's primary basis.
-   Cash-flow, segment, balance-sheet, highlights and US-dollar pages are skipped.
-2. **Copy.** The model copies the quarter columns' line items into a JSON schema. It
-   does no arithmetic.
-3. **Check.** Python checks the statement's own sums, works out the unit (lakh vs crore,
-   confirmed against screener.in), rebuilds unreadable rows from the other lines and
-   screener.in, then computes every derived figure and compares each with screener.in.
-   A figure is corrected only when the statement's own sums *and* screener.in agree on
-   a different value (HDFC Bank's OCR'd June-quarter PBT "26,108.30" → 25,108.30).
-4. **Status.** `verified` (all main figures match screener.in), `partial` (some can't be
-   checked), `mismatch` (shown with screener's figure), `screener_only` (PDF unreadable).
+## Run it
 
-`EBITDA = PBT before exceptional items + finance costs + depreciation − other income`
-(and before share of associates), which equals screener's "Operating Profit".
-
-## Phase 2 (f): management card
-
-`push/management.py`, `scripts/build_management_cards.py` → `data/seed/push/management_cards.json`
-(keyed by filing id). From the filing only: each person's name, role, joining/leaving,
-effective date, stated reason, prior roles, and whether the role is at a subsidiary.
-Every name, reason and prior role the model returns must appear in the filing text,
-or it is dropped with a note. Flags: CEO/MD exit, CFO exit, a resignation with a vague
-or missing reason, an executive leaving more than 10 days from a quarter end.
-
-## Phase 3: the app (`web/`)
-
-Next.js PWA that reads only the committed seed (`data/seed/`) at build time, so every
-data commit redeploys it. App settings (time windows, default window, which results
-figures reach the inbox) are in `config/app.yaml`; alert thresholds and tiers come from
-`push.yaml` via `feed.json`.
+### The app only (no keys, no Python)
 
 ```bash
 cd web
 npm install
 npm run dev        # http://localhost:3000
-npm test           # node --test: browser-side inbox reproduces alerts.json
+npm test           # the browser-side inbox reproduces the pipeline's alerts.json
 npm run build
 ```
 
-- **Inbox:** "Needs attention" first, then "Worth knowing"; price alerts and routine
-  filings sit in collapsible rows below. Each card leads with the company and ticker,
-  then the one thing that changed (for results, the metric that moved most, with its
-  label), then a quiet meta line. Tap for the detail sheet: results table with
-  per-figure checks, people and flags, stock reaction, why it ranks here, and "Ask Finn"
-  questions (from `config/app.yaml`; research answers them in the next phase). Swipe left
-  to clear, with undo; cleared state and the dismissed tip are stored per device. The
-  bell and the "N alerts" pill are the same count and both filter to alerts. Window tabs
-  re-run the grouping and alert rules of `push/priority.py` and `push/alerts.py` in the
-  browser.
-- **Design tokens** in `web/app/globals.css`: obsidian surfaces (canvas, card, raised,
-  track), teal #14B8A6 only for the progress fill, the active window tab and primary
-  actions; tinted green/red delta badges with an arrow and sign. Plus Jakarta Sans for
-  text, JetBrains Mono for tickers, ₹ prices and percentages, both self-hosted via
-  `next/font/local`. Icons: lucide-react. Dark by default; light mode uses the same tokens.
-- **Deploy:** Vercel project with Root Directory `web`; files outside it (seed, config)
-  are read during the build.
+**Deploy:** import the repo in Vercel and set **Root Directory = `web`**. No environment
+variables are needed. The build reads `../data/seed` and `../config`. A fresh clone builds
+as is; this was checked on a clean clone with no `.env`.
 
-## Phase 4: research (pull side)
+### The pipeline
 
-`python scripts/build_research.py SYMBOL [SYMBOL ...]` works for any NSE symbol and writes
-`data/seed/research/SYMBOL.json`. Sources: the company's screener.in page and the
-earnings-call transcript PDFs it links. No news, broker notes or model memory.
+```bash
+python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -r requirements-dev.txt
+cp .env.example .env     # add free GROQ_API_KEY and GOOGLE_API_KEY (only the LLM steps need them)
 
-1. **Numbers (Python only):** last 8 quarters and 5 years from screener, plus this fiscal
-   year so far: revenue and profit growth, EBITDA and EBIT margins, ROCE/ROE.
-2. **Transcripts:** the latest 6 calls with a transcript. Python finds the management
-   roster and speaker turns, splits them into passages and keeps only management passages
-   with a metric, a number and a forward-looking cue (`config/research.yaml`), about
-   9,000 characters per call, before any model sees them.
-3. **Promises (cheap model):** metric, target, period, basis, exact quote. Python drops a
-   quote that does not fuzzy-match the transcript (rapidfuzz, 90/100), anything not said
-   by management, and any target number not in the quote.
-4. **Join (Python):** the same promise across calls (revisions are kept as a path, e.g.
-   1.5–3.5% → 1.5–3% → 1–2%), the actual computed from screener for the same fiscal
-   period, and later-call passages where management states an actual.
-5. **Verdict (stronger model):** Delivered, Missed, Pending, Goalposts moved or
-   Unverified, with cited evidence. Python decides which verdicts the dates allow, checks
-   any quoted actual against its source, replaces a rationale that uses numbers not in the
-   evidence, and lets the arithmetic overrule a Delivered/Missed that contradicts it. A
-   constant-currency target is never judged on rupee growth.
+pytest -q                                   # 263 offline tests, no keys, no network
+python scripts/llm_check.py --ping          # one tiny call per model in config/models.yaml
 
-Every stage records its own failure: no transcripts, a blocked PDF, a model outage or a
-company with no numeric guidance gives a valid file with a `status` and notes. Use
-`--no-llm` for numbers and filtering only, `--dry-run` to see what the extractor is sent.
+python scripts/build_seed.py                # prices + filings + screener for the portfolio (~3 min)
+python scripts/build_push.py                # classify, rank, alert → data/seed/push/
+python scripts/classify_pending.py          # LLM for filings the rules couldn't place
+python scripts/build_results_cards.py       # results PDFs → checked Revenue/EBITDA/PBT/PAT
+python scripts/build_management_cards.py    # management-change filings → people cards
 
-**Research screen** (`/research/SYMBOL` in the app): numbers first, then the ledger. Each
-promise shows the guided range from every call as a band and the actual as a dot, with
-the quotes and source links underneath; the track-record line at the top is counted in
-Python. Companies without a research file show "not researched yet", and companies with
-no transcripts show their numbers only. The ask buttons on inbox cards open the right
-company's page with the question carried over.
+python scripts/build_research.py HCLTECH    # any NSE symbol, in the portfolio or not
+python scripts/build_research.py INFY --no-llm     # numbers and transcript filtering only
+python scripts/build_research.py INFY --dry-run    # print exactly what the extractor is sent
+```
+
+Commit `data/seed` and push; Vercel redeploys with the new data.
+
+`.github/workflows/ingest.yml` can run the push pipeline daily at 17:05 IST: seed, feed, classification, results and management cards. The schedule
+is **paused** during review so the demo stays on the tested snapshot; it can still be run
+by hand. BSE sometimes blocks cloud IPs, so local runs are the reliable path.
+
+---
+
+## Model routing
+
+Each task has a chain in `config/models.yaml`: the first model is tried, then the next. The
+router (`llm/router.py`) moves down the chain when:
+
+- a key is missing;
+- the input is a PDF the provider can't read;
+- the request is over the model's tokens-per-minute;
+- the daily budget is used;
+- a call fails or stays rate-limited past 65 s;
+- the reply fails its JSON schema after one repair attempt.
+
+Replies are cached by content hash (`data/cache/llm`), so a re-run only pays for what changed.
+
+| Task | Input | First choice | Fallback | Why this model |
+|---|---|---|---|---|
+| `classify_filing` | headline + first PDF page, only for the 13 of 392 filings rules couldn't place | Groq gpt-oss-20b (low) | Gemini 3.5 Flash-Lite | Short, closed-set label |
+| `extract_management` | one filing | gpt-oss-20b (low) | 3.5 Flash-Lite | Copying names and roles; checked against the text |
+| `extract_results` | only the P&L page(s) of the results PDF | gpt-oss-120b (low) | Gemini 3.8 Flash (reads scanned PDFs) | Dense tables with many columns; mistakes are costly |
+| `extract_promises` | ~9,000 chars per call of management passages with a metric, a number and a forward cue, filtered in Python from ~100–180 passages | gpt-oss-20b (low) | 3.5 Flash-Lite | Bulk extraction; quotes are verified afterwards |
+| `judge_promises` | grouped promises + Python-computed actuals + outcome passages | gpt-oss-120b (medium) | 3.8 Flash | The one step that needs reasoning |
+| `label_promises` | descriptions of "other" promises | gpt-oss-20b (low) | 3.5 Flash-Lite | 5-word display labels; Python clips them and falls back |
+
+Most of the saving comes from what never reaches a model:
+
+- Rules classify 379 of 392 filings.
+- Python picks the one P&L page out of a results PDF.
+- Python cuts a 30-page transcript of 100–180 passages to the ~10 worth reading.
+
+---
+
+## Cost log (real numbers)
+
+Every call is appended to `data/seed/llm_usage.jsonl`. The table covers every model call
+from the router's first run (14 Nov 16:50 IST) to the HCLTECH run (15 Nov 14:02 IST). That
+includes all development re-runs of the research pipeline, not one clean pass.
+
+| Task | Model | Paid calls | Input tokens | Output tokens | Cache hits | Failed attempts |
+|---|---|---:|---:|---:|---:|---:|
+| classify_filing | gpt-oss-20b | 18 | 25,831 | 2,376 | – | – |
+| classify_filing | Gemini 3.5 Flash-Lite | 1 | 1,097 | 63 | – | 2 (Gemini 2.5 retired, 404) |
+| extract_management | gpt-oss-20b | 18 | 31,720 | 4,722 | – | 1 (Gemini 2.5, 404) |
+| extract_results | gpt-oss-120b | 15 | 40,186 | 10,121 | – | 5 (2 network; fallbacks: 503, network, Gemini 2.5 retired) |
+| extract_promises | gpt-oss-20b | 54 | 112,564 | 23,932 | 100 | – |
+| judge_promises | gpt-oss-120b | 48 | 73,408 | 38,768 | 13 | – |
+| label_promises | gpt-oss-20b | 4 | 1,966 | 401 | – | – |
+| **Total** | | **158** | **286,772** | **80,383** | **113** | **8** |
+
+- **Actual spend: ₹0.** All of it ran on free tiers.
+- **At Groq's paid list prices** (Oct 2026: gpt-oss-20b $0.075 / $0.30, gpt-oss-120b
+  $0.15 / $0.60 per million input / output tokens), the whole build would have cost about
+  **$0.07**.
+- **One research run for an unseen company** (HCLTECH: 6 transcripts, 10 calls) used
+  18,348 input + 4,969 output tokens, about **$0.004** at paid prices.
+- **Cache:** 113 of 271 successful requests were answered from cache.
+
+`python scripts/llm_check.py --usage` prints the running totals.
+
+---
+
+## Key decisions
+
+- **Filter first, model last.** Most of the job is deciding what not to show or send, and
+  rules and arithmetic do that cheaply and repeatably. The model handles only what rules
+  can't: unplaceable filings, reading a P&L page, pulling promises out of speech, weighing
+  evidence.
+- **A promise ledger instead of a summary.** The brief's "promised vs delivered" example is
+  the one place an AI adds signal over a screener page. Each promise is tracked across calls,
+  so a cut target shows as 1.5–3.5% → 1.5–3% → 1–2% rather than a fresh Delivered.
+  "Unverified" is a first-class verdict: a constant-currency target is never judged on
+  rupee growth.
+- **Static app, committed snapshot.** No backend to fall over during review. The data, the
+  code that made it and the app are in one repo, and a data commit redeploys the site.
+- **Thresholds are data, not code.** Tickers, alert defaults, research cues, windows and
+  model chains are in `config/`. The user's own alert rules live in the browser.
+
+## Honest limits
+
+- **It's a snapshot, not live.** The data is from 14 Nov 2026. The window counts back from
+  the snapshot time, and the default window is 7d rather than the brief's 24h: the snapshot
+  is a Saturday, and its last 24h holds 4 filings, 1 of them worth knowing. 24h is one tap
+  away.
+- **Research is pre-built.** A ticker that hasn't been run needs
+  `python scripts/build_research.py SYMBOL` with free keys, then a push. The app says so
+  rather than calling a model from the phone.
+- **Ask buttons don't write answers yet.** They open the company's evidence page with the
+  question shown.
+- **The pull side is narrow on purpose.** It covers numbers and promises vs delivery. There
+  is no business snapshot, balance-sheet, cash-quality or bull/bear view, and annual reports
+  aren't parsed (screener's tables come from them).
+- **Results cards:** 3 of 15 are fully verified, 11 have at least one flagged figure, and 1
+  comes from screener only. Flagged figures include:
+  - HUL's revenue (the wrong line was read);
+  - Marksans' EBITDA;
+  - L&T's EBITDA (a definition gap with screener);
+  - unchecked lender lines such as Bajaj Finance's NII.
+
+  These are shown flagged with screener's figure, and are never used as the inbox headline.
+- **Ledger misses.** Known, visible cases:
+  - POLYCAB's export goal is filed under FY26 (the quote names no year; the model guessed).
+  - Some labels are generic (HCLTECH's "Guidance range").
+  - The extractor can miss an open-ended line (KPIT's "30% plus" for solution products).
+  - Screener's margin can differ from the company's own definition (KPIT FY26: 18.9% vs
+    the stated 20.8%). The verdict uses the company's stated figure when it gives one.
+- **Management background comes from the filing only.** A LinkedIn-style bio of the incoming
+  person isn't scraped; that isn't free or allowed.
+
+## Where I'd take it next
+
+1. Answer the ask buttons with a grounded, quote-cited reply from the same transcripts and
+   tables, via a small serverless function.
+2. Add the cash-quality and balance-sheet views; the inputs are already in the seed.
+3. Run research on demand from the search box (queue → build → redeploy), so an unseen
+   ticker needs no terminal.
+4. Fix the results-card misreads above, and add a person-background step for management
+   changes from public sources.
+5. Run ingestion on a schedule from a machine the exchanges don't block, with push
+   notifications for alerts.

@@ -1,0 +1,58 @@
+/* Alert rules sheet: chip choices in the inbox's tokens. */
+
+.count {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.chips {
+  margin-top: var(--s1h);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+
+.chip {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 var(--s2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--fg-2);
+  font-size: var(--t-md);
+  font-weight: 600;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.chip[aria-checked="true"],
+.chip[aria-pressed="true"] {
+  border-color: var(--teal);
+  background: var(--teal);
+  color: var(--on-teal);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.reset {
+  margin-top: var(--s3);
+}
+
+.reset button:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+.dot {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--canvas);
+  background: var(--teal);
+}

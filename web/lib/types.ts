@@ -12,6 +12,13 @@ export interface AlertRules {
   filing_min_score: number | null;
 }
 
+export interface AlertChoices {
+  price_move_pct: number[];
+  volume_ratio: number[];
+  move_z: number[];
+  categories: { key: string; label: string }[];
+}
+
 export interface Reaction {
   date: string;
   pct_change: number | null;
@@ -118,6 +125,7 @@ export interface InboxData {
   tier_labels: Record<Tier, string>;
   tiers: { needs_attention: number; worth_knowing: number };
   rules: AlertRules;
+  alert_choices: AlertChoices;
   market_close: string;
   same_day_categories: string[];
   companies: Record<string, { name: string; sector: string | null }>;

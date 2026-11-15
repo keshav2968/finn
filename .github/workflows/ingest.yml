@@ -1,9 +1,11 @@
 name: ingest
 
 on:
-  schedule:
-    # 11:35 UTC = 17:05 IST on weekdays: after the NSE close and the evening results rush.
-    - cron: "35 11 * * 1-5"
+  # The weekday schedule is paused while the submission is under review, so the demo shows
+  # the snapshot that was tested (14 Nov 2026). To turn it back on, uncomment these lines:
+  # 11:35 UTC = 17:05 IST, after the NSE close and the evening results rush.
+  # schedule:
+  #   - cron: "35 11 * * 1-5"
   workflow_dispatch:
 
 permissions:

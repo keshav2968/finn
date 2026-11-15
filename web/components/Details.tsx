@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Check, ChevronRight, ExternalLink, MessageCircleQuestion, TriangleAlert } from "lucide-react";
+import { Check, ChevronRight, CircleHelp, ExternalLink, MessageCircleQuestion, TriangleAlert } from "lucide-react";
 import { amount, croreShort, day, dayTime, direction, longDate, pct, pp, rupees, signed, times } from "@/lib/format";
 import { alertReasons, askQuestions, resultsHeadlines, sparkValues } from "@/lib/present";
 import type { Card, InboxData, ManagementCard, PriceAlert, ResultsCard, ResultsMetric } from "@/lib/types";
@@ -210,7 +210,7 @@ export function FilingDetail({ card, data }: { card: Card; data: InboxData }) {
 const STATUS_TEXT: Record<ResultsCard["status"], string> = {
   verified: "Every figure checks out against the statement's own totals and screener.in.",
   partial: "Some figures couldn't be checked; the rest match.",
-  mismatch: "Some figures don't match screener.in. They're flagged, with screener's figure underneath.",
+  mismatch: "Some figures don't match screener.in. They're flagged, with screener's figure underneath; figures marked ? couldn't be checked.",
   screener_only: "The filing couldn't be read, so these figures are from screener.in.",
   unavailable: "No results card for this quarter.",
 };
@@ -220,6 +220,8 @@ function CheckMark({ m }: { m: ResultsMetric }) {
   if (c === "verified") return <Check size={14} strokeWidth={2.25} aria-label="Checked" className={s.checkOk} />;
   if (c === "mismatch") return <TriangleAlert size={14} strokeWidth={2} aria-label="Doesn't match screener.in" className={s.checkBad} />;
   if (c === "screener") return <span className={s.src} aria-label="From screener.in">s</span>;
+  // Read off the filing but not confirmed by the statement's totals or screener.in.
+  if (c === "unchecked") return <CircleHelp size={14} strokeWidth={2} aria-label="Not checked" className={s.checkUnknown} />;
   return null;
 }
 

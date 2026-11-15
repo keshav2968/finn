@@ -29,6 +29,7 @@ interface AppConfig {
     spark_sessions: number;
     results_metrics: Record<string, string[]>;
     results_checks: string[];
+    alert_choices: { price_move_pct: number[]; volume_ratio: number[]; move_z: number[]; hidden_categories?: string[] };
   };
 }
 
@@ -184,6 +185,14 @@ export function loadInbox(): InboxData {
     tier_labels: feed.rules.tier_labels,
     tiers: feed.rules.tiers,
     rules: feed.rules.alerts,
+    alert_choices: {
+      price_move_pct: cfg.inbox.alert_choices.price_move_pct,
+      volume_ratio: cfg.inbox.alert_choices.volume_ratio,
+      move_z: cfg.inbox.alert_choices.move_z,
+      categories: Object.entries<Json>(feed.rules.categories ?? {})
+        .filter(([key]) => !(cfg.inbox.alert_choices.hidden_categories ?? []).includes(key))
+        .map(([key, c]) => ({ key, label: c.label ?? key })),
+    },
     market_close: push.reaction?.market_close_ist ?? "15:30",
     same_day_categories: push.grouping?.same_day_categories ?? [],
     companies,

@@ -1,15 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Bell, ChevronDown, CircleCheck, ExternalLink, Moon, Sun, X } from "lucide-react";
+import { Bell, ChevronDown, CircleCheck, ExternalLink, Moon, SlidersHorizontal, Sun, X } from "lucide-react";
 import { alertKeys, buildInbox } from "@/lib/inbox";
 import { day, plural } from "@/lib/format";
-import type { Card, InboxData, PriceAlert } from "@/lib/types";
+import type { AlertRules, Card, InboxData, PriceAlert } from "@/lib/types";
+import AlertRulesPanel, { validRules } from "./AlertRules";
 import { FilingCard, PriceCard } from "./Cards";
 import { FilingDetail, PriceDetail } from "./Details";
 import Sheet from "./Sheet";
 import { useStored } from "./useStored";
 import s from "./inbox.module.css";
+import rs from "./rules.module.css";
 import sh from "./sheet.module.css";
 
 type Done = Record<string, string>; // key -> when it was cleared
@@ -27,8 +29,13 @@ export default function Inbox({ data }: { data: InboxData }) {
   const [toast, setToast] = useState<{ key: string; label: string } | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const [savedRules, setRules] = useStored<AlertRules | null>("finn.rules.v1", null);
+  const [rulesOpen, setRulesOpen] = useState(false);
+  const rules = useMemo(() => (savedRules ? validRules(savedRules, data.rules) : data.rules), [savedRules, data.rules]);
+  const customRules = savedRules !== null && JSON.stringify(rules) !== JSON.stringify(data.rules);
+
   const win = data.windows.find((w) => w.key === windowKey) ?? data.windows.find((w) => w.key === data.default_window)!;
-  const view = useMemo(() => buildInbox(data, win.hours), [data, win.hours]);
+  const view = useMemo(() => buildInbox(data, win.hours, rules), [data, win.hours, rules]);
   const alerts = useMemo(() => new Set(alertKeys(view)), [view]);
 
   const isDone = (key: string) => key in done;
@@ -90,6 +97,7 @@ export default function Inbox({ data }: { data: InboxData }) {
     setHintGone(true);
   };
   const close = useCallback(() => setOpen(null), []);
+  const closeRules = useCallback(() => setRulesOpen(false), []);
   const openKey = open ? (open.type === "price" ? open.alert.key : open.card.key) : null;
 
   return (
@@ -105,6 +113,16 @@ export default function Inbox({ data }: { data: InboxData }) {
         </div>
         <div className={s.actions}>
           <ThemeToggle />
+          <button
+            type="button"
+            className={s.iconButton}
+            aria-label={customRules ? "Alert rules (your own)" : "Alert rules"}
+            aria-haspopup="dialog"
+            onClick={() => setRulesOpen(true)}
+          >
+            <SlidersHorizontal size={20} strokeWidth={1.75} />
+            {customRules && <span className={rs.dot} aria-hidden="true" />}
+          </button>
           <button
             type="button"
             className={s.iconButton}
@@ -252,6 +270,18 @@ export default function Inbox({ data }: { data: InboxData }) {
           tell you what to read first; they aren&apos;t advice.
         </footer>
       </main>
+
+      <Sheet open={rulesOpen} label="Alert rules" onClose={closeRules}>
+        <AlertRulesPanel
+          rules={rules}
+          defaults={data.rules}
+          choices={data.alert_choices}
+          alertCount={alerts.size}
+          windowLabel={win.label}
+          needsAt={data.tiers.needs_attention}
+          onChange={(next) => setRules(next)}
+        />
+      </Sheet>
 
       <Sheet
         open={open !== null}

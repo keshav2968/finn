@@ -17,6 +17,14 @@ inbox:
     standard: [revenue, pat]
     lender: [nii, pat]
   results_checks: [verified, screener]
+  # Choices in the inbox's "Alert rules" sheet. The defaults are push.yaml's `alerts`
+  # (they arrive through feed.json); a user's own choice is saved on their device and
+  # re-applied in the browser to the stored price metrics and filing scores.
+  alert_choices:
+    price_move_pct: [2, 3, 4, 5, 7]       # |% move| on the day
+    volume_ratio: [1.5, 2, 3]             # volume vs its 20-day average
+    move_z: [2, 2.5, 3]                   # move in standard deviations of this stock's own daily moves
+    hidden_categories: [unclassified]     # never offered as an alert category
 
 # "Ask" buttons in a card's detail sheet. Placeholders: {name}, {symbol}, {metric},
 # {change}, {date}, {person}. A category not listed uses `default`. Research (the pull

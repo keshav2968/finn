@@ -86,3 +86,19 @@ test("ask questions fill placeholders and drop ones without a value", async () =
   assert.deepEqual(askQuestions(ask, "results", { name: "X" }), ["Call notes for X?", "Third X?"]);
   assert.deepEqual(askQuestions(ask, "dividend", { name: "X" }), ["About X?"]);
 });
+
+test("the user's alert rules decide what alerts, re-run on the stored metrics", () => {
+  const data = loadInbox();
+  const hours = 720;
+  const base = alertKeys(buildInbox(data, hours, data.rules)).length;
+  const priceOnlyLoose = { ...data.rules, price_move_pct: 2, volume_ratio: null, move_z: null, filing_categories: [] };
+  const off = { ...data.rules, price_move_pct: null, volume_ratio: null, move_z: null, filing_categories: [] };
+  const loose = buildInbox(data, hours, priceOnlyLoose);
+  assert.equal(alertKeys(buildInbox(data, hours, off)).length, 0, "every rule off: no alerts");
+  assert.ok(loose.priceAlerts.length > 0 && loose.priceAlerts.every((a) => a.triggers.join() === "price_move"));
+  assert.ok(loose.priceAlerts.every((a) => Math.abs(a.pct_change ?? 0) >= 2));
+  assert.ok(base > 0);
+  // Choices come from config/app.yaml and never offer the routine bucket.
+  assert.ok(data.alert_choices.price_move_pct.length > 0);
+  assert.ok(!data.alert_choices.categories.some((c) => c.key === "unclassified"));
+});

@@ -332,6 +332,10 @@
   color: var(--teal-text);
 }
 
+.checkUnknown {
+  color: var(--muted);
+}
+
 .checkBad {
   color: var(--neg);
 }
