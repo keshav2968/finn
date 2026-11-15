@@ -64,11 +64,8 @@
   margin-top: var(--s3);
   display: flex;
   gap: var(--s1h);
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--fg-2);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s1) 0 var(--s1) var(--s1h);
+  border-left: 2px solid var(--fg-2);
 }
 
 .askedIcon {
@@ -94,10 +91,9 @@
 /* track record */
 .record {
   margin-top: var(--s3);
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--raised);
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .recordText {
@@ -204,7 +200,8 @@
 .tiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--s1);
+  column-gap: var(--s2);
+  row-gap: 0;
 }
 
 .tile {
@@ -213,10 +210,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  padding: var(--s1h);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s1h) 0;
+  border-top: 1px solid var(--border);
 }
 
 .tileLabel {
@@ -242,9 +237,7 @@
 .tableWrap {
   margin-top: var(--s1);
   padding: var(--s-half) var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  border-top: 1px solid var(--border);
 }
 
 .table {
@@ -281,10 +274,8 @@
 
 /* ledger entry */
 .entry {
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--border);
 }
 
 .entryHead {
@@ -466,10 +457,8 @@
 .sources {
   list-style: none;
   margin: 0 0 var(--s1h);
-  padding: 0 var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s2) 0 0;
+  border-top: 1px solid var(--border);
 }
 
 .sources li {
@@ -503,7 +492,8 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--s1);
+  gap: 0;
+  border-top: 1px solid var(--border);
 }
 
 .indexRow {
@@ -512,11 +502,9 @@
   justify-content: space-between;
   gap: var(--s1h);
   min-height: 64px;
-  padding: var(--s1h) var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
   color: var(--fg);
+  padding: var(--s1h) 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .indexText {
@@ -646,7 +634,8 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--s1h);
+  gap: 0;
+  border-top: 1px solid var(--border);
 }
 
 .cards li {
@@ -663,11 +652,9 @@
 .card {
   display: grid;
   gap: 8px;
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--card);
   color: var(--fg);
+  padding: var(--s2) 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .cardHead {

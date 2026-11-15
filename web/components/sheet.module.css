@@ -135,8 +135,13 @@
 .heroFigures {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--s1h);
   margin-top: var(--s2);
+  column-gap: var(--s2);
+  row-gap: var(--s1h);
+}
+
+.heroFigure:last-child {
+  border-right: 0;
 }
 
 .heroFigure {
@@ -144,10 +149,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
-  padding: var(--s1h) var(--s2) var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: 0 var(--s2) 0 0;
+  border-right: 1px solid var(--border);
 }
 
 .heroLabel {
@@ -171,9 +174,6 @@
 .chart {
   margin: var(--s2) 0 0;
   padding: var(--s1h) var(--s1h) var(--s1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
 }
 
 .chart figcaption {
@@ -225,14 +225,13 @@
   margin: var(--s1h) 0 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: var(--s1);
+  column-gap: var(--s2);
+  row-gap: 0;
 }
 
 .fact {
-  padding: var(--s1h);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s1h) 0;
+  border-top: 1px solid var(--border);
 }
 
 .fact dt {
@@ -251,9 +250,7 @@
   list-style: none;
   margin: var(--s1) 0 0;
   padding: 0 var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  border-top: 1px solid var(--border);
 }
 
 .parts li {
@@ -275,10 +272,8 @@
 /* results table */
 .tableWrap {
   margin-top: var(--s1h);
-  padding: var(--s-half) var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: 0;
+  border-top: 1px solid var(--border);
 }
 
 .table {
@@ -397,14 +392,12 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--s1);
+  gap: 0;
 }
 
 .people li {
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s1h) 0;
+  border-top: 1px solid var(--border);
 }
 
 .personHead {
@@ -484,10 +477,8 @@
 .related {
   list-style: none;
   margin: var(--s1) 0 0;
-  padding: 0 var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
+  padding: var(--s1h) 0 0;
+  border-top: 1px solid var(--border);
 }
 
 .related li {
@@ -525,7 +516,7 @@
   margin-top: var(--s1);
   display: flex;
   flex-direction: column;
-  gap: var(--s1);
+  gap: 0;
 }
 
 .ask {
@@ -533,14 +524,12 @@
   align-items: center;
   gap: var(--s1h);
   min-height: var(--tap);
-  padding: var(--s1h) var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: var(--card);
   font-size: var(--t-md);
   font-weight: 500;
   text-align: left;
   line-height: 1.4;
+  padding: var(--s1h) 0;
+  border-top: 1px solid var(--border);
 }
 
 .ask {

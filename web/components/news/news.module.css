@@ -2,7 +2,8 @@
 
 .stack {
   display: grid;
-  gap: var(--s1h);
+  gap: 0;
+  border-top: 1px solid var(--border);
 }
 
 .list {
@@ -27,10 +28,8 @@
 }
 
 .big {
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--card);
+  padding: var(--s2) 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .big:active {
@@ -120,13 +119,11 @@
 
 .chart {
   display: block;
-  margin: 4px calc(-1 * var(--s2)) calc(-1 * var(--s2));
-  padding: 0 var(--s2) var(--s1h);
-  border-top: 1px solid var(--border);
+  margin-top: var(--s1);
 }
 
 .chart svg {
-  margin-top: var(--s1h);
+  margin-top: 0;
 }
 
 .chartCaption {
@@ -138,10 +135,8 @@
 
 /* routine, collapsed */
 .routine {
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
-  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .routineHead {

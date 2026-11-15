@@ -106,21 +106,18 @@
 }
 
 .panel {
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--card);
+  padding-top: var(--s1);
+  border-top: 1px solid var(--border);
 }
 
 .card {
   display: flex;
   align-items: center;
   gap: var(--s1h);
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
   color: var(--fg-2);
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .card[data-stack] {

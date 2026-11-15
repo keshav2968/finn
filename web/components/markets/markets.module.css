@@ -48,16 +48,24 @@
 /* top movers: horizontal cards */
 .movers {
   display: flex;
-  gap: var(--s1h);
   margin: 0 calc(-1 * var(--pad));
   padding: 2px var(--pad) 6px;
   overflow-x: auto;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
+  gap: 0;
 }
 
 .movers::-webkit-scrollbar {
   display: none;
+}
+
+.mover:last-child {
+  border-right: 0;
+}
+
+.mover + .mover {
+  padding-left: var(--s2);
 }
 
 .mover {
@@ -65,13 +73,12 @@
   width: 148px;
   display: grid;
   gap: 6px;
-  padding: var(--s1h);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--card);
   color: var(--fg);
   scroll-snap-align: start;
   animation: storyIn 360ms var(--ease) backwards;
+  padding: 0 var(--s2) 0 0;
+  border-right: 1px solid var(--border);
+  border-radius: 0;
 }
 
 @keyframes storyIn {
@@ -361,15 +368,15 @@
 .stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--s1h);
   margin: 0;
+  column-gap: var(--s2);
+  row-gap: 0;
+  border-top: 1px solid var(--border);
 }
 
 .stats > div {
-  padding: var(--s1h);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
+  padding: var(--s1h) 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .stats dt {
@@ -500,11 +507,10 @@
   align-items: center;
   gap: var(--s1h);
   margin-top: var(--s4);
-  padding: var(--s2);
-  border: 1px solid var(--border);
-  border-radius: var(--r-card);
-  background: var(--card);
   color: var(--fg);
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .researchCard > span {
