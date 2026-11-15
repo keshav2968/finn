@@ -84,7 +84,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
       <p className={s.readout} aria-live="polite">
         {hover === null ? (
           <>
-            <span className={`delta`} data-dir={up ? "up" : "down"}>
+            <span className="delta" data-tone="price" data-dir={up ? "up" : "down"}>
               {pct(rangeChange, 2)}
             </span>
             <span className="num">{signed(last - first, 2)}</span>
@@ -95,7 +95,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
         ) : (
           <>
             <strong className="num">{rupees(close[hi])}</strong>
-            <span className="delta" data-dir={(chg[hi] ?? 0) > 0 ? "up" : (chg[hi] ?? 0) < 0 ? "down" : "flat"}>
+            <span className="delta" data-tone="price" data-dir={(chg[hi] ?? 0) > 0 ? "up" : (chg[hi] ?? 0) < 0 ? "down" : "flat"}>
               {pct(chg[hi], 2)}
             </span>
             <span>

@@ -170,13 +170,13 @@ function Numbers({ numbers }: { numbers: NonNullable<ResearchDoc["numbers"]> }) 
   const marginKey = numbers.layout === "standard" ? "ebit_margin" : null;
   const tiles: { label: string; value: React.ReactNode; sub: string }[] = [];
   if (last) {
-    tiles.push({ label: "Revenue YoY", value: <Delta value={last.revenue_yoy} digits={1} />, sub: last.fiscal });
-    tiles.push({ label: "Net profit YoY", value: <Delta value={last.net_profit_yoy} digits={1} />, sub: last.fiscal });
+    tiles.push({ label: "Revenue YoY", value: <Delta value={last.revenue_yoy} digits={1} tone="neutral" />, sub: last.fiscal });
+    tiles.push({ label: "Net profit YoY", value: <Delta value={last.net_profit_yoy} digits={1} tone="neutral" />, sub: last.fiscal });
     if (marginKey && last.ebit_margin != null) tiles.push({ label: "EBIT margin", value: <span className="num">{last.ebit_margin.toFixed(1)}%</span>, sub: last.fiscal });
     if (numbers.layout === "lender" && last.gross_npa_pct != null) tiles.push({ label: "Gross NPA", value: <span className="num">{last.gross_npa_pct}%</span>, sub: last.fiscal });
   }
   const ytdRev = ytd?.metrics.revenue_growth;
-  if (ytdRev) tiles.push({ label: `Revenue YoY, ${ytd!.period} so far`, value: <Delta value={ytdRev.value} digits={1} />, sub: `${ytdRev.quarters.length} of 4 quarters` });
+  if (ytdRev) tiles.push({ label: `Revenue YoY, ${ytd!.period} so far`, value: <Delta value={ytdRev.value} digits={1} tone="neutral" />, sub: `${ytdRev.quarters.length} of 4 quarters` });
 
   return (
     <section className={s.section}>

@@ -97,7 +97,7 @@
 
 .title {
   margin: var(--s1) 52px 0 0;
-  font-size: 22px;
+  font-size: var(--t-title);
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -157,7 +157,7 @@
 }
 
 .heroValue {
-  font-size: 28px;
+  font-size: var(--t-page);
   font-weight: 600;
   line-height: 1.1;
 }
@@ -190,11 +190,10 @@
 
 .section h3 {
   margin: 0;
-  font-size: var(--t-xs);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted);
+  font-size: var(--t-md);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--fg);
 }
 
 .lead {
@@ -345,7 +344,7 @@
 }
 
 .src {
-  font-size: 10px;
+  font-size: var(--t-2xs);
   color: var(--muted);
   border: 1px solid var(--border);
   border-radius: 3px;

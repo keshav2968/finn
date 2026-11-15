@@ -90,7 +90,7 @@
 }
 
 .moverBig {
-  font-size: 20px;
+  font-size: var(--t-title);
   font-weight: 700;
 }
 
@@ -105,7 +105,7 @@
 .moverSmall {
   display: block;
   font-family: var(--font-text);
-  font-size: 11px;
+  font-size: var(--t-2xs);
   font-weight: 500;
   color: var(--muted);
 }
@@ -167,7 +167,7 @@
 
 .note {
   margin: var(--s1h) 0 0;
-  font-size: 11px;
+  font-size: var(--t-2xs);
   color: var(--muted);
 }
 
@@ -237,8 +237,8 @@
 
 .stockName {
   margin: 4px 0 0;
-  font-size: 26px;
-  font-weight: 800;
+  font-size: var(--t-page);
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.03em;
 }
@@ -251,7 +251,7 @@
 }
 
 .bigPrice {
-  font-size: 36px;
+  font-size: var(--t-hero);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -285,7 +285,7 @@
 
 .axis {
   font-family: var(--font-num);
-  font-size: 10px;
+  font-size: var(--t-2xs);
   fill: var(--muted);
 }
 
@@ -337,7 +337,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: var(--t-2xs);
   color: var(--muted);
 }
 
@@ -379,14 +379,14 @@
 
 .stats dd {
   margin: 4px 0 0;
-  font-size: 18px;
+  font-size: var(--t-lg);
   font-weight: 700;
 }
 
 .stats .statSub {
   margin-top: 2px;
   font-family: var(--font-text);
-  font-size: 11px;
+  font-size: var(--t-2xs);
   font-weight: 500;
   color: var(--muted);
 }

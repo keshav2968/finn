@@ -135,7 +135,7 @@ export function FilingDetail({ card, data }: { card: Card; data: InboxData }) {
                 {h.label}, {results?.periods.current}
               </span>
               <span className={`num ${i === 0 ? s.heroValue : s.heroValueSmall}`}>{croreShort(h.value)}</span>
-              <Delta value={h.yoy} digits={1} suffix="YoY" />
+              <Delta value={h.yoy} digits={1} suffix="YoY" tone="neutral" />
             </div>
           ))}
         </div>

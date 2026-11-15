@@ -12,7 +12,7 @@ export default function TickerChip({ symbol, move, date }: { symbol: string; mov
       data-dir={dir}
       aria-label={move === null ? symbol : `${symbol}, ${pct(move)} on ${date ? dayLabel(date) : "the last session"}`}
     >
-      {symbol}
+      <span className={u.tickSym}>{symbol}</span>
       {move !== null && (
         <span className={u.tickMove} aria-hidden="true">
           {Icon && <Icon size={11} strokeWidth={2.75} style={{ verticalAlign: "-1px", marginRight: 1 }} />}

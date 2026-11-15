@@ -18,10 +18,10 @@
 
 .title {
   margin: 0;
-  font-size: 30px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.035em;
+  font-size: var(--t-page);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
 }
 
 /* "Market closed · prices to Fri 13 Nov close": the snapshot is frozen and says so. */
@@ -78,7 +78,6 @@
   min-height: 34px;
   padding: 0 var(--s1h);
   border-radius: var(--r-pill);
-  font-family: var(--font-num);
   font-size: var(--t-sm);
   font-weight: 600;
   color: var(--muted);
@@ -143,7 +142,6 @@
 }
 
 .chipCount {
-  font-family: var(--font-num);
   font-size: var(--t-xs);
   opacity: 0.7;
 }
@@ -152,23 +150,25 @@
   margin-top: var(--s4);
 }
 
+/* Section heads: sentence case at the headline step, with the count beside them. */
 .sectionHead {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--s1);
-  margin: 0 0 var(--s1h);
-  font-size: var(--t-xs);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--muted);
+  margin: 0 0 var(--s1);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--fg);
 }
 
 .sectionHead span {
+  font-size: var(--t-sm);
+  font-weight: 500;
   letter-spacing: 0;
-  text-transform: none;
-  font-weight: 600;
+  color: var(--muted);
 }
 
 .empty {
@@ -188,24 +188,31 @@
   font-size: var(--t-body);
 }
 
-/* ticker chip with the day's move: "INFY ▲ 1.2%" */
+/* Ticker chip: the symbol in mono on a neutral ground, the day's move beside it in the
+   text face. Only the move takes green or red. */
 .tick {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 6px;
-  padding: 3px 8px 3px 9px;
-  border-radius: 8px;
+  padding: 2px 7px;
+  border-radius: 6px;
   background: var(--track);
-  font-family: var(--font-num);
   font-size: var(--t-xs);
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  line-height: 1.5;
   color: var(--fg);
   white-space: nowrap;
 }
 
-.tickMove {
+.tickSym {
+  font-family: var(--font-code);
   font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tickMove {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--fg-2);
 }
 
 .tick[data-dir="up"] .tickMove {
@@ -214,12 +221,4 @@
 
 .tick[data-dir="down"] .tickMove {
   color: var(--neg);
-}
-
-.tick[data-dir="up"] {
-  background: var(--pos-bg);
-}
-
-.tick[data-dir="down"] {
-  background: var(--neg-bg);
 }
