@@ -1,7 +1,8 @@
 import { longDate } from "@/lib/format";
 import s from "./shell.module.css";
 
-// On every tab. Sources are named in words only: no third-party logos, no implied affiliation.
+// On every tab. Data sources are named in words only. Company logos identify the holdings and
+// are served from FINN's own domain; nothing implies affiliation with any company or source.
 export default function Footer({ snapshotAt, pricesAsOf }: { snapshotAt: string; pricesAsOf: string | null }) {
   return (
     <footer className={s.footer}>
@@ -11,6 +12,7 @@ export default function Footer({ snapshotAt, pricesAsOf }: { snapshotAt: string;
         {pricesAsOf ? `, prices to the ${longDate(pricesAsOf)} close` : ""}.
       </p>
       <p>Not investment advice. FINN is a prototype and isn&apos;t affiliated with any of these sources.</p>
+      <p>Company logos are trademarks of their respective owners, shown for identification only.</p>
       <p className={s.copy}>© 2026 FINN · built by Keshav</p>
     </footer>
   );

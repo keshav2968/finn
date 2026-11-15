@@ -5,16 +5,25 @@
 // tokens or personal data anywhere in the app. Cross-origin requests (BSE filing PDFs)
 // and anything not a GET pass straight through and are never stored.
 
+import { logoSymbols } from "@/lib/data";
+
 export const dynamic = "force-static";
 
 const BUILD = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 12) ?? String(Date.now());
+const LOGO_URLS = logoSymbols().map((s) => `/logos/${encodeURIComponent(s)}.png`);
 
 const source = `
 const CACHE = "finn-${BUILD}";
 const SHELL = ["/", "/markets", "/research", "/alerts", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png"];
+// Company logos: the files saved in web/public/logos at build time, so they work offline.
+const LOGOS = ${JSON.stringify(LOGO_URLS)};
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  event.waitUntil(
+    caches.open(CACHE)
+      .then((c) => c.addAll(SHELL).then(() => Promise.all(LOGOS.map((u) => c.add(u).catch(() => null)))))
+      .then(() => self.skipWaiting()),
+  );
 });
 
 self.addEventListener("activate", (event) => {
@@ -62,8 +71,8 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return; // filings on bseindia.com etc.: never touched
   if (url.pathname === "/sw.js") return;
 
-  // Hashed build assets and icons never change: cache first.
-  if (url.pathname.startsWith("/_next/static/") || /^\\/icon[-.]/.test(url.pathname)) {
+  // Hashed build assets, icons and company logos only change with a deploy: cache first.
+  if (url.pathname.startsWith("/_next/static/") || /^\\/icon[-.]/.test(url.pathname) || url.pathname.startsWith("/logos/")) {
     event.respondWith(
       caches.match(req).then((hit) => hit || fetch(req).then((res) => {
         if (cacheable(res)) { const copy = res.clone(); caches.open(CACHE).then((c) => c.put(req, copy)); }

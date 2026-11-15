@@ -11,7 +11,7 @@ import { publishUnreadAlerts } from "../shell/badge";
 import { useStored } from "../useStored";
 import FilingSheet, { type Opened } from "./FilingSheet";
 import MiniChart from "./MiniChart";
-import { CardThumb } from "./Thumb";
+import { CardThumb, Logo, ResultsGlyph } from "./Thumb";
 import TickerChip from "./TickerChip";
 import { dayMove, shorten, storyChart, storyFlag, storyHeadline } from "./story";
 import u from "../ui.module.css";
@@ -196,9 +196,14 @@ export default function NewsFeed({ data }: { data: InboxData }) {
               {routine.map((c) => (
                 <li key={c.key}>
                   <button type="button" className={`${s.routineRow} row`} onClick={() => openCard(c)}>
-                    <span className={s.routineTitle}>{shorten(c.lead.headline)}</span>
-                    <span className={s.meta}>
-                      <span className="ticker">{c.lead.symbol}</span> · {c.lead.category_label} · {day(c.lead.datetime)}
+                    <Logo symbol={c.lead.symbol} name={data.companies[c.lead.symbol]?.name ?? c.lead.symbol} sector={data.companies[c.lead.symbol]?.sector} hues={data.sector_hues} logos={data.logos} size={36} />
+                    <span className={s.routineText}>
+                      <span className={s.routineTitle}>{shorten(c.lead.headline)}</span>
+                      <span className={s.meta}>
+                        <span>
+                          <span className="ticker">{c.lead.symbol}</span> · {c.lead.category_label} · {day(c.lead.datetime)}
+                        </span>
+                      </span>
                     </span>
                   </button>
                 </li>
@@ -241,6 +246,8 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
       </span>
       <span className={s.headline}>{storyHeadline(card, data)}</span>
       <span className={s.meta}>
+        <ResultsGlyph card={card} data={data} />
+        <span>
         {name}
         {card.members.length > 1 && ` · ${card.members.length} filings`}
         {card.alert && (
@@ -250,6 +257,7 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
             alert
           </>
         )}
+        </span>
       </span>
       </span>
       </span>

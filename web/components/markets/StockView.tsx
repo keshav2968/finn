@@ -7,6 +7,7 @@ import { buildCards } from "@/lib/inbox";
 import { day, dayTime, pct, rupees, shares, times, weekday } from "@/lib/format";
 import type { Quote, StockSeries } from "@/lib/data";
 import type { Card, InboxData } from "@/lib/types";
+import { Logo } from "../news/Thumb";
 import Delta from "../Delta";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
 import { shorten, storyHeadline } from "../news/story";
@@ -72,7 +73,10 @@ export default function StockView({
           {quote.sector && ` · ${quote.sector}`}
           {quote.size && ` · ${quote.size} cap`}
         </p>
-        <h1 className={s.stockName}>{quote.name}</h1>
+        <div className={s.stockId}>
+          <Logo symbol={quote.symbol} name={quote.name} sector={quote.sector} hues={data.sector_hues} logos={data.logos} size={52} />
+          <h1 className={s.stockName}>{quote.name}</h1>
+        </div>
         <div className={s.priceHero}>
           <span className={`num ${s.bigPrice}`}>{rupees(quote.close)}</span>
           <Delta value={quote.pct_change} />

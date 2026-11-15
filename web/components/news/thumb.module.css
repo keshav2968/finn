@@ -1,4 +1,6 @@
-/* 44px thumbnail tiles. Monograms take a low-saturation tint from the sector's hue. */
+/* Company tiles at a fixed size (nothing shifts while a logo loads). A logo sits on a light
+   neutral tile in both themes, the way stock apps show them; the fallback monogram takes a
+   low-saturation tint from the sector's hue. */
 .tile {
   flex: none;
   width: 44px;
@@ -12,10 +14,31 @@
   font-size: var(--t-sm);
   font-weight: 700;
   letter-spacing: 0.02em;
+  overflow: hidden;
 }
 
-.tile svg {
+.tile[data-size="36"] {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  font-size: var(--t-xs);
+}
+
+.tile[data-size="52"] {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+  font-size: var(--t-md);
+}
+
+.tile[data-thumb="logo"] {
+  background: #fbfbfd;
+  box-shadow: inset 0 0 0 1px rgb(22 19 31 / 0.08);
+}
+
+.tile img {
   display: block;
+  object-fit: contain;
 }
 
 .tile[data-tinted] {
@@ -26,4 +49,22 @@
 :global(:root[data-theme="light"]) .tile[data-tinted] {
   background: hsl(var(--h) 45% 90%);
   color: hsl(var(--h) 45% 28%);
+}
+
+/* tiny inline visuals in a row's meta line */
+.glyph {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: none;
+  vertical-align: middle;
+}
+
+.glyph svg {
+  display: block;
+}
+
+.glyphLabel {
+  font-size: var(--t-2xs);
+  color: var(--muted);
 }

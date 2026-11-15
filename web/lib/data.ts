@@ -210,7 +210,25 @@ export function loadInbox(opts: LoadOptions = {}): InboxData {
     results: results.bySymbol,
     ask: cfg.ask,
     sector_hues: cfg.sector_hues ?? {},
+    logos: logoSymbols(),
   };
+}
+
+/** Symbols with a company logo saved by scripts/fetch_logos.py (web/public/logos/SYMBOL.png).
+ *  Read at build time, so the app only ever asks its own domain for a logo that exists. */
+export function logoSymbols(): string[] {
+  const dir = path.join(ROOT, "web", "public", "logos");
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => /^[A-Z0-9&-]+\.png$/.test(f))
+    .map((f) => f.slice(0, -4))
+    .sort();
+}
+
+/** Sector hues for the monogram fallback, for pages that don't load the whole inbox. */
+export function loadSectorHues(): Record<string, number> {
+  return readYaml<AppConfig>("config/app.yaml").sector_hues ?? {};
 }
 
 /** Snapshot times for the footer and status lines (tiny, safe to load in the root layout). */

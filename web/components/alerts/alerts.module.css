@@ -78,6 +78,10 @@
 }
 
 .meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
   font-size: var(--t-xs);
   color: var(--muted);
 }

@@ -133,7 +133,8 @@ export interface InboxData {
   prices: Record<string, PriceSeries>;
   results: Record<string, ResultsCard>;
   ask: AskConfig;
-  sector_hues: Record<string, number>; // sector family -> hue, for news thumbnails
+  sector_hues: Record<string, number>; // sector family -> hue, for the monogram fallback
+  logos: string[]; // symbols with a logo file in web/public/logos (read at build time)
 }
 
 export interface AskConfig {

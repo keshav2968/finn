@@ -9,7 +9,7 @@ import type { Card, InboxData, PriceAlert } from "@/lib/types";
 import AlertRulesPanel from "../AlertRules";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
 import TickerChip from "../news/TickerChip";
-import { AlertThumb, CardThumb } from "../news/Thumb";
+import { AlertThumb, CardThumb, PriceGlyph, ResultsGlyph } from "../news/Thumb";
 import { useAlertRules, useReadState } from "../news/NewsFeed";
 import { dayMove, storyHeadline } from "../news/story";
 import { publishUnreadAlerts } from "../shell/badge";
@@ -108,9 +108,12 @@ export default function AlertsView({ data }: { data: InboxData }) {
                         {r.kind === "price" ? alertReasons(r.alert, data.prices[symbol]?.volume_avg_window ?? 20).join(" · ") : storyHeadline(r.card, data)}
                       </span>
                       <span className={s.meta}>
+                        {r.kind === "price" ? <PriceGlyph alert={r.alert} data={data} /> : <ResultsGlyph card={r.card} data={data} />}
+                        <span>
                         {r.kind === "price"
                           ? `${r.alert.name} · price ${pct(r.alert.pct_change, 1)}${r.alert.vol_ratio !== null ? ` · volume ${times(r.alert.vol_ratio)}` : ""}`
                           : `${data.companies[symbol]?.name ?? symbol} · ${r.card.lead.category_label}`}
+                        </span>
                       </span>
                     </span>
                     {!isRead && <span className={s.dot} aria-label="Unread" />}

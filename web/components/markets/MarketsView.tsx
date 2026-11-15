@@ -7,6 +7,7 @@ import { day, direction, pct, rupees, times } from "@/lib/format";
 import type { Quote } from "@/lib/data";
 import Delta from "../Delta";
 import Sheet from "../Sheet";
+import { Logo } from "../news/Thumb";
 import Spark from "../Spark";
 import { useStored } from "../useStored";
 import sh from "../sheet.module.css";
@@ -15,7 +16,7 @@ import s from "./markets.module.css";
 
 type Movers = "gainers" | "losers" | "volume";
 
-export default function MarketsView({ quotes }: { quotes: Quote[] }) {
+export default function MarketsView({ quotes, logos, hues }: { quotes: Quote[]; logos: string[]; hues: Record<string, number> }) {
   const all = quotes.map((q) => q.symbol);
   const [watch, setWatch, loaded] = useStored<string[]>("finn.watch.v1", all);
   const [movers, setMovers] = useState<Movers>("gainers");
@@ -109,6 +110,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
             {listed.map((q, i) => (
               <li key={q.symbol}>
                 <Link href={`/markets/${q.symbol}`} className={`${s.watchRow} row`}>
+                  <Logo symbol={q.symbol} name={q.name} sector={q.sector} hues={hues} logos={logos} size={36} />
                   <span className={s.watchWho}>
                     <span className={s.watchName}>{q.name}</span>
                     <span className="ticker">{q.symbol}</span>

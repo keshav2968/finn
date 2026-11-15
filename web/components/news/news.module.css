@@ -126,6 +126,10 @@
 }
 
 .meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
   font-size: var(--t-xs);
   line-height: 1.45;
   color: var(--muted);
@@ -229,8 +233,9 @@
 }
 
 .routineRow {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s1h);
   width: 100%;
   padding: 10px 0;
   text-align: left;
@@ -239,6 +244,13 @@
 
 .routineList li:last-child .routineRow {
   border-bottom: 0;
+}
+
+.routineText {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
 }
 
 .routineTitle {

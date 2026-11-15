@@ -109,7 +109,7 @@
 
 .watchRow {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: center;
   gap: var(--s1h);
   min-height: 64px;
@@ -214,8 +214,16 @@
   color: var(--muted);
 }
 
+.stockId {
+  display: flex;
+  align-items: center;
+  gap: var(--s1h);
+  margin-top: 8px;
+}
+
 .stockName {
-  margin: 4px 0 0;
+  margin: 0;
+  min-width: 0;
   font-size: var(--t-page);
   font-weight: 700;
   line-height: 1.15;
@@ -514,4 +522,14 @@
 .tierDot[data-tier="needs_attention"] {
   background: var(--fg);
   border-color: var(--fg);
+}
+
+/* Under 350px the logo, name, line and price don't all fit: the line goes, the price stays. */
+@media (max-width: 349px) {
+  .watchRow {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .watchRow > svg {
+    display: none;
+  }
 }
