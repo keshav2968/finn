@@ -39,13 +39,9 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
       <header className={u.head}>
         <div className={u.titleRow}>
           <h1 className={u.title}>Markets</h1>
-          <span className={u.status}>
-            <span className={u.statusDot} aria-hidden="true" />
-            {asOf ? `Close · ${weekday(asOf)}` : "Snapshot"}
-          </span>
         </div>
         <p className={u.sub}>
-          Your {quotes.length} holdings, end of day on NSE. <strong>{up}</strong> up · <strong>{down}</strong> down.
+          {quotes.length} holdings at the NSE close{asOf ? ` on ${weekday(asOf)}` : ""}: <strong>{up}</strong> up, <strong>{down}</strong> down.
         </p>
         <div className={s.breadth} role="img" aria-label={`${up} up, ${down} down, ${quotes.length - up - down} flat`}>
           <span style={{ flexGrow: up }} data-dir="up" />
@@ -123,7 +119,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
             ))}
           </ul>
         )}
-        <p className={s.note}>Sparklines: last 30 sessions. Prices are end-of-day closes from the snapshot, not live quotes.</p>
+        <p className={s.note}>Lines show the last 30 sessions.</p>
       </section>
 
       <Sheet open={editing} label="Edit watchlist" onClose={() => setEditing(false)}>

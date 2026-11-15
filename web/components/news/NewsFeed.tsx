@@ -11,7 +11,7 @@ import { useStored } from "../useStored";
 import FilingSheet, { type Opened } from "./FilingSheet";
 import MiniChart from "./MiniChart";
 import TickerChip from "./TickerChip";
-import { IMPACT, dayMove, storyChart, storyFlag, storyHeadline } from "./story";
+import { dayMove, storyChart, storyFlag, storyHeadline } from "./story";
 import u from "../ui.module.css";
 import s from "./news.module.css";
 
@@ -84,10 +84,6 @@ export default function NewsFeed({ data }: { data: InboxData }) {
       <header className={u.head}>
         <div className={u.titleRow}>
           <h1 className={u.title}>News</h1>
-          <span className={u.status}>
-            <span className={u.statusDot} aria-hidden="true" />
-            {asOf ? `Market closed · ${weekday(asOf)}` : "Snapshot"}
-          </span>
         </div>
         <p className={u.sub}>
           {readLoaded && (
@@ -95,7 +91,8 @@ export default function NewsFeed({ data }: { data: InboxData }) {
               <strong>{unread}</strong> unread ·{" "}
             </>
           )}
-          {day(view.from)} – {day(view.to)}
+          Filings {day(view.from)} – {day(view.to)}
+          {asOf && ` · prices to ${weekday(asOf)} close`}
         </p>
         <div className={u.toolbar}>
           <div className={u.segment} role="group" aria-label="Time window">
@@ -125,7 +122,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
       {top.length > 0 && (
         <section className={u.section} aria-labelledby="top">
           <h2 id="top" className={u.sectionHead}>
-            Top stories <span>{top.length}</span>
+            {data.tier_labels.needs_attention} <span>{top.length}</span>
           </h2>
           <div className={s.stack}>
             {top.map((c, i) => (
@@ -138,7 +135,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
       {latest.length > 0 && (
         <section className={u.section} aria-labelledby="latest">
           <h2 id="latest" className={u.sectionHead}>
-            Latest <span>{latest.length}</span>
+            {data.tier_labels.worth_knowing} <span>{latest.length}</span>
           </h2>
           <div className={s.list}>
             {latest.map((c, i) => (
@@ -150,8 +147,8 @@ export default function NewsFeed({ data }: { data: InboxData }) {
 
       {top.length === 0 && latest.length === 0 && (
         <div className={u.empty}>
-          <strong>Nothing worth reading here</strong>
-          {activeCat === "all" ? `No filings above routine between ${day(view.from)} and ${day(view.to)}.` : "Try another category."}
+          <strong>No filings above routine</strong>
+          {activeCat === "all" ? `Between ${day(view.from)} and ${day(view.to)}, only routine paperwork was filed.` : "None in this category in this window."}
           {activeCat === "all" && data.windows.some((w) => w.hours > win.hours) && (
             <div>
               <button
@@ -171,7 +168,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
           <button type="button" className={`${s.routineHead} press`} aria-expanded={routineOpen} onClick={() => setRoutineOpen((v) => !v)}>
             <span>
               <strong>{routineCount} routine filings</strong>
-              <span className={s.routineSub}>ESOPs, compliance certificates, meeting notices…</span>
+              <span className={s.routineSub}>ESOP allotments, compliance certificates, meeting notices</span>
             </span>
             <ChevronDown size={18} strokeWidth={2} aria-hidden="true" className={s.chev} />
           </button>
@@ -204,36 +201,30 @@ function Story({ card, data, big, read, onOpen, index }: { card: Card; data: Inb
   const flag = storyFlag(card);
   const chart = big ? storyChart(data, card) : null;
   return (
-    <button
-      type="button"
-      className={`${big ? s.big : s.row} press`}
-      data-read={read || undefined}
-      onClick={onOpen}
-      style={{ animationDelay: `${Math.min(index, 8) * 40}ms` }}
-    >
+    <button type="button" className={`${big ? s.big : s.row} press`} data-read={read || undefined} data-first={index < 2 || undefined} onClick={onOpen}>
       <span className={s.top}>
         <TickerChip symbol={lead.symbol} move={move.pct} date={move.date} />
-        {flag ? (
-          <span className={s.flag}>{flag}</span>
-        ) : (
-          <span className={s.impact} data-tier={lead.tier}>
-            {IMPACT[lead.tier]}
-          </span>
-        )}
+        {flag && <span className={s.flag}>{flag}</span>}
+        <span className={s.when}>
+          {lead.category_label} · {dayTime(lead.datetime)}
+        </span>
         {!read && <span className={s.unreadDot} aria-label="Unread" />}
       </span>
       <span className={s.headline}>{storyHeadline(card, data)}</span>
       <span className={s.meta}>
-        {card.alert && <Bell size={12} strokeWidth={2.25} aria-label="Alert" className={s.bell} />}
-        {name} · {lead.category_label} · {dayTime(lead.datetime)}
+        {name}
         {card.members.length > 1 && ` · ${card.members.length} filings`}
+        {card.alert && (
+          <>
+            {" · "}
+            <Bell size={12} strokeWidth={2.25} aria-hidden="true" className={s.bell} />
+            alert
+          </>
+        )}
       </span>
       {chart && (
         <span className={s.chart}>
-          <MiniChart values={chart.values} mark={chart.mark} />
-          <span className={s.chartCaption}>
-            {lead.symbol} close, {day(data.prices[lead.symbol].date[0])} – {day(data.prices[lead.symbol].date.at(-1)!)} · dashed line: this filing
-          </span>
+          <MiniChart values={chart.values} mark={chart.mark} dates={chart.dates} />
         </span>
       )}
     </button>

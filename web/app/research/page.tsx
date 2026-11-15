@@ -21,8 +21,8 @@ export default function Page() {
           <h1 className={u.title}>Research</h1>
         </div>
         <p className={u.sub}>
-          Promises vs delivery: what management guided on its earnings calls, against what the reported numbers show. Primary
-          sources only.
+          What management promised on earnings calls, checked against the numbers it reported later. Sources: call transcripts
+          and screener.in.
         </p>
       </header>
 

@@ -24,28 +24,6 @@
   letter-spacing: -0.025em;
 }
 
-/* "Market closed · prices to Fri 13 Nov close": the snapshot is frozen and says so. */
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  border-radius: var(--r-pill);
-  background: var(--card);
-  border: 1px solid var(--border);
-  font-size: var(--t-xs);
-  font-weight: 600;
-  color: var(--fg-2);
-  white-space: nowrap;
-}
-
-.statusDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--muted);
-}
-
 .sub {
   margin: 6px 0 0;
   font-size: var(--t-sm);

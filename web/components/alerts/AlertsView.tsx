@@ -60,7 +60,7 @@ export default function AlertsView({ data }: { data: InboxData }) {
         <div className={u.titleRow}>
           <h1 className={u.title}>Alerts</h1>
         </div>
-        <p className={u.sub}>What crossed your thresholds, the rules themselves, and how FINN runs on this phone.</p>
+        <p className={u.sub}>Price moves and filings that crossed your rules. The rules are saved on this phone.</p>
       </header>
 
       <section className={u.section} aria-labelledby="caught">
@@ -151,8 +151,8 @@ export default function AlertsView({ data }: { data: InboxData }) {
           Phone notifications
         </h2>
         <p className={s.plain}>
-          Not switched on yet. Today FINN shows what your rules caught when you open it; it doesn&apos;t send anything to your
-          phone. The data is a frozen snapshot, so there is nothing new to push until the daily refresh runs again.
+          Off. FINN lists alerts here when you open it and sends nothing to your phone. The data is the 14 Nov snapshot,
+          so there is nothing new to send until the daily refresh runs again.
         </p>
       </section>
 

@@ -52,7 +52,7 @@ export default function TickerSearch({ known }: { known: Known[] }) {
           enterKeyHint="go"
         />
         <button type="submit" className={s.searchGo}>
-          Open
+          Search
         </button>
       </form>
       {missing && (

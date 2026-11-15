@@ -3,13 +3,7 @@
 
 import { croreShort, pct } from "@/lib/format";
 import { exitFlag, resultsHeadlines } from "@/lib/present";
-import type { Card, InboxData, Tier } from "@/lib/types";
-
-export const IMPACT: Record<Tier, string> = {
-  needs_attention: "High impact",
-  worth_knowing: "Notable",
-  routine: "Routine",
-};
+import type { Card, InboxData } from "@/lib/types";
 
 /** Results cards lead with the figure that moved most; everything else with the filing headline. */
 export function storyHeadline(card: Card, data: InboxData): string {
@@ -35,7 +29,7 @@ export function dayMove(data: InboxData, symbol: string): { pct: number | null; 
 }
 
 /** Closing prices for a story's chart: the window's sessions, with the filing's session marked. */
-export function storyChart(data: InboxData, card: Card): { values: number[]; mark: number } | null {
+export function storyChart(data: InboxData, card: Card): { values: number[]; mark: number; dates: string[] } | null {
   const s = data.prices[card.lead.symbol];
   if (!s) return null;
   const vals: number[] = [];
@@ -50,5 +44,5 @@ export function storyChart(data: InboxData, card: Card): { values: number[]; mar
   const day = card.lead.reaction?.date ?? card.lead.datetime.slice(0, 10);
   let mark = dates.findIndex((d) => d >= day);
   if (mark < 0) mark = dates.length - 1;
-  return { values: vals, mark };
+  return { values: vals, mark, dates };
 }

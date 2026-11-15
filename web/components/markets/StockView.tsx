@@ -10,7 +10,7 @@ import type { Card, InboxData } from "@/lib/types";
 import Delta from "../Delta";
 import { CountUp } from "../motion";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
-import { IMPACT, storyHeadline } from "../news/story";
+import { storyHeadline } from "../news/story";
 import { useReadState } from "../news/NewsFeed";
 import PriceChart, { type Marker } from "./PriceChart";
 import u from "../ui.module.css";
@@ -95,7 +95,7 @@ export default function StockView({
 
       <section className={u.section} aria-labelledby="stats">
         <h2 id="stats" className={u.sectionHead}>
-          Key numbers
+          {weekday(quote.as_of)} session
         </h2>
         <dl className={s.stats}>
           <div>
@@ -104,9 +104,9 @@ export default function StockView({
             <dd className={s.statSub}>{quote.vol_ratio !== null ? `${times(quote.vol_ratio)} its 20-day average` : "–"}</dd>
           </div>
           <div>
-            <dt>Move vs usual</dt>
+            <dt>Size of the move</dt>
             <dd className="num">{quote.move_z !== null ? `${Math.abs(quote.move_z).toFixed(1)}σ` : "–"}</dd>
-            <dd className={s.statSub}>Today against its 60-day daily swings</dd>
+            <dd className={s.statSub}>In standard deviations of its last 60 daily moves</dd>
           </div>
           <div className={s.statWide}>
             <dt>52-week range</dt>
@@ -142,7 +142,7 @@ export default function StockView({
                 <button type="button" className={`${s.filing} press`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
                   <span className={s.filingTop}>
                     <span className={s.legendDot} data-tier={c.lead.tier} />
-                    <span className={s.filingImpact}>{IMPACT[c.lead.tier]}</span>
+                    <span className={s.filingImpact}>{data.tier_labels[c.lead.tier]}</span>
                     <span>{dayTime(c.lead.datetime)}</span>
                   </span>
                   <span className={s.filingHead}>{storyHeadline(c, data)}</span>
@@ -184,7 +184,7 @@ export default function StockView({
         <ScanSearch size={22} strokeWidth={1.75} aria-hidden="true" />
         <span>
           <strong>Promises vs delivery</strong>
-          <span>{research ? (research.text ?? "Numbers from screener.in") : "Not researched yet: see how to run it"}</span>
+          <span>{research ? (research.text ?? "Numbers from screener.in") : "Not researched yet. The page shows the command that builds it."}</span>
         </span>
         <ChevronRight size={18} strokeWidth={2} aria-hidden="true" />
       </Link>

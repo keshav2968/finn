@@ -213,8 +213,8 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
           ))}
         </div>
         <span className={s.legend}>
-          <span className={s.legendDot} data-tier="needs_attention" /> high impact
-          <span className={s.legendDot} data-tier="worth_knowing" /> notable
+          <span className={s.legendDot} data-tier="needs_attention" /> needs attention
+          <span className={s.legendDot} data-tier="worth_knowing" /> worth knowing
         </span>
       </div>
     </div>
