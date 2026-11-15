@@ -14,8 +14,10 @@
 .big,
 .row {
   display: grid;
+  grid-template-columns: minmax(0, 1fr); /* shrink below the content's width: nothing pushes past the screen */
   gap: 8px;
   width: 100%;
+  min-width: 0;
   text-align: left;
 }
 
@@ -36,6 +38,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
   min-height: 24px;
 }
 

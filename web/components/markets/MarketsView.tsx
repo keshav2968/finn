@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Check, Pencil } from "lucide-react";
-import { day, direction, pct, rupees, times, weekday } from "@/lib/format";
+import { day, direction, pct, rupees, times } from "@/lib/format";
 import type { Quote } from "@/lib/data";
 import Delta from "../Delta";
 import Sheet from "../Sheet";
@@ -40,7 +40,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
           <h1 className={u.title}>Markets</h1>
         </div>
         <p className={u.sub}>
-          {quotes.length} holdings at the NSE close{asOf ? ` on ${weekday(asOf)}` : ""}: <strong>{up}</strong> up, <strong>{down}</strong> down.
+          {quotes.length} holdings{asOf ? ` at the ${day(asOf)} close` : ""}: <strong>{up}</strong>&nbsp;up, <strong>{down}</strong>&nbsp;down.
         </p>
         <div className={s.breadth} role="img" aria-label={`${up} up, ${down} down, ${quotes.length - up - down} flat`}>
           <span style={{ flexGrow: up }} data-dir="up" />
@@ -65,9 +65,13 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
         <div className={s.movers}>
           {moverList.length === 0 && <p className={u.sub}>No stock {movers === "gainers" ? "rose" : "fell"} on the last session.</p>}
           {moverList.map((q, i) => (
-            <Link key={`${movers}-${q.symbol}`} href={`/markets/${q.symbol}`} className={`${s.mover} row`}>
+            <Link
+              key={`${movers}-${q.symbol}`}
+              href={`/markets/${q.symbol}`}
+              className={`${s.mover} row`}
+              aria-label={`${q.name}: ${movers === "volume" ? `volume ${times(q.vol_ratio)} its 20-day average` : pct(q.pct_change, 2)}`}
+            >
               <span className="ticker">{q.symbol}</span>
-              <span className={s.moverName}>{q.name}</span>
               <Spark values={q.spark} width={120} height={34} dir={direction(q.pct_change)} fluid />
               {movers === "volume" ? (
                 <span className={`num ${s.moverBig}`}>
