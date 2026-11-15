@@ -7,6 +7,7 @@ import BottomNav from "@/components/shell/BottomNav";
 import Footer from "@/components/shell/Footer";
 import InstallPrompt from "@/components/shell/InstallPrompt";
 import ServiceWorker from "@/components/shell/ServiceWorker";
+import Splash from "@/components/shell/Splash";
 import Tour from "@/components/shell/Tour";
 import shell from "@/components/shell/shell.module.css";
 import { loadMeta } from "@/lib/data";
@@ -63,6 +64,9 @@ export const viewport: Viewport = {
 // Chrome can fire beforeinstallprompt before React hydrates: keep it for our own banner.
 const installScript = `window.__finnBip=null;addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__finnBip=e;dispatchEvent(new Event("finn:bip"))});addEventListener("appinstalled",function(){try{localStorage.setItem("finn.install.v1","installed")}catch(e){}window.__finnBip=null;dispatchEvent(new Event("finn:bip"))});`;
 
+// The launch screen shows once per visit: a second visit in the same session skips it.
+const splashScript = `try{if(sessionStorage.getItem("finn.splash")){document.documentElement.dataset.splash="seen"}else{sessionStorage.setItem("finn.splash","1")}}catch(e){}`;
+
 const themeScript = `try{var t=localStorage.getItem("finn.theme");if(t==="light"){document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute("content","#f6f5fa")}}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -74,7 +78,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeScript + installScript }} />
+        <script dangerouslySetInnerHTML={{ __html: themeScript + splashScript + installScript }} />
+        <Splash />
         <ThemeKeeper />
         <a className="skip" href="#content">
           Skip to content
