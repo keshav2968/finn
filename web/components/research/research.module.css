@@ -66,7 +66,7 @@
   gap: var(--s1h);
   padding: var(--s2);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--teal);
+  border-left: 3px solid var(--fg-2);
   border-radius: 12px;
   background: var(--card);
 }
@@ -74,7 +74,7 @@
 .askedIcon {
   flex: none;
   margin-top: 2px;
-  color: var(--teal-text);
+  color: var(--fg-2);
 }
 
 .askedQ {
@@ -127,20 +127,24 @@
   color: var(--fg-2);
 }
 
+/* Verdicts in ink, told apart by shape: solid, heavy outline, dashed, thin outline, grey.
+   Green and red stay reserved for price moves. */
 .verdict[data-tone="pos"] {
-  background: var(--pos-bg);
-  color: var(--pos);
+  background: var(--fg);
+  color: var(--canvas);
 }
 
 .verdict[data-tone="neg"] {
-  background: var(--neg-bg);
-  color: var(--neg);
+  background: transparent;
+  color: var(--fg);
+  box-shadow: inset 0 0 0 1.5px var(--fg);
 }
 
 .verdict[data-tone="moved"] {
   background: transparent;
   color: var(--fg);
-  box-shadow: inset 0 0 0 1.5px var(--fg-2);
+  outline: 1.5px dashed var(--fg-2);
+  outline-offset: -1.5px;
 }
 
 .verdict[data-tone="unverified"] {
@@ -716,27 +720,28 @@
 
 .verdictBar [data-v="Delivered"],
 .verdictKey [data-v="Delivered"] {
-  background: var(--pos);
+  background: var(--fg);
 }
 
 .verdictBar [data-v="Missed"],
 .verdictKey [data-v="Missed"] {
-  background: var(--neg);
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--fg);
 }
 
 .verdictBar [data-v="Goalposts moved"],
 .verdictKey [data-v="Goalposts moved"] {
-  background: var(--fg);
+  background: repeating-linear-gradient(135deg, var(--fg-2) 0 2px, transparent 2px 5px);
 }
 
 .verdictBar [data-v="Pending"],
 .verdictKey [data-v="Pending"] {
-  background: var(--teal);
+  background: color-mix(in srgb, var(--fg-2) 45%, transparent);
 }
 
 .verdictBar [data-v="Unverified"],
 .verdictKey [data-v="Unverified"] {
-  background: var(--track);
+  background: transparent;
   box-shadow: inset 0 0 0 1px var(--muted);
 }
 

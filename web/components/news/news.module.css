@@ -61,14 +61,14 @@
 }
 
 .impact[data-tier="needs_attention"] {
-  color: var(--teal-text);
+  color: var(--fg);
 }
 
 .flag {
-  padding: 2px 8px;
-  border-radius: var(--r-pill);
-  background: var(--neg-bg);
-  color: var(--neg);
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--fg);
+  color: var(--canvas);
   font-size: var(--t-xs);
   font-weight: 700;
 }
@@ -78,8 +78,7 @@
   height: 8px;
   margin-left: auto;
   border-radius: 50%;
-  background: var(--teal);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent);
+  background: var(--fg);
 }
 
 .headline {
@@ -116,7 +115,7 @@
 .bell {
   margin-right: 4px;
   vertical-align: -1px;
-  color: var(--teal-text);
+  color: var(--fg-2);
 }
 
 .chart {

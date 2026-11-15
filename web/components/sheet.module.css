@@ -332,7 +332,7 @@
 }
 
 .checkOk {
-  color: var(--teal-text);
+  color: var(--fg-2);
 }
 
 .checkUnknown {
@@ -340,7 +340,7 @@
 }
 
 .checkBad {
-  color: var(--neg);
+  color: var(--fg);
 }
 
 .src {

@@ -407,7 +407,7 @@
   flex: 1;
   height: 6px;
   border-radius: var(--r-pill);
-  background: linear-gradient(90deg, var(--neg-bg), var(--track), var(--pos-bg));
+  background: var(--track);
 }
 
 .rangeDot {

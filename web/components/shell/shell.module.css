@@ -96,8 +96,8 @@
   padding: 0 4px;
   border-radius: var(--r-pill);
   border: 2px solid var(--canvas);
-  background: var(--neg);
-  color: #fff;
+  background: var(--fg);
+  color: var(--canvas);
   font-family: var(--font-num);
   font-size: var(--t-2xs);
   font-weight: 700;
