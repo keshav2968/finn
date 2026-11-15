@@ -13,6 +13,8 @@
 #                 from the company's screener.in page and warns if it differs from this.
 #   primary_view  optional, consolidated (default) | standalone. Which screener.in view
 #                 the app treats as primary. Both views are always fetched.
+#   domain        the company's own website, used once by scripts/fetch_logos.py to fetch its
+#                 logo for the app (identification only; nothing is fetched at runtime)
 #
 # portfolio   symbols held in the mock portfolio (push side)
 # research    symbols demoed on the pull side, with what each one is meant to show.
@@ -21,6 +23,7 @@
 companies:
   - symbol: HDFCBANK
     name: HDFC Bank
+    domain: hdfcbank.com
     sector: Banks
     size: large
     is_lender: true
@@ -31,6 +34,7 @@ companies:
 
   - symbol: BAJFINANCE
     name: Bajaj Finance
+    domain: bajajfinserv.in
     sector: NBFC
     size: large
     is_lender: true
@@ -38,6 +42,7 @@ companies:
 
   - symbol: FEDERALBNK
     name: Federal Bank
+    domain: federalbank.co.in
     sector: Banks
     size: mid
     is_lender: true
@@ -47,6 +52,7 @@ companies:
 
   - symbol: LT
     name: Larsen & Toubro
+    domain: larsentoubro.com
     sector: Capital Goods - Engineering & Construction
     size: large
     is_lender: false
@@ -54,6 +60,7 @@ companies:
 
   - symbol: POLYCAB
     name: Polycab India
+    domain: polycab.com
     sector: Electricals - Cables & Wires
     size: large
     is_lender: false
@@ -61,6 +68,7 @@ companies:
 
   - symbol: ELECON
     name: Elecon Engineering
+    domain: elecon.com
     sector: Capital Goods - Industrial Gears
     size: small
     is_lender: false
@@ -68,6 +76,7 @@ companies:
 
   - symbol: HINDUNILVR
     name: Hindustan Unilever
+    domain: hul.co.in
     sector: FMCG
     size: large
     is_lender: false
@@ -75,6 +84,7 @@ companies:
 
   - symbol: TITAN
     name: Titan Company
+    domain: titancompany.in
     sector: Consumer - Jewellery & Watches
     size: large
     is_lender: false
@@ -82,6 +92,7 @@ companies:
 
   - symbol: ETERNAL
     name: Eternal (Zomato + Blinkit)
+    domain: eternal.com
     sector: Consumer Internet - Food Delivery & Quick Commerce
     size: large
     is_lender: false
@@ -89,6 +100,7 @@ companies:
 
   - symbol: INFY
     name: Infosys
+    domain: infosys.com
     sector: IT Services
     size: large
     is_lender: false
@@ -96,6 +108,7 @@ companies:
 
   - symbol: KPITTECH
     name: KPIT Technologies
+    domain: kpit.com
     sector: IT Services - Automotive Software
     size: small
     is_lender: false
@@ -103,6 +116,7 @@ companies:
 
   - symbol: SUNPHARMA
     name: Sun Pharmaceutical
+    domain: sunpharma.com
     sector: Pharma
     size: large
     is_lender: false
@@ -110,6 +124,7 @@ companies:
 
   - symbol: MARKSANS
     name: Marksans Pharma
+    domain: marksanspharma.com
     sector: Pharma
     size: small
     is_lender: false
@@ -117,6 +132,7 @@ companies:
 
   - symbol: RELIANCE
     name: Reliance Industries
+    domain: ril.com
     sector: Conglomerate - Energy, Retail, Telecom
     size: large
     is_lender: false
@@ -124,10 +140,21 @@ companies:
 
   - symbol: TATACHEM
     name: Tata Chemicals
+    domain: tatachemicals.com
     sector: Chemicals
     size: small
     is_lender: false
     bse_code: "500770"
+
+  # Researched as an unseen ticker; listed here for its name and logo only. It is not in
+  # `portfolio` or `research`, so the seed build doesn't fetch it.
+  - symbol: HCLTECH
+    name: HCL Technologies
+    domain: hcltech.com
+    sector: IT Services
+    size: large
+    is_lender: false
+    bse_code: "532281"
 
 portfolio:
   - HDFCBANK
