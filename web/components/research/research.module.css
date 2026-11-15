@@ -639,15 +639,8 @@
 }
 
 .cards li {
-  animation: cardIn 340ms var(--ease) backwards;
 }
 
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
 
 .card {
   display: grid;
@@ -679,14 +672,8 @@
 .verdictBar span {
   flex-basis: 0;
   transform-origin: left;
-  animation: barGrow 700ms var(--ease) 120ms backwards;
 }
 
-@keyframes barGrow {
-  from {
-    transform: scaleX(0);
-  }
-}
 
 .verdictKey {
   display: flex;
@@ -732,9 +719,3 @@
   box-shadow: inset 0 0 0 1px var(--muted);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cards li,
-  .verdictBar span {
-    animation: none;
-  }
-}

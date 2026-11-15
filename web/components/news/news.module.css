@@ -17,33 +17,20 @@
   gap: 8px;
   width: 100%;
   text-align: left;
-  animation: storyIn 360ms var(--ease) backwards;
 }
 
-@keyframes storyIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
 
 .big {
   padding: var(--s2) 0;
   border-bottom: 1px solid var(--border);
 }
 
-.big:active {
-  background: var(--raised);
-}
 
 .row {
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
 }
 
-.row:active {
-  background: var(--card);
-}
 
 .top {
   display: flex;

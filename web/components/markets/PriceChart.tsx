@@ -140,8 +140,8 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
             <line x1={0} x2={plotW} y1={geo.y(first)} y2={geo.y(first)} stroke="var(--muted)" strokeOpacity="0.5" strokeDasharray="1 3" />
 
             <g key={range}>
-              <path d={geo.area} fill={`url(#a${id})`} className="fadeIn" />
-              <path d={geo.line} fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" pathLength={1} className="drawIn" />
+              <path d={geo.area} fill={`url(#a${id})`} />
+              <path d={geo.line} fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
               <g transform={`translate(0 ${PRICE_H + GAP})`} className={s.bars}>
                 {vol.map((v, i) => (
                   <rect

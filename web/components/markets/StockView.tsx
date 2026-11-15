@@ -8,7 +8,6 @@ import { day, dayTime, pct, rupees, shares, times, weekday } from "@/lib/format"
 import type { Quote, StockSeries } from "@/lib/data";
 import type { Card, InboxData } from "@/lib/types";
 import Delta from "../Delta";
-import { CountUp } from "../motion";
 import FilingSheet, { type Opened } from "../news/FilingSheet";
 import { storyHeadline } from "../news/story";
 import { useReadState } from "../news/NewsFeed";
@@ -75,7 +74,7 @@ export default function StockView({
         </p>
         <h1 className={s.stockName}>{quote.name}</h1>
         <div className={s.priceHero}>
-          <CountUp className={`num ${s.bigPrice}`} value={quote.close} from={quote.prev_close ?? quote.close} format={rupees} duration={900} />
+          <span className={`num ${s.bigPrice}`}>{rupees(quote.close)}</span>
           <Delta value={quote.pct_change} />
         </div>
         <p className={u.sub}>
@@ -139,7 +138,7 @@ export default function StockView({
           <ul className={s.filings}>
             {notable.map((c) => (
               <li key={c.key}>
-                <button type="button" className={`${s.filing} press`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
+                <button type="button" className={`${s.filing} row`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
                   <span className={s.filingTop}>
                     <span className={s.legendDot} data-tier={c.lead.tier} />
                     <span className={s.filingImpact}>{data.tier_labels[c.lead.tier]}</span>
@@ -164,7 +163,7 @@ export default function StockView({
               <ul className={s.filings}>
                 {routine.map((c) => (
                   <li key={c.key}>
-                    <button type="button" className={`${s.filing} press`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
+                    <button type="button" className={`${s.filing} row`} data-read={c.key in read || undefined} onClick={() => openCard(c)}>
                       <span className={s.filingHead} style={{ fontWeight: 500 }}>
                         {c.lead.headline}
                       </span>
@@ -180,7 +179,7 @@ export default function StockView({
         )}
       </section>
 
-      <Link href={`/research/${quote.symbol}`} className={`${s.researchCard} press`}>
+      <Link href={`/research/${quote.symbol}`} className={`${s.researchCard} row`}>
         <ScanSearch size={22} strokeWidth={1.75} aria-hidden="true" />
         <span>
           <strong>Promises vs delivery</strong>

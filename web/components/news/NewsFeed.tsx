@@ -28,7 +28,15 @@ export function useAlertRules(data: InboxData): [AlertRules, (next: AlertRules) 
   return [rules, setSaved];
 }
 
+// The first screen enters once a visit: on the page load that opens FINN, not when you come
+// back to News from another tab.
+let entered = false;
+
 export default function NewsFeed({ data }: { data: InboxData }) {
+  const [entering] = useState(() => !entered);
+  useEffect(() => {
+    entered = true;
+  }, []);
   const [windowKey, setWindowKey] = useStored<string>("finn.window", data.default_window);
   const [read, setRead, readLoaded] = useReadState();
   const [rules] = useAlertRules(data);
@@ -82,10 +90,10 @@ export default function NewsFeed({ data }: { data: InboxData }) {
   return (
     <div className={u.page}>
       <header className={u.head}>
-        <div className={u.titleRow}>
+        <div className={`${u.titleRow}${entering ? " enter" : ""}`}>
           <h1 className={u.title}>News</h1>
         </div>
-        <p className={u.sub}>
+        <p className={`${u.sub}${entering ? " enter" : ""}`} style={entering ? { animationDelay: "60ms" } : undefined}>
           {readLoaded && (
             <>
               <strong>{unread}</strong> unread ·{" "}
@@ -102,7 +110,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
               </button>
             ))}
           </div>
-          <button type="button" className={u.textButton} onClick={markAllRead} disabled={unread === 0}>
+          <button type="button" className={`${u.textButton} drawLine`} onClick={markAllRead} disabled={unread === 0}>
             <CheckCheck size={16} strokeWidth={2} aria-hidden="true" style={{ verticalAlign: "-3px", marginRight: 4 }} />
             Mark all read
           </button>
@@ -126,7 +134,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
           </h2>
           <div className={s.stack}>
             {top.map((c, i) => (
-              <Story key={c.key} card={c} data={data} big read={readLoaded && isRead(c.key)} onOpen={() => openCard(c)} index={i} />
+              <Story key={c.key} card={c} data={data} big read={readLoaded && isRead(c.key)} onOpen={() => openCard(c)} index={i} enter={entering && i < 2} />
             ))}
           </div>
         </section>
@@ -165,7 +173,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
 
       {routine.length > 0 && (
         <section className={`${u.section} ${s.routine}`} data-open={routineOpen || undefined}>
-          <button type="button" className={`${s.routineHead} press`} aria-expanded={routineOpen} onClick={() => setRoutineOpen((v) => !v)}>
+          <button type="button" className={`${s.routineHead} row`} aria-expanded={routineOpen} onClick={() => setRoutineOpen((v) => !v)}>
             <span>
               <strong>{routineCount} routine filings</strong>
               <span className={s.routineSub}>ESOP allotments, compliance certificates, meeting notices</span>
@@ -176,7 +184,7 @@ export default function NewsFeed({ data }: { data: InboxData }) {
             <ul className={s.routineList}>
               {routine.map((c) => (
                 <li key={c.key}>
-                  <button type="button" className={`${s.routineRow} press`} onClick={() => openCard(c)}>
+                  <button type="button" className={`${s.routineRow} row`} onClick={() => openCard(c)}>
                     <span className={s.routineTitle}>{c.lead.headline}</span>
                     <span className={s.meta}>
                       <span className="ticker">{c.lead.symbol}</span> · {c.lead.category_label} · {day(c.lead.datetime)}
@@ -194,14 +202,18 @@ export default function NewsFeed({ data }: { data: InboxData }) {
   );
 }
 
-function Story({ card, data, big, read, onOpen, index }: { card: Card; data: InboxData; big?: boolean; read: boolean; onOpen: () => void; index: number }) {
+function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; data: InboxData; big?: boolean; read: boolean; onOpen: () => void; index: number; enter?: boolean }) {
   const { lead } = card;
   const name = data.companies[lead.symbol]?.name ?? lead.symbol;
   const move = dayMove(data, lead.symbol);
   const flag = storyFlag(card);
   const chart = big ? storyChart(data, card) : null;
   return (
-    <button type="button" className={`${big ? s.big : s.row} press`} data-read={read || undefined} data-first={index < 2 || undefined} onClick={onOpen}>
+    <button type="button" className={`${big ? s.big : s.row} row${enter ? " enter" : ""}`}
+      style={enter ? { animationDelay: `${180 + index * 60}ms` } : undefined}
+      data-read={read || undefined}
+      onClick={onOpen}
+    >
       <span className={s.top}>
         <TickerChip symbol={lead.symbol} move={move.pct} date={move.date} />
         {flag && <span className={s.flag}>{flag}</span>}

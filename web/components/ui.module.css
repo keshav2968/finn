@@ -200,3 +200,13 @@
 .tick[data-dir="down"] .tickMove {
   color: var(--neg);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .segment button:not([aria-pressed="true"]):hover {
+    color: var(--fg);
+  }
+  .chip:not([aria-pressed="true"]):hover {
+    border-color: var(--fg-2);
+    color: var(--fg);
+  }
+}

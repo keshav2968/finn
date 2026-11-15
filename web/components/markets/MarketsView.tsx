@@ -8,7 +8,6 @@ import type { Quote } from "@/lib/data";
 import Delta from "../Delta";
 import Sheet from "../Sheet";
 import Spark from "../Spark";
-import { CountUp } from "../motion";
 import { useStored } from "../useStored";
 import sh from "../sheet.module.css";
 import u from "../ui.module.css";
@@ -66,18 +65,18 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
         <div className={s.movers}>
           {moverList.length === 0 && <p className={u.sub}>No stock {movers === "gainers" ? "rose" : "fell"} on the last session.</p>}
           {moverList.map((q, i) => (
-            <Link key={`${movers}-${q.symbol}`} href={`/markets/${q.symbol}`} className={`${s.mover} press`} style={{ animationDelay: `${i * 50}ms` }}>
+            <Link key={`${movers}-${q.symbol}`} href={`/markets/${q.symbol}`} className={`${s.mover} row`}>
               <span className="ticker">{q.symbol}</span>
               <span className={s.moverName}>{q.name}</span>
               <Spark values={q.spark} width={120} height={34} dir={direction(q.pct_change)} fluid />
               {movers === "volume" ? (
                 <span className={`num ${s.moverBig}`}>
-                  <CountUp value={q.vol_ratio ?? 0} format={(v) => times(v)} />
+                  {times(q.vol_ratio)}
                   <span className={s.moverSmall}> vs 20-day avg</span>
                 </span>
               ) : (
                 <span className={`num ${s.moverBig}`} data-dir={direction(q.pct_change)}>
-                  <CountUp value={q.pct_change ?? 0} format={(v) => pct(v, 2)} />
+                  {pct(q.pct_change, 2)}
                 </span>
               )}
             </Link>
@@ -90,7 +89,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
           <h2 id="watch" className={u.sectionHead}>
             Watchlist <span>{loaded ? listed.length : ""}</span>
           </h2>
-          <button type="button" className={u.textButton} onClick={() => setEditing(true)}>
+          <button type="button" className={`${u.textButton} drawLine`} onClick={() => setEditing(true)}>
             <Pencil size={14} strokeWidth={2} aria-hidden="true" style={{ verticalAlign: "-2px", marginRight: 4 }} />
             Edit
           </button>
@@ -103,15 +102,15 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
         ) : (
           <ul className={s.watch}>
             {listed.map((q, i) => (
-              <li key={q.symbol} style={{ animationDelay: `${Math.min(i, 10) * 30}ms` }}>
-                <Link href={`/markets/${q.symbol}`} className={`${s.watchRow} press`}>
+              <li key={q.symbol}>
+                <Link href={`/markets/${q.symbol}`} className={`${s.watchRow} row`}>
                   <span className={s.watchWho}>
                     <span className={s.watchName}>{q.name}</span>
                     <span className="ticker">{q.symbol}</span>
                   </span>
                   <Spark values={q.spark} width={64} height={28} dir={direction(q.pct_change)} />
                   <span className={s.watchPrice}>
-                    <CountUp className="num" value={q.close} from={q.prev_close ?? q.close} format={rupees} />
+                    <span className="num">{rupees(q.close)}</span>
                     <Delta value={q.pct_change} />
                   </span>
                 </Link>
@@ -134,7 +133,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
                   type="button"
                   role="checkbox"
                   aria-checked={on}
-                  className={`${s.pick} press`}
+                  className={`${s.pick} row`}
                   onClick={() => setWatch((prev) => (on ? prev.filter((x) => x !== q.symbol) : all.filter((x) => x === q.symbol || prev.includes(x))))}
                 >
                   <span className={s.box} aria-hidden="true">

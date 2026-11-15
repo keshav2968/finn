@@ -37,8 +37,8 @@ export default function Page() {
             const counts = c.doc!.track_record?.counts;
             const total = counts ? Object.values(counts).reduce((n, v) => n + v, 0) : 0;
             return (
-              <li key={c.symbol} style={{ animationDelay: `${i * 50}ms` }}>
-                <Link href={`/research/${c.symbol}`} className={`${s.card} press`}>
+              <li key={c.symbol}>
+                <Link href={`/research/${c.symbol}`} className={`${s.card} row`}>
                   <span className={s.cardHead}>
                     <span className={s.indexName}>{c.name}</span>
                     <span className={`ticker ${s.ticker}`}>{c.symbol}</span>
@@ -76,7 +76,7 @@ export default function Page() {
           <ul className={s.index}>
             {notYet.map((c) => (
               <li key={c.symbol}>
-                <Link href={`/research/${c.symbol}`} className={s.indexRow}>
+                <Link href={`/research/${c.symbol}`} className={`${s.indexRow} row`}>
                   <span className={s.indexText}>
                     <span className={s.indexName}>
                       {c.name} <span className={`ticker ${s.ticker}`}>{c.symbol}</span>

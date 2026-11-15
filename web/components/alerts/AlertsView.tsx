@@ -68,7 +68,7 @@ export default function AlertsView({ data }: { data: InboxData }) {
           <h2 id="caught" className={u.sectionHead}>
             Notifications <span>{readLoaded ? `${unread} unread` : ""}</span>
           </h2>
-          <button type="button" className={u.textButton} onClick={markAll} disabled={unread === 0}>
+          <button type="button" className={`${u.textButton} drawLine`} onClick={markAll} disabled={unread === 0}>
             <CheckCheck size={16} strokeWidth={2} aria-hidden="true" style={{ verticalAlign: "-3px", marginRight: 4 }} />
             Mark all read
           </button>
@@ -92,8 +92,8 @@ export default function AlertsView({ data }: { data: InboxData }) {
               const symbol = r.kind === "price" ? r.alert.symbol : r.card.lead.symbol;
               const move = r.kind === "price" ? { pct: r.alert.pct_change, date: r.alert.date } : dayMove(data, symbol);
               return (
-                <li key={r.key} style={{ animationDelay: `${Math.min(i, 10) * 30}ms` }}>
-                  <button type="button" className={`${s.item} press`} data-read={isRead || undefined} onClick={() => openRow(r)}>
+                <li key={r.key}>
+                  <button type="button" className={`${s.item} row`} data-read={isRead || undefined} onClick={() => openRow(r)}>
                     <span className={s.icon} data-kind={r.kind} aria-hidden="true">
                       <BellRing size={16} strokeWidth={2} />
                     </span>

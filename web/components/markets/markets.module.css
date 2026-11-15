@@ -12,14 +12,8 @@
 .breadth span {
   flex-basis: 0;
   transform-origin: left;
-  animation: grow 700ms var(--ease) backwards;
 }
 
-@keyframes grow {
-  from {
-    transform: scaleX(0);
-  }
-}
 
 .breadth [data-dir="up"] {
   background: var(--pos);
@@ -75,18 +69,11 @@
   gap: 6px;
   color: var(--fg);
   scroll-snap-align: start;
-  animation: storyIn 360ms var(--ease) backwards;
   padding: 0 var(--s2) 0 0;
   border-right: 1px solid var(--border);
   border-radius: 0;
 }
 
-@keyframes storyIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-}
 
 .moverName {
   font-size: var(--t-xs);
@@ -126,7 +113,6 @@
 }
 
 .watch li {
-  animation: storyIn 320ms var(--ease) backwards;
 }
 
 .watchRow {
@@ -140,9 +126,6 @@
   color: var(--fg);
 }
 
-.watchRow:active {
-  background: var(--card);
-}
 
 .watchWho {
   display: grid;
@@ -299,14 +282,8 @@
 .bars rect {
   transform-box: fill-box;
   transform-origin: bottom;
-  animation: barUp 600ms var(--ease) backwards;
 }
 
-@keyframes barUp {
-  from {
-    transform: scaleY(0);
-  }
-}
 
 .marker {
   cursor: pointer;
@@ -316,15 +293,9 @@
 .markerDot {
   transform-box: fill-box;
   transform-origin: center;
-  animation: pop 420ms var(--ease) 700ms backwards;
   transition: transform 140ms var(--ease);
 }
 
-@keyframes pop {
-  from {
-    transform: scale(0);
-  }
-}
 
 .marker:hover .markerDot,
 .marker:focus-visible .markerDot {
@@ -426,14 +397,8 @@
   border-radius: 50%;
   background: var(--fg);
   border: 3px solid var(--canvas);
-  animation: slideIn 700ms var(--ease) backwards;
 }
 
-@keyframes slideIn {
-  from {
-    left: 0;
-  }
-}
 
 .returns {
   display: flex;
@@ -526,11 +491,3 @@
   font-size: var(--t-md);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .bars rect,
-  .markerDot,
-  .rangeDot,
-  .breadth span {
-    animation: none;
-  }
-}

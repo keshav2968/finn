@@ -197,27 +197,88 @@ button {
   white-space: nowrap;
 }
 
-/* ---------- motion ---------- */
+/* ---------- motion ----------
+   Three kinds, nothing else: the first screen's entrance (News, once a visit), state changes
+   (a tab swap, a sheet, a segment), and the hover and press layer. Nothing moves because a
+   page opened or scrolled. Timings: hover 150ms in, 120ms out, press 90ms. */
 
-/* Each tab and stock page fades up when it mounts (app/template.tsx). */
-.pageEnter {
-  animation: pageEnter 280ms var(--ease) backwards; /* not "both": a lingering transform would trap the fixed sheets */
+:root {
+  --m-in: 150ms;
+  --m-out: 120ms;
+  --m-press: 90ms;
+  --m-ease-enter: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes pageEnter {
+/* A tab or page swap: a short cross-fade, no travel (opacity only, so fixed sheets stay put). */
+.pageEnter {
+  animation: pageSwap 120ms linear backwards;
+}
+
+@keyframes pageSwap {
   from {
     opacity: 0;
-    transform: translateY(8px);
   }
 }
 
-/* Press feedback for anything tappable that isn't a plain link. */
+/* The first screen's entrance: News on a fresh visit. Header first, then the first two
+   stories, 520ms each, 60ms apart; about 0.8s in all. */
+.enter {
+  animation: enter 520ms var(--m-ease-enter) backwards;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* Buttons and chips: step up 1px on hover, sink 1px and scale .985 on press. */
 .press {
-  transition: transform 120ms var(--ease), background-color 160ms var(--ease);
+  transition:
+    transform var(--m-out) var(--ease),
+    background-color var(--m-out) var(--ease),
+    border-color var(--m-out) var(--ease),
+    color var(--m-out) var(--ease);
 }
 
 .press:active {
-  transform: scale(0.985);
+  transform: translateY(1px) scale(0.985);
+  transition-duration: var(--m-press);
+}
+
+/* Rows (a story, a stock, an alert, a company): a faint ink wash on hover, a deeper one on press. */
+.row {
+  transition: background-color var(--m-out) var(--ease);
+}
+
+.row:active {
+  background-color: color-mix(in srgb, var(--fg) 7%, transparent);
+  transition-duration: var(--m-press);
+}
+
+/* Text actions: an underline draws from the left. */
+.drawLine {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+  transition: background-size var(--m-out) var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .press:hover {
+    transform: translateY(-1px);
+    transition-duration: var(--m-in);
+  }
+  .press:active {
+    transform: translateY(1px) scale(0.985);
+  }
+  .row:hover {
+    background-color: color-mix(in srgb, var(--fg) 4%, transparent);
+    transition-duration: var(--m-in);
+  }
+  .drawLine:hover {
+    background-size: 100% 1px;
+    transition-duration: var(--m-in);
+  }
 }
 
 /* Skeleton blocks while a page or chart loads. */
@@ -242,7 +303,12 @@ button {
   .skel {
     animation: none;
   }
-  .press:active {
+  .enter,
+  .pageEnter {
+    animation: none;
+  }
+  .press:active,
+  .press:hover {
     transform: none;
   }
 
@@ -251,40 +317,5 @@ button {
   *::after {
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
-  }
-}
-
-/* Charts draw in: a line with pathLength=1 strokes from left to right, its fill fades up. */
-.drawIn {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: drawIn 900ms var(--ease) 80ms forwards;
-}
-
-@keyframes drawIn {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.fadeIn {
-  opacity: 0;
-  animation: fadeIn 600ms var(--ease) 300ms forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .drawIn {
-    animation: none;
-    stroke-dashoffset: 0;
-  }
-  .fadeIn {
-    animation: none;
-    opacity: 1;
   }
 }
