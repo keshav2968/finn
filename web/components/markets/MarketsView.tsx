@@ -52,7 +52,7 @@ export default function MarketsView({ quotes }: { quotes: Quote[] }) {
       <section className={u.section} aria-labelledby="movers">
         <div className={s.sectionRow}>
           <h2 id="movers" className={u.sectionHead}>
-            Biggest moves{asOf ? `, ${day(asOf)}` : ""}
+            {asOf ? `${day(asOf)} moves` : "Moves"}
           </h2>
           <div className={u.segment} role="group" aria-label="Movers">
             {(["gainers", "losers", "volume"] as const).map((k) => (
