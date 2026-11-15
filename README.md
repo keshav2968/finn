@@ -15,7 +15,7 @@ close). Everything you see was built from that snapshot by the code in this repo
 |---|---|
 | Portfolio | 15 NSE names across banks, NBFC, IT, FMCG, pharma, capital goods, consumer internet, chemicals, a conglomerate and a small cap (`config/portfolio.yaml`) |
 | Research demo set | INFY, POLYCAB, KPITTECH, ETERNAL, plus HCLTECH run as an unseen ticker |
-| Tests | 263 Python (offline, real fixtures) + 7 web (`node --test`) |
+| Tests | 266 Python (offline, real fixtures) + 7 web (`node --test`) |
 | Spend | ₹0. Free tiers only (Groq, then Gemini as fallback). Token log below |
 
 ---
@@ -26,19 +26,29 @@ The app has four tabs in a bottom bar:
 
 | Tab | What's there |
 |---|---|
-| **News** | The push feed: headline-first stories, each with a ticker chip showing the stock's move on the last session, an impact label (High impact, Notable, Routine) and category filter chips. Stories are read or unread: opening one marks it read, and "Mark all read" clears the lot. Top stories carry a price strip for the window with the filing's day marked. |
+| **News** | The push feed: headline-first stories, each with the company's logo, a ticker chip showing the stock's move on the last session and a category label, grouped under Needs attention and Worth knowing, with category filter chips. Results stories show their headline figure's last three quarters as tiny bars. Stories are read or unread: opening one marks it read, and "Mark all read" clears the lot. Top stories carry a price strip for the window with the filing's day marked. |
 | **Markets** | A watchlist you choose from the 15 holdings: price, day change and a 30-session sparkline per row, plus top movers (up, down, volume) and an advance/decline bar. Each stock has its own page: a chart with 1M/3M/6M/1Y ranges, volume underneath and the snapshot's filings marked on the price line (tap one to open it; drag to read any session), plus key numbers, 52-week range, returns and the filing list. |
 | **Research** | Search for any ticker, the researched companies with their track record and verdict mix, and the rest of the portfolio with the command that researches them. |
-| **Alerts** | What crossed your rules (read/unread), the alert rules themselves, dark/light theme, and installing the app. |
+| **Alerts** | What crossed your rules (read/unread), the alert rules themselves, phone notifications (what works on this device, a test, optional Web Push), dark/light theme, replaying the intro, and installing the app. |
 
-Every tab ends with a footer that names the data sources in words (no logos), gives the
-snapshot date, and says it isn't investment advice.
+Every tab ends with a footer that names the data sources in words, gives the snapshot date,
+says it isn't investment advice, and says company logos are trademarks of their owners,
+shown for identification only.
 
 **Design system:**
-- **Type:** one family (Plus Jakarta Sans) with tabular figures for every number; JetBrains
-  Mono only for ticker symbols. An eight-step type scale and sentence-case section heads.
-- **Colour:** teal only on things you can tap; green and red only on price moves (reported
-  figures and research verdicts are ink, told apart by shape).
+- **Type:** Geist with tabular figures for every number (it has the ₹ sign, which several
+  free sans families lack in their Latin subset); Geist Mono only for ticker symbols. An
+  eight-step type scale and sentence-case section heads.
+- **Colour:** a charcoal ground with a slight violet tint; violet only on things you can tap;
+  green and red only on price moves (reported figures and research verdicts are ink, told
+  apart by shape); small tints for the results, management and fund-raise chips. Every text
+  pair is at least 4.5:1 in both themes.
+- **Company logos:** each holding's own logo on a light tile, at a fixed size, on news cards,
+  alerts, the watchlist and the stock page. `scripts/fetch_logos.py` downloads them once from
+  free sources (the company's site, Google's or DuckDuckGo's favicon service), keeps the
+  sharpest, records where each came from in `web/public/logos/sources.json`, and skips any
+  under 128px. The app serves them from its own domain; a missing logo shows the company's
+  monogram on a tile tinted by its sector.
 - **Layout:** 1px hairlines between rows instead of boxes inside boxes.
 - **Charts:** label their own high, low, last close and filing dates on the line.
 
@@ -55,9 +65,11 @@ opened or scrolled, and everything rests under "reduce motion".
 - **iPhone/iPad:** there's no install API, so FINN shows a one-time sheet with the Share →
   Add to Home Screen steps, only in a browser and not once installed. It also sets the
   apple-touch-icon, the standalone meta tags and a translucent status bar.
-- **Offline:** the service worker keeps the four tabs working offline. It caches only FINN's
-  own public pages and hashed assets, never cross-origin filings, and there's no personal
-  data in the app to cache.
+- **First run:** an installed app opens once on a four-screen swipeable intro (skippable,
+  replayable from Alerts). It never shows in a browser tab.
+- **Offline:** the service worker keeps the four tabs and the company logos working
+  offline. It caches only FINN's own public pages and assets, never cross-origin filings,
+  and there's no personal data in the app to cache.
 - **Security headers:** CSP, HSTS, `X-Frame-Options: DENY`, nosniff, a referrer policy, a
   permissions policy and COOP are set in `web/next.config.ts`. The CSP allows inline scripts
   because statically generated Next.js pages need them; nothing loads from another origin.
@@ -186,7 +198,7 @@ python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\
 pip install -r requirements-dev.txt
 cp .env.example .env     # add free GROQ_API_KEY and GOOGLE_API_KEY (only the LLM steps need them)
 
-pytest -q                                   # 263 offline tests, no keys, no network
+pytest -q                                   # 266 offline tests, no keys, no network
 python scripts/llm_check.py --ping          # one tiny call per model in config/models.yaml
 
 python scripts/build_seed.py                # prices + filings + screener for the portfolio (~3 min)
@@ -198,6 +210,8 @@ python scripts/build_management_cards.py    # management-change filings → peop
 python scripts/build_research.py HCLTECH    # any NSE symbol, in the portfolio or not
 python scripts/build_research.py INFY --no-llm     # numbers and transcript filtering only
 python scripts/build_research.py INFY --dry-run    # print exactly what the extractor is sent
+
+python scripts/fetch_logos.py               # company logos, once (then check data/cache/logos/contact-sheet.png)
 ```
 
 Commit `data/seed` and push; Vercel redeploys with the new data.
@@ -339,8 +353,11 @@ includes all development re-runs of the research pipeline, not one clean pass.
   - The extractor can miss an open-ended line (KPIT's "30% plus" for solution products).
   - Screener's margin can differ from the company's own definition (KPIT FY26: 18.9% vs
     the stated 20.8%). The verdict uses the company's stated figure when it gives one.
-- **No phone notifications yet.** Alerts show when you open the app; nothing is pushed to
-  the phone. On iOS, web push only works for apps added to the home screen (iOS 16.4+).
+- **Phone notifications are opt-in and manual.** Alerts show when you open the app. Real
+  Web Push works once you add your own free VAPID keys and run the push-alerts workflow by
+  hand (see above); nothing is sent automatically, because the data is a frozen snapshot and
+  there's no server. On iPhone, web push only works for an app added to the Home Screen
+  (iOS 16.4+).
 - **Charts are end of day.** One close per session from the snapshot. Filing markers only
   go back as far as the snapshot's filings (about 60 days), so the 1Y chart has markers in
   its last two months only.
@@ -356,5 +373,5 @@ includes all development re-runs of the research pipeline, not one clean pass.
    ticker needs no terminal.
 4. Fix the results-card misreads above, and add a person-background step for management
    changes from public sources.
-5. Run ingestion on a schedule from a machine the exchanges don't block, with push
-   notifications for alerts.
+5. Run ingestion on a schedule from a machine the exchanges don't block, and send the push
+   notifications automatically after each run.
