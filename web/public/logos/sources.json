@@ -1,0 +1,62 @@
+{
+  "ETERNAL": {
+    "source": "site",
+    "url": "https://www.eternal.com:443/android-chrome-512x512.png",
+    "native": 512,
+    "flags": []
+  },
+  "HCLTECH": {
+    "source": "site",
+    "url": "https://hcltech.imgix.net/sites/default/files/apple-touch/apple-touch-icon-180x180.png",
+    "native": 180,
+    "flags": []
+  },
+  "HINDUNILVR": {
+    "source": "google",
+    "url": "https://www.google.com/s2/favicons?domain=hul.co.in&sz=256",
+    "native": 180,
+    "flags": []
+  },
+  "INFY": {
+    "source": "google",
+    "url": "https://www.google.com/s2/favicons?domain=infosys.com&sz=256",
+    "native": 180,
+    "flags": []
+  },
+  "KPITTECH": {
+    "source": "site",
+    "url": "https://www.kpit.com/wp-content/uploads/2025/06/cropped-favicon-1-192x192.png",
+    "native": 191,
+    "flags": []
+  },
+  "MARKSANS": {
+    "source": "site",
+    "url": "https://marksanspharma.com/assets/img/apple-touch-icon.png",
+    "native": 180,
+    "flags": []
+  },
+  "POLYCAB": {
+    "source": "site",
+    "url": "https://polycab.com/android-chrome-512x512.png",
+    "native": 512,
+    "flags": []
+  },
+  "SUNPHARMA": {
+    "source": "google",
+    "url": "https://www.google.com/s2/favicons?domain=sunpharma.com&sz=256",
+    "native": 184,
+    "flags": []
+  },
+  "TATACHEM": {
+    "source": "site",
+    "url": "https://www.tatachemicals.com/assets/common/meta/apple-icon-180x180.png",
+    "native": 180,
+    "flags": []
+  },
+  "TITAN": {
+    "source": "site",
+    "url": "https://www.titancompany.in/sites/default/files/brand-logo_0.png",
+    "native": 159,
+    "flags": []
+  }
+}
