@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ThemeKeeper from "@/components/ThemeKeeper";
 
 // Two free fonts (OFL), self-hosted from @fontsource-variable so builds need no font CDN.
 // Plus Jakarta Sans: headings, names and copy (its latin-ext file carries ₹).
@@ -51,12 +52,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en-IN"
-      data-theme="dark"
       className={`${jakarta.variable} ${jakartaExt.variable} ${jbm.variable}`}
       suppressHydrationWarning
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <ThemeKeeper />
         {children}
       </body>
     </html>

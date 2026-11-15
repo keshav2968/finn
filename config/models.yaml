@@ -68,6 +68,13 @@ tasks:
       - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
       - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
   # Research: verdicts on up to four promise groups, with their quotes and computed actuals.
+  # Short (5-word) display labels for "other" promises: tiny input, cosmetic output.
+  label_promises:
+    temperature: 0
+    max_output_tokens: 800
+    chain:
+      - {provider: groq,   model: openai/gpt-oss-20b,     params: {reasoning_effort: low}}
+      - {provider: gemini, model: gemini-3.5-flash-lite, params: {thinking_level: low}}
   judge_promises:
     temperature: 0
     max_output_tokens: 2000

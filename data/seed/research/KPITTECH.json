@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "KPITTECH",
   "name": "KPIT Technologies Ltd",
-  "generated_at": "2026-11-15T02:59:35+05:30",
+  "generated_at": "2026-11-15T13:58:07+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -515,7 +515,9 @@
       "notes": [
         "screener's operating profit is used as EBITDA; the company's own definition can differ",
         "rationale replaced: it used an older figure than the latest call"
-      ]
+      ],
+      "short_label": "EBITDA margin",
+      "label_by": "python"
     }
   ],
   "dropped": [],
@@ -577,5 +579,22 @@
       "Unverified": 0
     },
     "text": "1 checkable promise: 1 missed"
-  }
+  },
+  "quiet": [
+    {
+      "metric": "ebitda_margin",
+      "label": "EBITDA margin",
+      "last_call": "Nov 2025",
+      "last_target": "21%",
+      "calls_since": 4,
+      "so_far": {
+        "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+        "value": 15.57,
+        "unit": "%",
+        "source": "screener.in consolidated quarterly results",
+        "url": "https://www.screener.in/company/KPITTECH/consolidated/"
+      },
+      "text": "EBITDA margin guidance has gone quiet: last given on the Nov 2025 call (21%), none in the 4 calls since. EBITDA margin, FY27 so far (2 of 4 quarters): 15.57% (screener)."
+    }
+  ]
 }

@@ -1,0 +1,1566 @@
+{
+  "schema": 1,
+  "symbol": "HCLTECH",
+  "name": "HCL Technologies Ltd",
+  "generated_at": "2026-11-15T13:58:29+05:30",
+  "status": "ok",
+  "notes": [],
+  "numbers": {
+    "basis": "consolidated",
+    "layout": "standard",
+    "unit": "₹ crore",
+    "latest_quarter": "Sep 2026",
+    "latest_fiscal": "Q2 FY27",
+    "quarters": [
+      {
+        "period": "Dec 2024",
+        "fiscal": "Q3 FY25",
+        "revenue": 29890.0,
+        "revenue_yoy": 5.08,
+        "net_profit": 4594.0,
+        "net_profit_yoy": 5.58,
+        "ebitda": 6860.0,
+        "ebitda_margin": 22.95,
+        "ebit_margin": 19.47
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "Q4 FY25",
+        "revenue": 30246.0,
+        "revenue_yoy": 6.13,
+        "net_profit": 4309.0,
+        "net_profit_yoy": 7.86,
+        "ebitda": 6482.0,
+        "ebitda_margin": 21.43,
+        "ebit_margin": 17.99
+      },
+      {
+        "period": "Jun 2025",
+        "fiscal": "Q1 FY26",
+        "revenue": 30349.0,
+        "revenue_yoy": 8.17,
+        "net_profit": 3844.0,
+        "net_profit_yoy": -9.74,
+        "ebitda": 6035.0,
+        "ebitda_margin": 19.89,
+        "ebit_margin": 16.28
+      },
+      {
+        "period": "Sep 2025",
+        "fiscal": "Q2 FY26",
+        "revenue": 31942.0,
+        "revenue_yoy": 10.67,
+        "net_profit": 4236.0,
+        "net_profit_yoy": -0.02,
+        "ebitda": 6545.0,
+        "ebitda_margin": 20.49,
+        "ebit_margin": 17.22
+      },
+      {
+        "period": "Dec 2025",
+        "fiscal": "Q3 FY26",
+        "revenue": 33872.0,
+        "revenue_yoy": 13.32,
+        "net_profit": 4082.0,
+        "net_profit_yoy": -11.14,
+        "ebitda": 7412.0,
+        "ebitda_margin": 21.88,
+        "ebit_margin": 18.56
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "Q4 FY26",
+        "revenue": 33981.0,
+        "revenue_yoy": 12.35,
+        "net_profit": 4490.0,
+        "net_profit_yoy": 4.2,
+        "ebitda": 6712.0,
+        "ebitda_margin": 19.75,
+        "ebit_margin": 16.54
+      },
+      {
+        "period": "Jun 2026",
+        "fiscal": "Q1 FY27",
+        "revenue": 34579.0,
+        "revenue_yoy": 13.94,
+        "net_profit": 4626.0,
+        "net_profit_yoy": 20.34,
+        "ebitda": 6870.0,
+        "ebitda_margin": 19.87,
+        "ebit_margin": 16.86
+      },
+      {
+        "period": "Sep 2026",
+        "fiscal": "Q2 FY27",
+        "revenue": 35620.0,
+        "revenue_yoy": 11.51,
+        "net_profit": 5132.0,
+        "net_profit_yoy": 21.15,
+        "ebitda": 7439.0,
+        "ebitda_margin": 20.88,
+        "ebit_margin": 18.04
+      }
+    ],
+    "years": [
+      {
+        "period": "Mar 2022",
+        "fiscal": "FY22",
+        "revenue": 85651.0,
+        "revenue_growth": 13.63,
+        "net_profit": 13523.0,
+        "net_profit_growth": 21.08,
+        "roce_pct": 25.0,
+        "ebitda_margin": 23.97
+      },
+      {
+        "period": "Mar 2023",
+        "fiscal": "FY23",
+        "revenue": 101456.0,
+        "revenue_growth": 18.45,
+        "net_profit": 14845.0,
+        "net_profit_growth": 9.78,
+        "roce_pct": 28.0,
+        "ebitda_margin": 22.3
+      },
+      {
+        "period": "Mar 2024",
+        "fiscal": "FY24",
+        "revenue": 109913.0,
+        "revenue_growth": 8.34,
+        "net_profit": 15710.0,
+        "net_profit_growth": 5.83,
+        "roce_pct": 30.0,
+        "ebitda_margin": 22.02
+      },
+      {
+        "period": "Mar 2025",
+        "fiscal": "FY25",
+        "revenue": 117055.0,
+        "revenue_growth": 6.5,
+        "net_profit": 17399.0,
+        "net_profit_growth": 10.75,
+        "roce_pct": 32.0,
+        "ebitda_margin": 21.79
+      },
+      {
+        "period": "Mar 2026",
+        "fiscal": "FY26",
+        "revenue": 130144.0,
+        "revenue_growth": 11.18,
+        "net_profit": 16652.0,
+        "net_profit_growth": -4.29,
+        "roce_pct": 30.0,
+        "ebitda_margin": 20.56
+      }
+    ],
+    "fiscal_year_to_date": {
+      "period": "FY27",
+      "metrics": {
+        "revenue_growth": {
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 12.7,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 70199.0,
+            "revenue_year_earlier": 62291.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        "profit_growth": {
+          "label": "Net profit growth YoY, FY27 so far (2 of 4 quarters)",
+          "value": 20.77,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "net_profit": 9758.0,
+            "net_profit_year_earlier": 8080.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        "ebitda_margin": {
+          "label": "EBITDA margin, FY27 so far (2 of 4 quarters)",
+          "value": 20.38,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 14309.0,
+            "revenue": 70199.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        "ebit_margin": {
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 17.46,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 14309.0,
+            "depreciation": 2051.0,
+            "revenue": 70199.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        }
+      }
+    },
+    "source": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/HCLTECH/consolidated/",
+      "fetched_at": "2026-11-15T13:58:27+05:30"
+    }
+  },
+  "transcripts": [
+    {
+      "call": "Oct 2026",
+      "kind": "earnings",
+      "label": "Oct 2026 (Q2 FY27)",
+      "quarter": "Sep 2026",
+      "fiscal": "Q2 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Nitin Mohta"
+      ],
+      "passages": 69,
+      "sent": 8,
+      "sent_chars": 6707,
+      "promises": 3
+    },
+    {
+      "call": "Jul 2026",
+      "kind": "earnings",
+      "label": "Jul 2026 (Q1 FY27)",
+      "quarter": "Jun 2026",
+      "fiscal": "Q1 FY27",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Nitin Mohta"
+      ],
+      "passages": 88,
+      "sent": 5,
+      "sent_chars": 3584,
+      "promises": 3
+    },
+    {
+      "call": "Apr 2026",
+      "kind": "earnings",
+      "label": "Apr 2026 (Q4 FY26)",
+      "quarter": "Mar 2026",
+      "fiscal": "Q4 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Nitin Mohta"
+      ],
+      "passages": 75,
+      "sent": 7,
+      "sent_chars": 5842,
+      "promises": 2
+    },
+    {
+      "call": "Jan 2026",
+      "kind": "earnings",
+      "label": "Jan 2026 (Q3 FY26)",
+      "quarter": "Dec 2025",
+      "fiscal": "Q3 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=08d64f75-ab38-4158-8b8a-0d933bc007d3.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Nitin Mohta"
+      ],
+      "passages": 87,
+      "sent": 8,
+      "sent_chars": 5037,
+      "promises": 3
+    },
+    {
+      "call": "Oct 2025",
+      "kind": "earnings",
+      "label": "Oct 2025 (Q2 FY26)",
+      "quarter": "Sep 2025",
+      "fiscal": "Q2 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=172ac7e9-7ce4-4c53-9e40-8b70187da3f9.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Ramachandran Sundararajan",
+        "Nitin Mohta"
+      ],
+      "passages": 94,
+      "sent": 7,
+      "sent_chars": 5406,
+      "promises": 3
+    },
+    {
+      "call": "Jul 2025",
+      "kind": "earnings",
+      "label": "Jul 2025 (Q1 FY26)",
+      "quarter": "Jun 2025",
+      "fiscal": "Q1 FY26",
+      "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70e8e2f8-36ca-4816-9bce-5587cead0c23.pdf",
+      "error": null,
+      "management": [
+        "C. Vijayakumar",
+        "Shiv Walia",
+        "Ramachandran Sundararajan",
+        "Vijay Guntur",
+        "Nitin Mohta"
+      ],
+      "passages": 95,
+      "sent": 7,
+      "sent_chars": 4647,
+      "promises": 2
+    }
+  ],
+  "ledger": [
+    {
+      "id": "g1",
+      "metric": "capex",
+      "metric_label": "Capex",
+      "metric_text": "Strategic investment of up to INR3,500 crores",
+      "scope": "company",
+      "period": "unspecified",
+      "period_status": "no end date",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "C. Vijayakumar",
+          "quote": "We will make a strategic investment of up to INR3,500 crores and with the potential to scale to 50 megawatts of capacity.",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Target amount and timeline are unspecified, so the outcome remains pending.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": [],
+      "short_label": "Capex",
+      "label_by": "python"
+    },
+    {
+      "id": "g2",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "full year EBIT margin guidance",
+      "scope": "company",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "17–18%",
+        "low": 17,
+        "high": 18,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2025",
+          "call_label": "Jul 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "C. Vijayakumar",
+          "quote": "On margin guidance, we are adjusting our EBIT guidance to 17% to 18%",
+          "target_text": "17–18%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70e8e2f8-36ca-4816-9bce-5587cead0c23.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Shiv Walia",
+          "quote": "We remain on track to deliver our full-year EBIT margin guidance of 17%-18%.",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=172ac7e9-7ce4-4c53-9e40-8b70187da3f9.pdf"
+        },
+        {
+          "id": "s3",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Shiv Walia",
+          "quote": "we remain on track to deliver on our full year EBIT margin guidance of 17% to 18%",
+          "target_text": "17–18%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=08d64f75-ab38-4158-8b8a-0d933bc007d3.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g2-n1",
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY26",
+          "value": 17.17,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 26704.0,
+            "depreciation": 4355.0,
+            "revenue": 130144.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g2-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shiv Walia",
+          "passage_id": "t3-p29",
+          "text": "Moving on to the profitability, our EBIT is at $2,526 million at 17.2% of revenue, which is down by 107 basis points YoY basis. Adjusted for restructuring, our EBIT margins for FY26 stood at 17.9%, down 42 basis points versus last year. Project Ascend has been instrumental in helping us stabilize our margins as we navigate a tough FY’26 with uncertain demand environment. Including the same, FY’26 EBIT is at $2,417 million and Net Income is at $1,877 million.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        },
+        {
+          "id": "g2-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Nitin Mohta",
+          "passage_id": "t1-p5",
+          "text": "Our EBIT margin was 18.2%, an improvement of 131 basis points sequentially and 71 basis points YoY, and it came ahead of our expectations.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g2-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our operating margins stood at 16.9%, an improvement of 39 basis points QoQ and an increase of 56 basis points YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "within",
+        "actual": 17.17,
+        "target_low": 17,
+        "target_high": 18,
+        "complete": true,
+        "evidence_id": "g2-n1"
+      },
+      "verdict": "Delivered",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Management stated 17.2% (Apr 2026) against a 17–18% target.",
+      "cited": [
+        "s1",
+        "g2-n1",
+        "g2-q2"
+      ],
+      "actual_quote": {
+        "text": "Our operating margin for the full year was 17.2%, a dip of 107 basis points compared to last financial year.",
+        "speaker": "C. Vijayakumar",
+        "call": "Apr 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf",
+        "found_by": "python"
+      },
+      "stated": {
+        "actual": 17.2,
+        "unit": "%",
+        "position": "within",
+        "call": "Apr 2026",
+        "speaker": "C. Vijayakumar"
+      },
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2025",
+            "fiscal": "Q1 FY26",
+            "low": 17,
+            "high": 18
+          },
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 17,
+            "high": 18
+          }
+        ],
+        "actual": {
+          "value": 17.2,
+          "kind": "stated",
+          "label": "Stated by C. Vijayakumar, Apr 2026",
+          "complete": true
+        }
+      },
+      "notes": [
+        "the model's quoted actual (Oct 2026) is about a different period than FY26; dropped",
+        "rationale replaced: it used numbers that are not in the evidence"
+      ],
+      "short_label": "Operating (EBIT) margin",
+      "label_by": "python"
+    },
+    {
+      "id": "g3",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "FY27 EBIT margin guidance",
+      "scope": "company",
+      "period": "FY27",
+      "period_status": "in progress (2 of 4 quarters reported)",
+      "target": {
+        "text": "17.5–18.5%",
+        "low": 17.5,
+        "high": 18.5,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Apr 2026",
+          "call_label": "Apr 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "C. Vijayakumar",
+          "quote": "EBIT margin guidance is 17.5% to 18.5%",
+          "target_text": "17.5–18.5%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Nitin Mohta",
+          "quote": "our EBIT margin guidance remains at 17.5% to 18.5%",
+          "target_text": "17.5–18.5%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g3-n1",
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "value": 17.46,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "operating_profit": 14309.0,
+            "depreciation": 2051.0,
+            "revenue": 70199.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g3-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Nitin Mohta",
+          "passage_id": "t1-p5",
+          "text": "Our EBIT margin was 18.2%, an improvement of 131 basis points sequentially and 71 basis points YoY, and it came ahead of our expectations.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g3-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our operating margins stood at 16.9%, an improvement of 39 basis points QoQ and an increase of 56 basis points YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        },
+        {
+          "id": "g3-q3",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t3-p5",
+          "text": "Our operating margin for the quarter came at 16.5%, and it would be 17.7%, excluding restructuring costs.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "below",
+        "actual": 17.46,
+        "target_low": 17.5,
+        "target_high": 18.5,
+        "complete": false,
+        "evidence_id": "g3-n1"
+      },
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 is still in progress; margin target cannot be judged yet.",
+      "cited": [
+        "s1",
+        "s2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Apr 2026",
+            "fiscal": "Q4 FY26",
+            "low": 17.5,
+            "high": 18.5
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 17.5,
+            "high": 18.5
+          }
+        ],
+        "actual": {
+          "value": 17.46,
+          "kind": "screener",
+          "label": "Operating (EBIT) margin, FY27 so far (2 of 4 quarters)",
+          "complete": false
+        }
+      },
+      "notes": [],
+      "short_label": "Operating (EBIT) margin",
+      "label_by": "python"
+    },
+    {
+      "id": "g4",
+      "metric": "operating_margin",
+      "metric_label": "Operating (EBIT) margin",
+      "metric_text": "Margin guidance of 17.5% to 18.5% for FY27",
+      "scope": "company",
+      "period": "FY28",
+      "period_status": "in progress",
+      "target": {
+        "text": "17.5–18.5%",
+        "low": 17.5,
+        "high": 18.5,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Shiv Walia",
+          "quote": "As regard maybe the longer term, the medium-term horizon of around FY28, we will, give that guidance at an appropriate time when we give guidance for FY28 next year. At this stage, time I would just like to focus on this year's margin guidance, which is 17.5% to 18.5%.",
+          "target_text": "17.5–18.5%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g4-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Nitin Mohta",
+          "passage_id": "t1-p5",
+          "text": "Our EBIT margin was 18.2%, an improvement of 131 basis points sequentially and 71 basis points YoY, and it came ahead of our expectations.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g4-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our operating margins stood at 16.9%, an improvement of 39 basis points QoQ and an increase of 56 basis points YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY28 guidance is future‑looking; period not completed, so outcome pending.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 17.5,
+            "high": 18.5
+          }
+        ],
+        "actual": null
+      },
+      "notes": [],
+      "short_label": "Operating (EBIT) margin",
+      "label_by": "python"
+    },
+    {
+      "id": "g5",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "full year services revenue growth guidance",
+      "scope": "company",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": "4.75–5.25%",
+        "low": 4.75,
+        "high": 5.25,
+        "unit": "%",
+        "basis": "constant_currency"
+      },
+      "revised": true,
+      "revision_direction": "raised",
+      "revision_path": "3–5% → 4.75–5.25%",
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2025",
+          "call_label": "Jul 2025 (Q1 FY26)",
+          "fiscal": "Q1 FY26",
+          "speaker": "C. Vijayakumar",
+          "quote": "Looking ahead, we are improving our revenue guidance now for FY26 to 3% to 5% in constant currency",
+          "target_text": "3–5%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70e8e2f8-36ca-4816-9bce-5587cead0c23.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Jan 2026",
+          "call_label": "Jan 2026 (Q3 FY26)",
+          "fiscal": "Q3 FY26",
+          "speaker": "Shiv Walia",
+          "quote": "we are raising our full year services revenue growth guidance to 4.75% to 5.25% in constant currency terms",
+          "target_text": "4.75–5.25%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=08d64f75-ab38-4158-8b8a-0d933bc007d3.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g5-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY26",
+          "value": 11.18,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 130144.0,
+            "revenue_year_earlier": 117055.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g5-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shiv Walia",
+          "passage_id": "t3-p26",
+          "text": "Total revenue for the quarter is $3,682 million, a drop of 3.3% QoQ, but with a growth of 2.4% YoY in constant currency. Services revenue for the quarter came in at $3,386 million, a drop of 0.1% QoQ and a growth of 4.2% YoY. Software revenue for the quarter is $307 million, a drop of 28.1% QoQ and a drop of 14.1% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        },
+        {
+          "id": "g5-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Shiv Walia",
+          "passage_id": "t1-p23",
+          "text": "Total revenue for the quarter is $3,724 million, a growth of 2.3% QoQ and 2.6% YoY. Services revenue for the quarter came in at $3,442 million, a growth of 3% QoQ and 4% YoY. HCLSoftware revenue for the quarter is $294 million, representing decline of 5.8% QoQ and 11.2% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g5-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our revenue declined by 0.5% sequentially and increased by 2.6% on YoY basis in constant currency. Our Services business grew 3.5% YoY and declined by 0.7% sequentially in constant currency. HCL Software annual recurring revenue is now at $1.063 billion, a 2% increase YoY in constant currency.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "check": {
+        "comparable": false,
+        "position": null,
+        "actual": 11.18,
+        "target_low": 4.75,
+        "target_high": 5.25,
+        "complete": true,
+        "evidence_id": "g5-n1"
+      },
+      "verdict": "Missed",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Management stated 3.9% (Apr 2026) against a 4.75–5.25% target.",
+      "cited": [
+        "s2",
+        "g5-n1"
+      ],
+      "actual_quote": {
+        "text": "In FY'26, we reported a consolidated revenue of $14.7 billion, an increase of 3.9% in constant currency.",
+        "speaker": "C. Vijayakumar",
+        "call": "Apr 2026",
+        "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf",
+        "found_by": "python"
+      },
+      "stated": {
+        "actual": 3.9,
+        "unit": "%",
+        "position": "below",
+        "call": "Apr 2026",
+        "speaker": "C. Vijayakumar"
+      },
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2025",
+            "fiscal": "Q1 FY26",
+            "low": 3,
+            "high": 5
+          },
+          {
+            "call": "Jan 2026",
+            "fiscal": "Q3 FY26",
+            "low": 4.75,
+            "high": 5.25
+          }
+        ],
+        "actual": {
+          "value": 3.9,
+          "kind": "stated",
+          "label": "Stated by C. Vijayakumar, Apr 2026",
+          "complete": true
+        }
+      },
+      "notes": [
+        "guidance is in constant currency terms; screener reports ₹, so the two are not comparable",
+        "model said Unverified but the stated figure settles it: Missed"
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
+    },
+    {
+      "id": "g6",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "Full-year Services revenue growth guidance",
+      "scope": "Services",
+      "period": "FY26",
+      "period_status": "period ended",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "constant_currency"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Shiv Walia",
+          "quote": "On the back of standout quarter and sustained growth momentum, we are raising our full-year Services revenue growth guidance to 4%-5% in constant currency terms.",
+          "target_text": null,
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=172ac7e9-7ce4-4c53-9e40-8b70187da3f9.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g6-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY26",
+          "value": 11.18,
+          "unit": "%",
+          "period": "FY26",
+          "quarters": [
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026"
+          ],
+          "complete": true,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 130144.0,
+            "revenue_year_earlier": 117055.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g6-q1",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "Shiv Walia",
+          "passage_id": "t3-p26",
+          "text": "Total revenue for the quarter is $3,682 million, a drop of 3.3% QoQ, but with a growth of 2.4% YoY in constant currency. Services revenue for the quarter came in at $3,386 million, a drop of 0.1% QoQ and a growth of 4.2% YoY. Software revenue for the quarter is $307 million, a drop of 28.1% QoQ and a drop of 14.1% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        },
+        {
+          "id": "g6-q2",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Shiv Walia",
+          "passage_id": "t1-p23",
+          "text": "Total revenue for the quarter is $3,724 million, a growth of 2.3% QoQ and 2.6% YoY. Services revenue for the quarter came in at $3,442 million, a growth of 3% QoQ and 4% YoY. HCLSoftware revenue for the quarter is $294 million, representing decline of 5.8% QoQ and 11.2% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g6-q3",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our revenue declined by 0.5% sequentially and increased by 2.6% on YoY basis in constant currency. Our Services business grew 3.5% YoY and declined by 0.7% sequentially in constant currency. HCL Software annual recurring revenue is now at $1.063 billion, a 2% increase YoY in constant currency.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Unverified",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "No comparable actual in screener or in later calls.",
+      "cited": [
+        "s1",
+        "g6-n1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": [
+        "guidance is in constant currency terms; screener reports ₹, so the two are not comparable",
+        "rationale replaced: it used numbers that are not in the evidence"
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
+    },
+    {
+      "id": "g7",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "FY27 growth guidance",
+      "scope": "company",
+      "period": "FY27",
+      "period_status": "in progress (2 of 4 quarters reported)",
+      "target": {
+        "text": "2.5–4%",
+        "low": 2.5,
+        "high": 4,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": true,
+      "revision_direction": "raised",
+      "revision_path": "1–4% → 2.5–4%",
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Apr 2026",
+          "call_label": "Apr 2026 (Q4 FY26)",
+          "fiscal": "Q4 FY26",
+          "speaker": "C. Vijayakumar",
+          "quote": "The revenue growth guidance for the full year is 1% to 4% in constant currency",
+          "target_text": "1–4%",
+          "basis": "constant_currency",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        },
+        {
+          "id": "s2",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Nitin Mohta",
+          "quote": "Our FY27 growth guidance is now 2.5% to 4%",
+          "target_text": "2.5–4%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g7-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 12.7,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 70199.0,
+            "revenue_year_earlier": 62291.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g7-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Shiv Walia",
+          "passage_id": "t1-p23",
+          "text": "Total revenue for the quarter is $3,724 million, a growth of 2.3% QoQ and 2.6% YoY. Services revenue for the quarter came in at $3,442 million, a growth of 3% QoQ and 4% YoY. HCLSoftware revenue for the quarter is $294 million, representing decline of 5.8% QoQ and 11.2% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g7-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p5",
+          "text": "Our revenue declined by 0.5% sequentially and increased by 2.6% on YoY basis in constant currency. Our Services business grew 3.5% YoY and declined by 0.7% sequentially in constant currency. HCL Software annual recurring revenue is now at $1.063 billion, a 2% increase YoY in constant currency.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        },
+        {
+          "id": "g7-q3",
+          "kind": "transcript",
+          "call": "Apr 2026",
+          "call_month": "2026-04",
+          "call_quarter": "Mar 2026",
+          "fiscal": "Q4 FY26",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t3-p5",
+          "text": "Coming to our Q4 performance, our revenue for the quarter was $3.7 billion, a decline of 3.3% QoQ, and an increase of 2.4% YoY in constant currency. Advanced AI revenue for the quarter stood at $155.1 million, marking a 6.1% QoQ growth.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+        }
+      ],
+      "check": {
+        "comparable": true,
+        "position": "above",
+        "actual": 12.7,
+        "target_low": 2.5,
+        "target_high": 4,
+        "complete": false,
+        "evidence_id": "g7-n1"
+      },
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 is still in progress; full‑year result not yet available.",
+      "cited": [
+        "s1",
+        "s2"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Apr 2026",
+            "fiscal": "Q4 FY26",
+            "low": 1,
+            "high": 4
+          },
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 2.5,
+            "high": 4
+          }
+        ],
+        "actual": {
+          "value": 12.7,
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "complete": false
+        }
+      },
+      "notes": [
+        "basis not stated; compared with reported ₹ growth"
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
+    },
+    {
+      "id": "g8",
+      "metric": "revenue_growth",
+      "metric_label": "Revenue growth",
+      "metric_text": "FY27 Services revenue growth guidance",
+      "scope": "Services",
+      "period": "FY27",
+      "period_status": "in progress (2 of 4 quarters reported)",
+      "target": {
+        "text": "3–4%",
+        "low": 3,
+        "high": 4,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2026",
+          "call_label": "Oct 2026 (Q2 FY27)",
+          "fiscal": "Q2 FY27",
+          "speaker": "Nitin Mohta",
+          "quote": "Services revenue growth guidance is 3% to 4%",
+          "target_text": "3–4%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g8-n1",
+          "kind": "screener",
+          "label": "Revenue growth YoY (reported ₹), FY27 so far (2 of 4 quarters)",
+          "value": 12.7,
+          "unit": "%",
+          "period": "FY27",
+          "quarters": [
+            "Jun 2026",
+            "Sep 2026"
+          ],
+          "complete": false,
+          "basis": "reported, ₹",
+          "inputs": {
+            "revenue": 70199.0,
+            "revenue_year_earlier": 62291.0
+          },
+          "source": "screener.in consolidated quarterly results",
+          "url": "https://www.screener.in/company/HCLTECH/consolidated/"
+        },
+        {
+          "id": "g8-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Shiv Walia",
+          "passage_id": "t1-p23",
+          "text": "Total revenue for the quarter is $3,724 million, a growth of 2.3% QoQ and 2.6% YoY. Services revenue for the quarter came in at $3,442 million, a growth of 3% QoQ and 4% YoY. HCLSoftware revenue for the quarter is $294 million, representing decline of 5.8% QoQ and 11.2% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        }
+      ],
+      "check": {
+        "comparable": false,
+        "position": null,
+        "actual": 12.7,
+        "target_low": 3,
+        "target_high": 4,
+        "complete": false,
+        "evidence_id": "g8-n1"
+      },
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "FY27 services growth guidance pending; period not complete.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Oct 2026",
+            "fiscal": "Q2 FY27",
+            "low": 3,
+            "high": 4
+          }
+        ],
+        "actual": null
+      },
+      "notes": [
+        "basis not stated; compared with reported ₹ growth",
+        "the target is for Services; screener figures are company-wide, so they are not used"
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
+    },
+    {
+      "id": "g9",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Guidance of 1% to 4% for FY27",
+      "scope": "company",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": "1–4%",
+        "low": 1,
+        "high": 4,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "C. Vijayakumar",
+          "quote": "Looking ahead, we are retaining our guidance of 1% to 4% and margin guidance of 17.5% to 18.5% for FY27.",
+          "target_text": "1–4%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        }
+      ],
+      "evidence": [],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Guidance of 1% to 4% for FY27 was retained, but FY27 is still ongoing.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 1,
+            "high": 4
+          }
+        ],
+        "actual": null
+      },
+      "notes": [],
+      "short_label": "Guidance range",
+      "label_by": "model"
+    },
+    {
+      "id": "g10",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "Promise to provide next year guidance",
+      "scope": "company",
+      "period": "FY27",
+      "period_status": "in progress",
+      "target": {
+        "text": null,
+        "low": null,
+        "high": null,
+        "unit": null,
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Oct 2025",
+          "call_label": "Oct 2025 (Q2 FY26)",
+          "fiscal": "Q2 FY26",
+          "speaker": "Shiv Walia",
+          "quote": "we would like to address that question when we give our next year guidance in April.",
+          "target_text": null,
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=172ac7e9-7ce4-4c53-9e40-8b70187da3f9.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g10-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Shiv Walia",
+          "passage_id": "t1-p23",
+          "text": "Thank you, CVK. Good morning, good afternoon, and good evening to all of you. Thank you for joining our Q2 financial year '27 earnings call. Let me walk you through our financial performance for the quarter. Starting with the revenue performance, please note that all growth numbers quoted are in constant currency, unless noted otherwise. Total revenue for the quarter is $3,724 million, a growth of 2.3% QoQ and 2.6% YoY. Services revenue for the quarter came in at $3,442 million, a growth of 3% QoQ and 4% YoY. Our ITBS services grew by 2.7% QoQ and 4.4% YoY. The ERS segment grew by 4.1% QoQ and 2.1% YoY.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+        },
+        {
+          "id": "g10-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t2-p4",
+          "text": "We began FY27 with a focus to grow our advanced AI-led offerings, increase our relevance with clients, capitalize on the full range of AI-related market opportunities in our pursuit of becoming the world's best AI solutions provider.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+        },
+        {
+          "id": "g10-q3",
+          "kind": "transcript",
+          "call": "Jan 2026",
+          "call_month": "2026-01",
+          "call_quarter": "Dec 2025",
+          "fiscal": "Q3 FY26",
+          "latest": false,
+          "speaker": "C. Vijayakumar",
+          "passage_id": "t4-p6",
+          "text": "In addition to the seasonality, this growth is fuelled by strong traction in our data intelligence business. Our operating margin, including restructuring costs, but excluding the one- time impact of new labour code, came at 18.6%, a 111 basis points QoQ and a decrease of 94 basis points YoY. When we exclude restructuring costs, our operating margin in Q3 is down marginally 13 basis points YoY, and we are confident of recovering that as well in the future. We are executing well on our improvement plan, and this disciplined approach has placed us firmly in the right trajectory for the medium term.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=08d64f75-ab38-4158-8b8a-0d933bc007d3.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Company pledged to give next‑year guidance in April, which remains pending.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": null,
+      "notes": [],
+      "short_label": "Next year guidance promise",
+      "label_by": "model"
+    }
+  ],
+  "dropped": [
+    {
+      "call": "Apr 2026",
+      "quote": "and can become 20% plus of the market in five years",
+      "reason": "no forward-looking words: reads as a reported result, not a promise"
+    }
+  ],
+  "models": [
+    "groq/openai/gpt-oss-20b",
+    "groq/openai/gpt-oss-120b"
+  ],
+  "sources": {
+    "screener": {
+      "name": "screener.in (consolidated)",
+      "url": "https://www.screener.in/company/HCLTECH/consolidated/",
+      "fetched_at": "2026-11-15T13:58:27+05:30"
+    },
+    "transcripts": [
+      {
+        "call": "Oct 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccce0001-ff5d-4875-b1e5-5c558669f49c.pdf"
+      },
+      {
+        "call": "Jul 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11be9fba-0308-4756-a474-e4f2903fdaac.pdf"
+      },
+      {
+        "call": "Apr 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48f5d6fd-b499-45da-bc6d-2e0439495ec2.pdf"
+      },
+      {
+        "call": "Jan 2026",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=08d64f75-ab38-4158-8b8a-0d933bc007d3.pdf"
+      },
+      {
+        "call": "Oct 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=172ac7e9-7ce4-4c53-9e40-8b70187da3f9.pdf"
+      },
+      {
+        "call": "Jul 2025",
+        "url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70e8e2f8-36ca-4816-9bce-5587cead0c23.pdf"
+      }
+    ]
+  },
+  "summary": {
+    "Delivered": 1,
+    "Missed": 1,
+    "Pending": 7,
+    "Goalposts moved": 0,
+    "Unverified": 1
+  },
+  "track_record": {
+    "promises": 10,
+    "calls": 6,
+    "checkable": 3,
+    "open_ended": 1,
+    "revised": 2,
+    "counts": {
+      "Delivered": 1,
+      "Missed": 1,
+      "Pending": 7,
+      "Goalposts moved": 0,
+      "Unverified": 1
+    },
+    "text": "3 checkable promises: 1 delivered, 1 missed, 1 unverified · 6 still running · 1 open-ended · 2 targets revised along the way"
+  },
+  "quiet": []
+}

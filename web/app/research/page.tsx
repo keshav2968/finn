@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { listCompanies } from "@/lib/research";
+import TickerSearch from "@/components/research/TickerSearch";
 import s from "@/components/research/research.module.css";
 
 export const metadata: Metadata = { title: "Research · Finn" };
@@ -20,6 +21,7 @@ export default function Page() {
         <h1 className={s.title}>Promises vs delivery</h1>
         <p className={s.sub}>What management guided on its calls, against what the reported numbers show.</p>
       </header>
+      <TickerSearch known={companies.map((c) => ({ symbol: c.symbol, name: c.name }))} />
       <ul className={s.index}>
         {companies.map((c) => (
           <li key={c.symbol}>

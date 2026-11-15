@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "POLYCAB",
   "name": "Polycab India Ltd",
-  "generated_at": "2026-11-15T02:58:18+05:30",
+  "generated_at": "2026-11-15T13:57:52+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -443,7 +443,9 @@
       "chart": null,
       "notes": [
         "rationale replaced: it used numbers that are not in the evidence"
-      ]
+      ],
+      "short_label": "Capex",
+      "label_by": "python"
     },
     {
       "id": "g2",
@@ -528,7 +530,9 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Capex",
+      "label_by": "python"
     },
     {
       "id": "g3",
@@ -625,7 +629,9 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Capex",
+      "label_by": "python"
     },
     {
       "id": "g4",
@@ -722,7 +728,9 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Capex",
+      "label_by": "python"
     },
     {
       "id": "g5",
@@ -815,10 +823,10 @@
       },
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 has only 2 of 4 quarters reported; period not complete.",
+      "rationale": "FY27 still in progress, margin target not yet assessable.",
       "cited": [
         "s1",
-        "g5-n1"
+        "g5-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -836,7 +844,9 @@
       },
       "notes": [
         "the target is for FMEG; screener figures are company-wide, so they are not used"
-      ]
+      ],
+      "short_label": "EBITDA margin",
+      "label_by": "python"
     },
     {
       "id": "g6",
@@ -938,10 +948,10 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY30 target is for a future year; period still in progress.",
+      "rationale": "FY30 target period not ended, margin achievement cannot be judged.",
       "cited": [
         "s1",
-        "s3"
+        "g6-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -963,7 +973,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "EBITDA margin",
+      "label_by": "python"
     },
     {
       "id": "g7",
@@ -1077,10 +1089,10 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "Medium‑term guidance has no end date; cannot assess completion.",
+      "rationale": "Medium‑term guidance has no end date, so performance cannot be evaluated yet.",
       "cited": [
         "s1",
-        "s4"
+        "g7-q1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1114,94 +1126,12 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "EBITDA margin",
+      "label_by": "python"
     },
     {
       "id": "g8",
-      "metric": "revenue_growth",
-      "metric_label": "Revenue growth",
-      "metric_text": "going north of 10% of our overall top line by 2030",
-      "scope": "company",
-      "period": "FY30",
-      "period_status": "in progress",
-      "target": {
-        "text": "10%",
-        "low": 10,
-        "high": 10,
-        "unit": "%",
-        "basis": "unspecified"
-      },
-      "revised": false,
-      "revision_direction": null,
-      "revision_path": null,
-      "statements": [
-        {
-          "id": "s1",
-          "call": "Jul 2026",
-          "call_label": "Jul 2026 (Q1 FY27)",
-          "fiscal": "Q1 FY27",
-          "speaker": "Shashank Yagnick",
-          "quote": "We assure that we'll be able to deliver higher growth. And there is no specific target because it's an uncapped growth opportunity. We have given our guidance of going north of 10% of our overall top line by 2030.",
-          "target_text": "10%",
-          "basis": "unspecified",
-          "quote_score": 100.0,
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        }
-      ],
-      "evidence": [
-        {
-          "id": "g8-q1",
-          "kind": "transcript",
-          "call": "Oct 2026",
-          "call_month": "2026-10",
-          "call_quarter": "Sep 2026",
-          "fiscal": "Q2 FY27",
-          "latest": true,
-          "speaker": "Aditya Nathany",
-          "passage_id": "t1-p13",
-          "text": "Consolidated revenue grew by 53% year-on-year, with all business segments contributing meaningfully to this growth momentum.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
-        },
-        {
-          "id": "g8-q2",
-          "kind": "transcript",
-          "call": "Jul 2026",
-          "call_month": "2026-07",
-          "call_quarter": "Jun 2026",
-          "fiscal": "Q1 FY27",
-          "latest": false,
-          "speaker": "Shashank Yagnick",
-          "passage_id": "t2-p8",
-          "text": "Consolidated revenues grew by 39% year-on-year, supported by sustained momentum across both our wires and cables and FMEG businesses. At the bottom line, we achieved our highest ever quarterly Profit After Tax of INR 7,967 million, representing a growth of 33% year-on-year.",
-          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
-        }
-      ],
-      "check": null,
-      "verdict": "Pending",
-      "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY30 revenue target is for a future year; period not yet ended.",
-      "cited": [
-        "s1",
-        "g8-q1"
-      ],
-      "actual_quote": null,
-      "stated": null,
-      "chart": {
-        "unit": "%",
-        "guides": [
-          {
-            "call": "Jul 2026",
-            "fiscal": "Q1 FY27",
-            "low": 10,
-            "high": 10
-          }
-        ],
-        "actual": null
-      },
-      "notes": []
-    },
-    {
-      "id": "g9",
       "metric": "other",
       "metric_label": "Other",
       "metric_text": "Export contribution goal",
@@ -1234,7 +1164,7 @@
       ],
       "evidence": [
         {
-          "id": "g9-q1",
+          "id": "g8-q1",
           "kind": "transcript",
           "call": "May 2026",
           "call_month": "2026-05",
@@ -1247,7 +1177,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         },
         {
-          "id": "g9-q2",
+          "id": "g8-q2",
           "kind": "transcript",
           "call": "Oct 2026",
           "call_month": "2026-10",
@@ -1260,7 +1190,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         },
         {
-          "id": "g9-q3",
+          "id": "g8-q3",
           "kind": "transcript",
           "call": "Jul 2026",
           "call_month": "2026-07",
@@ -1276,10 +1206,10 @@
       "check": null,
       "verdict": "Unverified",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "No export contribution percentage provided; cannot confirm >10% target.",
+      "rationale": "Export contribution percentage not disclosed; target cannot be confirmed.",
       "cited": [
         "s1",
-        "g9-q2"
+        "g8-q2"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1295,10 +1225,12 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Export contribution",
+      "label_by": "model"
     },
     {
-      "id": "g10",
+      "id": "g9",
       "metric": "other",
       "metric_label": "Other",
       "metric_text": "Working capital cycle target",
@@ -1343,7 +1275,7 @@
       ],
       "evidence": [
         {
-          "id": "g10-q1",
+          "id": "g9-q1",
           "kind": "transcript",
           "call": "May 2026",
           "call_month": "2026-05",
@@ -1356,7 +1288,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf"
         },
         {
-          "id": "g10-q2",
+          "id": "g9-q2",
           "kind": "transcript",
           "call": "Oct 2026",
           "call_month": "2026-10",
@@ -1369,7 +1301,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         },
         {
-          "id": "g10-q3",
+          "id": "g9-q3",
           "kind": "transcript",
           "call": "Jul 2026",
           "call_month": "2026-07",
@@ -1388,10 +1320,10 @@
       "rationale": "No comparable actual in screener or in later calls.",
       "cited": [
         "s1",
-        "g10-q1"
+        "g9-q1"
       ],
       "actual_quote": {
-        "text": "working capital cycle has improved to 25 days in Quarter 4",
+        "text": "our working capital cycle has improved to 25 days in Quarter 4",
         "speaker": "Shashank Yagnick",
         "call": "May 2026",
         "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f66f17ac-c40f-4309-afca-3e66af0956a0.pdf",
@@ -1401,10 +1333,12 @@
       "chart": null,
       "notes": [
         "model said Missed without a figure on the guidance's basis; marked Unverified"
-      ]
+      ],
+      "short_label": "Working capital cycle",
+      "label_by": "model"
     },
     {
-      "id": "g11",
+      "id": "g10",
       "metric": "other",
       "metric_label": "Other",
       "metric_text": "FMEG industry will start seeing at least double‑digit growth from next year and we should be targeting at least 2x of the industry growth rate",
@@ -1437,7 +1371,7 @@
       ],
       "evidence": [
         {
-          "id": "g11-q1",
+          "id": "g10-q1",
           "kind": "transcript",
           "call": "Oct 2026",
           "call_month": "2026-10",
@@ -1450,7 +1384,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
         },
         {
-          "id": "g11-q2",
+          "id": "g10-q2",
           "kind": "transcript",
           "call": "Jul 2026",
           "call_month": "2026-07",
@@ -1463,7 +1397,7 @@
           "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
         },
         {
-          "id": "g11-q3",
+          "id": "g10-q3",
           "kind": "transcript",
           "call": "May 2026",
           "call_month": "2026-05",
@@ -1479,14 +1413,101 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY27 is still in progress; outcome cannot be assessed yet.",
+      "rationale": "Target for FY27 is still in progress.",
       "cited": [
         "s1"
       ],
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Industry growth rate",
+      "label_by": "model"
+    },
+    {
+      "id": "g11",
+      "metric": "other",
+      "metric_label": "Other",
+      "metric_text": "going north of 10% of our overall top line by 2030",
+      "scope": "company",
+      "period": "FY30",
+      "period_status": "in progress",
+      "target": {
+        "text": "10%",
+        "low": 10,
+        "high": 10,
+        "unit": "%",
+        "basis": "unspecified"
+      },
+      "revised": false,
+      "revision_direction": null,
+      "revision_path": null,
+      "statements": [
+        {
+          "id": "s1",
+          "call": "Jul 2026",
+          "call_label": "Jul 2026 (Q1 FY27)",
+          "fiscal": "Q1 FY27",
+          "speaker": "Shashank Yagnick",
+          "quote": "We assure that we'll be able to deliver higher growth. And there is no specific target because it's an uncapped growth opportunity. We have given our guidance of going north of 10% of our overall top line by 2030.",
+          "target_text": "10%",
+          "basis": "unspecified",
+          "quote_score": 100.0,
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "evidence": [
+        {
+          "id": "g11-q1",
+          "kind": "transcript",
+          "call": "Oct 2026",
+          "call_month": "2026-10",
+          "call_quarter": "Sep 2026",
+          "fiscal": "Q2 FY27",
+          "latest": true,
+          "speaker": "Aditya Nathany",
+          "passage_id": "t1-p17",
+          "text": "Despite challenging geopolitical environment, exports picked up strongly during the quarter as sales grew 17% year-on-year and grew 85% quarter-on-quarter. While exports accounted for a relatively lower share of overall revenues, the moderation in contribution is largely attributable to the significant faster growth in the domestic market, which expanded the overall revenue base. We continue to maintain a strong export order pipeline and remain confident about our long term growth prospects of this business. EBIT margins in the Wires and Cables segment stood at 14.2%. Margins improved sequentially, supported by a favourable product mix and continued operational excellence initiatives.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b6d277-0ffc-440d-ba8a-2bd9bc3dc43e.pdf"
+        },
+        {
+          "id": "g11-q2",
+          "kind": "transcript",
+          "call": "Jul 2026",
+          "call_month": "2026-07",
+          "call_quarter": "Jun 2026",
+          "fiscal": "Q1 FY27",
+          "latest": false,
+          "speaker": "Shashank Yagnick",
+          "passage_id": "t2-p10",
+          "text": "Within this, the domestic Wires & Cables business delivered an impressive 43% year-on-year growth, supported by robust market demand, effective execution across key channels and favourable commodity-linked realizations. Volume growth for the quarter on a year-on-year basis was low to mid-single digits, which was on top of a very strong base of Q1 of last year. From a category standpoint, wires grew faster than cables during the quarter. Channel sales also outperformed institutional sales, highlighting the strength of our distribution network.",
+          "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e47a217c-cefa-4ff6-8e34-6bbd07d42b13.pdf"
+        }
+      ],
+      "check": null,
+      "verdict": "Pending",
+      "verdict_by": "groq/openai/gpt-oss-120b",
+      "rationale": "Goal for FY30 not yet reached; period ongoing.",
+      "cited": [
+        "s1"
+      ],
+      "actual_quote": null,
+      "stated": null,
+      "chart": {
+        "unit": "%",
+        "guides": [
+          {
+            "call": "Jul 2026",
+            "fiscal": "Q1 FY27",
+            "low": 10,
+            "high": 10
+          }
+        ],
+        "actual": null
+      },
+      "notes": [],
+      "short_label": "Share of revenue",
+      "label_by": "python"
     },
     {
       "id": "g12",
@@ -1564,10 +1585,9 @@
       "check": null,
       "verdict": "Pending",
       "verdict_by": "groq/openai/gpt-oss-120b",
-      "rationale": "FY30 dividend payout target not yet reached; period remains ongoing.",
+      "rationale": "Dividend payout target for FY2030 remains in progress.",
       "cited": [
-        "s1",
-        "g12-q3"
+        "s1"
       ],
       "actual_quote": null,
       "stated": null,
@@ -1583,7 +1603,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Dividend payout ratio",
+      "label_by": "model"
     },
     {
       "id": "g13",
@@ -1680,7 +1702,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Export contribution",
+      "label_by": "model"
     },
     {
       "id": "g14",
@@ -1776,7 +1800,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Advertising spend percentage",
+      "label_by": "model"
     },
     {
       "id": "g15",
@@ -1836,7 +1862,9 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Growth versus industry",
+      "label_by": "model"
     }
   ],
   "dropped": [
@@ -1929,5 +1957,6 @@
       "Unverified": 2
     },
     "text": "3 checkable promises: 1 delivered, 2 unverified · 9 still running · 3 open-ended"
-  }
+  },
+  "quiet": []
 }

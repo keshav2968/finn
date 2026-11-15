@@ -176,6 +176,9 @@ interface Research {
   ledger: LedgerEntry[];
   summary?: Record<Verdict, number>;
   dropped: { call: string; quote: string; reason: string }[];   // extractions that failed a check
+  quiet?: { metric: string; label: string; last_call: string; last_target: string | null; calls_since: number;
+            so_far: { label: string; value: number; unit: string; source: string; url: string | null } | null;
+            text: string }[];   // named metrics guided earlier and on none of the last 3 earnings calls (Python only)
   models: string[];
   sources: { screener: { name: string; url: string | null } | null; transcripts: { call: string; url: string }[] };
 }
@@ -184,6 +187,8 @@ interface Actual { label: string; value: number; unit: "%"; period: string; quar
                    basis: string; inputs: Record<string, number | null>; source: string; url: string | null }
 interface LedgerEntry {
   id: string; metric: string; metric_label: string; metric_text: string;
+  short_label: string;            // at most 5 words: Python for named metrics and shares of revenue, else the cheap model, clipped
+  label_by: "python" | "model";
   period: string;                                     // "FY27", "H2FY27", "medium_term", "unspecified"
   period_status: string;                              // "in progress (2 of 4 quarters reported)", "period ended", ...
   target: { text: string | null; low: number | null; high: number | null; unit: string | null; basis: string };

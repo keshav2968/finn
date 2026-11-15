@@ -53,6 +53,8 @@ def print_ledger(doc: dict) -> None:
     print(f"\n{doc['symbol']} · {doc['name']} · status {doc['status']}")
     if doc.get("track_record"):
         print(f"  Track record: {doc['track_record']['text']}")
+    for q in doc.get("quiet") or []:
+        print(f"  Quiet: {q['text']}")
     n = doc.get("numbers") or {}
     ytd = (n.get("fiscal_year_to_date") or {}).get("metrics") or {}
     for m in ytd.values():
@@ -62,7 +64,7 @@ def print_ledger(doc: dict) -> None:
         extra = f" · {t['error']}" if t.get("error") else ""
         print(f"  call {t['call']:<9} {(t['fiscal'] or '') + (' event' if t.get('kind') == 'event' else ''):<10} passages {t['passages']:>3} → sent {t['sent']:>2} ({t['sent_chars']} chars) · promises {t['promises']}{extra}")
     for e in doc["ledger"]:
-        print(f"\n  {MARK.get(e['verdict'], ' ')} {e['verdict']:<16} {e['metric_label']}{' (' + e['metric_text'] + ')' if e['metric'] == 'other' else ''} · {e['period']} · {e['period_status']}")
+        print(f"\n  {MARK.get(e['verdict'], ' ')} {e['verdict']:<16} {e.get('short_label') or e['metric_label']} · {e['period']} · {e['period_status']}")
         if e["revision_path"]:
             print(f"    target path: {e['revision_path']}")
         for s in e["statements"]:

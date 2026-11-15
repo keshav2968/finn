@@ -3,6 +3,8 @@ model replies (what a model might return, good and bad), so tests never touch th
 
 from __future__ import annotations
 
+import re
+
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -111,11 +113,20 @@ class ScriptedModel:
     judge_replies: dict[str, dict[str, Any]] = field(default_factory=dict)
     fail_tasks: set[str] = field(default_factory=set)
     calls: list[str] = field(default_factory=list)
+    labels: dict[str, str] = field(default_factory=dict)  # "other" description -> label the model returns
 
     def __call__(self, task: str, system: str, user: str, schema: dict, **_: Any) -> Result:
         self.calls.append(task)
         if task in self.fail_tasks:
             raise RuntimeError(f"{task} unavailable")
+        if task == "label_promises":
+            ids = schema["properties"]["labels"]["items"]["properties"]["id"]["enum"]
+            out = []
+            for ln in user.splitlines():
+                m = re.match(r"- id (\S+): description: (.*?) \| quote:", ln)
+                if m and m.group(1) in ids:
+                    out.append({"id": m.group(1), "label": self.labels.get(m.group(2), "Scripted label")})
+            return Result({"labels": out})
         if task == "extract_promises":
             month = next((m for m in EXTRACTIONS if f"quarter reported: {self._quarter(m)}" in user), None)
             return Result({"promises": EXTRACTIONS.get(month, [])})

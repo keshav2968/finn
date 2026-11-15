@@ -108,9 +108,47 @@ def build_research(
     for e in entries:
         if e["verdict_by"] not in ("rules",) and e["verdict_by"] not in out["models"]:
             out["models"].append(e["verdict_by"])
+    L.short_labels(company, entries, complete, log)
     out["summary"] = {v: sum(1 for e in entries if e["verdict"] == v) for v in L.VERDICTS}
     out["track_record"] = track_record(entries, sum(1 for t in out["transcripts"] if t["promises"]))
+    out["quiet"] = gone_quiet(groups, transcripts, out.get("numbers"), cfg)
     return out
+
+
+def gone_quiet(groups: list[dict[str, Any]], transcripts: list[T.Transcript], numbers: dict[str, Any] | None,
+               cfg: dict[str, Any]) -> list[dict[str, Any]]:
+    """Named metrics that had guidance on an earlier call and none on the latest ones, in
+    Python: KPIT guided 21% EBITDA margin in 2025 and gave no figure on the four calls after.
+    Only company-wide guidance is paired with the year-to-date screener figure."""
+    after = int(cfg.get("quiet", {}).get("after_calls", 3))
+    calls = sorted(t.month for t in transcripts if not t.error and t.kind == "earnings")
+    ytd = ((numbers or {}).get("fiscal_year_to_date") or {})
+    out = []
+    for metric in sorted({g["metric"] for g in groups if g["metric"] != "other"}):
+        mine = [g for g in groups if g["metric"] == metric]
+        stated = [s for g in mine for s in g["statements"]]
+        last = max(stated, key=lambda s: s["call_month"])
+        since = [m for m in calls if m > last["call_month"]]
+        if len(since) < after:
+            continue
+        label = mine[0]["metric_label"]
+        item = {"metric": metric, "label": label, "last_call": last["call"], "last_target": last.get("target_text"),
+                "calls_since": len(since), "so_far": None}
+        compute = (cfg["metrics"].get(metric) or {}).get("compute")
+        fig = (ytd.get("metrics") or {}).get(compute) if compute else None
+        if fig and all(_company(g) for g in mine):
+            item["so_far"] = {"label": fig["label"], "value": fig["value"], "unit": fig["unit"], "source": fig["source"], "url": fig.get("url")}
+        text = (f"{label} guidance has gone quiet: last given on the {last['call']} call"
+                f"{' (' + last['target_text'] + ')' if last.get('target_text') else ''}, none in the {len(since)} calls since.")
+        if item["so_far"]:
+            text += f" {fig['label']}: {fig['value']:g}{fig['unit']} (screener)."
+        item["text"] = text
+        out.append(item)
+    return out
+
+
+def _company(g: dict[str, Any]) -> bool:
+    return (g.get("scope") or "company") == "company"
 
 
 def _n(count: int, word: str) -> str:

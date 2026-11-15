@@ -14,6 +14,7 @@ from typing import Any, Callable
 
 from . import numbers as nums
 from . import periods
+from . import promises as P
 from .promises import numbers_in, quote_found
 from .transcripts import Transcript, _sentences
 
@@ -578,3 +579,47 @@ def judge(
         v = raw.get(g["id"])
         entries.append(finalise(g, ev, v[0] if v else None, v[1] if v else None, cfg))
     return entries, errors
+
+
+# ---------------------------------------------------------------- short labels
+
+LABEL_SYSTEM = """You name investor-relations targets for a phone screen.
+For each item, give a label of at most 5 words naming WHAT is measured (for example
+"Effective tax rate", "Fresher hiring", "Export share of revenue", "Store count").
+No numbers, no years, no verdicts, no adjectives like strong or good. Use only words that
+describe the metric in the quote. Return JSON only."""
+
+
+def label_schema(ids: list[str]) -> dict[str, Any]:
+    return {"type": "object", "required": ["labels"], "properties": {"labels": {"type": "array", "items": {
+        "type": "object", "required": ["id", "label"],
+        "properties": {"id": {"type": "string", "enum": ids}, "label": {"type": "string"}}}}}}
+
+
+def short_labels(company: str, entries: list[dict[str, Any]], complete: Callable[..., Any] | None,
+                 log: Callable[[str], None] = lambda _m: None) -> None:
+    """Sets `short_label` (at most 5 words) and `label_by` on every entry. Named metrics and
+    shares of revenue are labelled by Python; the rest by the cheap model, checked and clipped
+    in Python, with the description clipped in Python when the model is unavailable."""
+    pending = []
+    for e in entries:
+        pl = P.python_label(e)
+        if pl:
+            e["short_label"], e["label_by"] = P.clip_label(pl), "python"
+        else:
+            pending.append(e)
+    got: dict[str, str] = {}
+    if pending and complete is not None:
+        lines = [f"- id {e['id']}: description: {e.get('metric_text') or ''} | quote: {e['statements'][-1]['quote'][:300]}" for e in pending]
+        try:
+            res = complete("label_promises", LABEL_SYSTEM, f"Company: {company}\n\n" + "\n".join(lines),
+                           label_schema([e["id"] for e in pending]), label=f"{company} labels")
+            got = {x["id"]: x["label"].strip() for x in (res.data or {}).get("labels") or [] if isinstance(x.get("label"), str)}
+        except Exception as exc:  # noqa: BLE001 - labels are cosmetic; the fallback below always works
+            log(f"labels: model unavailable ({type(exc).__name__}); using clipped descriptions")
+    for e in pending:
+        label = got.get(e["id"], "")
+        if label and not re.search(r"\d", label) and len(label) <= 60:
+            e["short_label"], e["label_by"] = P.clip_label(label), "model"
+        else:
+            e["short_label"], e["label_by"] = P.fallback_label(e.get("metric_text") or e["statements"][-1]["quote"]), "python"

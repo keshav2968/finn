@@ -138,3 +138,8 @@ quotes:
 judge:
   groups_per_call: 4          # promise groups judged in one model call
   verdicts: [Delivered, Missed, Pending, Goalposts moved, Unverified]
+
+# "Guidance has gone quiet": a named metric guided on an earlier call and on none of the
+# latest `after_calls` earnings calls read.
+quiet:
+  after_calls: 3

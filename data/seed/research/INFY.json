@@ -2,7 +2,7 @@
   "schema": 1,
   "symbol": "INFY",
   "name": "Infosys Ltd",
-  "generated_at": "2026-11-15T02:58:01+05:30",
+  "generated_at": "2026-11-15T13:57:37+05:30",
   "status": "ok",
   "notes": [],
   "numbers": {
@@ -536,7 +536,9 @@
       "notes": [
         "the model's quoted actual (Oct 2026) is about a different period than FY26; dropped",
         "rationale replaced: it used an older figure than the latest call"
-      ]
+      ],
+      "short_label": "Operating (EBIT) margin",
+      "label_by": "python"
     },
     {
       "id": "g2",
@@ -705,7 +707,9 @@
           "complete": false
         }
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Operating (EBIT) margin",
+      "label_by": "python"
     },
     {
       "id": "g3",
@@ -872,7 +876,9 @@
         "guidance is in constant currency terms; screener reports ₹, so the two are not comparable",
         "model said Unverified but the stated figure settles it: Delivered",
         "rationale replaced: it used an older figure than the latest call"
-      ]
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
     },
     {
       "id": "g4",
@@ -1036,7 +1042,9 @@
       },
       "notes": [
         "guidance is in constant currency terms; screener reports ₹, so the two are not comparable"
-      ]
+      ],
+      "short_label": "Revenue growth",
+      "label_by": "python"
     },
     {
       "id": "g5",
@@ -1154,7 +1162,9 @@
         ],
         "actual": null
       },
-      "notes": []
+      "notes": [],
+      "short_label": "Effective tax rate",
+      "label_by": "model"
     },
     {
       "id": "g6",
@@ -1241,7 +1251,9 @@
       "actual_quote": null,
       "stated": null,
       "chart": null,
-      "notes": []
+      "notes": [],
+      "short_label": "Headcount target",
+      "label_by": "model"
     }
   ],
   "dropped": [],
@@ -1303,5 +1315,6 @@
       "Unverified": 0
     },
     "text": "2 checkable promises: 2 delivered · 4 still running, 1 with goalposts moved · 2 targets revised along the way"
-  }
+  },
+  "quiet": []
 }

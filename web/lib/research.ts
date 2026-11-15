@@ -25,6 +25,8 @@ export interface LedgerEntry {
   metric: string;
   metric_label: string;
   metric_text: string;
+  short_label?: string;
+  label_by?: "python" | "model";
   scope?: string;
   period: string;
   period_status: string;
@@ -67,6 +69,8 @@ export interface ResearchDoc {
                  passages: number; sent: number; promises: number }[];
   ledger: LedgerEntry[];
   track_record?: { text: string; counts: Record<Verdict, number>; checkable: number; revised: number; promises: number };
+  quiet?: { metric: string; label: string; last_call: string; last_target: string | null; calls_since: number; text: string;
+             so_far: { label: string; value: number; unit: string; source: string; url: string | null } | null }[];
   dropped: { call: string; quote: string; reason: string }[];
   models?: string[];
 }

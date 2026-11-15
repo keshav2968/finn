@@ -361,13 +361,14 @@ def check_promises(
         if metric != "other" and not metric_named(metric, quote, metrics, best.text):
             notes.append(f"the quote does not name {metrics[metric]['label'].lower()}; filed as other (model said {metric})")
             metric = "other"
-        if metric in GROWTH_METRICS and SHARE_OF.search(quote):
-            notes.append(f"the target is a share of revenue, not growth; filed as other (model said {metric})")
-            metric = "other"
         remapped = remap_metric(metric, quote, metrics)
         if remapped != metric:
             notes.append(f"metric set to {metrics[remapped]['label']} from the quote (model said other)")
             metric = remapped
+        if metric in GROWTH_METRICS and SHARE_OF.search(quote):
+            # "north of 10% of our overall top line by 2030" names the top line but is a share, not growth.
+            notes.append(f"the target is a share of revenue, not growth; filed as other (model said {item.get('metric')})")
+            metric = "other"
         scope = resolve_scope(item.get("scope"), quote, best.text)
         if scope == "company":
             scope = scope_from_quote(quote) or "company"
@@ -630,3 +631,35 @@ def group(promises: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "path": " → ".join(shown) if revised else None,
         })
     return out
+
+
+# ---------------------------------------------------------------- short labels for the phone
+
+LABEL_WORDS = 5
+LABEL_FILLER = {"we", "our", "i", "will", "should", "would", "be", "able", "to", "the", "a", "an", "and", "at", "least", "of",
+                "start", "seeing", "that", "is", "are", "going", "continue", "continues", "remain", "remains", "in", "on",
+                "for", "with", "this", "it", "as", "by", "there"}
+
+
+def clip_label(text: str, words: int = LABEL_WORDS) -> str:
+    """At most `words` words; an ellipsis marks a cut."""
+    ws = (text or "").split()
+    return " ".join(ws[:words]) + ("…" if len(ws) > words else "")
+
+
+def fallback_label(text: str) -> str:
+    """No model label: the description's content words, clipped. "FMEG industry will start
+    seeing at least double-digit growth" -> "FMEG industry double-digit growth"."""
+    ws = [w.strip(",.;:()\"'") for w in (text or "").split()]
+    content = [w for w in ws if w and w.lower() not in LABEL_FILLER and not re.search(r"\d", w)]
+    label = clip_label(" ".join(content or ws))
+    return label[:1].upper() + label[1:] if label else "Other promise"
+
+
+def python_label(group: dict[str, Any]) -> str | None:
+    """Labels Python can give without a model: a named metric's own label, and a share of revenue."""
+    if any(SHARE_OF.search(s["quote"]) for s in group["statements"]):
+        return "Share of revenue"
+    if group["metric"] != "other":
+        return group["metric_label"]
+    return None

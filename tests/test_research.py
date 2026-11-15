@@ -643,3 +643,81 @@ def test_by_2030_names_the_year_and_a_share_of_revenue_is_not_growth():
     assert P.resolve_period("FY27", quote, jul26)[0] == "FY30"
     assert P.SHARE_OF.search(quote)
     assert not P.SHARE_OF.search("revenue growth of 10% for the year")
+
+
+# ---------------------------------------------------------------- short labels, share of revenue, quiet guidance
+
+def _mgmt(month, period, quarter, text, speaker="Gandharv Tongia"):
+    return T.Transcript(period, month, quarter, "u", [speaker], [T.Passage("t1-p1", speaker, True, text)], text)
+
+
+def test_share_of_top_line_is_not_revenue_growth_even_after_the_top_line_alias():
+    quote = ("We assure that we'll be able to deliver higher growth. And there is no specific target because it's an uncapped "
+             "growth opportunity. We have given our guidance of going north of 10% of our overall top line by 2030.")
+    t = _mgmt("2026-07", "Jul 2026", "Jun 2026", quote)
+    for said in ("other", "revenue_growth"):  # the model said other (remapped by "top line") or revenue growth
+        raw = {"promises": [{"metric": said, "metric_text": "going north of 10% of our overall top line by 2030", "target_low": 10,
+                             "target_high": 10, "unit": "%", "basis": "unspecified", "period": "FY27", "passage_id": "t1-p1", "quote": quote}]}
+        kept, _ = P.check_promises(raw, t, t.passages, research_cfg())
+        assert kept[0]["metric"] == "other" and kept[0]["period"] == "FY30", said
+        g = P.group(kept)[0]
+        assert P.python_label(g) == "Share of revenue"
+
+
+def test_labels_are_at_most_five_words_and_named_metrics_keep_their_own_label():
+    long = "FMEG industry will start seeing at least double-digit growth from next year and we should be targeting at least 2x"
+    assert P.fallback_label(long) == "FMEG industry double-digit growth from…"
+    assert len(P.fallback_label(long).split()) <= 5
+    assert P.clip_label("one two three four five six") == "one two three four five…"
+    entries = [
+        {"id": "g1", "metric": "ebitda_margin", "metric_label": "EBITDA margin", "metric_text": "x", "statements": [{"quote": "EBITDA margin of 21%"}]},
+        {"id": "g2", "metric": "other", "metric_label": "Other", "metric_text": "Effective tax rate guidance", "statements": [{"quote": "tax rate 29% to 30%"}]},
+        {"id": "g3", "metric": "other", "metric_label": "Other", "metric_text": long, "statements": [{"quote": long}]},
+        {"id": "g4", "metric": "other", "metric_label": "Other", "metric_text": "Headcount target FY27", "statements": [{"quote": "20,000 freshers"}]},
+    ]
+    model = ScriptedModel(labels={"Effective tax rate guidance": "Effective tax rate",
+                                  long: "FMEG growth versus the whole industry market",   # 7 words: clipped
+                                  "Headcount target FY27": "Hiring 20,000 freshers in FY27"})  # numbers: rejected
+    L.short_labels("Infosys", entries, model)
+    labels = {e["id"]: (e["short_label"], e["label_by"]) for e in entries}
+    assert labels["g1"] == ("EBITDA margin", "python")
+    assert labels["g2"] == ("Effective tax rate", "model")
+    assert labels["g3"] == ("FMEG growth versus the whole…", "model")
+    assert labels["g4"] == ("Headcount target", "python")
+    assert all(len(e["short_label"].rstrip("…").split()) <= 5 for e in entries)
+
+
+def test_labels_fall_back_to_python_when_the_model_is_down():
+    entries = [{"id": "g1", "metric": "other", "metric_label": "Other", "metric_text": "ROCE outcome should still be north of 40%",
+                "statements": [{"quote": "ROCE outcome should still be north of 40%"}]}]
+    L.short_labels("Eternal", entries, ScriptedModel(fail_tasks={"label_promises"}))
+    assert entries[0]["short_label"] == "ROCE outcome still north" and entries[0]["label_by"] == "python"
+
+
+def test_every_ledger_entry_has_a_short_label():
+    doc = _build(ScriptedModel(judge_replies=GOOD_JUDGE))
+    assert all(e["short_label"] and len(e["short_label"].rstrip("…").split()) <= 5 for e in doc["ledger"])
+
+
+def _quiet_group(metric, label, call, month, target="21%", scope="company"):
+    return {"metric": metric, "metric_label": label, "scope": scope,
+            "statements": [{"call": call, "call_month": month, "target_text": target}]}
+
+
+def test_guidance_gone_quiet_is_flagged_with_the_year_to_date_figure():
+    # KPIT: 21% EBITDA margin guided in Nov 2025; no figure on the next four calls; FY27 so far 15.57%.
+    groups = [_quiet_group("ebitda_margin", "EBITDA margin", "Nov 2025", "2025-11")]
+    calls = [_t(p, m, q) for p, m, q in (("Nov 2025", "2025-11", "Sep 2025"), ("Feb 2026", "2026-02", "Dec 2025"), ("May 2026", "2026-05", "Mar 2026"),
+                                         ("Aug 2026", "2026-08", "Jun 2026"), ("Nov 2026", "2026-11", "Sep 2026"))]
+    numbers = {"fiscal_year_to_date": {"metrics": {"ebitda_margin": {"label": "EBITDA margin, FY27 so far (2 of 4 quarters)", "value": 15.57,
+                                                                     "unit": "%", "source": "screener.in", "url": "u"}}}}
+    from research.build import gone_quiet
+    quiet = gone_quiet(groups, calls, numbers, research_cfg())
+    assert len(quiet) == 1 and quiet[0]["calls_since"] == 4 and quiet[0]["so_far"]["value"] == 15.57
+    assert quiet[0]["text"] == ("EBITDA margin guidance has gone quiet: last given on the Nov 2025 call (21%), none in the 4 calls since. "
+                                "EBITDA margin, FY27 so far (2 of 4 quarters): 15.57% (screener).")
+    # Still guided on a recent call, an event that is not an earnings call, or a segment target: no figure paired.
+    assert gone_quiet([_quiet_group("ebitda_margin", "EBITDA margin", "Aug 2026", "2026-08")], calls, numbers, research_cfg()) == []
+    seg = gone_quiet([_quiet_group("ebitda_margin", "EBITDA margin", "Nov 2025", "2025-11", scope="FMEG")], calls, numbers, research_cfg())
+    assert seg[0]["so_far"] is None and "screener" not in seg[0]["text"]
+    assert gone_quiet([_quiet_group("ebitda_margin", "EBITDA margin", "Nov 2025", "2025-11")], calls[:3], numbers, research_cfg()) == []

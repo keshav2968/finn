@@ -95,6 +95,14 @@ export default function ResearchView({ doc, focus }: { doc: ResearchDoc; focus: 
         </section>
       ) : (
         <>
+          {focus && <p className={s.focus}>What we look at: {focus}</p>}
+
+          {doc.numbers ? (
+            <Numbers numbers={doc.numbers} />
+          ) : (
+            <p className={s.emptyLine}>screener.in tables could not be read on this run, so there are no numbers.</p>
+          )}
+
           {doc.track_record && (
             <section className={s.record} aria-label="Track record">
               <p className={s.recordText}>{doc.track_record.text}</p>
@@ -107,12 +115,15 @@ export default function ResearchView({ doc, focus }: { doc: ResearchDoc; focus: 
                     </span>
                   ))}
               </div>
+              {doc.quiet?.map((q) => (
+                <p key={q.metric} className={s.quiet}>
+                  {q.text}
+                </p>
+              ))}
             </section>
           )}
 
-          {focus && <p className={s.focus}>What we look at: {focus}</p>}
 
-          {doc.numbers && <Numbers numbers={doc.numbers} />}
 
           <section className={s.section}>
             <h2 className={s.sectionHead}>
@@ -211,7 +222,8 @@ function Numbers({ numbers }: { numbers: NonNullable<ResearchDoc["numbers"]> }) 
 // ---------------------------------------------------------------- one promise
 
 function Entry({ e }: { e: LedgerEntry }) {
-  const title = e.metric === "other" ? e.metric_text || "Other promise" : e.metric_label;
+  // Python gives every entry a label of five words or fewer; older files fall back here.
+  const title = e.short_label || (e.metric === "other" ? e.metric_text || "Other promise" : e.metric_label);
   const screener = e.evidence.find((x) => x.kind === "screener") as (LedgerEntry["evidence"][number] & { kind: "screener" }) | undefined;
   return (
     <article className={s.entry}>
