@@ -71,7 +71,7 @@
   height: 3px;
   margin-left: -14px;
   border-radius: 0 0 3px 3px;
-  background: var(--teal);
+  background: var(--accent);
   animation: tabIn 260ms var(--ease);
 }
 
@@ -190,8 +190,8 @@
   min-height: var(--tap);
   padding: 0 var(--s2);
   border-radius: var(--r-pill);
-  background: var(--teal);
-  color: var(--on-teal);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: var(--t-md);
   font-weight: 700;
 }
@@ -254,5 +254,5 @@
   vertical-align: -6px;
   border-radius: 6px;
   background: var(--track);
-  color: var(--teal-text);
+  color: var(--accent-text);
 }

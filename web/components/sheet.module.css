@@ -87,8 +87,8 @@
   min-height: var(--tap);
   padding: 0 var(--s3);
   border-radius: var(--r-pill);
-  background: var(--teal);
-  color: var(--on-teal);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: var(--t-md);
   font-weight: 700;
 }
@@ -366,7 +366,7 @@
   display: flex;
   align-items: center;
   font-weight: 600;
-  color: var(--teal-text);
+  color: var(--accent-text);
   cursor: pointer;
   list-style: none;
 }
@@ -549,11 +549,11 @@
 
 .ask svg {
   flex: none;
-  color: var(--teal-text);
+  color: var(--accent-text);
 }
 
 .ask:hover {
-  border-color: var(--teal);
+  border-color: var(--accent);
 }
 
 @keyframes up {

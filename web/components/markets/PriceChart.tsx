@@ -34,7 +34,7 @@ const RIGHT = 58; // the last close, labelled at the line's end
 const fmt = (v: number) => v.toLocaleString("en-IN", { maximumFractionDigits: v >= 1000 ? 0 : 1 });
 
 // End-of-day closes, drawn as one line with its own labels: the last close at the end, the
-// range's high and low at their points, the filings as teal dots you can tap. Volume sits
+// range's high and low at their points, the filings as violet dots you can tap. Volume sits
 // underneath in neutral grey. No grid, no fill, no axis column.
 export default function PriceChart({ series, markers, onMarker }: { series: StockSeries; markers: Marker[]; onMarker: (id: string) => void }) {
   const [ref, width] = useWidth<HTMLDivElement>();
@@ -176,7 +176,7 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
               </g>
             )}
 
-            {/* filings on the price line: teal, because you can tap them */}
+            {/* filings on the price line: violet, because you can tap them */}
             {visibleMarkers.map((m) => (
               <g
                 key={m.id}
@@ -189,13 +189,13 @@ export default function PriceChart({ series, markers, onMarker }: { series: Stoc
                 onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), onMarker(m.id))}
               >
                 <circle cx={geo.x(m.i)} cy={geo.y(close[m.i])} r={14} fill="transparent" />
-                <circle cx={geo.x(m.i)} cy={geo.y(close[m.i])} r={9} fill="none" stroke="var(--teal)" strokeWidth="2" className={s.markerRing} />
+                <circle cx={geo.x(m.i)} cy={geo.y(close[m.i])} r={9} fill="none" stroke="var(--accent)" strokeWidth="2" className={s.markerRing} />
                 <circle
                   cx={geo.x(m.i)}
                   cy={geo.y(close[m.i])}
                   r={4.5}
-                  fill={m.tier === "needs_attention" ? "var(--teal)" : "var(--canvas)"}
-                  stroke="var(--teal)"
+                  fill={m.tier === "needs_attention" ? "var(--accent)" : "var(--canvas)"}
+                  stroke="var(--accent)"
                   strokeWidth="2"
                   className={s.markerDot}
                 />

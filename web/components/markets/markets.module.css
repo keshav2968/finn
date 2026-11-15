@@ -175,12 +175,12 @@
   place-items: center;
   border: 2px solid var(--muted);
   border-radius: 6px;
-  color: var(--on-teal);
+  color: var(--on-accent);
 }
 
 .pick[aria-checked="true"] .box {
-  border-color: var(--teal);
-  background: var(--teal);
+  border-color: var(--accent);
+  background: var(--accent);
 }
 
 .pickActions {
@@ -337,12 +337,12 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 2px solid var(--teal);
+  border: 2px solid var(--accent);
   background: transparent;
 }
 
 .legendDot[data-tier="needs_attention"] {
-  background: var(--teal);
+  background: var(--accent);
 }
 
 .legend .legendDot + .legendDot,

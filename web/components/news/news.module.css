@@ -1,4 +1,4 @@
-/* News feed: headline-first stories. Unread is bold with a teal dot; read stories dim. */
+/* News feed: headline-first stories. Unread is bold with an ink dot; read stories dim. */
 
 .stack {
   display: grid;
@@ -49,6 +49,27 @@
   white-space: nowrap;
   font-size: var(--t-xs);
   color: var(--muted);
+}
+
+.cat[data-tone] {
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+.cat[data-tone="results"] {
+  background: var(--cat-results-bg);
+  color: var(--cat-results);
+}
+
+.cat[data-tone="management"] {
+  background: var(--cat-management-bg);
+  color: var(--cat-management);
+}
+
+.cat[data-tone="fund"] {
+  background: var(--cat-fund-bg);
+  color: var(--cat-fund);
 }
 
 .flag {

@@ -5,6 +5,7 @@ import { Bell, CheckCheck, ChevronDown } from "lucide-react";
 import { alertKeys, buildInbox } from "@/lib/inbox";
 import { day, dayTime, weekday } from "@/lib/format";
 import type { AlertRules, Card, InboxData } from "@/lib/types";
+import { CATEGORY_TONE } from "@/lib/present";
 import { validRules } from "../AlertRules";
 import { publishUnreadAlerts } from "../shell/badge";
 import { useStored } from "../useStored";
@@ -120,7 +121,14 @@ export default function NewsFeed({ data }: { data: InboxData }) {
             All <span className={u.chipCount}>{view.needs.length + view.worth.length}</span>
           </button>
           {cats.map(([key, c]) => (
-            <button key={key} type="button" className={`${u.chip} press`} aria-pressed={activeCat === key} onClick={() => setCat(key)}>
+            <button
+              key={key}
+              type="button"
+              className={`${u.chip} press`}
+              data-tone={CATEGORY_TONE[key]}
+              aria-pressed={activeCat === key}
+              onClick={() => setCat(key)}
+            >
               {c.label} <span className={u.chipCount}>{c.n}</span>
             </button>
           ))}
@@ -220,7 +228,10 @@ function Story({ card, data, big, read, onOpen, index, enter }: { card: Card; da
         <TickerChip symbol={lead.symbol} move={move.pct} date={move.date} />
         {flag && <span className={s.flag}>{flag}</span>}
         <span className={s.when}>
-          {lead.category_label} · {dayTime(lead.datetime)}
+          <span className={s.cat} data-tone={CATEGORY_TONE[lead.category]}>
+            {lead.category_label}
+          </span>{" "}
+          · {dayTime(lead.datetime)}
         </span>
         {!read && <span className={s.unreadDot} aria-label="Unread" />}
       </span>

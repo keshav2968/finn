@@ -63,8 +63,8 @@
 }
 
 .segment button[aria-pressed="true"] {
-  background: var(--teal);
-  color: var(--on-teal);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .textButton {
@@ -72,7 +72,7 @@
   padding: 0 4px;
   font-size: var(--t-sm);
   font-weight: 700;
-  color: var(--teal-text);
+  color: var(--accent-text);
 }
 
 .textButton:disabled {
@@ -110,6 +110,25 @@
   border-color: var(--fg);
   background: var(--fg);
   color: var(--canvas);
+}
+
+/* category tints: results, management change, fund raise */
+.chip[data-tone="results"]:not([aria-pressed="true"]) {
+  border-color: transparent;
+  background: var(--cat-results-bg);
+  color: var(--cat-results);
+}
+
+.chip[data-tone="management"]:not([aria-pressed="true"]) {
+  border-color: transparent;
+  background: var(--cat-management-bg);
+  color: var(--cat-management);
+}
+
+.chip[data-tone="fund"]:not([aria-pressed="true"]) {
+  border-color: transparent;
+  background: var(--cat-fund-bg);
+  color: var(--cat-fund);
 }
 
 .chipCount {

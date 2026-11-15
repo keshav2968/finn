@@ -122,8 +122,8 @@
   min-height: var(--tap);
   padding: 0 var(--s2);
   border-radius: var(--r-pill);
-  background: var(--teal);
-  color: var(--on-teal);
+  background: var(--accent);
+  color: var(--on-accent);
   font-size: var(--t-md);
   font-weight: 700;
 }

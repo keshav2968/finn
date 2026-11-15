@@ -1,53 +1,67 @@
-/* FINN design tokens: ink, ivory and electric teal. Dark is the default.
-   Teal means "you can tap this": the selected tab, segment or chip, primary buttons, links,
+/* FINN design tokens: violet-tinted charcoal, ink and a violet accent. Dark is the default.
+   Violet means "you can tap this": the selected tab, segment or chip, primary buttons, links,
    focus rings and chart markers. Green and red mean a price moved, nothing else. Every
    other state (unread, impact, counts, verdicts) is ink at different strengths.
    Every text token is >= 4.5:1 on the surface it sits on (checked for both modes). */
 
 :root,
 :root[data-theme="dark"] {
-  --canvas: #0b0e14;
-  --card: #131722;
-  --raised: #181d2a;         /* accordion row, sheet */
-  --border: rgba(255, 255, 255, 0.08);
-  --track: #1e293b;          /* progress track, dividers inside cards */
-  --fg: #f4f2ed;             /* 17:1 on canvas */
-  --fg-2: #c9cdd6;           /* secondary text, 11:1 on card */
-  --muted: #8b95a7;          /* 6.1:1 on card */
-  --teal: #14b8a6;           /* 7.6:1 on card */
-  --on-teal: #0b0e14;        /* 8.3:1 on teal */
-  --teal-text: #2dd4bf;      /* links on dark */
-  --pos: #10b981;
-  --pos-bg: rgba(16, 185, 129, 0.14);
-  --neg: #fb7185;            /* rose, lifted for 5:1 on the tinted badge */
+  /* charcoal with a slight violet tint: lifted off near-black */
+  --canvas: #17151d;
+  --card: #1e1b26;
+  --raised: #25212f;         /* sheet, banner */
+  --border: rgba(255, 255, 255, 0.09);
+  --track: #2c2838;
+  --fg: #f3f1f7;             /* 16:1 on canvas */
+  --fg-2: #cdc8d9;           /* 11:1 on canvas */
+  --muted: #a19bb2;          /* 6.8:1 on canvas, 5.9:1 on raised */
+  --accent: #9a82ff;         /* violet: only on things you can tap; 6:1 on canvas */
+  --on-accent: #140e2b;      /* 6.2:1 on accent */
+  --accent-text: #b9a8ff;    /* links, 8.7:1 on canvas */
+  --pos: #34d399;            /* gains: 9.4:1 */
+  --pos-bg: rgba(52, 211, 153, 0.14);
+  --neg: #fb7185;            /* losses: 6.7:1 */
   --neg-bg: rgba(244, 63, 94, 0.14);
-  --solid: #f4f2ed;          /* toast, exit tag */
-  --on-solid: #0b0e14;
-  --scrim: rgba(3, 5, 9, 0.66);
-  --frame: #07090d;
+  /* category tints for chips: hues kept clear of green, red and the violet accent */
+  --cat-results: #f2c46d;
+  --cat-results-bg: rgba(232, 163, 61, 0.16);
+  --cat-management: #93bcff;
+  --cat-management-bg: rgba(77, 141, 255, 0.16);
+  --cat-fund: #6fdbe8;
+  --cat-fund-bg: rgba(34, 184, 207, 0.16);
+  --solid: #f3f1f7;
+  --on-solid: #17151d;
+  --scrim: rgba(8, 6, 14, 0.66);
+  --frame: #0f0d14;
   color-scheme: dark;
 }
 
 :root[data-theme="light"] {
-  --canvas: #f5f3ee;
+  --canvas: #f6f5fa;
   --card: #ffffff;
-  --raised: #eef0f3;
-  --border: rgba(15, 23, 42, 0.09);
-  --track: #e2e8f0;
-  --fg: #0b0e14;
-  --fg-2: #334155;
-  --muted: #5b6475;          /* 5.9:1 on white */
-  --teal: #14b8a6;
-  --on-teal: #0b0e14;
-  --teal-text: #0f766e;      /* 5.4:1 on white */
+  --raised: #efedf5;
+  --border: rgba(28, 20, 52, 0.1);
+  --track: #e6e3ef;
+  --fg: #16131f;             /* 16.9:1 */
+  --fg-2: #3b3650;           /* 10.6:1 */
+  --muted: #5f5972;          /* 6.1:1 */
+  --accent: #6a45f5;         /* 5.1:1 on canvas */
+  --on-accent: #ffffff;      /* 5.6:1 on accent */
+  --accent-text: #5a35e6;    /* 6.3:1 */
   --pos: #047857;
   --pos-bg: rgba(16, 185, 129, 0.12);
   --neg: #be123c;
   --neg-bg: rgba(244, 63, 94, 0.1);
-  --solid: #0b0e14;
-  --on-solid: #f5f3ee;
-  --scrim: rgba(15, 23, 42, 0.32);
-  --frame: #e9e6df;
+  --cat-results: #7a4f00;
+  --cat-results-bg: rgba(232, 163, 61, 0.18);
+  --cat-management: #1d56b0;
+  --cat-management-bg: rgba(77, 141, 255, 0.14);
+  --cat-fund: #0b6b74;
+  --cat-fund-bg: rgba(34, 184, 207, 0.16);
+  --solid: #16131f;
+  --on-solid: #f6f5fa;
+  --scrim: rgba(22, 19, 31, 0.32);
+  --frame: #e8e6ef;
   color-scheme: light;
 }
 
@@ -125,7 +139,7 @@ body {
 }
 
 a {
-  color: var(--teal-text);
+  color: var(--accent-text);
   text-decoration: none;
 }
 
@@ -140,7 +154,7 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 6px;
 }

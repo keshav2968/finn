@@ -9,7 +9,7 @@ export default function ThemeKeeper() {
     try {
       if (localStorage.getItem("finn.theme") === "light") {
         document.documentElement.dataset.theme = "light";
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f3ee");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f6f5fa");
       }
     } catch {
       /* storage blocked: stay on the default dark theme */

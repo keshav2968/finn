@@ -68,3 +68,11 @@ export function askQuestions(ask: AskConfig, category: string, values: Record<st
   }
   return out;
 }
+
+/** Chip tints for the three categories an investor scans for first. Presentation only:
+ *  the hues sit apart from green and red (price moves) and the violet accent (controls). */
+export const CATEGORY_TONE: Record<string, "results" | "management" | "fund"> = {
+  results: "results",
+  management_change: "management",
+  fund_raise: "fund",
+};

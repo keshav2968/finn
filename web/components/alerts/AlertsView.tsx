@@ -167,7 +167,7 @@ function ThemeChoice() {
   useEffect(() => setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark"), []);
   const choose = (t: "dark" | "light") => {
     document.documentElement.dataset.theme = t;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "light" ? "#f5f3ee" : "#0b0e14");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", t === "light" ? "#f6f5fa" : "#17151d");
     try {
       localStorage.setItem("finn.theme", t); // raw string: read by the pre-paint script in layout.tsx
     } catch {

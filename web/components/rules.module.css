@@ -48,13 +48,13 @@
 
 .chip[aria-checked="true"],
 .chip[aria-pressed="true"] {
-  border-color: var(--teal);
-  background: var(--teal);
-  color: var(--on-teal);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .chip:focus-visible {
-  outline: 2px solid var(--teal);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -75,5 +75,5 @@
   height: 8px;
   border-radius: 50%;
   border: 2px solid var(--canvas);
-  background: var(--teal);
+  background: var(--accent);
 }
