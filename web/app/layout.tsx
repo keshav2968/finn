@@ -64,8 +64,9 @@ export const viewport: Viewport = {
 // Chrome can fire beforeinstallprompt before React hydrates: keep it for our own banner.
 const installScript = `window.__finnBip=null;addEventListener("beforeinstallprompt",function(e){e.preventDefault();window.__finnBip=e;dispatchEvent(new Event("finn:bip"))});addEventListener("appinstalled",function(){try{localStorage.setItem("finn.install.v1","installed")}catch(e){}window.__finnBip=null;dispatchEvent(new Event("finn:bip"))});`;
 
-// The launch screen shows once per visit: a second visit in the same session skips it.
-const splashScript = `try{if(sessionStorage.getItem("finn.splash")){document.documentElement.dataset.splash="seen"}else{sessionStorage.setItem("finn.splash","1")}}catch(e){}`;
+// The launch screen shows once per visit (a second visit in the same session skips it); a tap
+// on it skips it at once.
+const splashScript = `try{if(sessionStorage.getItem("finn.splash")){document.documentElement.dataset.splash="seen"}else{sessionStorage.setItem("finn.splash","1")}}catch(e){}document.addEventListener("pointerdown",function(e){var t=e.target;if(t&&t.closest&&t.closest("[data-splash-el]")){document.documentElement.dataset.splash="seen"}});`;
 
 const themeScript = `try{var t=localStorage.getItem("finn.theme");if(t==="light"){document.documentElement.dataset.theme=t;var m=document.querySelector('meta[name="theme-color"]');m&&m.setAttribute("content","#f6f5fa")}}catch(e){}`;
 

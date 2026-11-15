@@ -1,10 +1,9 @@
 import s from "./splash.module.css";
 
-// A one-second launch screen: FINN's mark and name while the first screen settles, with a
-// price line drawing itself and a few dots travelling along it. Pure CSS, no JavaScript and
-// nothing to tap: it fades out on its own and never blocks the app. Shown once per visit
-// (the inline script in the layout marks the session); under reduced motion it holds still
-// and fades sooner.
+// A launch screen of about three and a half seconds: FINN's mark and name, with a price line
+// drawing itself, dots popping along it and faint dots rising. Pure CSS; it fades out on its
+// own, and a tap skips it (the layout's inline script listens). Shown once per visit; under
+// reduced motion it holds still.
 
 // A decorative line (not data): a few swings that end higher, like a session that closed up.
 const PTS = [
@@ -14,7 +13,7 @@ const LINE = PTS.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join("");
 
 export default function Splash() {
   return (
-    <div className={s.splash} aria-hidden="true">
+    <div className={s.splash} aria-hidden="true" data-splash-el="">
       <div className={s.stage}>
         <svg className={s.mark} viewBox="0 0 64 64" width="76" height="76">
           <rect width="64" height="64" rx="16" fill="#17151d" />
@@ -28,14 +27,14 @@ export default function Splash() {
       <svg className={s.chart} viewBox="-10 0 380 90" preserveAspectRatio="none">
         <path d={LINE} pathLength={100} className={s.line} />
         {PTS.filter((_, i) => i % 3 === 0).map(([x, y], i) => (
-          <circle key={x} cx={x} cy={y} r="3" className={s.node} style={{ animationDelay: `${240 + i * 150}ms` }} />
+          <circle key={x} cx={x} cy={y} r="3" className={s.node} style={{ animationDelay: `${300 + i * 520}ms` }} />
         ))}
         <circle cx={PTS[PTS.length - 1][0]} cy={PTS[PTS.length - 1][1]} r="4" className={s.live} />
       </svg>
 
       <div className={s.drift}>
         {Array.from({ length: 14 }, (_, i) => (
-          <span key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 5) * 90}ms`, animationDuration: `${900 + (i % 4) * 180}ms` }} />
+          <span key={i} style={{ left: `${(i * 37) % 100}%`, animationDelay: `${(i % 7) * 260}ms`, animationDuration: `${1800 + (i % 4) * 320}ms` }} />
         ))}
       </div>
     </div>
