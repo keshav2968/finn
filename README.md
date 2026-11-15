@@ -22,14 +22,47 @@ close). Everything you see was built from that snapshot by the code in this repo
 
 ## What it does
 
-### Push: the inbox
+The app has four tabs in a bottom bar:
+
+| Tab | What's there |
+|---|---|
+| **News** | The push feed: headline-first stories, each with a ticker chip showing the stock's move on the last session, an impact label (High impact, Notable, Routine) and category filter chips. Stories are read or unread: opening one marks it read, and "Mark all read" clears the lot. Top stories carry a price strip for the window with the filing's day marked. |
+| **Markets** | A watchlist you choose from the 15 holdings: price, day change and a 30-session sparkline per row, plus top movers (up, down, volume) and an advance/decline bar. Each stock has its own page: a chart with 1M/3M/6M/1Y ranges, volume underneath and the snapshot's filings marked on the price line (tap one to open it; drag to read any session), plus key numbers, 52-week range, returns and the filing list. |
+| **Research** | Search for any ticker, the researched companies with their track record and verdict mix, and the rest of the portfolio with the command that researches them. |
+| **Alerts** | What crossed your rules (read/unread), the alert rules themselves, dark/light theme, and installing the app. |
+
+Every tab ends with a footer that names the data sources in words (no logos), gives the
+snapshot date, and says it isn't investment advice.
+
+**Motion:** tabs fade up as they open, story lists stagger in, charts draw their line and
+grow their volume bars, and numbers count up when you navigate to them. Cards and buttons
+give press feedback. All of it is CSS or `requestAnimationFrame`, with no animation library,
+and it switches off under "reduce motion". On a cold load the server HTML always shows the
+true figures; count-ups only play after that, so no page ever renders a starting value as data.
+
+**Installable app:**
+- **Android/Chrome:** a manifest with 192/512 icons and maskable versions, `display:
+  standalone` and a theme colour, plus a service worker. Chrome's installability check
+  reports no errors. FINN shows its own install banner after your first tap; once dismissed
+  or installed it never shows again.
+- **iPhone/iPad:** there's no install API, so FINN shows a one-time sheet with the Share →
+  Add to Home Screen steps, only in a browser and not once installed. It also sets the
+  apple-touch-icon, the standalone meta tags and a translucent status bar.
+- **Offline:** the service worker keeps the four tabs working offline. It caches only FINN's
+  own public pages and hashed assets, never cross-origin filings, and there's no personal
+  data in the app to cache.
+- **Security headers:** CSP, HSTS, `X-Frame-Options: DENY`, nosniff, a referrer policy, a
+  permissions policy and COOP are set in `web/next.config.ts`. The CSP allows inline scripts
+  because statically generated Next.js pages need them; nothing loads from another origin.
+
+### Push: how the feed is built
 
 - **Windowed digest.** Pick 24h, 7d or 30d. Every BSE filing in the window across the
   portfolio is classified into the 17 reference categories, scored and tiered:
   - **Needs attention** and **Worth knowing** are cards.
   - Routine paperwork is one collapsed row that isn't counted in your queue.
   - Repeats (the same filing re-sent, everything filed on results day) collapse into one card.
-- **Your alert rules.** The sliders icon opens "Alert rules", which sets:
+- **Your alert rules.** The Alerts tab sets:
   - a price move threshold (±%);
   - a volume spike threshold (× the 20-day average);
   - an optional "unusual for this stock" threshold (σ of its own daily moves);
@@ -43,7 +76,7 @@ close). Everything you see was built from that snapshot by the code in this repo
   - Figures are read off the results PDF, then checked against the statement's own totals
     and against screener.in. Each figure carries its check: ✓ verified, ⚠ mismatch (with
     screener's figure underneath), ? not checked.
-  - The inbox headline only ever uses a checked figure.
+  - A story headline only ever uses a checked figure.
 - **Management change.** From the filing itself:
   - who is joining or leaving, the role, the effective date, the stated reason and prior roles;
   - flags for a CEO or CFO exit, a vague reason, or an exit far from a quarter end.
@@ -116,7 +149,7 @@ research/      numbers.py, transcripts.py, promises.py, ledger.py, build.py, per
 llm/           router.py (chains, budgets, JSON-schema validation, cache, usage log), env.py
 scripts/       build_seed, build_push, classify_pending, build_results_cards,
                build_management_cards, build_research, llm_check
-web/           Next.js app: app/ (inbox, research), components/, lib/ (loaders, inbox logic)
+web/           Next.js app: app/ (news, markets, research, alerts, sw.js), components/, lib/ (loaders, feed logic)
 tests/         offline tests with real-markup and real-transcript fixtures
 docs/          data-contract.md: the JSON the app reads
 ```
@@ -265,13 +298,18 @@ includes all development re-runs of the research pipeline, not one clean pass.
   - L&T's EBITDA (a definition gap with screener);
   - unchecked lender lines such as Bajaj Finance's NII.
 
-  These are shown flagged with screener's figure, and are never used as the inbox headline.
+  These are shown flagged with screener's figure, and are never used as a story headline.
 - **Ledger misses.** Known, visible cases:
   - POLYCAB's export goal is filed under FY26 (the quote names no year; the model guessed).
   - Some labels are generic (HCLTECH's "Guidance range").
   - The extractor can miss an open-ended line (KPIT's "30% plus" for solution products).
   - Screener's margin can differ from the company's own definition (KPIT FY26: 18.9% vs
     the stated 20.8%). The verdict uses the company's stated figure when it gives one.
+- **No phone notifications yet.** Alerts show when you open the app; nothing is pushed to
+  the phone. On iOS, web push only works for apps added to the home screen (iOS 16.4+).
+- **Charts are end of day.** One close per session from the snapshot. Filing markers only
+  go back as far as the snapshot's filings (about 60 days), so the 1Y chart has markers in
+  its last two months only.
 - **Management background comes from the filing only.** A LinkedIn-style bio of the incoming
   person isn't scraped; that isn't free or allowed.
 

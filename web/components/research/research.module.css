@@ -1,21 +1,7 @@
 /* Research screen: same tokens as the inbox. Numbers first, then the ledger. */
 
 .page {
-  width: 100%;
-  min-height: 100dvh;
-  margin: 0 auto;
-  padding: env(safe-area-inset-top) max(var(--pad), env(safe-area-inset-right)) calc(var(--s5) + env(safe-area-inset-bottom))
-    max(var(--pad), env(safe-area-inset-left));
-  background: var(--canvas);
-  overflow-x: clip;
-}
-
-@media (min-width: 600px) {
-  .page {
-    max-width: var(--column);
-    border-left: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-  }
+  padding: env(safe-area-inset-top) max(var(--pad), env(safe-area-inset-right)) 0 max(var(--pad), env(safe-area-inset-left));
 }
 
 .top {
@@ -652,4 +638,115 @@
 .inlineLink {
   color: var(--teal-text);
   font-weight: 600;
+}
+
+/* index: researched companies as cards with a verdict bar */
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s1h);
+}
+
+.cards li {
+  animation: cardIn 340ms var(--ease) backwards;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.card {
+  display: grid;
+  gap: 8px;
+  padding: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  color: var(--fg);
+}
+
+.cardHead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.cardHead .chev {
+  margin-left: auto;
+  align-self: center;
+}
+
+.verdictBar {
+  display: flex;
+  gap: 3px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.verdictBar span {
+  flex-basis: 0;
+  transform-origin: left;
+  animation: barGrow 700ms var(--ease) 120ms backwards;
+}
+
+@keyframes barGrow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.verdictKey {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.verdictKey i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 2px;
+  border-radius: 2px;
+  vertical-align: 0;
+}
+
+.verdictBar [data-v="Delivered"],
+.verdictKey [data-v="Delivered"] {
+  background: var(--pos);
+}
+
+.verdictBar [data-v="Missed"],
+.verdictKey [data-v="Missed"] {
+  background: var(--neg);
+}
+
+.verdictBar [data-v="Goalposts moved"],
+.verdictKey [data-v="Goalposts moved"] {
+  background: var(--fg);
+}
+
+.verdictBar [data-v="Pending"],
+.verdictKey [data-v="Pending"] {
+  background: var(--teal);
+}
+
+.verdictBar [data-v="Unverified"],
+.verdictKey [data-v="Unverified"] {
+  background: var(--track);
+  box-shadow: inset 0 0 0 1px var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards li,
+  .verdictBar span {
+    animation: none;
+  }
 }

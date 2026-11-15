@@ -1,0 +1,225 @@
+/* Shared tab layout: page header, status line, segmented control, filter chips, sections. */
+
+.page {
+  padding: env(safe-area-inset-top) max(var(--pad), env(safe-area-inset-right)) 0 max(var(--pad), env(safe-area-inset-left));
+}
+
+.head {
+  padding-top: var(--s2);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1h);
+  min-height: 44px;
+}
+
+.title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+/* "Market closed · prices to Fri 13 Nov close": the snapshot is frozen and says so. */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  border: 1px solid var(--border);
+  font-size: var(--t-xs);
+  font-weight: 600;
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.sub {
+  margin: 6px 0 0;
+  font-size: var(--t-sm);
+  color: var(--muted);
+}
+
+.sub strong {
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1);
+  margin-top: var(--s2);
+}
+
+.segment {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.segment button {
+  min-width: 52px;
+  min-height: 34px;
+  padding: 0 var(--s1h);
+  border-radius: var(--r-pill);
+  font-family: var(--font-num);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--muted);
+  transition: background-color 180ms var(--ease), color 180ms var(--ease);
+}
+
+.segment button[aria-pressed="true"] {
+  background: var(--teal);
+  color: var(--on-teal);
+}
+
+.textButton {
+  min-height: var(--tap);
+  padding: 0 4px;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--teal-text);
+}
+
+.textButton:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+/* horizontally scrolling chip row, edge to edge */
+.chips {
+  display: flex;
+  gap: var(--s1);
+  margin: var(--s1h) calc(-1 * var(--pad)) 0;
+  padding: 2px var(--pad) 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.chips::-webkit-scrollbar {
+  display: none;
+}
+
+.chip {
+  flex: none;
+  scroll-snap-align: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--card);
+  color: var(--fg-2);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--canvas);
+}
+
+.chipCount {
+  font-family: var(--font-num);
+  font-size: var(--t-xs);
+  opacity: 0.7;
+}
+
+.section {
+  margin-top: var(--s4);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s1);
+  margin: 0 0 var(--s1h);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sectionHead span {
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.empty {
+  margin-top: var(--s4);
+  padding: var(--s4) var(--s2);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-card);
+  text-align: center;
+  color: var(--muted);
+  font-size: var(--t-md);
+}
+
+.empty strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--fg);
+  font-size: var(--t-body);
+}
+
+/* ticker chip with the day's move: "INFY ▲ 1.2%" */
+.tick {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px 3px 9px;
+  border-radius: 8px;
+  background: var(--track);
+  font-family: var(--font-num);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+.tickMove {
+  font-weight: 600;
+}
+
+.tick[data-dir="up"] .tickMove {
+  color: var(--pos);
+}
+
+.tick[data-dir="down"] .tickMove {
+  color: var(--neg);
+}
+
+.tick[data-dir="up"] {
+  background: var(--pos-bg);
+}
+
+.tick[data-dir="down"] {
+  background: var(--neg-bg);
+}

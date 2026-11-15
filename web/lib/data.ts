@@ -108,7 +108,14 @@ function managementCards(cards: Json): Map<string, ManagementCard> {
   return byFiling;
 }
 
-export function loadInbox(): InboxData {
+export interface LoadOptions {
+  /** Every filing in the snapshot (about 60 days), not just the widest window. */
+  allItems?: boolean;
+  /** Only this company's filings: a stock page needs nothing else. */
+  symbol?: string;
+}
+
+export function loadInbox(opts: LoadOptions = {}): InboxData {
   const cfg = readYaml<AppConfig>("config/app.yaml");
   const push = readYaml<PushYaml>("config/push.yaml");
   const seed = seedDir();
@@ -124,7 +131,8 @@ export function loadInbox(): InboxData {
   const earliest = snapshot - maxHours * 3_600_000;
 
   const items: Item[] = (feed.items as Json[])
-    .filter((it) => Date.parse(it.datetime) > earliest)
+    .filter((it) => opts.allItems || Date.parse(it.datetime) > earliest)
+    .filter((it) => !opts.symbol || it.symbol === opts.symbol)
     .map((it) => ({
       id: it.id,
       symbol: it.symbol,
@@ -201,4 +209,104 @@ export function loadInbox(): InboxData {
     results: results.bySymbol,
     ask: cfg.ask,
   };
+}
+
+/** Snapshot times for the footer and status lines (tiny, safe to load in the root layout). */
+export function loadMeta(): { snapshot_at: string; prices_as_of: string | null } {
+  const seed = seedDir();
+  const feed = readJson<Json>(`${seed}/push/feed.json`);
+  const manifest = readJson<Json>(`${seed}/manifest.json`);
+  return { snapshot_at: feed?.snapshot_at ?? "", prices_as_of: manifest?.as_of ?? null };
+}
+
+// ---------------------------------------------------------------- markets
+
+export interface Quote {
+  symbol: string;
+  name: string;
+  sector: string | null;
+  size: string | null;
+  as_of: string;
+  close: number;
+  prev_close: number | null;
+  pct_change: number | null;
+  volume: number | null;
+  volume_avg: number | null;
+  vol_ratio: number | null;
+  move_z: number | null;
+  high_52w: number | null;
+  low_52w: number | null;
+  returns_pct: Record<string, number | null>;
+  spark: number[]; // last `spark` closes, oldest first
+}
+
+export interface StockSeries {
+  date: string[];
+  close: number[];
+  volume: number[];
+  pct_change: (number | null)[];
+}
+
+function quoteOf(c: Json, rec: Json, sparkN: number): Quote | null {
+  const l = rec?.latest;
+  const s = rec?.series;
+  if (!l || l.close == null || !s?.close?.length) return null;
+  return {
+    symbol: c.symbol,
+    name: c.name,
+    sector: c.sector ?? null,
+    size: c.size ?? null,
+    as_of: l.as_of,
+    close: l.close,
+    prev_close: l.prev_close ?? null,
+    pct_change: l.pct_change ?? null,
+    volume: l.volume ?? null,
+    volume_avg: l.volume_avg ?? null,
+    vol_ratio: l.vol_ratio ?? null,
+    move_z: l.move_z ?? null,
+    high_52w: l.high_52w ?? null,
+    low_52w: l.low_52w ?? null,
+    returns_pct: l.returns_pct ?? {},
+    spark: (s.close as (number | null)[]).slice(-sparkN).filter((v): v is number => v !== null),
+  };
+}
+
+/** Latest quote and a short sparkline for every portfolio company (Markets tab). */
+export function loadQuotes(sparkN = 30): Quote[] {
+  const seed = seedDir();
+  const manifest = readJson<Json>(`${seed}/manifest.json`);
+  const out: Quote[] = [];
+  for (const c of (manifest?.companies as Json[]) ?? []) {
+    if (!c.in_portfolio) continue;
+    const q = quoteOf(c, readJson<Json>(`${seed}/prices/${c.symbol}.json`), sparkN);
+    if (q) out.push(q);
+  }
+  return out;
+}
+
+/** One company's full end-of-day history (about a year) for the stock page. */
+export function loadStock(symbol: string): { quote: Quote; series: StockSeries } | null {
+  const seed = seedDir();
+  const manifest = readJson<Json>(`${seed}/manifest.json`);
+  const c = ((manifest?.companies as Json[]) ?? []).find((x) => x.symbol === symbol);
+  const rec = readJson<Json>(`${seed}/prices/${symbol}.json`);
+  if (!c || !rec?.series) return null;
+  const quote = quoteOf(c, rec, 30);
+  if (!quote) return null;
+  const s = rec.series;
+  const keep = (s.date as string[]).map((_, i) => s.close[i] !== null);
+  return {
+    quote,
+    series: {
+      date: (s.date as string[]).filter((_, i) => keep[i]),
+      close: (s.close as number[]).filter((_, i) => keep[i]),
+      volume: (s.volume as (number | null)[]).filter((_, i) => keep[i]).map((v) => v ?? 0),
+      pct_change: (s.pct_change as (number | null)[]).filter((_, i) => keep[i]),
+    },
+  };
+}
+
+export function portfolioSymbols(): string[] {
+  const manifest = readJson<Json>(`${seedDir()}/manifest.json`);
+  return ((manifest?.companies as Json[]) ?? []).filter((c) => c.in_portfolio).map((c) => c.symbol);
 }

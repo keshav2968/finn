@@ -1,0 +1,252 @@
+/* App shell: page column, bottom tab bar, footer, install banner. */
+
+.frame {
+  width: 100%;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--canvas);
+  overflow-x: clip;
+  /* room for the tab bar */
+  padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 600px) {
+  .frame {
+    max-width: var(--column);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+}
+
+/* ---------- bottom nav ---------- */
+
+.nav {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+  max-width: var(--column);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 max(4px, env(safe-area-inset-left)) env(safe-area-inset-bottom) max(4px, env(safe-area-inset-right));
+  background: color-mix(in srgb, var(--canvas) 86%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(18px);
+  backdrop-filter: saturate(1.4) blur(18px);
+  border-top: 1px solid var(--border);
+}
+
+.tab {
+  position: relative;
+  height: var(--nav-h);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: color 180ms var(--ease);
+}
+
+.tab[aria-current="page"] {
+  color: var(--fg);
+}
+
+.tab[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 28px;
+  height: 3px;
+  margin-left: -14px;
+  border-radius: 0 0 3px 3px;
+  background: var(--teal);
+  animation: tabIn 260ms var(--ease);
+}
+
+@keyframes tabIn {
+  from {
+    transform: scaleX(0.2);
+    opacity: 0;
+  }
+}
+
+.tab:active .tabIcon {
+  transform: scale(0.88);
+}
+
+.tabIcon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: transform 120ms var(--ease);
+}
+
+.tabBadge {
+  position: absolute;
+  top: -5px;
+  left: 14px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: var(--r-pill);
+  border: 2px solid var(--canvas);
+  background: var(--neg);
+  color: #fff;
+  font-family: var(--font-num);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 13px;
+  text-align: center;
+}
+
+.tabLabel {
+  line-height: 1;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: var(--s5);
+  padding: var(--s3) var(--pad) var(--s3);
+  border-top: 1px solid var(--border);
+  font-size: var(--t-xs);
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.footer p {
+  margin: 0 0 var(--s1);
+}
+
+.copy {
+  color: var(--fg-2);
+  font-weight: 600;
+}
+
+/* ---------- install banner (Android) ---------- */
+
+.banner {
+  position: fixed;
+  z-index: 29;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--nav-h) + env(safe-area-inset-bottom) + 10px);
+  margin: 0 auto;
+  width: calc(100% - 2 * var(--pad));
+  max-width: calc(var(--column) - 2 * var(--pad));
+  display: flex;
+  align-items: center;
+  gap: var(--s1h);
+  padding: var(--s1h) var(--s1h) var(--s1h) var(--s1h);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--raised);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  animation: rise 320ms var(--ease);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(16px);
+    opacity: 0;
+  }
+}
+
+.bannerIcon {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.bannerText {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--t-sm);
+  line-height: 1.35;
+  color: var(--fg-2);
+}
+
+.bannerText strong {
+  display: block;
+  color: var(--fg);
+  font-size: var(--t-md);
+}
+
+.bannerGo {
+  flex: none;
+  min-height: 40px;
+  padding: 0 var(--s2);
+  border-radius: var(--r-pill);
+  background: var(--teal);
+  color: var(--on-teal);
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+
+.bannerX {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  margin-right: -6px;
+  color: var(--muted);
+}
+
+/* iOS install steps */
+.steps {
+  margin: var(--s2) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s1h);
+  padding: var(--s1h) 0;
+  border-top: 1px solid var(--border);
+  font-size: var(--t-md);
+  line-height: 1.45;
+  color: var(--fg-2);
+}
+
+.steps li::before {
+  content: counter(step);
+  flex: none;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--track);
+  color: var(--fg);
+  font-family: var(--font-num);
+  font-size: var(--t-sm);
+  font-weight: 700;
+}
+
+.steps strong {
+  color: var(--fg);
+}
+
+.glyph {
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: 0 2px;
+  vertical-align: -6px;
+  border-radius: 6px;
+  background: var(--track);
+  color: var(--teal-text);
+}

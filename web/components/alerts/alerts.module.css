@@ -1,0 +1,153 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1);
+}
+
+.row h2 {
+  margin: 0;
+}
+
+.list {
+  margin: var(--s1h) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--border);
+}
+
+.list li {
+  animation: itemIn 320ms var(--ease) backwards;
+}
+
+@keyframes itemIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s1h);
+  width: 100%;
+  padding: 14px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.item:active {
+  background: var(--card);
+}
+
+.icon {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--track);
+  color: var(--teal-text);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.when {
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  font-size: var(--t-md);
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+[data-read] .title {
+  font-weight: 500;
+  color: var(--fg-2);
+}
+
+[data-read] .icon {
+  color: var(--muted);
+}
+
+.meta {
+  font-size: var(--t-xs);
+  color: var(--muted);
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.panel {
+  padding: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--s1h);
+  padding: var(--s2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--card);
+  color: var(--fg-2);
+}
+
+.card[data-stack] {
+  display: block;
+}
+
+.card p {
+  flex: 1;
+  margin: 0;
+  font-size: var(--t-sm);
+  line-height: 1.5;
+}
+
+.go {
+  flex: none;
+  min-height: 40px;
+  padding: 0 var(--s2);
+  border-radius: var(--r-pill);
+  background: var(--teal);
+  color: var(--on-teal);
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+
+.plain {
+  margin: 0;
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--fg-2);
+}

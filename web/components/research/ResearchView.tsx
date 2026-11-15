@@ -28,11 +28,11 @@ function Header({ symbol, name, sub }: { symbol: string; name: string; sub?: Rea
   return (
     <>
       <nav className={s.top}>
-        <Link href="/" className={s.back}>
-          <ChevronLeft size={18} strokeWidth={2} aria-hidden="true" /> Inbox
+        <Link href="/research" className={s.back}>
+          <ChevronLeft size={18} strokeWidth={2} aria-hidden="true" /> Research
         </Link>
-        <Link href="/research" className={s.topLink}>
-          All research
+        <Link href={`/markets/${encodeURIComponent(symbol)}`} className={s.topLink}>
+          Chart
         </Link>
       </nav>
       <header className={s.head}>

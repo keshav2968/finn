@@ -89,3 +89,19 @@ export function croreShort(value: number | null | undefined): string {
 export function rupees(value: number | null | undefined): string {
   return value === null || value === undefined ? "–" : `${value < 0 ? MINUS : ""}₹${grouped(value, 2)}`;
 }
+
+/** Shares traded, Indian style: "59.4 L", "1.2 Cr", "8,400". */
+export function shares(value: number | null | undefined): string {
+  if (value === null || value === undefined) return "–";
+  if (value >= 1e7) return `${(value / 1e7).toFixed(value >= 1e8 ? 0 : 1)} Cr`;
+  if (value >= 1e5) return `${(value / 1e5).toFixed(value >= 1e6 ? 0 : 1)} L`;
+  return grouped(value, 0);
+}
+
+const weekdayFmt = new Intl.DateTimeFormat("en-IN", { weekday: "short", day: "numeric", month: "short", timeZone: TZ });
+
+/** "2026-11-13" -> "Fri, 13 Nov". */
+export function weekday(value: string): string {
+  const d = value.length === 10 ? new Date(`${value}T12:00:00+05:30`) : new Date(value);
+  return weekdayFmt.format(d);
+}

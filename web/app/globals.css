@@ -75,6 +75,7 @@
   --r-card: 14px;
   --r-pill: 999px;
   --column: 430px;
+  --nav-h: 60px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -178,11 +179,103 @@ button {
   color: var(--neg);
 }
 
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- motion ---------- */
+
+/* Each tab and stock page fades up when it mounts (app/template.tsx). */
+.pageEnter {
+  animation: pageEnter 280ms var(--ease) backwards; /* not "both": a lingering transform would trap the fixed sheets */
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* Press feedback for anything tappable that isn't a plain link. */
+.press {
+  transition: transform 120ms var(--ease), background-color 160ms var(--ease);
+}
+
+.press:active {
+  transform: scale(0.985);
+}
+
+/* Skeleton blocks while a page or chart loads. */
+.skel {
+  display: block;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--track) 0%, var(--raised) 40%, var(--track) 80%);
+  background-size: 300% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .skel {
+    animation: none;
+  }
+  .press:active {
+    transform: none;
+  }
+
   *,
   *::before,
   *::after {
     transition-duration: 1ms !important;
     animation-duration: 1ms !important;
+  }
+}
+
+/* Charts draw in: a line with pathLength=1 strokes from left to right, its fill fades up. */
+.drawIn {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: drawIn 900ms var(--ease) 80ms forwards;
+}
+
+@keyframes drawIn {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 600ms var(--ease) 300ms forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawIn {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .fadeIn {
+    animation: none;
+    opacity: 1;
   }
 }
